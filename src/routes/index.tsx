@@ -198,7 +198,7 @@ function Index() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-32 grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-10 lg:col-span-1">
-              <img src={logo.url} alt="1998 Блестящая история" className="h-14 w-auto" />
+              <img src={logo.url} alt="1998 Блестящая история" className="h-20 w-auto" />
               <p className="max-w-[200px] text-sm leading-relaxed text-muted-foreground">
                 Хозяйственные товары от российского производителя «ТЕКОС-ИНДУСТРИЯ».
               </p>
