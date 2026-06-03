@@ -3,6 +3,7 @@ import heroProducts from "@/assets/hero-products.jpg";
 import family from "@/assets/family.jpg";
 import sponges from "@/assets/sponges.jpg";
 import wipes from "@/assets/wipes.jpg";
+import logo from "@/assets/logo-1998.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
