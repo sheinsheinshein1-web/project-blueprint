@@ -24,7 +24,7 @@ function Index() {
       <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-md">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12">
           <a href="#" className="flex items-center" aria-label="1998 Блестящая история">
-            <img src={logo.url} alt="1998 Блестящая история" className="h-10 w-auto" />
+            <img src={logo.url} alt="1998 Блестящая история" className="h-14 w-auto" />
           </a>
           <div className="hidden space-x-12 text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground lg:flex">
             <a href="#about" className="transition-colors hover:text-primary">О бренде</a>
@@ -198,7 +198,7 @@ function Index() {
         <div className="mx-auto max-w-7xl">
           <div className="mb-32 grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-10 lg:col-span-1">
-              <img src={logo.url} alt="1998 Блестящая история" className="h-14 w-auto" />
+              <img src={logo.url} alt="1998 Блестящая история" className="h-20 w-auto" />
               <p className="max-w-[200px] text-sm leading-relaxed text-muted-foreground">
                 Хозяйственные товары от российского производителя «ТЕКОС-ИНДУСТРИЯ».
               </p>
