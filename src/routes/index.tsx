@@ -5,7 +5,6 @@ import family from "@/assets/family.jpg";
 import packagingDelikatnye from "@/assets/packaging-delikatnye.png.asset.json";
 import wipes from "@/assets/wipes.jpg";
 import logo from "@/assets/logo-1998.jpg.asset.json";
-import heroPackaging from "@/assets/hero-packaging.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
