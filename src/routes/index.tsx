@@ -21,51 +21,8 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <div className="overflow-x-hidden bg-background text-foreground antialiased">
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-md">
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6 lg:px-12">
-          <a href="#" className="flex items-center" aria-label="1998 Блестящая история">
-            <img src={logo.url} alt="1998 Блестящая история" className="h-14 w-auto" />
-          </a>
-          <div className="hidden space-x-12 text-[11px] font-bold uppercase tracking-[0.2em] text-muted-foreground lg:flex">
-            <a href="#about" className="transition-colors hover:text-primary">О бренде</a>
-            <a href="#products" className="transition-colors hover:text-primary">Продукция</a>
-            <a href="#history" className="transition-colors hover:text-primary">История</a>
-            <a href="#contact" className="transition-colors hover:text-primary">Контакты</a>
-          </div>
-          <a href="tel:+78123293642" className="text-sm font-semibold tabular-nums">+7 (812) 329-36-42</a>
-        </div>
-      </nav>
+      <CinematicHero />
 
-      {/* Hero */}
-      <section className="relative flex flex-col lg:flex-row">
-        <div className="flex min-h-[70vh] flex-col justify-center bg-primary p-10 text-primary-foreground lg:w-1/2 lg:p-24">
-          <h1 className="mb-10 text-5xl font-extrabold leading-[0.9] tracking-tighter lg:text-[5.5rem]">
-            Блестящая<br />история
-          </h1>
-          <p className="mb-12 max-w-md text-lg font-light italic leading-relaxed opacity-90 lg:text-xl">
-            С 1998 года мы создаём хозяйственные товары, которые помогают вам каждый день.
-          </p>
-          <div className="group relative w-full max-w-lg overflow-hidden rounded-2xl shadow-2xl">
-            <img
-              src={heroProducts}
-              alt="Хозяйственные товары 1998"
-              width={1280}
-              height={896}
-              className="aspect-video w-full object-cover transition-transform duration-1000 group-hover:scale-110"
-            />
-            <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-primary-foreground/20" />
-          </div>
-        </div>
-        <div className="relative min-h-[400px] lg:w-1/2">
-          <img
-            src={family}
-            alt=""
-            className="absolute inset-0 h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-primary/10 mix-blend-multiply" />
-        </div>
-      </section>
 
       {/* About */}
       <section id="about" className="mx-auto max-w-7xl px-6 py-32 lg:px-12">
