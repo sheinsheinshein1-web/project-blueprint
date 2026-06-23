@@ -181,13 +181,13 @@ function Index() {
             <p className="whitespace-pre-line text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
               Бренд «1998» — часть семейной компании с большой производственной историей.{"\n"}Сегодня компанией управляет уже второе поколение семьи — сохраняя ответственность, внимание к деталям и подход, основанный на реальном опыте.
             </p>
-            <a
-              href="#contact"
+            <Link
+              to="/about"
               className="group inline-flex items-center gap-2 rounded-full bg-[#4B66D1] px-8 py-4 text-[14px] font-semibold text-white transition-colors hover:bg-[#3B54B4]"
             >
               Узнать историю компании
               <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2} />
-            </a>
+            </Link>
           </div>
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:w-7/12">
             {[
