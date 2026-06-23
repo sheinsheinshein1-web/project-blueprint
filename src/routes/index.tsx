@@ -52,6 +52,8 @@ function AboutSlider() {
   const prev = () => setIndex((i) => (i - 1 + total) % total);
   const next = () => setIndex((i) => (i + 1) % total);
 
+  const ordered = [items[index], ...items.slice(0, index), ...items.slice(index + 1)];
+
   return (
     <section
       id="about"
@@ -65,33 +67,34 @@ function AboutSlider() {
         }}
       />
 
-      <div className="relative z-10 flex h-full w-full gap-2 p-4 md:gap-3 md:p-6 lg:gap-4 lg:p-8">
-        {items.map((item, i) => {
-          const isActive = i === index;
+      <div className="relative z-10 flex h-full w-full">
+        {ordered.map((item, orderIdx) => {
+          const isActive = orderIdx === 0;
+          const originalIndex = items.indexOf(item);
           return (
             <div
               key={item.title}
               role="button"
               tabIndex={0}
-              onClick={() => setIndex(i)}
+              onClick={() => setIndex(originalIndex)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
-                  setIndex(i);
+                  setIndex(originalIndex);
                 }
               }}
               aria-label={item.title}
               className={`relative h-full cursor-pointer overflow-hidden text-left transition-all duration-700 ease-out ${
-                isActive ? "flex-[3]" : "flex-1"
-              } rounded-[1.25rem] border md:rounded-[1.75rem] lg:rounded-[2rem] ${
+                isActive ? "flex-[0.85]" : "flex-[0.05]"
+              } ${
                 isActive
-                  ? "border-[#4B66D1]/20 bg-white/95 shadow-[0_30px_80px_rgba(75,102,209,0.18)]"
-                  : "border-white/60 bg-white/65 shadow-[0_10px_30px_rgba(0,0,0,0.06)] backdrop-blur-md hover:bg-white/85"
+                  ? "bg-transparent"
+                  : "border-l border-white/50 bg-white/40 backdrop-blur-sm hover:bg-white/60"
               }`}
             >
               {/* Active content */}
               <div
-                className={`absolute inset-0 flex flex-col justify-between p-5 transition-opacity duration-500 md:p-8 lg:p-10 ${
+                className={`absolute inset-0 flex flex-col justify-between p-6 transition-opacity duration-500 md:p-10 lg:p-14 ${
                   isActive ? "opacity-100" : "pointer-events-none opacity-0"
                 }`}
               >
@@ -103,19 +106,19 @@ function AboutSlider() {
                     </span>
                   </div>
                   <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">
-                    0{i + 1} / 0{total}
+                    0{originalIndex + 1} / 0{total}
                   </span>
                 </div>
 
                 <div className="flex flex-col gap-6 md:flex-row md:items-end">
-                  <div className="hidden h-16 w-16 shrink-0 items-center justify-center rounded-full border border-[#4B66D1]/30 bg-[#4B66D1]/15 md:flex lg:h-20 lg:w-20">
-                    <item.icon className="h-7 w-7 text-[#4B66D1] lg:h-9 lg:w-9" strokeWidth={1.5} />
+                  <div className="hidden h-20 w-20 shrink-0 items-center justify-center rounded-full border border-[#4B66D1]/30 bg-[#4B66D1]/15 md:flex">
+                    <item.icon className="h-9 w-9 text-[#4B66D1]" strokeWidth={1.5} />
                   </div>
-                  <div className="space-y-3 md:space-y-5">
-                    <h3 className="text-2xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
+                  <div className="space-y-5">
+                    <h3 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
                       {item.title}
                     </h3>
-                    <p className="max-w-xl text-sm leading-relaxed text-gray-700 md:text-base lg:text-lg">
+                    <p className="max-w-2xl text-base leading-relaxed text-gray-700 md:text-lg">
                       {item.body}
                     </p>
                   </div>
@@ -126,28 +129,28 @@ function AboutSlider() {
                   <button
                     onClick={(e) => { e.stopPropagation(); prev(); }}
                     aria-label="Назад"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white/80 text-gray-800 backdrop-blur-md transition hover:border-[#4B66D1] hover:text-[#4B66D1] md:h-12 md:w-12"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white/80 text-gray-800 backdrop-blur-md transition hover:border-[#4B66D1] hover:text-[#4B66D1] md:h-12 md:w-12"
                   >
                     <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
                   </button>
                   <button
                     onClick={(e) => { e.stopPropagation(); next(); }}
                     aria-label="Вперёд"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-300 bg-white/80 text-gray-800 backdrop-blur-md transition hover:border-[#4B66D1] hover:text-[#4B66D1] md:h-12 md:w-12"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white/80 text-gray-800 backdrop-blur-md transition hover:border-[#4B66D1] hover:text-[#4B66D1] md:h-12 md:w-12"
                   >
                     <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
                   </button>
                 </div>
               </div>
 
-              {/* Inactive content */}
+              {/* Inactive tab content */}
               <div
                 className={`absolute inset-0 flex flex-col items-center justify-between py-5 transition-opacity duration-500 md:py-6 ${
                   isActive ? "pointer-events-none opacity-0" : "opacity-100"
                 }`}
               >
                 <span className="text-[10px] font-semibold tracking-[0.25em] text-gray-500 md:text-xs">
-                  0{i + 1}
+                  0{originalIndex + 1}
                 </span>
                 <div
                   className="flex flex-1 items-center justify-center px-1 md:px-2"
