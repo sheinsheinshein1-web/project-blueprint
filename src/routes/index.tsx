@@ -287,6 +287,7 @@ function CinematicHero() {
           {packs.map((p, i) => {
             const slot = (i - current + packs.length) % packs.length;
             const s = slotStyles[slot];
+            const isFront = slot === 0;
             const { widthClass, scaleBoost } = packSize(p);
             return (
               <img
@@ -296,7 +297,7 @@ function CinematicHero() {
                 className={`absolute left-1/2 top-1/2 h-auto ${widthClass} will-change-transform`}
                 style={{
                   transform: `translate(-50%, -50%) translate(${s.x}, ${s.y}) scale(${s.scale * scaleBoost})`,
-                  filter: `blur(${s.blur}px) brightness(${s.brightness}) drop-shadow(0 30px 40px rgba(0,0,0,0.25))`,
+                  filter: `blur(${s.blur}px) brightness(${s.brightness})${isFront ? ' drop-shadow(0 30px 40px rgba(0,0,0,0.25))' : ''}`,
                   opacity: s.opacity,
                   zIndex: s.z,
                   transition: "transform 1.1s cubic-bezier(0.65, 0, 0.35, 1), filter 1.1s ease, opacity 1.1s ease",
