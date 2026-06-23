@@ -29,65 +29,6 @@ function Index() {
       <AboutAccordion />
 
       {/* Marquee */}
-        <div
-          className="pointer-events-none absolute inset-0 z-0"
-          style={{
-            background:
-              "radial-gradient(ellipse at 50% 30%, #FFFFFF 0%, #F1F5F9 45%, #E2E8F0 100%)",
-          }}
-        />
-        <div className="relative z-10 mx-auto max-w-7xl space-y-20">
-          <div className="mx-auto max-w-5xl space-y-10 text-center">
-            <div className="inline-flex items-center gap-3 rounded-full bg-white/60 px-4 py-1.5 backdrop-blur-md">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-700">
-                Чистота начинается с 1998
-              </span>
-            </div>
-            <h2 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
-              «1998 Блестящая история» — бренд российского производителя хозяйственных товаров «ТЕКОС-ИНДУСТРИЯ»
-            </h2>
-            <p className="mx-auto max-w-3xl text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
-              Семейная компания во втором поколении сохраняет внимание к деталям, ответственность и подход, основанный на реальном опыте производства. Каждый предмет линейки «1998» создан, чтобы домашняя рутина становилась проще, а каждый уголок дома — чище.
-            </p>
-          </div>
-
-          {/* Benefits */}
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                icon: CalendarClock,
-                label: "Более 30 лет опыта",
-              },
-              {
-                icon: ShieldCheck,
-                label: "Российское сырье и надёжные поставщики",
-              },
-              {
-                icon: RefreshCw,
-                label: "Полный цикл производства",
-              },
-              {
-                icon: Award,
-                label: "Доверие сетей и лидеров рынка",
-              },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="flex flex-col items-center rounded-[2rem] border border-white/60 bg-white/55 p-8 text-center backdrop-blur-md transition-colors hover:bg-white/75"
-              >
-                <div className="flex h-20 w-20 items-center justify-center rounded-full border border-[#4B66D1]/20 bg-[#4B66D1]/10">
-                  <item.icon className="h-9 w-9 text-[#4B66D1]" strokeWidth={1.5} />
-                </div>
-                <div className="mt-6 text-[12px] font-bold uppercase leading-tight tracking-[0.18em] text-gray-800">
-                  {item.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Marquee */}
       <div className="relative overflow-hidden bg-primary py-10">
         <div className="flex animate-marquee whitespace-nowrap">
