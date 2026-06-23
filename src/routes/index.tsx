@@ -232,16 +232,7 @@ function Index() {
 function CinematicHero() {
   const glowRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const packs = [
     { src: packagingDelikatnye.url, alt: "Губки деликатные 1998" },
@@ -294,72 +285,6 @@ function CinematicHero() {
     const el = glowRef.current;
     if (el) el.style.setProperty("--r", `0px`);
   };
-
-  const navLinks = [
-    { label: "Главная", href: "#" },
-    { label: "О бренде", href: "#about" },
-    { label: "Продукция", href: "#products" },
-    { label: "История", href: "#history" },
-    { label: "Контакты", href: "#contact" },
-  ];
-
-  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
-  const [activeLabel, setActiveLabel] = useState("Главная");
-  const [pill, setPill] = useState({ left: 0, top: 0, width: 0, height: 0 });
-
-  useEffect(() => {
-    const getActive = () => {
-      const trigger = window.innerHeight * 0.25;
-      let active = "Главная";
-      for (const { label, href } of navLinks) {
-        const id = href === "#" ? null : href.slice(1);
-        const el = id ? document.getElementById(id) : document.querySelector("section");
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= trigger) active = label;
-        }
-      }
-      setActiveLabel(active);
-    };
-
-    getActive();
-    window.addEventListener("scroll", getActive, { passive: true });
-    return () => window.removeEventListener("scroll", getActive);
-  }, []);
-
-  useEffect(() => {
-    const link = linkRefs.current[activeLabel];
-    const nav = link?.parentElement;
-    if (link && nav) {
-      const linkRect = link.getBoundingClientRect();
-      const navRect = nav.getBoundingClientRect();
-      setPill({
-        left: linkRect.left - navRect.left,
-        top: linkRect.top - navRect.top,
-        width: linkRect.width,
-        height: linkRect.height,
-      });
-    }
-  }, [activeLabel]);
-
-  useEffect(() => {
-    const onResize = () => {
-      const link = linkRefs.current[activeLabel];
-      const nav = link?.parentElement;
-      if (link && nav) {
-        const linkRect = link.getBoundingClientRect();
-        const navRect = nav.getBoundingClientRect();
-        setPill({
-          left: linkRect.left - navRect.left,
-          top: linkRect.top - navRect.top,
-          width: linkRect.width,
-          height: linkRect.height,
-        });
-      }
-    };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, [activeLabel]);
 
   return (
     <section
