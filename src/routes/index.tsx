@@ -438,7 +438,7 @@ function CinematicHero() {
     <section
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-[oklch(0.93_0.005_260)] p-6 md:p-8 lg:p-12"
+      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-[oklch(0.90_0.015_260)] p-6 md:p-8 lg:p-12"
       style={{ maxWidth: 1920, marginInline: "auto" }}
     >
       {/* Ambient backdrop */}
@@ -446,7 +446,7 @@ function CinematicHero() {
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 55%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 50%, oklch(0.86 0.008 260) 100%)",
+            "radial-gradient(ellipse at 50% 55%, oklch(0.97 0.015 260) 0%, oklch(0.92 0.025 260) 50%, oklch(0.84 0.038 260) 100%)",
         }}
       />
 
