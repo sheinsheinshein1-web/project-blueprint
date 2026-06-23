@@ -119,32 +119,62 @@ function Index() {
       </div>
 
       {/* Products */}
-      <section id="products" className="mx-auto max-w-7xl px-6 py-32 lg:px-12">
-        <div className="mb-20 flex flex-col justify-between gap-8 md:flex-row md:items-end">
-          <div className="max-w-xl">
-            <h2 className="mb-6 text-5xl font-extrabold tracking-tight">Наша продукция</h2>
-            <p className="text-lg font-light leading-relaxed text-muted-foreground">
-              В линейке «1998» — всё, что нужно для ежедневной чистоты. Функциональные, долговечные и удобные товары для дома.
-            </p>
+      <section
+        id="products"
+        className="relative overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 py-32 lg:px-12"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 z-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
+          }}
+        />
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <div className="mb-20 flex flex-col justify-between gap-10 md:flex-row md:items-end">
+            <div className="max-w-2xl space-y-8">
+              <div className="inline-flex items-center gap-3 rounded-full bg-white/60 px-4 py-1.5 backdrop-blur-md">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-700">
+                  Наша продукция
+                </span>
+              </div>
+              <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
+                Всё для<br />
+                <span
+                  className="text-transparent"
+                  style={{ WebkitTextStroke: "1.5px rgba(20,24,40,0.85)" }}
+                >
+                  ежедневной чистоты
+                </span>
+              </h2>
+              <p className="text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
+                Функциональные, долговечные и удобные товары для дома — в линейке «1998» только то, что прошло проверку реальным опытом.
+              </p>
+            </div>
+            <a
+              href="#products"
+              className="inline-flex items-center gap-2 self-start rounded-full bg-[#4B66D1] px-6 py-3 text-[14px] font-medium text-white transition-colors hover:bg-[#3B54B4] md:self-end"
+            >
+              Посмотреть каталог
+              <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
+            </a>
           </div>
-          <a href="#products" className="border-b-2 border-primary pb-1 text-sm font-bold uppercase tracking-widest text-primary">
-            Посмотреть каталог
-          </a>
-        </div>
 
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-          <ProductCard
-            img={packagingDelikatnye.url}
-            tag="Для уборки"
-            title="Губки и скребки"
-            subtitle="Высокая износостойкость и эффективность"
-          />
-          <ProductCard
-            img={wipes}
-            tag="Для дома"
-            title="Салфетки и стельки"
-            subtitle="Натуральные материалы и комфорт"
-          />
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <ProductCard
+              img={packagingDelikatnye.url}
+              tag="Для уборки"
+              title="Губки и скребки"
+              subtitle="Высокая износостойкость и эффективность"
+            />
+            <ProductCard
+              img={wipes}
+              tag="Для дома"
+              title="Салфетки и стельки"
+              subtitle="Натуральные материалы и комфорт"
+            />
+          </div>
         </div>
       </section>
 
@@ -231,18 +261,18 @@ function Index() {
 
 function ProductCard({ img, tag, title, subtitle }: { img: string; tag: string; title: string; subtitle: string }) {
   return (
-    <article className="group relative overflow-hidden rounded-[3rem] bg-secondary">
-      <div className="absolute right-10 top-10 z-10">
-        <span className="rounded-full bg-background/90 px-5 py-2 text-[10px] font-extrabold uppercase tracking-widest text-primary shadow-sm backdrop-blur">
+    <article className="group relative overflow-hidden rounded-[2.5rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)] transition-colors hover:bg-white/75">
+      <div className="absolute right-6 top-6 z-10">
+        <span className="rounded-full bg-[#4B66D1] px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm">
           {tag}
         </span>
       </div>
-      <div className="aspect-[4/3] overflow-hidden">
-        <img src={img} alt={title} loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+      <div className="aspect-[4/3] overflow-hidden rounded-t-[2.5rem]">
+        <img src={img} alt={title} loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
       </div>
-      <div className="bg-background p-12">
-        <h3 className="text-3xl font-extrabold tracking-tight">{title}</h3>
-        <p className="mt-4 font-medium text-muted-foreground">{subtitle}</p>
+      <div className="p-10">
+        <h3 className="text-3xl font-extrabold tracking-tight text-gray-900">{title}</h3>
+        <p className="mt-3 font-medium text-gray-600">{subtitle}</p>
       </div>
     </article>
   );
