@@ -376,12 +376,73 @@ function CinematicHero() {
   };
 
   const navLinks = [
-    { label: "Главная", href: "#", active: true },
+    { label: "Главная", href: "#" },
     { label: "О бренде", href: "#about" },
     { label: "Продукция", href: "#products" },
     { label: "История", href: "#history" },
     { label: "Контакты", href: "#contact" },
   ];
+
+  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const [activeLabel, setActiveLabel] = useState("Главная");
+  const [pill, setPill] = useState({ left: 0, top: 0, width: 0, height: 0 });
+
+  useEffect(() => {
+    const sections = navLinks
+      .map((l) => ({ label: l.label, el: document.querySelector(l.href === "#" ? "section" : l.href) }))
+      .filter((item): item is { label: string; el: Element } => Boolean(item.el));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.filter((e) => e.isIntersecting);
+        if (visible.length > 0) {
+          const topmost = visible.reduce((a, b) =>
+            a.boundingClientRect.top <= b.boundingClientRect.top ? a : b
+          );
+          const match = sections.find((s) => s.el === topmost.target);
+          if (match) setActiveLabel(match.label);
+        }
+      },
+      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+    );
+
+    sections.forEach((s) => observer.observe(s.el));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const link = linkRefs.current[activeLabel];
+    const nav = link?.parentElement;
+    if (link && nav) {
+      const linkRect = link.getBoundingClientRect();
+      const navRect = nav.getBoundingClientRect();
+      setPill({
+        left: linkRect.left - navRect.left,
+        top: linkRect.top - navRect.top,
+        width: linkRect.width,
+        height: linkRect.height,
+      });
+    }
+  }, [activeLabel]);
+
+  useEffect(() => {
+    const onResize = () => {
+      const link = linkRefs.current[activeLabel];
+      const nav = link?.parentElement;
+      if (link && nav) {
+        const linkRect = link.getBoundingClientRect();
+        const navRect = nav.getBoundingClientRect();
+        setPill({
+          left: linkRect.left - navRect.left,
+          top: linkRect.top - navRect.top,
+          width: linkRect.width,
+          height: linkRect.height,
+        });
+      }
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [activeLabel]);
 
   return (
     <section
