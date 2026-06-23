@@ -27,7 +27,7 @@ function AboutPage() {
         }}
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-[1180px] px-6 py-16 lg:px-12 lg:py-24">
+      <div className="relative z-10 mx-auto w-full px-6 py-16 lg:px-12 lg:py-24">
         <Link
           to="/"
           className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
