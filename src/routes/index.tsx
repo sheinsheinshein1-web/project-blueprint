@@ -304,7 +304,7 @@ function CinematicHero() {
         className="pointer-events-none absolute inset-0 z-10"
         style={{
           background:
-            "radial-gradient(circle var(--r,0px) at var(--mx,50%) var(--my,50%), rgba(80,150,255,0.35), transparent 70%)",
+            "radial-gradient(circle var(--r,0px) at var(--mx,50%) var(--my,50%), rgba(75,102,209,0.18), transparent 70%)",
           transition: "background 0.8s cubic-bezier(0.25, 1, 0.5, 1)",
         }}
       />
