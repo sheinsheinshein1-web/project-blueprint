@@ -103,7 +103,7 @@ function Index() {
 
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
           <ProductCard
-            img={sponges}
+            img={packagingDelikatnye.url}
             tag="Для уборки"
             title="Губки и скребки"
             subtitle="Высокая износостойкость и эффективность"
