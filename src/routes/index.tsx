@@ -284,7 +284,7 @@ function CinematicHero() {
 
       {/* Rotating packaging carousel */}
       <div className="pointer-events-none absolute inset-0 z-[6] flex items-center justify-center" style={{ perspective: "1400px" }}>
-        <div className="relative h-[60vh] w-full max-w-[1100px] max-sm:-translate-y-12">
+        <div className="relative h-[60vh] w-full max-w-[1100px] max-sm:-translate-y-28">
           {packs.map((p, i) => {
             const slot = (i - current + packs.length) % packs.length;
             const s = slotStyles[slot];
