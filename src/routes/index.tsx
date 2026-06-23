@@ -348,7 +348,7 @@ function CinematicHero() {
           </p>
           <a
             href="#products"
-            className="group flex w-full items-center justify-between whitespace-nowrap rounded-full bg-gray-900 px-8 py-4 font-medium text-white shadow-lg hover:bg-black sm:w-auto"
+            className="group flex w-full items-center justify-between whitespace-nowrap rounded-full bg-[#4B66D1] px-8 py-4 font-medium text-white shadow-lg hover:bg-[#3B54B4] sm:w-auto"
           >
             Смотреть продукцию
             <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
