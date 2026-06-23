@@ -222,8 +222,8 @@ function Index() {
           </div>
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:w-7/12">
             {[
-              { name: "Николай Дворянкин", role: "Основатель", photo: nikolayPhoto.url },
-              { name: "Валерий Дворянкин", role: "Руководитель", photo: valeryPhoto.url, offset: true },
+              { name: "Николай Дворянкин", role: "Руководитель", photo: nikolayPhoto.url },
+              { name: "Валерий Дворянкин", role: "Основатель", photo: valeryPhoto.url, offset: true },
             ].map((p) => (
               <div key={p.name} className={`group space-y-8 ${p.offset ? "lg:translate-y-20" : ""}`}>
                 <div className="aspect-[3/4] overflow-hidden rounded-[2rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)]">
