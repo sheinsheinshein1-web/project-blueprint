@@ -26,13 +26,9 @@ function Index() {
   return (
     <div className="overflow-x-hidden bg-background text-foreground antialiased">
       <CinematicHero />
+      <AboutAccordion />
 
-
-      {/* About */}
-      <section
-        id="about"
-        className="relative overflow-hidden bg-[#F8FAFC] px-6 py-32 lg:px-12"
-      >
+      {/* Marquee */}
         <div
           className="pointer-events-none absolute inset-0 z-0"
           style={{
