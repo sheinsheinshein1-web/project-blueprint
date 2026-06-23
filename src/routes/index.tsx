@@ -29,13 +29,13 @@ function Index() {
       {/* About */}
       <section
         id="about"
-        className="relative overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 py-32 lg:px-12"
+        className="relative overflow-hidden bg-[#F8FAFC] px-6 py-32 lg:px-12"
       >
         <div
           className="pointer-events-none absolute inset-0 z-0"
           style={{
             background:
-              "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
+              "radial-gradient(ellipse at 50% 30%, #FFFFFF 0%, #F1F5F9 45%, #E2E8F0 100%)",
           }}
         />
         <div className="relative z-10 mx-auto max-w-7xl">
