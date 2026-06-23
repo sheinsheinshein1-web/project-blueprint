@@ -143,11 +143,14 @@ function AboutSlider() {
                   marginTop: i === 0 ? 0 : -1,
                 }}
               >
-                {/* page edge / fold line */}
-                <span
-                  className={`absolute inset-y-0 left-0 w-[2px] transition-colors ${
-                    isActive ? "bg-[#4B66D1]" : "bg-gray-200/70"
-                  }`}
+                {/* accordion fold lines */}
+                <div
+                  className="absolute inset-y-0 left-0 w-4"
+                  style={{
+                    background: isActive
+                      ? "repeating-linear-gradient(90deg, rgba(75,102,209,0.95) 0px, rgba(75,102,209,0.95) 2px, rgba(75,102,209,0.3) 2px, rgba(75,102,209,0.3) 4px, rgba(75,102,209,0.7) 4px, rgba(75,102,209,0.7) 6px, transparent 6px, transparent 9px)"
+                      : "repeating-linear-gradient(90deg, rgba(156,163,175,0.6) 0px, rgba(156,163,175,0.6) 2px, rgba(156,163,175,0.15) 2px, rgba(156,163,175,0.15) 4px, rgba(156,163,175,0.45) 4px, rgba(156,163,175,0.45) 6px, transparent 6px, transparent 9px)",
+                  }}
                 />
                 <div className="flex h-full flex-col items-center justify-between py-4 md:py-6">
                   <span
