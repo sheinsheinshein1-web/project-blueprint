@@ -368,14 +368,14 @@ function CinematicHero() {
     <section
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-[oklch(0.90_0.015_260)] p-6 md:p-8 lg:p-12"
+      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-[oklch(0.90_0.006_260)] p-6 md:p-8 lg:p-12"
     >
       {/* Ambient backdrop */}
       <div
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 55%, oklch(0.97 0.015 260) 0%, oklch(0.92 0.025 260) 50%, oklch(0.84 0.038 260) 100%)",
+            "radial-gradient(ellipse at 50% 55%, oklch(0.97 0.006 260) 0%, oklch(0.92 0.008 260) 50%, oklch(0.84 0.012 260) 100%)",
         }}
       />
 
