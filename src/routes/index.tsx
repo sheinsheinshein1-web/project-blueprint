@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, CalendarClock, Factory, Sparkles, ThumbsUp } from "lucide-react";
 import packagingDelikatnye from "@/assets/packaging-delikatnye.png.asset.json";
@@ -12,21 +12,15 @@ import packStelkiKozha from "@/assets/stelki-kozha-upak.png.asset.json";
 import img01 from "@/assets/products/01-gubki-universalnye-1.asset.json";
 import img07 from "@/assets/products/07-salfetki-viskoznye-1.asset.json";
 import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.asset.json";
-import logo from "@/assets/logo-1998.png.asset.json";
 import nikolayPhoto from "@/assets/nikolay.jpg.asset.json";
 import valeryPhoto from "@/assets/valery.png.asset.json";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "1998 Блестящая история — хозяйственные товары" },
-      { name: "description", content: "Бренд «1998 Блестящая история» — российский производитель хозяйственных товаров с более чем 30-летним опытом." },
-      { property: "og:title", content: "1998 Блестящая история" },
-      { property: "og:description", content: "Хозяйственные товары для ежедневной чистоты от российского производителя «ТЕКОС-ИНДУСТРИЯ»." },
-    ],
-  }),
-  component: Index,
-});
+export default function Index() {
+  useEffect(() => {
+    document.title = "1998 Блестящая история — хозяйственные товары";
+  }, []);
+  return <IndexContent />;
+}
 
 function AboutSlider() {
   const features = [
