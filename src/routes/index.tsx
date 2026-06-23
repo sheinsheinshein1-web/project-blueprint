@@ -260,7 +260,7 @@ function CinematicHero() {
         muted
         playsInline
         className="absolute inset-0 z-0 h-full w-full object-cover"
-        src="https://cdn.sceneai.art/Hero%20Section%20Video/1bc60917-cb77-4441-bc15-bb839a9dd6c2.mp4"
+        src={heroSponge.url}
       />
       <div className="pointer-events-none absolute inset-0 z-[5] bg-black/25" />
       <div
