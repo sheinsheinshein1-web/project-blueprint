@@ -6,7 +6,7 @@ import packagingDelikatnye from "@/assets/packaging-delikatnye.png.asset.json";
 import packagingKostochka from "@/assets/packaging-kostochka.png.asset.json";
 import packagingChernye from "@/assets/packaging-chernye.png.asset.json";
 import wipes from "@/assets/wipes.jpg";
-import logo from "@/assets/logo-1998.jpg.asset.json";
+import logo from "@/assets/logo-1998.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
