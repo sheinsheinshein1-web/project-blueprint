@@ -15,12 +15,6 @@ import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.asset.json";
 import nikolayPhoto from "@/assets/nikolay.jpg.asset.json";
 import valeryPhoto from "@/assets/valery.png.asset.json";
 
-export default function IndexContent() {
-  useEffect(() => {
-    document.title = "1998 Блестящая история — хозяйственные товары";
-  }, []);
-  return <IndexContent />;
-}
 
 function AboutSlider() {
   const features = [
