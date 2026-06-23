@@ -502,6 +502,7 @@ function CinematicHero() {
             className="text-balance text-[15px] font-light leading-relaxed text-gray-700 md:text-right md:text-[16px]"
           >
             С 1998 года мы создаём хозяйственные товары,
+            <span className="sm:hidden"> </span>
             <br className="hidden sm:block" />
             которые помогают вам каждый день.
           </p>
