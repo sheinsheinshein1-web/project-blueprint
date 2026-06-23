@@ -5,6 +5,7 @@ import family from "@/assets/family.jpg";
 import sponges from "@/assets/sponges.jpg";
 import wipes from "@/assets/wipes.jpg";
 import logo from "@/assets/logo-1998.jpg.asset.json";
+import heroSponge from "@/assets/hero-sponge.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -259,7 +260,7 @@ function CinematicHero() {
         muted
         playsInline
         className="absolute inset-0 z-0 h-full w-full object-cover"
-        src="https://cdn.sceneai.art/Hero%20Section%20Video/1bc60917-cb77-4441-bc15-bb839a9dd6c2.mp4"
+        src={heroSponge.url}
       />
       <div className="pointer-events-none absolute inset-0 z-[5] bg-black/25" />
       <div
