@@ -300,12 +300,12 @@ function CinematicHero() {
 
   // slot 0 = front, then right-near, right-far, back, left-far, left-near
   const slotStyles: Array<{ x: string; y: string; scale: number; blur: number; z: number; opacity: number }> = [
-    { x: "0vw",   y: "0px",   scale: 1.0,  blur: 0,  z: 50, opacity: 1 },
-    { x: "20vw",  y: "-10px", scale: 0.62, blur: 3,  z: 40, opacity: 0.85 },
-    { x: "32vw",  y: "-30px", scale: 0.38, blur: 7,  z: 30, opacity: 0.55 },
-    { x: "0vw",   y: "-60px", scale: 0.28, blur: 10, z: 20, opacity: 0.35 },
-    { x: "-32vw", y: "-30px", scale: 0.38, blur: 7,  z: 30, opacity: 0.55 },
-    { x: "-20vw", y: "-10px", scale: 0.62, blur: 3,  z: 40, opacity: 0.85 },
+    { x: "0vw",   y: "0px",   scale: 1.15, blur: 0,  z: 50, opacity: 1 },
+    { x: "20vw",  y: "-10px", scale: 0.71, blur: 3,  z: 40, opacity: 0.85 },
+    { x: "32vw",  y: "-30px", scale: 0.44, blur: 7,  z: 30, opacity: 0.55 },
+    { x: "0vw",   y: "-60px", scale: 0.32, blur: 10, z: 20, opacity: 0.35 },
+    { x: "-32vw", y: "-30px", scale: 0.44, blur: 7,  z: 30, opacity: 0.55 },
+    { x: "-20vw", y: "-10px", scale: 0.71, blur: 3,  z: 40, opacity: 0.85 },
   ];
 
   const handleMove = (e: React.MouseEvent<HTMLElement>) => {
