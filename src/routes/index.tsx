@@ -27,52 +27,82 @@ function Index() {
 
 
       {/* About */}
-      <section id="about" className="mx-auto max-w-7xl px-6 py-32 lg:px-12">
-        <div className="grid items-start gap-16 lg:grid-cols-12 lg:gap-24">
-          <div className="space-y-12 lg:col-span-7">
-            <div className="inline-flex items-center space-x-4">
-              <span className="h-px w-8 bg-primary" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-primary">Чистота начинается с 1998</span>
+      <section
+        id="about"
+        className="relative overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 py-32 lg:px-12"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 z-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
+          }}
+        />
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <div className="grid items-start gap-16 lg:grid-cols-12 lg:gap-24">
+            <div className="space-y-10 lg:col-span-7">
+              <div className="inline-flex items-center gap-3 rounded-full bg-white/60 px-4 py-1.5 backdrop-blur-md">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-700">
+                  Чистота начинается с 1998
+                </span>
+              </div>
+              <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
+                Семейная история,<br />
+                <span
+                  className="text-transparent"
+                  style={{ WebkitTextStroke: "1.5px rgba(20,24,40,0.85)" }}
+                >
+                  ставшая брендом
+                </span>
+              </h2>
+              <div className="space-y-6 text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
+                <p className="font-medium text-gray-900">
+                  «1998 Блестящая история» — бренд российского производителя хозяйственных товаров «ТЕКОС-ИНДУСТРИЯ».
+                </p>
+                <p>
+                  Семейная компания во втором поколении сохраняет внимание к деталям, ответственность и подход, основанный на реальном опыте производства.
+                </p>
+                <p>
+                  Каждый предмет линейки «1998» создан, чтобы домашняя рутина становилась проще, а каждый уголок дома — чище.
+                </p>
+              </div>
             </div>
-            <div className="space-y-8 text-xl font-light leading-relaxed text-muted-foreground lg:text-2xl">
-              <p className="font-medium text-foreground">
-                «1998 Блестящая история» — бренд российского производителя хозяйственных товаров «ТЕКОС-ИНДУСТРИЯ».
-              </p>
-              <p>
-                Семейная компания во втором поколении сохраняет внимание к деталям, ответственность и подход, основанный на реальном опыте производства.
-              </p>
-              <p>
-                Каждый предмет линейки «1998» создан, чтобы домашняя рутина становилась проще, а каждый уголок дома — чище.
-              </p>
+            <div className="relative lg:col-span-5">
+              <div className="overflow-hidden rounded-[2.5rem] shadow-[0_30px_60px_rgba(20,24,40,0.18)] ring-1 ring-white/60">
+                <img
+                  src={family}
+                  alt="Семья на кухне"
+                  width={896}
+                  height={640}
+                  loading="lazy"
+                  className="aspect-[4/5] w-full object-cover"
+                />
+              </div>
+              <div className="absolute -right-10 -top-10 -z-10 h-56 w-56 rounded-full bg-[#4B66D1]/15 blur-3xl" />
             </div>
           </div>
-          <div className="relative lg:col-span-5">
-            <div className="translate-y-8 overflow-hidden rounded-[2.5rem] shadow-2xl">
-              <img
-                src={family}
-                alt="Семья на кухне"
-                width={896}
-                height={640}
-                loading="lazy"
-                className="aspect-[4/5] w-full object-cover"
-              />
-            </div>
-            <div className="absolute -right-8 -top-12 -z-10 h-48 w-48 rounded-full bg-accent blur-3xl" />
-          </div>
-        </div>
 
-        {/* Stats */}
-        <div className="mt-32 grid grid-cols-1 gap-16 border-t border-border pt-20 md:grid-cols-3">
-          {[
-            { num: "30+", label: "лет\nна рынке" },
-            { num: "100%", label: "российское сырьё\nи производство" },
-            { num: "4", label: "категории товаров\nдля дома" },
-          ].map((s) => (
-            <div key={s.num} className="space-y-4">
-              <div className="text-7xl font-extrabold tracking-tighter text-primary">{s.num}</div>
-              <div className="whitespace-pre-line text-[11px] font-bold uppercase leading-tight tracking-[0.2em] text-muted-foreground">{s.label}</div>
-            </div>
-          ))}
+          {/* Stats */}
+          <div className="mt-28 grid grid-cols-1 gap-10 md:grid-cols-3">
+            {[
+              { num: "30+", label: "лет\nна рынке" },
+              { num: "100%", label: "российское сырьё\nи производство" },
+              { num: "4", label: "категории товаров\nдля дома" },
+            ].map((s) => (
+              <div
+                key={s.num}
+                className="rounded-[2rem] border border-white/60 bg-white/55 p-10 backdrop-blur-md transition-colors hover:bg-white/75"
+              >
+                <div className="text-6xl font-extrabold tracking-tighter text-gray-900 md:text-7xl">
+                  {s.num}
+                </div>
+                <div className="mt-5 whitespace-pre-line text-[11px] font-bold uppercase leading-tight tracking-[0.22em] text-gray-600">
+                  {s.label}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
