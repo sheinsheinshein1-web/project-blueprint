@@ -225,10 +225,10 @@ function CinematicHero() {
   const packs = [
     { src: packagingDelikatnye, alt: "Губки деликатные 1998" },
     { src: packMetallic, alt: "Салфетки металлизированные 1998" },
-    { src: packStelkiProbka, alt: "Пробковые стельки летние 1998", widthClass: "w-[24vw] max-w-[320px] min-w-[170px]", scaleBoost: 0.82 },
+    { src: packKaplyaGray, alt: "Губки эргономичные капля 1998" },
     { src: packagingKostochka, alt: "Губки эргономичные 1998" },
     { src: packViscosa, alt: "Салфетки универсальные 1998" },
-    { src: packStelkiKozha, alt: "Кожаные стельки классика 1998", widthClass: "w-[24vw] max-w-[320px] min-w-[170px]", scaleBoost: 0.82 },
+    { src: packOvalEzhevika, alt: "Губки эргономичные овал 1998" },
     { src: packagingChernye, alt: "Губки универсальные 1998" },
     { src: packCelulosa, alt: "Салфетки губчатые 1998" },
   ];
