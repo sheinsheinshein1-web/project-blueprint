@@ -1,19 +1,19 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, CalendarClock, Factory, Sparkles, ThumbsUp } from "lucide-react";
-import packagingDelikatnye from "@/assets/packaging-delikatnye.png.asset.json";
-import packagingKostochka from "@/assets/packaging-kostochka.png.asset.json";
-import packagingChernye from "@/assets/packaging-chernye.png.asset.json";
-import packMetallic from "@/assets/pack-metallic.png.asset.json";
-import packCelulosa from "@/assets/pack-celulosa.png.asset.json";
-import packViscosa from "@/assets/pack-viscosa.png.asset.json";
-import packStelkiProbka from "@/assets/stelki-probka-upak.png.asset.json";
-import packStelkiKozha from "@/assets/stelki-kozha-upak.png.asset.json";
-import img01 from "@/assets/products/01-gubki-universalnye-1.asset.json";
-import img07 from "@/assets/products/07-salfetki-viskoznye-1.asset.json";
-import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.asset.json";
-import nikolayPhoto from "@/assets/nikolay.jpg.asset.json";
-import valeryPhoto from "@/assets/valery.png.asset.json";
+import packagingDelikatnye from "@/assets/packaging-delikatnye.png";
+import packagingKostochka from "@/assets/packaging-kostochka.png";
+import packagingChernye from "@/assets/packaging-chernye.png";
+import packMetallic from "@/assets/pack-metallic.png";
+import packCelulosa from "@/assets/pack-celulosa.png";
+import packViscosa from "@/assets/pack-viscosa.png";
+import packStelkiProbka from "@/assets/stelki-probka-upak.png";
+import packStelkiKozha from "@/assets/stelki-kozha-upak.png";
+import img01 from "@/assets/products/01-gubki-universalnye-1.jpg";
+import img07 from "@/assets/products/07-salfetki-viskoznye-1.jpg";
+import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.jpg";
+import nikolayPhoto from "@/assets/nikolay.jpg";
+import valeryPhoto from "@/assets/valery.png";
 
 
 function AboutSlider() {
@@ -106,7 +106,7 @@ function ProductsSection() {
             className="group relative flex h-[380px] cursor-pointer flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:h-[440px]"
           >
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
-              <img src={img01.url} alt="Губки" loading="lazy" className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105" />
+              <img src={img01} alt="Губки" loading="lazy" className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105" />
             </div>
             <div className="shrink-0 p-4 md:p-6">
               <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">Губки</h3>
@@ -120,7 +120,7 @@ function ProductsSection() {
             className="group relative flex h-[380px] cursor-pointer flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:h-[440px]"
           >
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
-              <img src={img08.url} alt="Стельки" loading="lazy" className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105" />
+              <img src={img08} alt="Стельки" loading="lazy" className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105" />
             </div>
             <div className="shrink-0 p-4 md:p-6">
               <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">Стельки</h3>
@@ -134,7 +134,7 @@ function ProductsSection() {
             className="group relative flex h-[380px] cursor-pointer flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:h-[440px]"
           >
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
-              <img src={img07.url} alt="Салфетки" loading="lazy" className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105" />
+              <img src={img07} alt="Салфетки" loading="lazy" className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105" />
             </div>
             <div className="shrink-0 p-4 md:p-6">
               <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">Салфетки</h3>
@@ -191,8 +191,8 @@ export default function Index() {
           </div>
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:w-7/12">
             {[
-              { name: "Николай Дворянкин", role: "Руководитель", photo: nikolayPhoto.url },
-              { name: "Валерий Дворянкин", role: "Основатель", photo: valeryPhoto.url, offset: true },
+              { name: "Николай Дворянкин", role: "Руководитель", photo: nikolayPhoto },
+              { name: "Валерий Дворянкин", role: "Основатель", photo: valeryPhoto, offset: true },
             ].map((p) => (
               <div key={p.name} className={`group space-y-8 ${p.offset ? "lg:translate-y-20" : ""}`}>
                 <div className="aspect-[3/4] overflow-hidden rounded-[2rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)]">
@@ -223,14 +223,14 @@ function CinematicHero() {
   const [current, setCurrent] = useState(0);
 
   const packs = [
-    { src: packagingDelikatnye.url, alt: "Губки деликатные 1998" },
-    { src: packMetallic.url, alt: "Салфетки металлизированные 1998" },
-    { src: packStelkiProbka.url, alt: "Пробковые стельки летние 1998", widthClass: "w-[24vw] max-w-[320px] min-w-[170px]", scaleBoost: 0.82 },
-    { src: packagingKostochka.url, alt: "Губки эргономичные 1998" },
-    { src: packViscosa.url, alt: "Салфетки универсальные 1998" },
-    { src: packStelkiKozha.url, alt: "Кожаные стельки классика 1998", widthClass: "w-[24vw] max-w-[320px] min-w-[170px]", scaleBoost: 0.82 },
-    { src: packagingChernye.url, alt: "Губки универсальные 1998" },
-    { src: packCelulosa.url, alt: "Салфетки губчатые 1998" },
+    { src: packagingDelikatnye, alt: "Губки деликатные 1998" },
+    { src: packMetallic, alt: "Салфетки металлизированные 1998" },
+    { src: packStelkiProbka, alt: "Пробковые стельки летние 1998", widthClass: "w-[24vw] max-w-[320px] min-w-[170px]", scaleBoost: 0.82 },
+    { src: packagingKostochka, alt: "Губки эргономичные 1998" },
+    { src: packViscosa, alt: "Салфетки универсальные 1998" },
+    { src: packStelkiKozha, alt: "Кожаные стельки классика 1998", widthClass: "w-[24vw] max-w-[320px] min-w-[170px]", scaleBoost: 0.82 },
+    { src: packagingChernye, alt: "Губки универсальные 1998" },
+    { src: packCelulosa, alt: "Салфетки губчатые 1998" },
   ];
 
   useEffect(() => {

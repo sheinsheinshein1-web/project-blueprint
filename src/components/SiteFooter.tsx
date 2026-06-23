@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from "@/assets/logo-1998.png.asset.json";
+import logo from "@/assets/logo-1998.png";
 
 export function SiteFooter() {
   return (
@@ -7,7 +7,7 @@ export function SiteFooter() {
       <div className="mx-auto w-full">
         <div className="mb-32 grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-10 lg:col-span-1">
-            <img src={logo.url} alt="1998 Блестящая история" className="h-20 w-auto" />
+            <img src={logo} alt="1998 Блестящая история" className="h-20 w-auto" />
             <p className="max-w-[200px] text-sm leading-relaxed text-muted-foreground">
               Хозяйственные товары от российского производителя «ТЕКОС-ИНДУСТРИЯ».
             </p>
