@@ -313,7 +313,7 @@ function CinematicHero() {
       {/* Header */}
       <header className="relative z-50 flex w-full items-center justify-between">
         <a href="#" className="flex items-center" aria-label="1998">
-          <img src={logo.url} alt="1998" className="h-10 w-auto rounded bg-white/85 px-2 py-1 backdrop-blur md:h-12" />
+          <img src={logo.url} alt="1998" className="h-14 w-auto md:h-20" />
         </a>
 
         <nav className="hidden items-center gap-1 rounded-full bg-gray-200/50 p-1 backdrop-blur-md md:flex">
