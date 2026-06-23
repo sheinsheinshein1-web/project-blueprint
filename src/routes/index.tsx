@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Award, CalendarClock, Menu, RefreshCw, ShieldCheck, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Menu, RefreshCw, ShieldCheck, X } from "lucide-react";
 import packagingDelikatnye from "@/assets/packaging-delikatnye.png.asset.json";
 import packagingKostochka from "@/assets/packaging-kostochka.png.asset.json";
 import packagingChernye from "@/assets/packaging-chernye.png.asset.json";
@@ -25,62 +25,97 @@ export const Route = createFileRoute("/")({
 });
 
 function AboutSlider() {
-  const items = [
-    {
-      icon: ShieldCheck,
-      title: "Российское сырьё и надёжные поставщики",
-    },
-    {
-      icon: RefreshCw,
-      title: "Полный цикл производства",
-    },
-    {
-      icon: Award,
-      title: "Доверие сетей и лидеров рынка",
-    },
-    {
-      icon: CalendarClock,
-      title: "Больше 30 лет опыта",
-    },
-  ];
-
+  const unbounded = { fontFamily: "'Unbounded', sans-serif" };
   return (
     <section
       id="about"
-      className="relative min-h-screen w-full overflow-hidden bg-[#F8FAFC]"
+      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-white px-6 py-24 lg:px-12"
     >
-      <div
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 30%, #FFFFFF 0%, #F1F5F9 45%, #E2E8F0 100%)",
-        }}
-      />
-
-      <div className="relative z-10 flex min-h-screen w-full flex-col justify-center gap-16 p-6 md:gap-24 md:p-10 lg:gap-28 lg:p-14">
-        <div className="mx-auto w-full max-w-5xl">
-          <p className="text-xl leading-relaxed text-gray-800 md:text-2xl lg:text-3xl">
-            <span className="font-semibold">«1998 Блестящая история»</span> — собственный бренд старейшего российского производителя хозяйственных товаров{" "}
-            <span className="font-semibold">«ТЕКОС-ИНДУСТРИЯ»</span>. Он назван в честь года строительства собственного завода в Ленинградской области.
-          </p>
+      <div className="relative w-full max-w-6xl">
+        {/* Watermark */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -left-4 -top-12 select-none text-[10rem] font-black leading-none text-zinc-100 md:-left-8 md:text-[12rem]"
+          style={unbounded}
+        >
+          1998
         </div>
 
-        <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-10 md:grid-cols-4 md:gap-8 lg:gap-12">
-          {items.map((item) => (
-            <div key={item.title} className="flex flex-col items-center text-center">
-              <div className="mb-6 flex h-28 w-28 items-center justify-center rounded-full border border-white/70 bg-white/60 shadow-[0_20px_40px_rgba(75,102,209,0.15)] backdrop-blur-md md:h-32 md:w-32 lg:h-36 lg:w-36">
-                <item.icon className="h-10 w-10 text-[#4B66D1] md:h-12 md:w-12 lg:h-14 lg:w-14" strokeWidth={1.5} />
-              </div>
-              <h3 className="max-w-[180px] text-sm font-semibold leading-snug text-gray-900 md:text-base lg:text-lg">
-                {item.title}
-              </h3>
+        <div className="relative grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
+          {/* Left: intro */}
+          <div className="flex flex-col gap-8 lg:col-span-5">
+            <div className="space-y-4">
+              <span className="inline-block bg-zinc-900 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-white">
+                О бренде
+              </span>
+              <h2 className="text-4xl font-bold leading-[1.1] text-zinc-900 md:text-5xl" style={unbounded}>
+                Блестящая история <span className="text-zinc-400">с 1998 года</span>
+              </h2>
             </div>
-          ))}
+
+            <p className="border-l-2 border-zinc-200 pl-6 text-lg font-light leading-relaxed text-zinc-600">
+              <span className="font-semibold text-zinc-900">«1998 Блестящая история»</span> — собственный бренд старейшего российского производителя хозяйственных товаров{" "}
+              <span className="font-semibold text-zinc-900">«ТЕКОС-ИНДУСТРИЯ»</span>. Он назван в честь года строительства собственного завода в Ленинградской области.
+            </p>
+          </div>
+
+          {/* Right: feature grid */}
+          <div className="grid grid-cols-2 gap-4 lg:col-span-7">
+            {/* 30+ years */}
+            <div className="group flex aspect-square flex-col justify-between border border-zinc-100 bg-zinc-50 p-8 transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-zinc-200">
+              <div
+                className="origin-left text-5xl font-bold text-zinc-900 transition-transform group-hover:scale-110"
+                style={unbounded}
+              >
+                30+
+              </div>
+              <p className="text-sm font-semibold uppercase tracking-wider text-zinc-500 transition-colors group-hover:text-zinc-900">
+                Лет опыта на рынке
+              </p>
+            </div>
+
+            {/* Full cycle — dark */}
+            <div className="flex aspect-square flex-col justify-between bg-zinc-900 p-8 transition-transform duration-500 hover:scale-[1.02]">
+              <RefreshCw className="h-10 w-10 text-zinc-400" strokeWidth={1.5} />
+              <div className="space-y-2">
+                <p className="text-lg font-bold leading-tight text-white">Полный цикл</p>
+                <p className="text-xs uppercase tracking-tight text-zinc-500">Контроль от идеи до полки</p>
+              </div>
+            </div>
+
+            {/* Russian raw materials */}
+            <div className="group relative flex aspect-square flex-col justify-between overflow-hidden bg-zinc-100 p-8">
+              <div className="absolute -bottom-4 -right-4 h-32 w-32 rounded-full bg-white opacity-50 transition-transform duration-700 group-hover:scale-150" />
+              <ShieldCheck className="relative z-10 h-10 w-10 text-zinc-900" strokeWidth={1.5} />
+              <div className="relative z-10 space-y-2">
+                <p className="text-lg font-bold leading-tight text-zinc-900">Российское сырьё</p>
+                <p className="text-xs text-zinc-500">Надёжные поставщики и контроль качества</p>
+              </div>
+            </div>
+
+            {/* Trust */}
+            <div className="group flex aspect-square flex-col justify-between border-2 border-dashed border-zinc-200 p-8 transition-colors duration-500 hover:border-[#4B66D1]">
+              <div className="flex gap-1">
+                <div className="h-2 w-2 rounded-full bg-zinc-900" />
+                <div className="h-2 w-2 rounded-full bg-zinc-400" />
+                <div className="h-2 w-2 rounded-full bg-zinc-200" />
+              </div>
+              <div className="space-y-2">
+                <p className="text-lg font-bold leading-tight text-zinc-900 transition-transform group-hover:translate-x-1">
+                  Доверие сетей
+                </p>
+                <p className="text-xs text-zinc-500">Крупнейшие ритейлеры выбирают нас</p>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <div className="mt-20 h-px w-full bg-gradient-to-r from-transparent via-zinc-200 to-transparent" />
       </div>
     </section>
   );
 }
+
 
 function Index() {
   return (
