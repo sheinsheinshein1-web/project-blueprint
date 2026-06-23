@@ -266,7 +266,7 @@ function CinematicHero() {
     <section
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-black p-6 md:p-8 lg:p-12"
+      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-[oklch(0.93_0.005_260)] p-6 md:p-8 lg:p-12"
       style={{ maxWidth: 1920, marginInline: "auto" }}
     >
       {/* Ambient backdrop */}
@@ -274,19 +274,27 @@ function CinematicHero() {
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 55%, oklch(0.28 0.04 260) 0%, oklch(0.16 0.02 260) 45%, #000 90%)",
+            "radial-gradient(ellipse at 50% 55%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 50%, oklch(0.86 0.008 260) 100%)",
         }}
       />
 
-      {/* Floating packaging */}
+      {/* Floating packaging row */}
       <div className="pointer-events-none absolute inset-0 z-[6] flex items-center justify-center" style={{ perspective: "1200px" }}>
-        <div className="animate-float">
+        <div ref={packRef} className="animate-float flex items-end justify-center gap-4 sm:gap-8 lg:gap-14 will-change-transform" style={{ transition: "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)" }}>
           <img
-            ref={packRef}
+            src={packagingKostochka.url}
+            alt="Губки эргономичные 1998"
+            className="h-auto w-[22vw] max-w-[300px] min-w-[140px] drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)]"
+          />
+          <img
             src={packagingDelikatnye.url}
             alt="Упаковка 1998"
-            className="h-auto w-[44vw] max-w-[640px] min-w-[280px] drop-shadow-[0_40px_60px_rgba(0,0,0,0.6)] will-change-transform"
-            style={{ transition: "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)" }}
+            className="h-auto w-[26vw] max-w-[360px] min-w-[160px] drop-shadow-[0_40px_50px_rgba(0,0,0,0.3)]"
+          />
+          <img
+            src={packagingChernye.url}
+            alt="Губки универсальные 1998"
+            className="h-auto w-[22vw] max-w-[300px] min-w-[140px] drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)]"
           />
         </div>
       </div>
