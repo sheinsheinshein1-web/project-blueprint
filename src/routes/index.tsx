@@ -49,9 +49,7 @@ function Index() {
               </div>
               <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
                 Семейная история,<br />
-                <span className="outline-text">
-                  ставшая брендом
-                </span>
+                <span>ставшая брендом</span>
               </h2>
               <div className="space-y-6 text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
                 <p className="font-medium text-gray-900">
@@ -138,9 +136,7 @@ function Index() {
               </div>
               <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
                 Всё для<br />
-                <span className="outline-text">
-                  ежедневной чистоты
-                </span>
+                <span>ежедневной чистоты</span>
               </h2>
               <p className="text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
                 Функциональные, долговечные и удобные товары для дома — в линейке «1998» только то, что прошло проверку реальным опытом.
@@ -194,9 +190,7 @@ function Index() {
             </div>
             <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
               Опыт, за которым<br />
-              <span className="outline-text">
-                стоит история
-              </span>
+              <span>стоит история</span>
             </h2>
             <p className="text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
               Бренд «1998» — часть семейной компании с большой производственной историей. Сегодня компанией управляет уже второе поколение семьи, сохраняя верность качеству.
@@ -457,7 +451,7 @@ function CinematicHero() {
             Блестящая
           </h1>
           <h2
-            className="outline-text font-medium leading-[0.85] tracking-[-0.04em]"
+            className="font-extrabold leading-[0.85] tracking-[-0.04em] text-gray-900"
             style={{ fontSize: "clamp(60px, 9vw, 86px)" }}
           >
             история
