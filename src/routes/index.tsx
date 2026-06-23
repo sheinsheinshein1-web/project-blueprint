@@ -149,7 +149,7 @@ function ProductsSection() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:grid-rows-2 md:gap-4 lg:grid-cols-3 lg:gap-5">
+        <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-5">
           {/* Губки */}
           <article className="group relative flex h-[320px] flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55">
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
@@ -173,7 +173,7 @@ function ProductsSection() {
           </article>
 
           {/* Салфетки */}
-          <article className="group relative flex h-[320px] flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:col-start-2 md:row-start-2 lg:col-auto lg:row-auto">
+          <article className="group relative flex h-[320px] flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:col-span-2 lg:col-auto">
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
               <img src={packViscosa.url} alt="Салфетки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
             </div>
