@@ -83,6 +83,7 @@ function AboutPage() {
             <p className="mt-5 text-sm font-bold uppercase tracking-widest text-[#4B66D1]">
               Николай Дворянкин
             </p>
+            <p className="text-sm text-gray-500">Руководитель</p>
           </div>
 
           <div className="order-1 lg:order-2 lg:col-span-7">
