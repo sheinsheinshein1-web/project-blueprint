@@ -98,13 +98,7 @@ function AboutSlider() {
                   isActive ? "opacity-100" : "pointer-events-none opacity-0"
                 }`}
               >
-                <div className="flex items-center justify-between">
-                  <div className="inline-flex items-center gap-3 rounded-full bg-white/70 px-4 py-1.5 backdrop-blur-md">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-700">
-                      Чистота начинается с 1998
-                    </span>
-                  </div>
+                <div className="flex items-center justify-end">
                   <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">
                     0{originalIndex + 1} / 0{total}
                   </span>
@@ -191,12 +185,6 @@ function Index() {
         <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col">
           <div className="mb-6 flex shrink-0 flex-col justify-between gap-4 md:flex-row md:items-end">
             <div className="max-w-2xl space-y-3">
-              <div className="inline-flex items-center gap-3 rounded-full bg-white/60 px-4 py-1.5 backdrop-blur-md">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
-                <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-700">
-                  Наша продукция
-                </span>
-              </div>
               <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
                 Всё для ежедневной чистоты
               </h2>
@@ -277,12 +265,6 @@ function Index() {
         />
         <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-24 lg:flex-row">
           <div className="space-y-8 lg:w-5/12">
-            <div className="inline-flex items-center gap-3 rounded-full bg-white/60 px-4 py-1.5 backdrop-blur-md">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-700">
-                Наследие
-              </span>
-            </div>
             <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
               Опыт, за которым<br />
               <span>стоит история</span>
