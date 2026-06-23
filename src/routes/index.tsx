@@ -260,7 +260,7 @@ function CinematicHero() {
         muted
         playsInline
         className="absolute inset-0 z-0 h-full w-full object-cover"
-        src={heroSponge.url}
+        src={heroPackaging.url}
       />
       <div className="pointer-events-none absolute inset-0 z-[5] bg-black/25" />
       <div
