@@ -388,26 +388,23 @@ function CinematicHero() {
   const [pill, setPill] = useState({ left: 0, top: 0, width: 0, height: 0 });
 
   useEffect(() => {
-    const sections = navLinks
-      .map((l) => ({ label: l.label, el: document.querySelector(l.href === "#" ? "section" : l.href) }))
-      .filter((item): item is { label: string; el: Element } => Boolean(item.el));
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting);
-        if (visible.length > 0) {
-          const topmost = visible.reduce((a, b) =>
-            a.boundingClientRect.top <= b.boundingClientRect.top ? a : b
-          );
-          const match = sections.find((s) => s.el === topmost.target);
-          if (match) setActiveLabel(match.label);
+    const getActive = () => {
+      const trigger = window.innerHeight * 0.25;
+      let active = "Главная";
+      for (const { label, href } of navLinks) {
+        const id = href === "#" ? null : href.slice(1);
+        const el = id ? document.getElementById(id) : document.querySelector("section");
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= trigger) active = label;
         }
-      },
-      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
-    );
+      }
+      setActiveLabel(active);
+    };
 
-    sections.forEach((s) => observer.observe(s.el));
-    return () => observer.disconnect();
+    getActive();
+    window.addEventListener("scroll", getActive, { passive: true });
+    return () => window.removeEventListener("scroll", getActive);
   }, []);
 
   useEffect(() => {
