@@ -322,7 +322,15 @@ function CinematicHero() {
   const glowRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const packs = [
     { src: packagingDelikatnye.url, alt: "Губки деликатные 1998" },
@@ -429,7 +437,13 @@ function CinematicHero() {
 
 
       {/* Header */}
-      <header className="fixed left-0 right-0 top-0 z-50 flex w-full items-center justify-between border-b border-white/40 bg-white/80 px-6 py-4 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-xl md:px-8 lg:px-12">
+      <header
+        className={`fixed left-0 right-0 top-0 z-50 flex w-full items-center justify-between px-6 py-4 transition-all duration-300 md:px-8 lg:px-12 ${
+          scrolled
+            ? "border-b border-white/40 bg-white/80 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-xl"
+            : "bg-transparent"
+        }`}
+      >
         <a href="#" className="flex items-center" aria-label="1998">
           <img src={logo.url} alt="1998" className="h-10 w-auto md:h-12" />
         </a>
