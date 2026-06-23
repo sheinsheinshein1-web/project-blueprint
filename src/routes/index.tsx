@@ -15,7 +15,7 @@ import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.asset.json";
 import nikolayPhoto from "@/assets/nikolay.jpg.asset.json";
 import valeryPhoto from "@/assets/valery.png.asset.json";
 
-export default function Index() {
+export default function IndexContent() {
   useEffect(() => {
     document.title = "1998 Блестящая история — хозяйственные товары";
   }, []);
@@ -108,8 +108,7 @@ function ProductsSection() {
         <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-6">
           {/* Губки */}
           <Link
-            to="/catalog"
-            search={{ category: "Губки" }}
+            to="/catalog?category=Губки"
             className="group relative flex h-[380px] cursor-pointer flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:h-[440px]"
           >
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
@@ -123,8 +122,7 @@ function ProductsSection() {
 
           {/* Стельки */}
           <Link
-            to="/catalog"
-            search={{ category: "Стельки" }}
+            to="/catalog?category=Стельки"
             className="group relative flex h-[380px] cursor-pointer flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:h-[440px]"
           >
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
@@ -138,8 +136,7 @@ function ProductsSection() {
 
           {/* Салфетки */}
           <Link
-            to="/catalog"
-            search={{ category: "Салфетки" }}
+            to="/catalog?category=Салфетки"
             className="group relative flex h-[380px] cursor-pointer flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:h-[440px]"
           >
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
@@ -157,7 +154,7 @@ function ProductsSection() {
 }
 
 
-function Index() {
+function IndexContent() {
   return (
     <div className="overflow-x-hidden bg-background text-foreground antialiased">
       <CinematicHero />
