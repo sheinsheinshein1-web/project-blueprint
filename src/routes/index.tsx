@@ -3,6 +3,8 @@ import { useRef, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import family from "@/assets/family.jpg";
 import packagingDelikatnye from "@/assets/packaging-delikatnye.png.asset.json";
+import packagingKostochka from "@/assets/packaging-kostochka.png.asset.json";
+import packagingChernye from "@/assets/packaging-chernye.png.asset.json";
 import wipes from "@/assets/wipes.jpg";
 import logo from "@/assets/logo-1998.jpg.asset.json";
 
@@ -264,7 +266,7 @@ function CinematicHero() {
     <section
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-black p-6 md:p-8 lg:p-12"
+      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-[oklch(0.93_0.005_260)] p-6 md:p-8 lg:p-12"
       style={{ maxWidth: 1920, marginInline: "auto" }}
     >
       {/* Ambient backdrop */}
@@ -272,19 +274,27 @@ function CinematicHero() {
         className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 55%, oklch(0.28 0.04 260) 0%, oklch(0.16 0.02 260) 45%, #000 90%)",
+            "radial-gradient(ellipse at 50% 55%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 50%, oklch(0.86 0.008 260) 100%)",
         }}
       />
 
-      {/* Floating packaging */}
+      {/* Floating packaging row */}
       <div className="pointer-events-none absolute inset-0 z-[6] flex items-center justify-center" style={{ perspective: "1200px" }}>
-        <div className="animate-float">
+        <div ref={packRef} className="animate-float flex items-end justify-center gap-4 sm:gap-8 lg:gap-14 will-change-transform" style={{ transition: "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)" }}>
           <img
-            ref={packRef}
+            src={packagingKostochka.url}
+            alt="Губки эргономичные 1998"
+            className="h-auto w-[22vw] max-w-[300px] min-w-[140px] drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)]"
+          />
+          <img
             src={packagingDelikatnye.url}
             alt="Упаковка 1998"
-            className="h-auto w-[44vw] max-w-[640px] min-w-[280px] drop-shadow-[0_40px_60px_rgba(0,0,0,0.6)] will-change-transform"
-            style={{ transition: "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)" }}
+            className="h-auto w-[26vw] max-w-[360px] min-w-[160px] drop-shadow-[0_40px_50px_rgba(0,0,0,0.3)]"
+          />
+          <img
+            src={packagingChernye.url}
+            alt="Губки универсальные 1998"
+            className="h-auto w-[22vw] max-w-[300px] min-w-[140px] drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)]"
           />
         </div>
       </div>
@@ -294,7 +304,7 @@ function CinematicHero() {
         className="pointer-events-none absolute inset-0 z-10"
         style={{
           background:
-            "radial-gradient(circle var(--r,0px) at var(--mx,50%) var(--my,50%), rgba(80,150,255,0.35), transparent 70%)",
+            "radial-gradient(circle var(--r,0px) at var(--mx,50%) var(--my,50%), rgba(75,102,209,0.18), transparent 70%)",
           transition: "background 0.8s cubic-bezier(0.25, 1, 0.5, 1)",
         }}
       />
@@ -366,16 +376,16 @@ function CinematicHero() {
       <main className="relative z-20 mt-auto flex flex-col items-start justify-between gap-10 pb-4 md:flex-row md:items-end lg:gap-20">
         <div className="space-y-4 md:space-y-6">
           <h1
-            className="font-medium leading-[0.85] tracking-[-0.04em] text-white"
-            style={{ fontSize: "clamp(60px, 9vw, 86px)", textShadow: "0 2px 20px rgba(0,0,0,0.35)" }}
+            className="font-medium leading-[0.85] tracking-[-0.04em] text-gray-900"
+            style={{ fontSize: "clamp(60px, 9vw, 86px)" }}
           >
             Блестящая
           </h1>
           <h2
-            className="font-medium leading-[0.85] tracking-[-0.04em] text-white/20"
+            className="font-medium leading-[0.85] tracking-[-0.04em] text-transparent"
             style={{
               fontSize: "clamp(60px, 9vw, 86px)",
-              WebkitTextStroke: "1.5px rgba(255,255,255,0.9)",
+              WebkitTextStroke: "1.5px rgba(20,24,40,0.85)",
             }}
           >
             история
@@ -384,14 +394,13 @@ function CinematicHero() {
 
         <div className="flex max-w-[340px] flex-col items-start gap-6 md:items-end lg:gap-8">
           <p
-            className="text-[15px] font-light leading-relaxed text-white/95 md:text-right md:text-[16px]"
-            style={{ textShadow: "0 1px 8px rgba(0,0,0,0.4)" }}
+            className="text-[15px] font-light leading-relaxed text-gray-700 md:text-right md:text-[16px]"
           >
             С 1998 года «ТЕКОС-ИНДУСТРИЯ» создаёт хозяйственные товары, которые делают каждый дом чище и уютнее.
           </p>
           <a
             href="#products"
-            className="group flex w-full items-center justify-between rounded-full bg-white px-6 py-4 font-medium text-black shadow-lg hover:bg-gray-50 sm:w-[240px]"
+            className="group flex w-full items-center justify-between rounded-full bg-gray-900 px-6 py-4 font-medium text-white shadow-lg hover:bg-black sm:w-[240px]"
           >
             Смотреть продукцию
             <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
