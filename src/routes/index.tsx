@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import heroProducts from "@/assets/hero-products.jpg";
+import { useRef, useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import family from "@/assets/family.jpg";
 import sponges from "@/assets/sponges.jpg";
 import wipes from "@/assets/wipes.jpg";
