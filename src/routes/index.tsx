@@ -358,7 +358,8 @@ function CinematicHero() {
   };
 
   const navLinks = [
-    { label: "О бренде", href: "#about", active: true },
+    { label: "Главная", href: "#", active: true },
+    { label: "О бренде", href: "#about" },
     { label: "Продукция", href: "#products" },
     { label: "История", href: "#history" },
     { label: "Контакты", href: "#contact" },
