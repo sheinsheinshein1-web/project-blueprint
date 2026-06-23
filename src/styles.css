@@ -29,7 +29,9 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --font-sans: "Inter", system-ui, sans-serif;
-  --font-display: "Inter", system-ui, sans-serif;
+  --font-display: "Unbounded", system-ui, sans-serif;
+  --font-outfit: "Outfit", system-ui, sans-serif;
+  --font-figtree: "Figtree", system-ui, sans-serif;
 }
 
 :root {
