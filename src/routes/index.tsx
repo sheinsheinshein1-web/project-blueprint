@@ -1,9 +1,12 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Award, CalendarClock, Menu, RefreshCw, ShieldCheck, X } from "lucide-react";
 import packagingDelikatnye from "@/assets/packaging-delikatnye.png.asset.json";
 import packagingKostochka from "@/assets/packaging-kostochka.png.asset.json";
 import packagingChernye from "@/assets/packaging-chernye.png.asset.json";
+import packMetallic from "@/assets/pack-metallic.png.asset.json";
+import packCelulosa from "@/assets/pack-celulosa.png.asset.json";
+import packViscosa from "@/assets/pack-viscosa.png.asset.json";
 import wipes from "@/assets/wipes.jpg";
 import logo from "@/assets/logo-1998.png.asset.json";
 
@@ -277,16 +280,38 @@ function ProductCard({ img, tag, title, subtitle }: { img: string; tag: string; 
 
 function CinematicHero() {
   const glowRef = useRef<HTMLDivElement>(null);
-  const packRef = useRef<HTMLImageElement>(null);
   const rafRef = useRef<number | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [current, setCurrent] = useState(0);
+
+  const packs = [
+    { src: packagingDelikatnye.url, alt: "Губки деликатные 1998" },
+    { src: packMetallic.url, alt: "Салфетки металлизированные 1998" },
+    { src: packagingKostochka.url, alt: "Губки эргономичные 1998" },
+    { src: packViscosa.url, alt: "Салфетки универсальные 1998" },
+    { src: packagingChernye.url, alt: "Губки универсальные 1998" },
+    { src: packCelulosa.url, alt: "Салфетки губчатые 1998" },
+  ];
+
+  useEffect(() => {
+    const id = setInterval(() => setCurrent((c) => (c + 1) % packs.length), 3200);
+    return () => clearInterval(id);
+  }, [packs.length]);
+
+  // slot 0 = front, then right-near, right-far, back, left-far, left-near
+  const slotStyles: Array<{ x: string; y: string; scale: number; blur: number; z: number; opacity: number }> = [
+    { x: "0vw",   y: "0px",   scale: 1.0,  blur: 0,  z: 50, opacity: 1 },
+    { x: "20vw",  y: "-10px", scale: 0.62, blur: 3,  z: 40, opacity: 0.85 },
+    { x: "32vw",  y: "-30px", scale: 0.38, blur: 7,  z: 30, opacity: 0.55 },
+    { x: "0vw",   y: "-60px", scale: 0.28, blur: 10, z: 20, opacity: 0.35 },
+    { x: "-32vw", y: "-30px", scale: 0.38, blur: 7,  z: 30, opacity: 0.55 },
+    { x: "-20vw", y: "-10px", scale: 0.62, blur: 3,  z: 40, opacity: 0.85 },
+  ];
 
   const handleMove = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    const nx = (x / rect.width - 0.5) * 2; // -1..1
-    const ny = (y / rect.height - 0.5) * 2;
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(() => {
       const glow = glowRef.current;
@@ -295,21 +320,11 @@ function CinematicHero() {
         glow.style.setProperty("--my", `${y}px`);
         glow.style.setProperty("--r", `220px`);
       }
-      const pack = packRef.current;
-      if (pack) {
-        const tx = nx * 24;
-        const ty = ny * 24;
-        const rx = (-ny * 8).toFixed(2);
-        const ry = (nx * 10).toFixed(2);
-        pack.style.transform = `translate3d(${tx}px, ${ty}px, 0) rotateX(${rx}deg) rotateY(${ry}deg)`;
-      }
     });
   };
   const handleLeave = () => {
     const el = glowRef.current;
     if (el) el.style.setProperty("--r", `0px`);
-    const pack = packRef.current;
-    if (pack) pack.style.transform = "translate3d(0,0,0) rotateX(0deg) rotateY(0deg)";
   };
 
   const navLinks = [
@@ -335,26 +350,32 @@ function CinematicHero() {
         }}
       />
 
-      {/* Floating packaging row */}
-      <div className="pointer-events-none absolute inset-0 z-[6] flex items-center justify-center" style={{ perspective: "1200px" }}>
-        <div ref={packRef} className="animate-float flex items-end justify-center gap-4 sm:gap-8 lg:gap-14 will-change-transform" style={{ transition: "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)" }}>
-          <img
-            src={packagingKostochka.url}
-            alt="Губки эргономичные 1998"
-            className="h-auto w-[22vw] max-w-[300px] min-w-[140px] drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)]"
-          />
-          <img
-            src={packagingDelikatnye.url}
-            alt="Упаковка 1998"
-            className="h-auto w-[26vw] max-w-[360px] min-w-[160px] drop-shadow-[0_40px_50px_rgba(0,0,0,0.3)]"
-          />
-          <img
-            src={packagingChernye.url}
-            alt="Губки универсальные 1998"
-            className="h-auto w-[22vw] max-w-[300px] min-w-[140px] drop-shadow-[0_30px_40px_rgba(0,0,0,0.25)]"
-          />
+      {/* Rotating packaging carousel */}
+      <div className="pointer-events-none absolute inset-0 z-[6] flex items-center justify-center" style={{ perspective: "1400px" }}>
+        <div className="relative h-[60vh] w-full max-w-[1100px]">
+          {packs.map((p, i) => {
+            const slot = (i - current + packs.length) % packs.length;
+            const s = slotStyles[slot];
+            return (
+              <img
+                key={p.src}
+                src={p.src}
+                alt={p.alt}
+                className="absolute left-1/2 top-1/2 h-auto w-[26vw] max-w-[360px] min-w-[180px] will-change-transform"
+                style={{
+                  transform: `translate(-50%, -50%) translate(${s.x}, ${s.y}) scale(${s.scale})`,
+                  filter: `blur(${s.blur}px) drop-shadow(0 30px 40px rgba(0,0,0,0.25))`,
+                  opacity: s.opacity,
+                  zIndex: s.z,
+                  transition: "transform 1.1s cubic-bezier(0.65, 0, 0.35, 1), filter 1.1s ease, opacity 1.1s ease",
+                }}
+              />
+            );
+          })}
         </div>
       </div>
+
+
 
       <div
         ref={glowRef}
