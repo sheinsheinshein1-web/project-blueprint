@@ -379,7 +379,7 @@ function CinematicHero() {
     <section
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
-      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-[oklch(0.90_0.006_260)] p-6 md:p-8 lg:p-12"
+      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-[oklch(0.90_0.006_260)] px-6 pb-6 pt-24 md:px-8 md:pb-8 md:pt-28 lg:px-12 lg:pb-12 lg:pt-32"
     >
       {/* Ambient backdrop */}
       <div
