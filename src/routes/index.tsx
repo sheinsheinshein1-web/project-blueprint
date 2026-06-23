@@ -125,8 +125,8 @@ function AboutSlider() {
           })}
         </div>
 
-        {/* Vertical "peek" pages on the right */}
-        <div className="flex w-16 shrink-0 flex-col gap-3 md:w-24 md:gap-4">
+        {/* Vertical "peek" pages on the right — harmonica / stacked pages */}
+        <div className="relative flex w-16 shrink-0 flex-col md:w-28">
           {items.map((item, i) => {
             const isActive = i === index;
             return (
@@ -134,25 +134,38 @@ function AboutSlider() {
                 key={`peek-${item.title}`}
                 onClick={() => setIndex(i)}
                 aria-label={item.title}
-                className={`group relative flex-1 overflow-hidden rounded-l-none rounded-r-[1.25rem] border text-left transition-all duration-500 md:rounded-r-[1.75rem] ${
+                className={`group relative flex-1 overflow-hidden rounded-l-none border-l-0 text-left transition-all duration-500 ease-out first:rounded-tr-[1.25rem] last:rounded-br-[1.25rem] md:first:rounded-tr-[1.75rem] md:last:rounded-br-[1.75rem] ${
                   isActive
-                    ? "border-[#4B66D1]/25 bg-white/90 shadow-[0_15px_40px_rgba(75,102,209,0.12)]"
-                    : "border-white/60 bg-white/55 backdrop-blur-md hover:bg-white/75"
+                    ? "z-20 flex-[1.35] bg-white/95 shadow-[-10px_0_40px_rgba(75,102,209,0.18)]"
+                    : "z-10 -mb-[1px] bg-white/65 shadow-[-4px_0_15px_rgba(0,0,0,0.06)] backdrop-blur-md hover:bg-white/85"
                 }`}
+                style={{
+                  marginTop: i === 0 ? 0 : -1,
+                }}
               >
-                <div className="flex h-full flex-col items-center justify-between py-5 md:py-7">
-                  <span className={`text-[10px] font-semibold tracking-[0.25em] md:text-xs ${
-                    isActive ? "text-[#4B66D1]" : "text-gray-500"
-                  }`}>
+                {/* page edge / fold line */}
+                <span
+                  className={`absolute inset-y-0 left-0 w-[2px] transition-colors ${
+                    isActive ? "bg-[#4B66D1]" : "bg-gray-200/70"
+                  }`}
+                />
+                <div className="flex h-full flex-col items-center justify-between py-4 md:py-6">
+                  <span
+                    className={`text-[10px] font-semibold tracking-[0.25em] md:text-xs ${
+                      isActive ? "text-[#4B66D1]" : "text-gray-500"
+                    }`}
+                  >
                     0{i + 1}
                   </span>
                   <div
-                    className="flex-1 px-2"
+                    className="flex flex-1 items-center justify-center px-1 md:px-2"
                     style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
                   >
-                    <span className={`text-[11px] font-bold uppercase tracking-[0.18em] md:text-sm ${
-                      isActive ? "text-gray-900" : "text-gray-600"
-                    }`}>
+                    <span
+                      className={`text-[10px] font-bold uppercase tracking-[0.18em] md:text-[13px] ${
+                        isActive ? "text-gray-900" : "text-gray-600"
+                      }`}
+                    >
                       {item.title}
                     </span>
                   </div>
@@ -163,12 +176,6 @@ function AboutSlider() {
                     strokeWidth={1.5}
                   />
                 </div>
-                {/* Left edge indicator */}
-                <span
-                  className={`absolute left-0 top-1/2 h-12 w-[3px] -translate-y-1/2 rounded-r-full transition-colors ${
-                    isActive ? "bg-[#4B66D1]" : "bg-transparent"
-                  }`}
-                />
               </button>
             );
           })}
