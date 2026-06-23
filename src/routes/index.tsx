@@ -179,7 +179,7 @@ function Index() {
       {/* Products */}
       <section
         id="products"
-        className="relative overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 py-32 lg:px-12"
+        className="relative overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 py-20 lg:px-12 lg:py-24"
       >
         <div
           className="pointer-events-none absolute inset-0 z-0"
@@ -188,76 +188,76 @@ function Index() {
               "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
           }}
         />
-        <div className="relative z-10 mx-auto max-w-7xl">
-          <div className="mb-20 flex flex-col justify-between gap-10 md:flex-row md:items-end">
-            <div className="max-w-2xl space-y-8">
+        <div className="relative z-10 mx-auto max-w-6xl">
+          <div className="mb-12 flex flex-col justify-between gap-8 md:flex-row md:items-end">
+            <div className="max-w-2xl space-y-5">
               <div className="inline-flex items-center gap-3 rounded-full bg-white/60 px-4 py-1.5 backdrop-blur-md">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
                 <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-700">
                   Наша продукция
                 </span>
               </div>
-              <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
+              <h2 className="text-4xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
                 Всё для<br />
                 <span>ежедневной чистоты</span>
               </h2>
-              <p className="text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
+              <p className="text-base font-light leading-relaxed text-gray-700 lg:text-lg">
                 Функциональные, долговечные и удобные товары для дома — в линейке «1998» только то, что прошло проверку реальным опытом.
               </p>
             </div>
             <a
               href="#products"
-              className="inline-flex items-center gap-2 self-start rounded-full bg-[#4B66D1] px-6 py-3 text-[14px] font-medium text-white transition-colors hover:bg-[#3B54B4] md:self-end"
+              className="inline-flex items-center gap-2 self-start rounded-full bg-[#4B66D1] px-5 py-2.5 text-[13px] font-medium text-white transition-colors hover:bg-[#3B54B4] md:self-end"
             >
               Посмотреть каталог
               <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
             </a>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 md:grid-rows-2">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2 md:grid-rows-2">
             {/* Губки */}
-            <article className="group relative overflow-hidden rounded-[2rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)] transition-colors hover:bg-white/75 md:col-start-1 md:row-start-1">
-              <div className="absolute right-5 top-5 z-10">
-                <span className="rounded-full bg-[#4B66D1] px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm">
+            <article className="group relative overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/75 md:col-start-1 md:row-start-1">
+              <div className="absolute right-4 top-4 z-10">
+                <span className="rounded-full bg-[#4B66D1] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm">
                   Для уборки
                 </span>
               </div>
-              <div className="aspect-[4/3] overflow-hidden rounded-t-[2rem]">
+              <div className="aspect-[16/10] overflow-hidden rounded-t-[1.5rem]">
                 <img src={packagingDelikatnye.url} alt="Губки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
               </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-extrabold tracking-tight text-gray-900">Губки</h3>
-                <p className="mt-2 font-medium text-gray-600">Высокая износостойкость и эффективность</p>
+              <div className="p-6">
+                <h3 className="text-xl font-extrabold tracking-tight text-gray-900">Губки</h3>
+                <p className="mt-1.5 text-sm font-medium text-gray-600">Высокая износостойкость и эффективность</p>
               </div>
             </article>
 
             {/* Стельки */}
-            <article className="group relative overflow-hidden rounded-[2rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)] transition-colors hover:bg-white/75 md:col-start-1 md:row-start-2">
-              <div className="absolute right-5 top-5 z-10">
-                <span className="rounded-full bg-[#4B66D1] px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm">
+            <article className="group relative overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/75 md:col-start-1 md:row-start-2">
+              <div className="absolute right-4 top-4 z-10">
+                <span className="rounded-full bg-[#4B66D1] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm">
                   Для дома
                 </span>
               </div>
-              <div className="aspect-[4/3] overflow-hidden rounded-t-[2rem]">
+              <div className="aspect-[16/10] overflow-hidden rounded-t-[1.5rem]">
                 <img src={wipes} alt="Стельки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
               </div>
-              <div className="p-8">
-                <h3 className="text-2xl font-extrabold tracking-tight text-gray-900">Стельки</h3>
-                <p className="mt-2 font-medium text-gray-600">Натуральные материалы и комфорт</p>
+              <div className="p-6">
+                <h3 className="text-xl font-extrabold tracking-tight text-gray-900">Стельки</h3>
+                <p className="mt-1.5 text-sm font-medium text-gray-600">Натуральные материалы и комфорт</p>
               </div>
             </article>
 
             {/* Салфетки */}
-            <article className="group relative h-full min-h-[420px] overflow-hidden rounded-[2rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)] transition-colors hover:bg-white/75 md:col-start-2 md:row-span-2">
-              <div className="absolute right-5 top-5 z-10">
-                <span className="rounded-full bg-[#4B66D1] px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm">
+            <article className="group relative h-full min-h-[320px] overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/75 md:col-start-2 md:row-span-2">
+              <div className="absolute right-4 top-4 z-10">
+                <span className="rounded-full bg-[#4B66D1] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm">
                   Для дома
                 </span>
               </div>
               <img src={packViscosa.url} alt="Салфетки" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-              <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/60 to-transparent p-8 md:p-10">
-                <h3 className="text-3xl font-extrabold tracking-tight text-white">Салфетки</h3>
-                <p className="mt-2 font-medium text-white/80">Универсальные материалы для ежедневной уборки</p>
+              <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/60 to-transparent p-6 md:p-8">
+                <h3 className="text-2xl font-extrabold tracking-tight text-white">Салфетки</h3>
+                <p className="mt-1.5 text-sm font-medium text-white/80">Универсальные материалы для ежедневной уборки</p>
               </div>
             </article>
           </div>
