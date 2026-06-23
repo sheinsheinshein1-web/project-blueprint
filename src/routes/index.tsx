@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, CalendarClock, Factory, Sparkles, ThumbsUp } from "lucide-react";
 import packagingDelikatnye from "@/assets/packaging-delikatnye.png.asset.json";
@@ -12,21 +12,9 @@ import packStelkiKozha from "@/assets/stelki-kozha-upak.png.asset.json";
 import img01 from "@/assets/products/01-gubki-universalnye-1.asset.json";
 import img07 from "@/assets/products/07-salfetki-viskoznye-1.asset.json";
 import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.asset.json";
-import logo from "@/assets/logo-1998.png.asset.json";
 import nikolayPhoto from "@/assets/nikolay.jpg.asset.json";
 import valeryPhoto from "@/assets/valery.png.asset.json";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "1998 Блестящая история — хозяйственные товары" },
-      { name: "description", content: "Бренд «1998 Блестящая история» — российский производитель хозяйственных товаров с более чем 30-летним опытом." },
-      { property: "og:title", content: "1998 Блестящая история" },
-      { property: "og:description", content: "Хозяйственные товары для ежедневной чистоты от российского производителя «ТЕКОС-ИНДУСТРИЯ»." },
-    ],
-  }),
-  component: Index,
-});
 
 function AboutSlider() {
   const features = [
@@ -114,8 +102,7 @@ function ProductsSection() {
         <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-6">
           {/* Губки */}
           <Link
-            to="/catalog"
-            search={{ category: "Губки" }}
+            to="/catalog?category=Губки"
             className="group relative flex h-[380px] cursor-pointer flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:h-[440px]"
           >
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
@@ -129,8 +116,7 @@ function ProductsSection() {
 
           {/* Стельки */}
           <Link
-            to="/catalog"
-            search={{ category: "Стельки" }}
+            to="/catalog?category=Стельки"
             className="group relative flex h-[380px] cursor-pointer flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:h-[440px]"
           >
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
@@ -144,8 +130,7 @@ function ProductsSection() {
 
           {/* Салфетки */}
           <Link
-            to="/catalog"
-            search={{ category: "Салфетки" }}
+            to="/catalog?category=Салфетки"
             className="group relative flex h-[380px] cursor-pointer flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:h-[440px]"
           >
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
@@ -163,7 +148,10 @@ function ProductsSection() {
 }
 
 
-function Index() {
+export default function Index() {
+  useEffect(() => {
+    document.title = "1998 Блестящая история — хозяйственные товары";
+  }, []);
   return (
     <div className="overflow-x-hidden bg-background text-foreground antialiased">
       <CinematicHero />

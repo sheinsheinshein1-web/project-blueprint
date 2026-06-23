@@ -1,21 +1,13 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import nikolayPhoto from "@/assets/nikolay.jpg.asset.json";
 import valeryPhoto from "@/assets/valery.png.asset.json";
 
-export const Route = createFileRoute("/about")({
-  head: () => ({
-    meta: [
-      { title: "О бренде — 1998 Блестящая история" },
-      { name: "description", content: "История компании «ТЕКОС-ИНДУСТРИЯ» — одного из старейших производителей хозяйственных товаров в России с 1998 года." },
-      { property: "og:title", content: "О бренде — 1998 Блестящая история" },
-      { property: "og:description", content: "Семейная компания «ТЕКОС-ИНДУСТРИЯ» — производитель бренда «1998 Блестящая история»." },
-    ],
-  }),
-  component: AboutPage,
-});
-
-function AboutPage() {
+export default function AboutPage() {
+  useEffect(() => {
+    document.title = "О бренде — 1998 Блестящая история";
+  }, []);
   return (
     <main className="relative min-h-screen overflow-hidden bg-[oklch(0.93_0.005_260)] text-gray-900">
       <div
