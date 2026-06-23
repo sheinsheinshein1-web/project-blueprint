@@ -154,7 +154,7 @@ function Index() {
   return (
     <div className="overflow-x-hidden bg-background text-foreground antialiased">
       <CinematicHero />
-      <AboutAccordion />
+      <AboutSlider />
 
       {/* Marquee */}
       {/* Marquee */}
