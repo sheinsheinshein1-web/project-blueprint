@@ -27,16 +27,8 @@ function AboutSlider() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 py-32 lg:px-12"
+      className="relative overflow-hidden bg-white px-6 py-32 lg:px-12"
     >
-      <div
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
-        }}
-      />
-
       <div className="relative z-10 mx-auto flex w-full max-w-[1180px] flex-col items-center gap-20 text-center">
         <div className="space-y-6">
           <p className="mx-auto max-w-[920px] text-xl font-light leading-[1.5] tracking-tight text-gray-800 md:text-[28px] md:leading-[1.4]">
