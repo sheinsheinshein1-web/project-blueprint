@@ -376,16 +376,16 @@ function CinematicHero() {
       <main className="relative z-20 mt-auto flex flex-col items-start justify-between gap-10 pb-4 md:flex-row md:items-end lg:gap-20">
         <div className="space-y-4 md:space-y-6">
           <h1
-            className="font-medium leading-[0.85] tracking-[-0.04em] text-white"
-            style={{ fontSize: "clamp(60px, 9vw, 86px)", textShadow: "0 2px 20px rgba(0,0,0,0.35)" }}
+            className="font-medium leading-[0.85] tracking-[-0.04em] text-gray-900"
+            style={{ fontSize: "clamp(60px, 9vw, 86px)" }}
           >
             Блестящая
           </h1>
           <h2
-            className="font-medium leading-[0.85] tracking-[-0.04em] text-white/20"
+            className="font-medium leading-[0.85] tracking-[-0.04em] text-transparent"
             style={{
               fontSize: "clamp(60px, 9vw, 86px)",
-              WebkitTextStroke: "1.5px rgba(255,255,255,0.9)",
+              WebkitTextStroke: "1.5px rgba(20,24,40,0.85)",
             }}
           >
             история
@@ -394,14 +394,13 @@ function CinematicHero() {
 
         <div className="flex max-w-[340px] flex-col items-start gap-6 md:items-end lg:gap-8">
           <p
-            className="text-[15px] font-light leading-relaxed text-white/95 md:text-right md:text-[16px]"
-            style={{ textShadow: "0 1px 8px rgba(0,0,0,0.4)" }}
+            className="text-[15px] font-light leading-relaxed text-gray-700 md:text-right md:text-[16px]"
           >
             С 1998 года «ТЕКОС-ИНДУСТРИЯ» создаёт хозяйственные товары, которые делают каждый дом чище и уютнее.
           </p>
           <a
             href="#products"
-            className="group flex w-full items-center justify-between rounded-full bg-white px-6 py-4 font-medium text-black shadow-lg hover:bg-gray-50 sm:w-[240px]"
+            className="group flex w-full items-center justify-between rounded-full bg-gray-900 px-6 py-4 font-medium text-white shadow-lg hover:bg-black sm:w-[240px]"
           >
             Смотреть продукцию
             <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
