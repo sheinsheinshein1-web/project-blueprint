@@ -52,7 +52,7 @@ function AboutSlider() {
   const prev = () => setIndex((i) => (i - 1 + total) % total);
   const next = () => setIndex((i) => (i + 1) % total);
 
-  const ordered = [items[index], ...items.slice(0, index), ...items.slice(index + 1)];
+  const item = items[index];
 
   return (
     <section
@@ -67,98 +67,46 @@ function AboutSlider() {
         }}
       />
 
-      <div className="relative z-10 flex h-full w-full">
-        {ordered.map((item, orderIdx) => {
-          const isActive = orderIdx === 0;
-          const originalIndex = items.indexOf(item);
-          return (
-            <div
-              key={item.title}
-              role="button"
-              tabIndex={0}
-              onClick={() => setIndex(originalIndex)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  setIndex(originalIndex);
-                }
-              }}
-              aria-label={item.title}
-              className={`relative h-full cursor-pointer overflow-hidden text-left transition-all duration-700 ease-out ${
-                isActive ? "flex-[0.85]" : "flex-[0.05]"
-              } ${
-                isActive
-                  ? "bg-transparent"
-                  : "border-l border-white/50 bg-white/40 backdrop-blur-sm hover:bg-white/60"
-              }`}
-            >
-              {/* Active content */}
-              <div
-                className={`absolute inset-0 flex flex-col justify-between p-6 transition-opacity duration-500 md:p-10 lg:p-14 ${
-                  isActive ? "opacity-100" : "pointer-events-none opacity-0"
-                }`}
-              >
-                <div className="flex items-center justify-end">
-                  <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">
-                    0{originalIndex + 1} / 0{total}
-                  </span>
-                </div>
+      <div
+        key={item.title}
+        className="relative z-10 flex h-full w-full flex-col justify-between p-6 transition-opacity duration-500 md:p-10 lg:p-14"
+      >
+        <div className="flex items-center justify-end">
+          <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">
+            0{index + 1} / 0{total}
+          </span>
+        </div>
 
-                <div className="flex flex-col gap-6 md:flex-row md:items-end">
-                  <div className="hidden h-20 w-20 shrink-0 items-center justify-center rounded-full border border-[#4B66D1]/30 bg-[#4B66D1]/15 md:flex">
-                    <item.icon className="h-9 w-9 text-[#4B66D1]" strokeWidth={1.5} />
-                  </div>
-                  <div className="space-y-5">
-                    <h3 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
-                      {item.title}
-                    </h3>
-                    <p className="max-w-2xl text-base leading-relaxed text-gray-700 md:text-lg">
-                      {item.body}
-                    </p>
-                  </div>
-                </div>
+        <div className="flex flex-col gap-6 md:flex-row md:items-end">
+          <div className="hidden h-20 w-20 shrink-0 items-center justify-center rounded-full border border-[#4B66D1]/30 bg-[#4B66D1]/15 md:flex">
+            <item.icon className="h-9 w-9 text-[#4B66D1]" strokeWidth={1.5} />
+          </div>
+          <div className="space-y-5">
+            <h3 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
+              {item.title}
+            </h3>
+            <p className="max-w-2xl text-base leading-relaxed text-gray-700 md:text-lg">
+              {item.body}
+            </p>
+          </div>
+        </div>
 
-                {/* Arrows bottom-right */}
-                <div className="flex items-center justify-end gap-3">
-                  <button
-                    onClick={(e) => { e.stopPropagation(); prev(); }}
-                    aria-label="Назад"
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white/80 text-gray-800 backdrop-blur-md transition hover:border-[#4B66D1] hover:text-[#4B66D1] md:h-12 md:w-12"
-                  >
-                    <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
-                  </button>
-                  <button
-                    onClick={(e) => { e.stopPropagation(); next(); }}
-                    aria-label="Вперёд"
-                    className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white/80 text-gray-800 backdrop-blur-md transition hover:border-[#4B66D1] hover:text-[#4B66D1] md:h-12 md:w-12"
-                  >
-                    <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-                  </button>
-                </div>
-              </div>
-
-              {/* Inactive tab content */}
-              <div
-                className={`absolute inset-0 flex flex-col items-center justify-between py-5 transition-opacity duration-500 md:py-6 ${
-                  isActive ? "pointer-events-none opacity-0" : "opacity-100"
-                }`}
-              >
-                <span className="text-[10px] font-semibold tracking-[0.25em] text-gray-500 md:text-xs">
-                  0{originalIndex + 1}
-                </span>
-                <div
-                  className="flex flex-1 items-center justify-center px-1 md:px-2"
-                  style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
-                >
-                  <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-gray-600 md:text-[13px]">
-                    {item.title}
-                  </span>
-                </div>
-                <item.icon className="h-4 w-4 text-gray-400 md:h-5 md:w-5" strokeWidth={1.5} />
-              </div>
-            </div>
-          );
-        })}
+        <div className="flex items-center justify-end gap-3">
+          <button
+            onClick={prev}
+            aria-label="Назад"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white/80 text-gray-800 backdrop-blur-md transition hover:border-[#4B66D1] hover:text-[#4B66D1] md:h-12 md:w-12"
+          >
+            <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
+          </button>
+          <button
+            onClick={next}
+            aria-label="Вперёд"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white/80 text-gray-800 backdrop-blur-md transition hover:border-[#4B66D1] hover:text-[#4B66D1] md:h-12 md:w-12"
+          >
+            <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
+          </button>
+        </div>
       </div>
     </section>
   );
