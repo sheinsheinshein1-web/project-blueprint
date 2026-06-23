@@ -151,37 +151,37 @@ function ProductsSection() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:gap-5">
+        <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-6">
           {/* Губки */}
-          <article className="group relative flex h-[320px] flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55">
-            <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
-              <img src={img01.url} alt="Губки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+          <article className="group relative flex h-[380px] flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:h-[440px]">
+            <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
+              <img src={img01.url} alt="Губки" loading="lazy" className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105" />
             </div>
-            <div className="shrink-0 p-3 md:p-5">
-              <h3 className="text-sm font-extrabold tracking-tight text-gray-900 md:text-lg">Губки</h3>
-              <p className="mt-0.5 text-[10px] font-medium text-gray-600 md:text-xs">Высокая износостойкость и эффективность</p>
+            <div className="shrink-0 p-4 md:p-6">
+              <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">Губки</h3>
+              <p className="mt-0.5 text-xs font-medium text-gray-600 md:text-sm">Высокая износостойкость и эффективность</p>
             </div>
           </article>
 
           {/* Стельки */}
-          <article className="group relative flex h-[320px] flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55">
-            <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
-              <img src={img08.url} alt="Стельки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+          <article className="group relative flex h-[380px] flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:h-[440px]">
+            <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
+              <img src={img08.url} alt="Стельки" loading="lazy" className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105" />
             </div>
-            <div className="shrink-0 p-3 md:p-5">
-              <h3 className="text-sm font-extrabold tracking-tight text-gray-900 md:text-lg">Стельки</h3>
-              <p className="mt-0.5 text-[10px] font-medium text-gray-600 md:text-xs">Натуральные материалы и комфорт</p>
+            <div className="shrink-0 p-4 md:p-6">
+              <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">Стельки</h3>
+              <p className="mt-0.5 text-xs font-medium text-gray-600 md:text-sm">Натуральные материалы и комфорт</p>
             </div>
           </article>
 
           {/* Салфетки */}
-          <article className="group relative flex h-[320px] flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55">
-            <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
-              <img src={img07.url} alt="Салфетки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+          <article className="group relative flex h-[380px] flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:h-[440px]">
+            <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
+              <img src={img07.url} alt="Салфетки" loading="lazy" className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105" />
             </div>
-            <div className="shrink-0 p-3 md:p-5">
-              <h3 className="text-sm font-extrabold tracking-tight text-gray-900 md:text-lg">Салфетки</h3>
-              <p className="mt-0.5 text-[10px] font-medium text-gray-600 md:text-xs">Универсальные материалы для ежедневной уборки</p>
+            <div className="shrink-0 p-4 md:p-6">
+              <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">Салфетки</h3>
+              <p className="mt-0.5 text-xs font-medium text-gray-600 md:text-sm">Универсальные материалы для ежедневной уборки</p>
             </div>
           </article>
         </div>
