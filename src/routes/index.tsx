@@ -204,11 +204,6 @@ function Index() {
           <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 md:grid-cols-2 md:grid-rows-2">
             {/* Губки */}
             <article className="group relative flex h-full min-h-0 flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:col-start-1 md:row-start-1">
-              <div className="absolute right-4 top-4 z-10">
-                <span className="rounded-full bg-[#4B66D1] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm">
-                  Для уборки
-                </span>
-              </div>
               <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
                 <img src={packagingDelikatnye.url} alt="Губки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
               </div>
@@ -220,11 +215,6 @@ function Index() {
 
             {/* Стельки */}
             <article className="group relative flex h-full min-h-0 flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:col-start-1 md:row-start-2">
-              <div className="absolute right-4 top-4 z-10">
-                <span className="rounded-full bg-[#4B66D1] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm">
-                  Для дома
-                </span>
-              </div>
               <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
                 <img src={wipes} alt="Стельки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
               </div>
@@ -236,11 +226,6 @@ function Index() {
 
             {/* Салфетки */}
             <article className="group relative flex h-full min-h-0 flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:col-start-2 md:row-span-2">
-              <div className="absolute right-4 top-4 z-10">
-                <span className="rounded-full bg-[#4B66D1] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm">
-                  Для дома
-                </span>
-              </div>
               <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
                 <img src={packViscosa.url} alt="Салфетки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
               </div>
