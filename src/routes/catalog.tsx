@@ -1,17 +1,23 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
-import packagingDelikatnye from "@/assets/packaging-delikatnye.png.asset.json";
-import packagingKostochka from "@/assets/packaging-kostochka.png.asset.json";
-import packagingChernye from "@/assets/packaging-chernye.png.asset.json";
-import packMetallic from "@/assets/pack-metallic.png.asset.json";
-import packCelulosa from "@/assets/pack-celulosa.png.asset.json";
-import packViscosa from "@/assets/pack-viscosa.png.asset.json";
+import img01 from "@/assets/products/01-gubki-universalnye-1.asset.json";
+import img02 from "@/assets/products/02-gubki-s-aromatom-myaty-1.asset.json";
+import img03 from "@/assets/products/03-gubki-s-aromatom-kofe-1.asset.json";
+import img04 from "@/assets/products/04-gubki-delikatnye-1.asset.json";
+import img05 from "@/assets/products/05-gubki-ergonomichnye-1.asset.json";
+import img06 from "@/assets/products/06-salfetki-celyuloznye-1.asset.json";
+import img07 from "@/assets/products/07-salfetki-viskoznye-1.asset.json";
+import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.asset.json";
+import img09 from "@/assets/products/09-stelki-lnyanye-universalnye-1.asset.json";
+import img10 from "@/assets/products/10-stelki-probkovye-letnie-1.asset.json";
+import img11 from "@/assets/products/11-stelki-kozhanye-klassika-1.asset.json";
+import img12 from "@/assets/products/12-stelki-sportivnye-dyshaschie-1.asset.json";
 
 export const Route = createFileRoute("/catalog")({
   head: () => ({
     meta: [
       { title: "Каталог — 1998 Блестящая история" },
-      { name: "description", content: "Каталог хозяйственных товаров бренда «1998 Блестящая история»: губки, салфетки, металлические и целлюлозные губки." },
+      { name: "description", content: "Каталог хозяйственных товаров бренда «1998 Блестящая история»: губки, салфетки, стельки и аксессуары для ежедневной чистоты." },
       { property: "og:title", content: "Каталог — 1998 Блестящая история" },
       { property: "og:description", content: "Полный каталог продукции для ежедневной чистоты." },
     ],
@@ -20,12 +26,18 @@ export const Route = createFileRoute("/catalog")({
 });
 
 const items = [
-  { image: packagingDelikatnye, title: "Губки деликатные", desc: "Мягкая очистка без царапин" },
-  { image: packagingKostochka, title: "Губки с абразивом", desc: "Для стойких загрязнений" },
-  { image: packagingChernye, title: "Чёрные губки", desc: "Прочные и универсальные" },
-  { image: packMetallic, title: "Металлические губки", desc: "Для сложных поверхностей" },
-  { image: packCelulosa, title: "Целлюлозные губки", desc: "Натуральный материал" },
-  { image: packViscosa, title: "Салфетки вискозные", desc: "Универсальные и долговечные" },
+  { image: img01, title: "Губки универсальные", desc: "Для повседневной уборки" },
+  { image: img02, title: "Губки с ароматом мяты", desc: "Для свежести и чистоты" },
+  { image: img03, title: "Губки с ароматом кофе", desc: "Для приятной уборки" },
+  { image: img04, title: "Губки деликатные", desc: "Для чувствительных поверхностей" },
+  { image: img05, title: "Губки эргономичные", desc: "Удобно лежат в руке" },
+  { image: img06, title: "Салфетки целлюлозные", desc: "Впитывают и не крошатся" },
+  { image: img07, title: "Салфетки вискозные", desc: "Для повседневной уборки" },
+  { image: img08, title: "Стельки зимние с фольгой", desc: "Для тепла в сильные морозы" },
+  { image: img09, title: "Стельки льняные универсальные", desc: "На каждый день весной и осенью" },
+  { image: img10, title: "Стельки пробковые летние", desc: "Для жары, легкие и дышащие" },
+  { image: img11, title: "Стельки кожаные классика", desc: "Для деловой обуви" },
+  { image: img12, title: "Стельки спортивные дышащие", desc: "Для тренировок и спорта" },
 ];
 
 function CatalogPage() {
@@ -72,7 +84,7 @@ function CatalogPage() {
               </div>
               <div className="p-4">
                 <h2 className="text-base font-extrabold tracking-tight text-gray-900">{item.title}</h2>
-                <p className="mt-1 text-xs font-medium text-gray-600">{item.desc}</p>
+                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-gray-600">{item.desc}</p>
               </div>
             </article>
           ))}
