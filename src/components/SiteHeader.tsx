@@ -154,34 +154,25 @@ export function SiteHeader() {
 
       {mobileOpen && (
         <div className="absolute right-4 top-16 z-50 w-64 space-y-2 rounded-2xl border border-white/40 bg-white/90 p-4 shadow-xl backdrop-blur-xl md:hidden">
-          {ROUTE_LINKS.map((l) =>
-            l.to.startsWith("#") ? (
-              <a
-                key={l.label}
-                href={l.to}
-                onClick={() => setMobileOpen(false)}
-                className="block rounded-xl px-4 py-2 text-sm font-medium text-gray-800 hover:bg-white"
-              >
-                {l.label}
-              </a>
-            ) : (
-              <Link
-                key={l.label}
-                to={l.to}
-                onClick={() => setMobileOpen(false)}
-                className="block rounded-xl px-4 py-2 text-sm font-medium text-gray-800 hover:bg-white"
-              >
-                {l.label}
-              </Link>
-            )
-          )}
-          <a
-            href="#contact"
+          {ROUTE_LINKS.map((l) => (
+            <Link
+              key={l.label}
+              to={l.to}
+              hash={l.hash}
+              onClick={() => setMobileOpen(false)}
+              className="block rounded-xl px-4 py-2 text-sm font-medium text-gray-800 hover:bg-white"
+            >
+              {l.label}
+            </Link>
+          ))}
+          <Link
+            to="/"
+            hash="contact"
             onClick={() => setMobileOpen(false)}
             className="mt-2 flex items-center justify-between rounded-full bg-[#4B66D1] px-5 py-2.5 text-sm font-medium text-white"
           >
             Связаться <ArrowUpRight className="h-4 w-4" />
-          </a>
+          </Link>
         </div>
       )}
     </header>
