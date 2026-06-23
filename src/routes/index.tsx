@@ -222,7 +222,7 @@ function CinematicHero() {
   const rafRef = useRef<number | null>(null);
   const [current, setCurrent] = useState(0);
 
-  const packs = [
+  const packs: Array<{ src: string; alt: string; widthClass?: string; scaleBoost?: number }> = [
     { src: packagingDelikatnye, alt: "Губки деликатные 1998" },
     { src: packMetallic, alt: "Салфетки металлизированные 1998" },
     { src: packKaplyaGray, alt: "Губки эргономичные капля 1998" },
