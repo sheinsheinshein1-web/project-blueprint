@@ -148,7 +148,10 @@ function ProductsSection() {
 }
 
 
-function IndexContent() {
+export default function Index() {
+  useEffect(() => {
+    document.title = "1998 Блестящая история — хозяйственные товары";
+  }, []);
   return (
     <div className="overflow-x-hidden bg-background text-foreground antialiased">
       <CinematicHero />
