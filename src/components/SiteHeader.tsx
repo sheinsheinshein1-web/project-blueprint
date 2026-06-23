@@ -183,7 +183,7 @@ export function SiteHeader() {
               }
               setMobileOpen(false);
             }}
-            className="mt-2 flex items-center justify-between rounded-full bg-[#4B66D1] px-5 py-2.5 text-sm font-medium text-white"
+            className="mt-2 flex items-center justify-between rounded-full bg-gray-900 px-5 py-2.5 text-sm font-medium text-white"
           >
             Связаться <ArrowUpRight className="h-4 w-4" />
           </Link>
