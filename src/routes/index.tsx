@@ -76,10 +76,12 @@ function ProductsSection() {
         <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div className="max-w-2xl space-y-3">
             <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
-              Всё для ежедневной чистоты
+              Продукция
             </h2>
             <p className="max-w-xl text-sm font-light leading-relaxed text-gray-700 lg:text-base">
-              Функциональные, долговечные и удобные товары для дома.
+              В линейке «1998» — всё, что нужно для ежедневной чистоты.
+              <br />
+              Функциональные, долговечные и удобные в использовании товары для дома.
             </p>
           </div>
           <Link
