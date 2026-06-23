@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Award, CalendarClock, ChevronDown, Menu, RefreshCw, ShieldCheck, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Award, CalendarClock, Menu, RefreshCw, ShieldCheck, X } from "lucide-react";
 import packagingDelikatnye from "@/assets/packaging-delikatnye.png.asset.json";
 import packagingKostochka from "@/assets/packaging-kostochka.png.asset.json";
 import packagingChernye from "@/assets/packaging-chernye.png.asset.json";
@@ -22,8 +22,8 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-function AboutAccordion() {
-  const [open, setOpen] = useState<number | null>(0);
+function AboutSlider() {
+  const [index, setIndex] = useState(0);
 
   const items = [
     {
@@ -48,10 +48,14 @@ function AboutAccordion() {
     },
   ];
 
+  const total = items.length;
+  const prev = () => setIndex((i) => (i - 1 + total) % total);
+  const next = () => setIndex((i) => (i + 1) % total);
+
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-[#F8FAFC] px-6 py-24 lg:px-12 lg:py-32"
+      className="relative h-screen w-full overflow-hidden bg-[#F8FAFC]"
     >
       <div
         className="pointer-events-none absolute inset-0 z-0"
@@ -60,67 +64,87 @@ function AboutAccordion() {
             "radial-gradient(ellipse at 50% 30%, #FFFFFF 0%, #F1F5F9 45%, #E2E8F0 100%)",
         }}
       />
-      <div className="relative z-10 mx-auto max-w-4xl space-y-12">
-        <div className="mx-auto max-w-3xl space-y-6 text-center">
-          <div className="inline-flex items-center gap-3 rounded-full bg-white/60 px-4 py-1.5 backdrop-blur-md">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
-            <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-700">
-              Чистота начинается с 1998
-            </span>
-          </div>
-          <h2 className="text-3xl font-extrabold leading-[1.1] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
-            «1998 Блестящая история» — бренд российского производителя «ТЕКОС-ИНДУСТРИЯ»
-          </h2>
-        </div>
 
-        <div className="space-y-4">
+      {/* Eyebrow */}
+      <div className="absolute left-1/2 top-10 z-20 -translate-x-1/2 md:top-14">
+        <div className="inline-flex items-center gap-3 rounded-full bg-white/70 px-4 py-1.5 backdrop-blur-md">
+          <span className="h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
+          <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-700">
+            Чистота начинается с 1998
+          </span>
+        </div>
+      </div>
+
+      {/* Slider track */}
+      <div className="relative z-10 flex h-full items-center">
+        <div
+          className="flex h-[72%] w-full items-stretch transition-transform duration-700 ease-out"
+          style={{
+            // 84% slide width + 2% gap on each side ≈ peek of adjacent cards
+            transform: `translateX(calc(8% - ${index * 88}%))`,
+          }}
+        >
           {items.map((item, i) => {
-            const isOpen = open === i;
+            const isActive = i === index;
             return (
               <div
                 key={item.title}
-                className={`overflow-hidden rounded-[2rem] border transition-colors duration-300 ${
-                  isOpen
-                    ? "border-[#4B66D1]/25 bg-white/80 shadow-[0_20px_60px_rgba(75,102,209,0.12)]"
-                    : "border-white/60 bg-white/55 backdrop-blur-md hover:bg-white/75"
-                }`}
+                className="h-full shrink-0 px-[2%]"
+                style={{ width: "84%" }}
               >
                 <button
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 p-6 text-left md:p-8"
+                  onClick={() => setIndex(i)}
+                  className={`flex h-full w-full flex-col justify-between rounded-[2.5rem] border p-10 text-left transition-all duration-500 md:p-16 ${
+                    isActive
+                      ? "scale-100 border-[#4B66D1]/25 bg-white/90 opacity-100 shadow-[0_30px_80px_rgba(75,102,209,0.18)]"
+                      : "scale-[0.94] border-white/60 bg-white/55 opacity-60 backdrop-blur-md"
+                  }`}
                 >
-                  <div className="flex items-center gap-4 md:gap-6">
-                    <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 md:h-14 md:w-14 ${
-                      isOpen
-                        ? "border-[#4B66D1]/30 bg-[#4B66D1]/15"
-                        : "border-[#4B66D1]/20 bg-[#4B66D1]/10"
-                    }`}>
-                      <item.icon className="h-6 w-6 text-[#4B66D1]" strokeWidth={1.5} />
+                  <div className="flex items-center gap-5">
+                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-[#4B66D1]/30 bg-[#4B66D1]/15 md:h-16 md:w-16">
+                      <item.icon className="h-7 w-7 text-[#4B66D1]" strokeWidth={1.5} />
                     </div>
-                    <span className="text-lg font-bold leading-tight tracking-tight text-gray-900 md:text-xl">
-                      {item.title}
+                    <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
+                      0{i + 1} / 0{total}
                     </span>
                   </div>
-                  <ChevronDown
-                    className={`h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300 md:h-6 md:w-6 ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                <div
-                  className="grid transition-[grid-template-rows] duration-300 ease-out"
-                  style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
-                >
-                  <div className="overflow-hidden">
-                    <p className="px-6 pb-6 text-[15px] leading-relaxed text-gray-700 md:px-8 md:pb-8 md:text-base">
+
+                  <div className="space-y-6">
+                    <h3 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
+                      {item.title}
+                    </h3>
+                    <p className="max-w-2xl text-base leading-relaxed text-gray-700 md:text-lg">
                       {item.body}
                     </p>
                   </div>
-                </div>
+                </button>
               </div>
             );
           })}
         </div>
+      </div>
+
+      {/* Controls bottom-right */}
+      <div className="absolute bottom-8 right-6 z-20 flex items-center gap-4 md:bottom-12 md:right-12">
+        <span className="text-sm font-semibold tracking-[0.2em] text-gray-600">
+          {String(index + 1).padStart(2, "0")}
+          <span className="mx-2 text-gray-400">/</span>
+          {String(total).padStart(2, "0")}
+        </span>
+        <button
+          onClick={prev}
+          aria-label="Назад"
+          className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-300 bg-white/80 text-gray-800 backdrop-blur-md transition hover:border-[#4B66D1] hover:text-[#4B66D1] md:h-14 md:w-14"
+        >
+          <ArrowLeft className="h-5 w-5" strokeWidth={1.5} />
+        </button>
+        <button
+          onClick={next}
+          aria-label="Вперёд"
+          className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-300 bg-white/80 text-gray-800 backdrop-blur-md transition hover:border-[#4B66D1] hover:text-[#4B66D1] md:h-14 md:w-14"
+        >
+          <ArrowRight className="h-5 w-5" strokeWidth={1.5} />
+        </button>
       </div>
     </section>
   );
@@ -130,7 +154,7 @@ function Index() {
   return (
     <div className="overflow-x-hidden bg-background text-foreground antialiased">
       <CinematicHero />
-      <AboutAccordion />
+      <AboutSlider />
 
       {/* Marquee */}
       {/* Marquee */}
