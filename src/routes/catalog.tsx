@@ -1,6 +1,5 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate, useSearch } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
-import { useState } from "react";
 import img01 from "@/assets/products/01-gubki-universalnye-1.asset.json";
 import img02 from "@/assets/products/02-gubki-s-aromatom-myaty-1.asset.json";
 import img03 from "@/assets/products/03-gubki-s-aromatom-kofe-1.asset.json";
@@ -16,17 +15,7 @@ import img12 from "@/assets/products/12-stelki-sportivnye-dyshaschie-1.asset.jso
 
 type Category = "Все" | "Губки" | "Салфетки" | "Стельки";
 
-export const Route = createFileRoute("/catalog")({
-  head: () => ({
-    meta: [
-      { title: "Каталог — 1998 Блестящая история" },
-      { name: "description", content: "Каталог хозяйственных товаров бренда «1998 Блестящая история»: губки, салфетки, стельки и аксессуары для ежедневной чистоты." },
-      { property: "og:title", content: "Каталог — 1998 Блестящая история" },
-      { property: "og:description", content: "Полный каталог продукции для ежедневной чистоты." },
-    ],
-  }),
-  component: CatalogPage,
-});
+type CatalogSearch = { category: Category };
 
 const items = [
   { image: img01, title: "Губки универсальные", desc: "Для повседневной уборки", category: "Губки" },
@@ -45,8 +34,29 @@ const items = [
 
 const categories: Category[] = ["Все", "Губки", "Салфетки", "Стельки"];
 
+function isCategory(value: unknown): value is Category {
+  return typeof value === "string" && categories.includes(value as Category);
+}
+
+export const Route = createFileRoute("/catalog")({
+  head: () => ({
+    meta: [
+      { title: "Каталог — 1998 Блестящая история" },
+      { name: "description", content: "Каталог хозяйственных товаров бренда «1998 Блестящая история»: губки, салфетки, стельки и аксессуары для ежедневной чистоты." },
+      { property: "og:title", content: "Каталог — 1998 Блестящая история" },
+      { property: "og:description", content: "Полный каталог продукции для ежедневной чистоты." },
+    ],
+  }),
+  validateSearch: (search: Record<string, unknown>): CatalogSearch => ({
+    category: isCategory(search.category) ? search.category : "Все",
+  }),
+  component: CatalogPage,
+});
+
 function CatalogPage() {
-  const [active, setActive] = useState<Category>("Все");
+  const navigate = useNavigate({ from: "/catalog" });
+  const { category } = useSearch({ from: "/catalog" });
+  const active = category;
   const visible = active === "Все" ? items : items.filter((i) => i.category === active);
 
   return (
@@ -82,7 +92,7 @@ function CatalogPage() {
               <li key={cat}>
                 <button
                   type="button"
-                  onClick={() => setActive(cat)}
+                  onClick={() => navigate({ search: { category: cat } })}
                   className={`rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
                     active === cat
                       ? "bg-[#4B66D1] text-white"
