@@ -497,11 +497,12 @@ function CinematicHero() {
           </h2>
         </div>
 
-        <div className="flex max-w-[340px] flex-col items-start gap-6 md:items-end lg:gap-8">
+        <div className="flex max-w-[520px] flex-col items-start gap-6 md:items-end lg:gap-8">
           <p
-            className="text-[15px] font-light leading-relaxed text-gray-700 md:text-right md:text-[16px]"
+            className="text-balance text-[15px] font-light leading-relaxed text-gray-700 md:text-right md:text-[16px]"
           >
             С 1998 года мы создаём хозяйственные товары,
+            <span className="sm:hidden"> </span>
             <br className="hidden sm:block" />
             которые помогают вам каждый день.
           </p>
