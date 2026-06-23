@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
-import { ArrowUpRight, Menu, X } from "lucide-react";
-import family from "@/assets/family.jpg";
+import { ArrowUpRight, Award, CalendarClock, Menu, RefreshCw, ShieldCheck, X } from "lucide-react";
 import packagingDelikatnye from "@/assets/packaging-delikatnye.png.asset.json";
 import packagingKostochka from "@/assets/packaging-kostochka.png.asset.json";
 import packagingChernye from "@/assets/packaging-chernye.png.asset.json";
