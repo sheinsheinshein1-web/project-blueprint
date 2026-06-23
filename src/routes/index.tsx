@@ -7,6 +7,8 @@ import packagingChernye from "@/assets/packaging-chernye.png.asset.json";
 import packMetallic from "@/assets/pack-metallic.png.asset.json";
 import packCelulosa from "@/assets/pack-celulosa.png.asset.json";
 import packViscosa from "@/assets/pack-viscosa.png.asset.json";
+import packStelkiProbka from "@/assets/stelki-probka-upak.png.asset.json";
+import packStelkiKozha from "@/assets/stelki-kozha-upak.png.asset.json";
 import img01 from "@/assets/products/01-gubki-universalnye-1.asset.json";
 import img07 from "@/assets/products/07-salfetki-viskoznye-1.asset.json";
 import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.asset.json";
@@ -335,8 +337,10 @@ function CinematicHero() {
   const packs = [
     { src: packagingDelikatnye.url, alt: "Губки деликатные 1998" },
     { src: packMetallic.url, alt: "Салфетки металлизированные 1998" },
+    { src: packStelkiProbka.url, alt: "Пробковые стельки летние 1998" },
     { src: packagingKostochka.url, alt: "Губки эргономичные 1998" },
     { src: packViscosa.url, alt: "Салфетки универсальные 1998" },
+    { src: packStelkiKozha.url, alt: "Кожаные стельки классика 1998" },
     { src: packagingChernye.url, alt: "Губки универсальные 1998" },
     { src: packCelulosa.url, alt: "Салфетки губчатые 1998" },
   ];
