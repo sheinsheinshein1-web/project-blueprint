@@ -155,7 +155,7 @@ function ProductsSection() {
           {/* Губки */}
           <article className="group relative flex h-[320px] flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55">
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
-              <img src={packagingDelikatnye.url} alt="Губки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+              <img src={img01.url} alt="Губки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
             </div>
             <div className="shrink-0 p-3 md:p-5">
               <h3 className="text-sm font-extrabold tracking-tight text-gray-900 md:text-lg">Губки</h3>
@@ -166,7 +166,7 @@ function ProductsSection() {
           {/* Стельки */}
           <article className="group relative flex h-[320px] flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55">
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
-              <img src={wipes} alt="Стельки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+              <img src={img08.url} alt="Стельки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
             </div>
             <div className="shrink-0 p-3 md:p-5">
               <h3 className="text-sm font-extrabold tracking-tight text-gray-900 md:text-lg">Стельки</h3>
@@ -177,7 +177,7 @@ function ProductsSection() {
           {/* Салфетки */}
           <article className="group relative flex h-[320px] flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55">
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
-              <img src={packViscosa.url} alt="Салфетки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+              <img src={img07.url} alt="Салфетки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
             </div>
             <div className="shrink-0 p-3 md:p-5">
               <h3 className="text-sm font-extrabold tracking-tight text-gray-900 md:text-lg">Салфетки</h3>
