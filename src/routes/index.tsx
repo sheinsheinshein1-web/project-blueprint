@@ -221,10 +221,10 @@ function Index() {
             </p>
             <a
               href="#contact"
-              className="group inline-flex items-center rounded-full bg-[#4B66D1] px-8 py-4 text-[14px] font-semibold text-white transition-colors hover:bg-[#3B54B4]"
+              className="group inline-flex items-center gap-2 rounded-full bg-[#4B66D1] px-8 py-4 text-[14px] font-semibold text-white transition-colors hover:bg-[#3B54B4]"
             >
               Узнать историю компании
-              <span className="ml-3 transition-transform group-hover:translate-x-1">→</span>
+              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2} />
             </a>
           </div>
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:w-7/12">
