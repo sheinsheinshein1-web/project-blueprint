@@ -7,6 +7,8 @@ import packagingChernye from "@/assets/packaging-chernye.png.asset.json";
 import packMetallic from "@/assets/pack-metallic.png.asset.json";
 import packCelulosa from "@/assets/pack-celulosa.png.asset.json";
 import packViscosa from "@/assets/pack-viscosa.png.asset.json";
+import packStelkiProbka from "@/assets/stelki-probka-upak.png.asset.json";
+import packStelkiKozha from "@/assets/stelki-kozha-upak.png.asset.json";
 import img01 from "@/assets/products/01-gubki-universalnye-1.asset.json";
 import img07 from "@/assets/products/07-salfetki-viskoznye-1.asset.json";
 import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.asset.json";
