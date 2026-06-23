@@ -179,19 +179,43 @@ function Index() {
       </section>
 
       {/* History */}
-      <section id="history" className="overflow-hidden bg-[oklch(0.21_0.03_260)] px-6 py-32 text-white lg:px-12">
-        <div className="mx-auto flex max-w-7xl flex-col gap-24 lg:flex-row">
-          <div className="lg:w-5/12">
-            <span className="mb-10 inline-block rounded-full bg-primary px-4 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.2em] text-primary-foreground">
-              Наследие
-            </span>
-            <h2 className="mb-8 text-5xl font-extrabold leading-[1.1] tracking-tight">Опыт, за которым стоит история</h2>
-            <p className="mb-12 text-lg font-light leading-relaxed text-white/60">
+      <section
+        id="history"
+        className="relative overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 py-32 lg:px-12"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 z-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
+          }}
+        />
+        <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-24 lg:flex-row">
+          <div className="space-y-8 lg:w-5/12">
+            <div className="inline-flex items-center gap-3 rounded-full bg-white/60 px-4 py-1.5 backdrop-blur-md">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
+              <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-700">
+                Наследие
+              </span>
+            </div>
+            <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
+              Опыт, за которым<br />
+              <span
+                className="text-transparent"
+                style={{ WebkitTextStroke: "1.5px rgba(20,24,40,0.85)" }}
+              >
+                стоит история
+              </span>
+            </h2>
+            <p className="text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
               Бренд «1998» — часть семейной компании с большой производственной историей. Сегодня компанией управляет уже второе поколение семьи, сохраняя верность качеству.
             </p>
-            <a href="#contact" className="group inline-flex items-center rounded-full bg-white px-10 py-5 font-bold text-[oklch(0.21_0.03_260)] transition-all duration-300 hover:bg-primary hover:text-primary-foreground">
+            <a
+              href="#contact"
+              className="group inline-flex items-center rounded-full bg-[#4B66D1] px-8 py-4 text-[14px] font-semibold text-white transition-colors hover:bg-[#3B54B4]"
+            >
               Узнать историю компании
-              <span className="ml-4 transition-transform group-hover:translate-x-1">→</span>
+              <span className="ml-3 transition-transform group-hover:translate-x-1">→</span>
             </a>
           </div>
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:w-7/12">
@@ -200,12 +224,12 @@ function Index() {
               { name: "Валерий Дворянкин", role: "Руководитель", offset: true },
             ].map((p) => (
               <div key={p.name} className={`group space-y-8 ${p.offset ? "lg:translate-y-20" : ""}`}>
-                <div className="aspect-[3/4] overflow-hidden rounded-[2rem] bg-white/5">
-                  <div className="h-full w-full bg-gradient-to-br from-primary/40 to-white/5 opacity-80 transition-transform duration-700 group-hover:scale-105 group-hover:opacity-100" />
+                <div className="aspect-[3/4] overflow-hidden rounded-[2rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)]">
+                  <div className="h-full w-full bg-gradient-to-br from-[#4B66D1]/20 to-[oklch(0.90_0.005_260)] opacity-80 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold">{p.name}</h4>
-                  <p className="mt-2 text-sm font-bold uppercase tracking-widest text-primary">{p.role}</p>
+                  <h4 className="text-xl font-bold text-gray-900">{p.name}</h4>
+                  <p className="mt-2 text-sm font-bold uppercase tracking-widest text-[#4B66D1]">{p.role}</p>
                 </div>
               </div>
             ))}
