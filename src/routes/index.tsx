@@ -350,14 +350,16 @@ function CinematicHero() {
     return () => clearInterval(id);
   }, [packs.length]);
 
-  // slot 0 = front, then right-near, right-far, back, left-far, left-near
+  // slot 0 = front, then right side (near→far), back, left side (far→near)
   const slotStyles: Array<{ x: string; y: string; scale: number; blur: number; z: number; opacity: number }> = [
     { x: "0vw",   y: "0px",   scale: 1.35, blur: 0,  z: 50, opacity: 1 },
-    { x: "20vw",  y: "-10px", scale: 0.71, blur: 3,  z: 40, opacity: 0.85 },
-    { x: "32vw",  y: "-30px", scale: 0.44, blur: 7,  z: 30, opacity: 0.55 },
-    { x: "0vw",   y: "-60px", scale: 0.32, blur: 10, z: 20, opacity: 0.35 },
-    { x: "-32vw", y: "-30px", scale: 0.44, blur: 7,  z: 30, opacity: 0.55 },
-    { x: "-20vw", y: "-10px", scale: 0.71, blur: 3,  z: 40, opacity: 0.85 },
+    { x: "16vw",  y: "-8px",  scale: 0.78, blur: 2,  z: 44, opacity: 0.9 },
+    { x: "26vw",  y: "-20px", scale: 0.55, blur: 5,  z: 38, opacity: 0.7 },
+    { x: "34vw",  y: "-40px", scale: 0.38, blur: 8,  z: 32, opacity: 0.45 },
+    { x: "0vw",   y: "-60px", scale: 0.30, blur: 10, z: 20, opacity: 0.3 },
+    { x: "-34vw", y: "-40px", scale: 0.38, blur: 8,  z: 32, opacity: 0.45 },
+    { x: "-26vw", y: "-20px", scale: 0.55, blur: 5,  z: 38, opacity: 0.7 },
+    { x: "-16vw", y: "-8px",  scale: 0.78, blur: 2,  z: 44, opacity: 0.9 },
   ];
 
   const handleMove = (e: React.MouseEvent<HTMLElement>) => {
