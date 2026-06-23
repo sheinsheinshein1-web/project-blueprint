@@ -361,7 +361,7 @@ function CinematicHero() {
                 key={p.src}
                 src={p.src}
                 alt={p.alt}
-                className="absolute left-1/2 top-1/2 h-auto w-[26vw] max-w-[360px] min-w-[180px] will-change-transform"
+                className="absolute left-1/2 top-1/2 h-auto w-[30vw] max-w-[414px] min-w-[210px] will-change-transform"
                 style={{
                   transform: `translate(-50%, -50%) translate(${s.x}, ${s.y}) scale(${s.scale})`,
                   filter: `blur(${s.blur}px) drop-shadow(0 30px 40px rgba(0,0,0,0.25))`,
