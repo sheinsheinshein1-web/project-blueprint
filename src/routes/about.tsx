@@ -102,24 +102,6 @@ function AboutPage() {
             </div>
           </div>
         </section>
-
-        {/* Footer card */}
-        <section className="mt-24 lg:mt-32">
-          <div className="overflow-hidden rounded-[2rem] border border-white/60 bg-white/60 px-8 py-12 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.08)] lg:px-14 lg:py-16">
-            <div className="grid gap-10 md:grid-cols-2 md:items-center">
-              <img src={logo.url} alt="1998 Блестящая история" className="h-24 w-auto" />
-              <div className="space-y-2 text-base text-gray-700">
-                <p className="text-[11px] font-black uppercase tracking-[0.3em] text-gray-500">Головной офис</p>
-                <p className="font-medium text-gray-900">Россия, г. Санкт-Петербург</p>
-                <p>пр. Юрия Гагарина, д. 1, оф. 306</p>
-                <p className="pt-2 text-lg font-bold text-gray-900">+7 (812) 329-36-42</p>
-                <a href="mailto:info@tecos.spb.ru" className="text-sm font-bold text-[#4B66D1] underline underline-offset-8">
-                  info@tecos.spb.ru
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
       </div>
     </main>
   );
