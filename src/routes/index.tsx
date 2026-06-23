@@ -376,12 +376,70 @@ function CinematicHero() {
   };
 
   const navLinks = [
-    { label: "Главная", href: "#", active: true },
+    { label: "Главная", href: "#" },
     { label: "О бренде", href: "#about" },
     { label: "Продукция", href: "#products" },
     { label: "История", href: "#history" },
     { label: "Контакты", href: "#contact" },
   ];
+
+  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const [activeLabel, setActiveLabel] = useState("Главная");
+  const [pill, setPill] = useState({ left: 0, top: 0, width: 0, height: 0 });
+
+  useEffect(() => {
+    const getActive = () => {
+      const trigger = window.innerHeight * 0.25;
+      let active = "Главная";
+      for (const { label, href } of navLinks) {
+        const id = href === "#" ? null : href.slice(1);
+        const el = id ? document.getElementById(id) : document.querySelector("section");
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= trigger) active = label;
+        }
+      }
+      setActiveLabel(active);
+    };
+
+    getActive();
+    window.addEventListener("scroll", getActive, { passive: true });
+    return () => window.removeEventListener("scroll", getActive);
+  }, []);
+
+  useEffect(() => {
+    const link = linkRefs.current[activeLabel];
+    const nav = link?.parentElement;
+    if (link && nav) {
+      const linkRect = link.getBoundingClientRect();
+      const navRect = nav.getBoundingClientRect();
+      setPill({
+        left: linkRect.left - navRect.left,
+        top: linkRect.top - navRect.top,
+        width: linkRect.width,
+        height: linkRect.height,
+      });
+    }
+  }, [activeLabel]);
+
+  useEffect(() => {
+    const onResize = () => {
+      const link = linkRefs.current[activeLabel];
+      const nav = link?.parentElement;
+      if (link && nav) {
+        const linkRect = link.getBoundingClientRect();
+        const navRect = nav.getBoundingClientRect();
+        setPill({
+          left: linkRect.left - navRect.left,
+          top: linkRect.top - navRect.top,
+          width: linkRect.width,
+          height: linkRect.height,
+        });
+      }
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, [activeLabel]);
 
   return (
     <section
@@ -448,15 +506,26 @@ function CinematicHero() {
           <img src={logo.url} alt="1998" className="h-10 w-auto md:h-12" />
         </a>
 
-        <nav className="hidden items-center gap-1 rounded-full bg-gray-200/50 p-1 backdrop-blur-md md:flex">
+        <nav className="relative hidden items-center gap-1 rounded-full bg-gray-200/50 p-1 backdrop-blur-md md:flex">
+          <span
+            className="pointer-events-none absolute rounded-full bg-white/80 shadow-sm transition-all duration-300 ease-out"
+            style={{
+              left: pill.left,
+              top: pill.top,
+              width: pill.width,
+              height: pill.height,
+            }}
+          />
           {navLinks.map((l) => (
             <a
               key={l.label}
+              ref={(el) => { linkRefs.current[l.label] = el; }}
               href={l.href}
+              onClick={() => setActiveLabel(l.label)}
               className={
-                "rounded-full px-5 py-2 text-[13px] font-medium transition-colors " +
-                (l.active
-                  ? "bg-white/80 text-black shadow-sm"
+                "relative z-10 rounded-full px-5 py-2 text-[13px] font-medium transition-colors " +
+                (activeLabel === l.label
+                  ? "text-black"
                   : "text-gray-700 hover:text-black")
               }
             >
