@@ -499,7 +499,7 @@ function CinematicHero() {
 
         <div className="flex max-w-[340px] flex-col items-start gap-6 md:items-end lg:gap-8">
           <p
-            className="text-[15px] font-light leading-relaxed text-gray-700 md:text-right md:text-[16px]"
+            className="text-pretty text-[15px] font-light leading-relaxed text-gray-700 md:text-right md:text-[16px]"
           >
             С 1998 года мы создаём хозяйственные товары, которые помогают вам каждый день.
           </p>
