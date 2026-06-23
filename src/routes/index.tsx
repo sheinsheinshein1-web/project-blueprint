@@ -27,92 +27,92 @@ export const Route = createFileRoute("/")({
 });
 
 function AboutSlider() {
-  const unbounded = { fontFamily: "'Unbounded', sans-serif" };
   return (
     <section
       id="about"
-      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-white px-6 py-24 lg:px-12"
+      className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#fafbfc] px-6 py-24 lg:px-12"
     >
-      <div className="relative w-full max-w-6xl">
-        {/* Watermark */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -left-4 -top-12 select-none text-[10rem] font-black leading-none text-zinc-100 md:-left-8 md:text-[12rem]"
-          style={unbounded}
-        >
-          1998
+      <div className="grid w-full max-w-6xl auto-rows-min grid-cols-1 gap-4 md:grid-cols-12">
+        {/* Main brand story */}
+        <div className="flex flex-col justify-between rounded-[2.5rem] border border-[#e8ecf1] bg-white p-8 shadow-sm md:col-span-8 md:row-span-2 md:p-12">
+          <div>
+            <span
+              className="mb-6 inline-block rounded-full bg-[#4B66D1]/10 px-4 py-1 text-sm font-semibold tracking-wide uppercase text-[#4B66D1]"
+              style={{ fontFamily: "var(--font-outfit)" }}
+            >
+              О бренде
+            </span>
+            <h2
+              className="mb-8 text-4xl leading-tight font-bold text-[#1e293b] md:text-5xl lg:text-6xl"
+              style={{ fontFamily: "var(--font-outfit)" }}
+            >
+              Блестящая история <br />
+              <span className="text-[#4B66D1]">с 1998 года</span>
+            </h2>
+          </div>
+          <p
+            className="max-w-xl text-lg leading-relaxed text-[#94a3b8] md:text-xl"
+            style={{ fontFamily: "var(--font-figtree)" }}
+          >
+            <span className="font-semibold text-[#1e293b]">«1998 Блестящая история»</span> — собственный бренд старейшего российского производителя хозяйственных товаров{" "}
+            <span className="font-semibold text-[#1e293b]">«ТЕКОС-ИНДУСТРИЯ»</span>. Он назван в честь года строительства собственного завода в Ленинградской области.
+          </p>
         </div>
 
-        <div className="relative grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
-          {/* Left: intro */}
-          <div className="flex flex-col gap-8 lg:col-span-5">
-            <div className="space-y-4">
-              <span className="inline-block bg-zinc-900 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-white">
-                О бренде
-              </span>
-              <h2 className="text-4xl font-bold leading-[1.1] text-zinc-900 md:text-5xl" style={unbounded}>
-                Блестящая история <span className="text-zinc-400">с 1998 года</span>
-              </h2>
-            </div>
+        {/* 30+ years */}
+        <div className="flex flex-col items-center justify-center rounded-[2.5rem] bg-[#4B66D1] p-8 text-center text-white shadow-lg shadow-[#4B66D1]/20 md:col-span-4">
+          <div className="text-6xl font-bold" style={{ fontFamily: "var(--font-outfit)" }}>
+            30+
+          </div>
+          <div className="text-lg font-medium opacity-90" style={{ fontFamily: "var(--font-figtree)" }}>
+            лет на рынке
+          </div>
+        </div>
 
-            <p className="border-l-2 border-zinc-200 pl-6 text-lg font-light leading-relaxed text-zinc-600">
-              <span className="font-semibold text-zinc-900">«1998 Блестящая история»</span> — собственный бренд старейшего российского производителя хозяйственных товаров{" "}
-              <span className="font-semibold text-zinc-900">«ТЕКОС-ИНДУСТРИЯ»</span>. Он назван в честь года строительства собственного завода в Ленинградской области.
+        {/* Full cycle */}
+        <div className="flex flex-col justify-between rounded-[2.5rem] border border-[#e8ecf1] bg-white p-8 shadow-sm transition-colors hover:border-[#4B66D1]/30 md:col-span-4">
+          <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-[#4B66D1]/5">
+            <RefreshCw className="h-6 w-6 text-[#4B66D1]" strokeWidth={1.75} />
+          </div>
+          <div>
+            <h3 className="mb-2 text-xl font-bold text-[#1e293b]" style={{ fontFamily: "var(--font-outfit)" }}>
+              Полный цикл
+            </h3>
+            <p className="text-sm text-[#94a3b8]" style={{ fontFamily: "var(--font-figtree)" }}>
+              Контроль от идеи до полки
             </p>
           </div>
+        </div>
 
-          {/* Right: feature grid */}
-          <div className="grid grid-cols-2 gap-4 lg:col-span-7">
-            {/* 30+ years */}
-            <div className="group flex aspect-square flex-col justify-between border border-zinc-100 bg-zinc-50 p-8 transition-all duration-500 hover:bg-white hover:shadow-2xl hover:shadow-zinc-200">
-              <div
-                className="origin-left text-5xl font-bold text-zinc-900 transition-transform group-hover:scale-110"
-                style={unbounded}
-              >
-                30+
-              </div>
-              <p className="text-sm font-semibold uppercase tracking-wider text-zinc-500 transition-colors group-hover:text-zinc-900">
-                Лет опыта на рынке
-              </p>
-            </div>
-
-            {/* Full cycle — dark */}
-            <div className="flex aspect-square flex-col justify-between bg-zinc-900 p-8 transition-transform duration-500 hover:scale-[1.02]">
-              <RefreshCw className="h-10 w-10 text-zinc-400" strokeWidth={1.5} />
-              <div className="space-y-2">
-                <p className="text-lg font-bold leading-tight text-white">Полный цикл</p>
-                <p className="text-xs uppercase tracking-tight text-zinc-500">Контроль от идеи до полки</p>
-              </div>
-            </div>
-
-            {/* Russian raw materials */}
-            <div className="group relative flex aspect-square flex-col justify-between overflow-hidden bg-zinc-100 p-8">
-              <div className="absolute -bottom-4 -right-4 h-32 w-32 rounded-full bg-white opacity-50 transition-transform duration-700 group-hover:scale-150" />
-              <ShieldCheck className="relative z-10 h-10 w-10 text-zinc-900" strokeWidth={1.5} />
-              <div className="relative z-10 space-y-2">
-                <p className="text-lg font-bold leading-tight text-zinc-900">Российское сырьё</p>
-                <p className="text-xs text-zinc-500">Надёжные поставщики и контроль качества</p>
-              </div>
-            </div>
-
-            {/* Trust */}
-            <div className="group flex aspect-square flex-col justify-between border-2 border-dashed border-zinc-200 p-8 transition-colors duration-500 hover:border-[#4B66D1]">
-              <div className="flex gap-1">
-                <div className="h-2 w-2 rounded-full bg-zinc-900" />
-                <div className="h-2 w-2 rounded-full bg-zinc-400" />
-                <div className="h-2 w-2 rounded-full bg-zinc-200" />
-              </div>
-              <div className="space-y-2">
-                <p className="text-lg font-bold leading-tight text-zinc-900 transition-transform group-hover:translate-x-1">
-                  Доверие сетей
-                </p>
-                <p className="text-xs text-zinc-500">Крупнейшие ритейлеры выбирают нас</p>
-              </div>
-            </div>
+        {/* Russian raw materials */}
+        <div className="flex flex-col items-center gap-6 rounded-[2.5rem] border border-[#e8ecf1] bg-white p-8 shadow-sm transition-colors hover:border-[#4B66D1]/30 md:col-span-6 md:flex-row">
+          <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-[#e8ecf1]/50">
+            <ShieldCheck className="h-8 w-8 text-[#4B66D1]" strokeWidth={1.75} />
+          </div>
+          <div>
+            <h3 className="mb-1 text-xl font-bold text-[#1e293b]" style={{ fontFamily: "var(--font-outfit)" }}>
+              Российское сырьё
+            </h3>
+            <p className="text-sm leading-snug text-[#94a3b8]" style={{ fontFamily: "var(--font-figtree)" }}>
+              Надёжные поставщики и контроль качества
+            </p>
           </div>
         </div>
 
-        <div className="mt-20 h-px w-full bg-gradient-to-r from-transparent via-zinc-200 to-transparent" />
+        {/* Trust of networks */}
+        <div className="flex flex-col items-center gap-6 rounded-[2.5rem] border border-[#e8ecf1] bg-[#f8fafc] p-8 shadow-sm transition-colors hover:border-[#4B66D1]/30 md:col-span-6 md:flex-row">
+          <div className="flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-full bg-[#e8ecf1]/50">
+            <Building2 className="h-8 w-8 text-[#4B66D1]" strokeWidth={1.75} />
+          </div>
+          <div>
+            <h3 className="mb-1 text-xl font-bold text-[#1e293b]" style={{ fontFamily: "var(--font-outfit)" }}>
+              Доверие сетей
+            </h3>
+            <p className="text-sm leading-snug text-[#94a3b8]" style={{ fontFamily: "var(--font-figtree)" }}>
+              Крупнейшие ритейлеры выбирают нас
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );
