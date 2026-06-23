@@ -261,18 +261,18 @@ function Index() {
 
 function ProductCard({ img, tag, title, subtitle }: { img: string; tag: string; title: string; subtitle: string }) {
   return (
-    <article className="group relative overflow-hidden rounded-[3rem] bg-secondary">
-      <div className="absolute right-10 top-10 z-10">
-        <span className="rounded-full bg-background/90 px-5 py-2 text-[10px] font-extrabold uppercase tracking-widest text-primary shadow-sm backdrop-blur">
+    <article className="group relative overflow-hidden rounded-[2.5rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)] transition-colors hover:bg-white/75">
+      <div className="absolute right-6 top-6 z-10">
+        <span className="rounded-full bg-[#4B66D1] px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm">
           {tag}
         </span>
       </div>
-      <div className="aspect-[4/3] overflow-hidden">
-        <img src={img} alt={title} loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-110" />
+      <div className="aspect-[4/3] overflow-hidden rounded-t-[2.5rem]">
+        <img src={img} alt={title} loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
       </div>
-      <div className="bg-background p-12">
-        <h3 className="text-3xl font-extrabold tracking-tight">{title}</h3>
-        <p className="mt-4 font-medium text-muted-foreground">{subtitle}</p>
+      <div className="p-10">
+        <h3 className="text-3xl font-extrabold tracking-tight text-gray-900">{title}</h3>
+        <p className="mt-3 font-medium text-gray-600">{subtitle}</p>
       </div>
     </article>
   );
