@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import nikolayPhoto from "@/assets/nikolay.jpg.asset.json";
-import valeryPhoto from "@/assets/valery.png.asset.json";
+import nikolayPhoto from "@/assets/nikolay.jpg";
+import valeryPhoto from "@/assets/valery.png";
 
 export default function AboutPage() {
   useEffect(() => {
@@ -49,7 +49,7 @@ export default function AboutPage() {
           <div className="lg:col-span-5">
             <div className="aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)]">
               <img
-                src={valeryPhoto.url}
+                src={valeryPhoto}
                 alt="Валерий Дворянкин — основатель"
                 className="h-full w-full object-cover"
               />
@@ -66,7 +66,7 @@ export default function AboutPage() {
           <div className="order-2 lg:order-1 lg:col-span-5">
             <div className="aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)]">
               <img
-                src={nikolayPhoto.url}
+                src={nikolayPhoto}
                 alt="Николай Дворянкин — руководитель"
                 className="h-full w-full object-cover"
               />

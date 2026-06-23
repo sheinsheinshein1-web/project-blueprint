@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import logo from "@/assets/logo-1998.png.asset.json";
+import logo from "@/assets/logo-1998.png";
 
 const ROUTE_LINKS: Array<{ label: string; to: string; id: string }> = [
   { label: "Главная", to: "/", id: "home" },
@@ -99,7 +99,7 @@ export function SiteHeader() {
       }`}
     >
       <Link to="/" className="flex items-center" aria-label="1998">
-        <img src={logo.url} alt="1998" className="h-10 w-auto md:h-12" />
+        <img src={logo} alt="1998" className="h-10 w-auto md:h-12" />
       </Link>
 
       <nav className="relative hidden items-center gap-1 rounded-full bg-gray-200/50 p-1 backdrop-blur-md md:flex">

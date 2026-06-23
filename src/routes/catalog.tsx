@@ -1,18 +1,18 @@
 import { useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import img01 from "@/assets/products/01-gubki-universalnye-1.asset.json";
-import img02 from "@/assets/products/02-gubki-s-aromatom-myaty-1.asset.json";
-import img03 from "@/assets/products/03-gubki-s-aromatom-kofe-1.asset.json";
-import img04 from "@/assets/products/04-gubki-delikatnye-1.asset.json";
-import img05 from "@/assets/products/05-gubki-ergonomichnye-1.asset.json";
-import img06 from "@/assets/products/06-salfetki-celyuloznye-1.asset.json";
-import img07 from "@/assets/products/07-salfetki-viskoznye-1.asset.json";
-import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.asset.json";
-import img09 from "@/assets/products/09-stelki-lnyanye-universalnye-1.asset.json";
-import img10 from "@/assets/products/10-stelki-probkovye-letnie-1.asset.json";
-import img11 from "@/assets/products/11-stelki-kozhanye-klassika-1.asset.json";
-import img12 from "@/assets/products/12-stelki-sportivnye-dyshaschie-1.asset.json";
+import img01 from "@/assets/products/01-gubki-universalnye-1.jpg";
+import img02 from "@/assets/products/02-gubki-s-aromatom-myaty-1.jpg";
+import img03 from "@/assets/products/03-gubki-s-aromatom-kofe-1.jpg";
+import img04 from "@/assets/products/04-gubki-delikatnye-1.jpg";
+import img05 from "@/assets/products/05-gubki-ergonomichnye-1.jpg";
+import img06 from "@/assets/products/06-salfetki-celyuloznye-1.jpg";
+import img07 from "@/assets/products/07-salfetki-viskoznye-1.jpg";
+import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.jpg";
+import img09 from "@/assets/products/09-stelki-lnyanye-universalnye-1.jpg";
+import img10 from "@/assets/products/10-stelki-probkovye-letnie-1.jpg";
+import img11 from "@/assets/products/11-stelki-kozhanye-klassika-1.jpg";
+import img12 from "@/assets/products/12-stelki-sportivnye-dyshaschie-1.jpg";
 
 type Category = "Все" | "Губки" | "Салфетки" | "Стельки";
 
@@ -110,7 +110,7 @@ export default function CatalogPage() {
             >
               <div className="flex h-[240px] items-center justify-center overflow-hidden bg-white p-4 md:h-[280px] md:p-6">
                 <img
-                  src={item.image.url}
+                  src={item.image}
                   alt={item.title}
                   loading="lazy"
                   className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
