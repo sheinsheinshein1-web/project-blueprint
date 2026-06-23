@@ -71,8 +71,11 @@ function AboutSlider() {
         key={item.title}
         className="relative z-10 flex h-full w-full flex-col justify-between p-6 transition-opacity duration-500 md:p-10 lg:p-14"
       >
-        <div className="flex items-center justify-end">
-          <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">
+        <div className="flex items-start justify-between gap-6">
+          <p className="max-w-3xl text-base leading-relaxed text-gray-800 md:text-lg lg:text-xl">
+            «1998 Блестящая история» — бренд российского производителя хозяйственных товаров «ТЕКОС-ИНДУСТРИЯ». Он назван в честь года строительства собственного завода в Ленинградской области.
+          </p>
+          <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">
             0{index + 1} / 0{total}
           </span>
         </div>
