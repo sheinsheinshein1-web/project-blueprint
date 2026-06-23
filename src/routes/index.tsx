@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Award, CalendarClock, Menu, RefreshCw, ShieldCheck, X } from "lucide-react";
+import { ArrowUpRight, Award, CalendarClock, ChevronDown, Menu, RefreshCw, ShieldCheck, X } from "lucide-react";
 import packagingDelikatnye from "@/assets/packaging-delikatnye.png.asset.json";
 import packagingKostochka from "@/assets/packaging-kostochka.png.asset.json";
 import packagingChernye from "@/assets/packaging-chernye.png.asset.json";
@@ -22,76 +22,117 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
+function AboutAccordion() {
+  const [open, setOpen] = useState<number | null>(0);
+
+  const items = [
+    {
+      icon: CalendarClock,
+      title: "Более 30 лет опыта",
+      body: "Компания «ТЕКОС-ИНДУСТРИЯ» работает с 1991 года. За это время накоплен глубокий опыт в производстве хозяйственных товаров и выстроены надёжные процессы, которым доверяют крупнейшие ритейлеры.",
+    },
+    {
+      icon: ShieldCheck,
+      title: "Российское сырье и надёжные поставщики",
+      body: "Мы используем качественные материалы от проверенных поставщиков и контролируем каждый этап: от входящего сырья до готовой продукции на складе.",
+    },
+    {
+      icon: RefreshCw,
+      title: "Полный цикл производства",
+      body: "Вся линейка «1998» проходит полный производственный цикл на собственных мощностях: проектирование, изготовление, упаковка и отгрузка партий заказчикам.",
+    },
+    {
+      icon: Award,
+      title: "Доверие сетей и лидеров рынка",
+      body: "Продукция бренда представлена в ведущих торговых сетях России и СНГ. Партнёры ценят стабильность качества, соблюдение сроков и гибкий подход к заказам.",
+    },
+  ];
+
+  return (
+    <section
+      id="about"
+      className="relative overflow-hidden bg-[#F8FAFC] px-6 py-24 lg:px-12 lg:py-32"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 30%, #FFFFFF 0%, #F1F5F9 45%, #E2E8F0 100%)",
+        }}
+      />
+      <div className="relative z-10 mx-auto max-w-4xl space-y-12">
+        <div className="mx-auto max-w-3xl space-y-6 text-center">
+          <div className="inline-flex items-center gap-3 rounded-full bg-white/60 px-4 py-1.5 backdrop-blur-md">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
+            <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-700">
+              Чистота начинается с 1998
+            </span>
+          </div>
+          <h2 className="text-3xl font-extrabold leading-[1.1] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
+            «1998 Блестящая история» — бренд российского производителя «ТЕКОС-ИНДУСТРИЯ»
+          </h2>
+        </div>
+
+        <div className="space-y-4">
+          {items.map((item, i) => {
+            const isOpen = open === i;
+            return (
+              <div
+                key={item.title}
+                className={`overflow-hidden rounded-[2rem] border transition-colors duration-300 ${
+                  isOpen
+                    ? "border-[#4B66D1]/25 bg-white/80 shadow-[0_20px_60px_rgba(75,102,209,0.12)]"
+                    : "border-white/60 bg-white/55 backdrop-blur-md hover:bg-white/75"
+                }`}
+              >
+                <button
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="flex w-full items-center justify-between gap-4 p-6 text-left md:p-8"
+                >
+                  <div className="flex items-center gap-4 md:gap-6">
+                    <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-full border transition-colors duration-300 md:h-14 md:w-14 ${
+                      isOpen
+                        ? "border-[#4B66D1]/30 bg-[#4B66D1]/15"
+                        : "border-[#4B66D1]/20 bg-[#4B66D1]/10"
+                    }`}>
+                      <item.icon className="h-6 w-6 text-[#4B66D1]" strokeWidth={1.5} />
+                    </div>
+                    <span className="text-lg font-bold leading-tight tracking-tight text-gray-900 md:text-xl">
+                      {item.title}
+                    </span>
+                  </div>
+                  <ChevronDown
+                    className={`h-5 w-5 shrink-0 text-gray-500 transition-transform duration-300 md:h-6 md:w-6 ${
+                      isOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                <div
+                  className="grid transition-[grid-template-rows] duration-300 ease-out"
+                  style={{ gridTemplateRows: isOpen ? "1fr" : "0fr" }}
+                >
+                  <div className="overflow-hidden">
+                    <p className="px-6 pb-6 text-[15px] leading-relaxed text-gray-700 md:px-8 md:pb-8 md:text-base">
+                      {item.body}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <div className="overflow-x-hidden bg-background text-foreground antialiased">
       <CinematicHero />
+      <AboutAccordion />
 
-
-      {/* About */}
-      <section
-        id="about"
-        className="relative overflow-hidden bg-[#F8FAFC] px-6 py-32 lg:px-12"
-      >
-        <div
-          className="pointer-events-none absolute inset-0 z-0"
-          style={{
-            background:
-              "radial-gradient(ellipse at 50% 30%, #FFFFFF 0%, #F1F5F9 45%, #E2E8F0 100%)",
-          }}
-        />
-        <div className="relative z-10 mx-auto max-w-7xl space-y-20">
-          <div className="mx-auto max-w-5xl space-y-10 text-center">
-            <div className="inline-flex items-center gap-3 rounded-full bg-white/60 px-4 py-1.5 backdrop-blur-md">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-700">
-                Чистота начинается с 1998
-              </span>
-            </div>
-            <h2 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
-              «1998 Блестящая история» — бренд российского производителя хозяйственных товаров «ТЕКОС-ИНДУСТРИЯ»
-            </h2>
-            <p className="mx-auto max-w-3xl text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
-              Семейная компания во втором поколении сохраняет внимание к деталям, ответственность и подход, основанный на реальном опыте производства. Каждый предмет линейки «1998» создан, чтобы домашняя рутина становилась проще, а каждый уголок дома — чище.
-            </p>
-          </div>
-
-          {/* Benefits */}
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              {
-                icon: CalendarClock,
-                label: "Более 30 лет опыта",
-              },
-              {
-                icon: ShieldCheck,
-                label: "Российское сырье и надёжные поставщики",
-              },
-              {
-                icon: RefreshCw,
-                label: "Полный цикл производства",
-              },
-              {
-                icon: Award,
-                label: "Доверие сетей и лидеров рынка",
-              },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="flex flex-col items-center rounded-[2rem] border border-white/60 bg-white/55 p-8 text-center backdrop-blur-md transition-colors hover:bg-white/75"
-              >
-                <div className="flex h-20 w-20 items-center justify-center rounded-full border border-[#4B66D1]/20 bg-[#4B66D1]/10">
-                  <item.icon className="h-9 w-9 text-[#4B66D1]" strokeWidth={1.5} />
-                </div>
-                <div className="mt-6 text-[12px] font-bold uppercase leading-tight tracking-[0.18em] text-gray-800">
-                  {item.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
+      {/* Marquee */}
       {/* Marquee */}
       <div className="relative overflow-hidden bg-primary py-10">
         <div className="flex animate-marquee whitespace-nowrap">
