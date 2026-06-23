@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
+import { useState } from "react";
 import img01 from "@/assets/products/01-gubki-universalnye-1.asset.json";
 import img02 from "@/assets/products/02-gubki-s-aromatom-myaty-1.asset.json";
 import img03 from "@/assets/products/03-gubki-s-aromatom-kofe-1.asset.json";
@@ -12,6 +13,8 @@ import img09 from "@/assets/products/09-stelki-lnyanye-universalnye-1.asset.json
 import img10 from "@/assets/products/10-stelki-probkovye-letnie-1.asset.json";
 import img11 from "@/assets/products/11-stelki-kozhanye-klassika-1.asset.json";
 import img12 from "@/assets/products/12-stelki-sportivnye-dyshaschie-1.asset.json";
+
+type Category = "Все" | "Губки" | "Салфетки" | "Стельки";
 
 export const Route = createFileRoute("/catalog")({
   head: () => ({
@@ -26,21 +29,26 @@ export const Route = createFileRoute("/catalog")({
 });
 
 const items = [
-  { image: img01, title: "Губки универсальные", desc: "Для повседневной уборки" },
-  { image: img02, title: "Губки с ароматом мяты", desc: "Для свежести и чистоты" },
-  { image: img03, title: "Губки с ароматом кофе", desc: "Для приятной уборки" },
-  { image: img04, title: "Губки деликатные", desc: "Для чувствительных поверхностей" },
-  { image: img05, title: "Губки эргономичные", desc: "Удобно лежат в руке" },
-  { image: img06, title: "Салфетки целлюлозные", desc: "Впитывают и не крошатся" },
-  { image: img07, title: "Салфетки вискозные", desc: "Для повседневной уборки" },
-  { image: img08, title: "Стельки зимние с фольгой", desc: "Для тепла в сильные морозы" },
-  { image: img09, title: "Стельки льняные универсальные", desc: "На каждый день весной и осенью" },
-  { image: img10, title: "Стельки пробковые летние", desc: "Для жары, легкие и дышащие" },
-  { image: img11, title: "Стельки кожаные классика", desc: "Для деловой обуви" },
-  { image: img12, title: "Стельки спортивные дышащие", desc: "Для тренировок и спорта" },
+  { image: img01, title: "Губки универсальные", desc: "Для повседневной уборки", category: "Губки" },
+  { image: img02, title: "Губки с ароматом мяты", desc: "Для свежести и чистоты", category: "Губки" },
+  { image: img03, title: "Губки с ароматом кофе", desc: "Для приятной уборки", category: "Губки" },
+  { image: img04, title: "Губки деликатные", desc: "Для чувствительных поверхностей", category: "Губки" },
+  { image: img05, title: "Губки эргономичные", desc: "Удобно лежат в руке", category: "Губки" },
+  { image: img06, title: "Салфетки целлюлозные", desc: "Впитывают и не крошатся", category: "Салфетки" },
+  { image: img07, title: "Салфетки вискозные", desc: "Для повседневной уборки", category: "Салфетки" },
+  { image: img08, title: "Стельки зимние с фольгой", desc: "Для тепла в сильные морозы", category: "Стельки" },
+  { image: img09, title: "Стельки льняные универсальные", desc: "На каждый день весной и осенью", category: "Стельки" },
+  { image: img10, title: "Стельки пробковые летние", desc: "Для жары, легкие и дышащие", category: "Стельки" },
+  { image: img11, title: "Стельки кожаные классика", desc: "Для деловой обуви", category: "Стельки" },
+  { image: img12, title: "Стельки спортивные дышащие", desc: "Для тренировок и спорта", category: "Стельки" },
 ];
 
+const categories: Category[] = ["Все", "Губки", "Салфетки", "Стельки"];
+
 function CatalogPage() {
+  const [active, setActive] = useState<Category>("Все");
+  const visible = active === "Все" ? items : items.filter((i) => i.category === active);
+
   return (
     <section className="relative min-h-screen bg-[oklch(0.93_0.005_260)] px-6 py-16 lg:px-12 lg:py-24">
       <div
@@ -68,8 +76,28 @@ function CatalogPage() {
           </p>
         </header>
 
+        <nav aria-label="Категории товаров" className="mb-8">
+          <ul className="flex flex-wrap gap-2">
+            {categories.map((cat) => (
+              <li key={cat}>
+                <button
+                  type="button"
+                  onClick={() => setActive(cat)}
+                  className={`rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
+                    active === cat
+                      ? "bg-[#4B66D1] text-white"
+                      : "bg-white/60 text-gray-700 hover:bg-white/90"
+                  }`}
+                >
+                  {cat}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-          {items.map((item) => (
+          {visible.map((item) => (
             <article
               key={item.title}
               className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/50 backdrop-blur-md shadow-[0_12px_30px_rgba(20,24,40,0.08)] transition-all hover:bg-white/70 hover:shadow-[0_20px_40px_rgba(20,24,40,0.12)]"
