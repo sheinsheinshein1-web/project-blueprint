@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import nikolayPhoto from "@/assets/nikolay.jpg.asset.json";
 import valeryPhoto from "@/assets/valery.png.asset.json";
-import valeryPhoto from "@/assets/valery.png.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
