@@ -173,7 +173,7 @@ function Index() {
       {/* Products */}
       <section
         id="products"
-        className="relative h-screen overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 py-8 lg:px-12"
+        className="relative min-h-screen md:h-screen md:overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 py-8 lg:px-12"
       >
         <div
           className="pointer-events-none absolute inset-0 z-0"
