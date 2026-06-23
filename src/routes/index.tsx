@@ -215,3 +215,161 @@ function ProductCard({ img, tag, title, subtitle }: { img: string; tag: string; 
     </article>
   );
 }
+
+function CinematicHero() {
+  const glowRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef<number | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  const handleMove = (e: React.MouseEvent<HTMLElement>) => {
+    const el = glowRef.current;
+    if (!el) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    rafRef.current = requestAnimationFrame(() => {
+      el.style.setProperty("--mx", `${x}px`);
+      el.style.setProperty("--my", `${y}px`);
+      el.style.setProperty("--r", `220px`);
+    });
+  };
+  const handleLeave = () => {
+    const el = glowRef.current;
+    if (el) el.style.setProperty("--r", `0px`);
+  };
+
+  const navLinks = [
+    { label: "О бренде", href: "#about", active: true },
+    { label: "Продукция", href: "#products" },
+    { label: "История", href: "#history" },
+    { label: "Контакты", href: "#contact" },
+  ];
+
+  return (
+    <section
+      onMouseMove={handleMove}
+      onMouseLeave={handleLeave}
+      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-black p-6 md:p-8 lg:p-12"
+      style={{ maxWidth: 1920, marginInline: "auto" }}
+    >
+      <video
+        autoPlay
+        loop
+        muted
+        playsInline
+        className="absolute inset-0 z-0 h-full w-full object-cover"
+        src="https://cdn.sceneai.art/Hero%20Section%20Video/1bc60917-cb77-4441-bc15-bb839a9dd6c2.mp4"
+      />
+      <div className="pointer-events-none absolute inset-0 z-[5] bg-black/25" />
+      <div
+        ref={glowRef}
+        className="pointer-events-none absolute inset-0 z-10"
+        style={{
+          background:
+            "radial-gradient(circle var(--r,0px) at var(--mx,50%) var(--my,50%), rgba(80,150,255,0.35), transparent 70%)",
+          transition: "background 0.8s cubic-bezier(0.25, 1, 0.5, 1)",
+        }}
+      />
+
+      {/* Header */}
+      <header className="relative z-50 flex w-full items-center justify-between">
+        <a href="#" className="flex items-center" aria-label="1998">
+          <img src={logo.url} alt="1998" className="h-10 w-auto rounded bg-white/85 px-2 py-1 backdrop-blur md:h-12" />
+        </a>
+
+        <nav className="hidden items-center gap-1 rounded-full bg-gray-200/50 p-1 backdrop-blur-md md:flex">
+          {navLinks.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              className={
+                "rounded-full px-6 py-2 text-[14px] font-medium transition-colors " +
+                (l.active
+                  ? "bg-white/80 text-black shadow-sm"
+                  : "text-gray-700 hover:text-black")
+              }
+            >
+              {l.label}
+            </a>
+          ))}
+        </nav>
+
+        <a
+          href="#contact"
+          className="hidden items-center gap-2 rounded-full bg-[#4B66D1] px-6 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-[#3B54B4] md:inline-flex"
+        >
+          Связаться
+          <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
+        </a>
+
+        <button
+          onClick={() => setMobileOpen((v) => !v)}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-black backdrop-blur md:hidden"
+          aria-label="Меню"
+        >
+          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+
+        {mobileOpen && (
+          <div className="absolute right-0 top-14 z-50 w-64 space-y-2 rounded-2xl border border-white/40 bg-white/70 p-4 shadow-xl backdrop-blur-xl md:hidden">
+            {navLinks.map((l) => (
+              <a
+                key={l.label}
+                href={l.href}
+                onClick={() => setMobileOpen(false)}
+                className="block rounded-xl px-4 py-2 text-sm font-medium text-gray-800 hover:bg-white"
+              >
+                {l.label}
+              </a>
+            ))}
+            <a
+              href="#contact"
+              onClick={() => setMobileOpen(false)}
+              className="mt-2 flex items-center justify-between rounded-full bg-[#4B66D1] px-5 py-2.5 text-sm font-medium text-white"
+            >
+              Связаться <ArrowUpRight className="h-4 w-4" />
+            </a>
+          </div>
+        )}
+      </header>
+
+      {/* Bottom */}
+      <main className="relative z-20 mt-auto flex flex-col items-start justify-between gap-10 pb-4 md:flex-row md:items-end lg:gap-20">
+        <div className="space-y-4 md:space-y-6">
+          <h1
+            className="font-medium leading-[0.85] tracking-[-0.04em] text-white"
+            style={{ fontSize: "clamp(60px, 9vw, 86px)", textShadow: "0 2px 20px rgba(0,0,0,0.35)" }}
+          >
+            Блестящая
+          </h1>
+          <h2
+            className="font-medium leading-[0.85] tracking-[-0.04em] text-white/20"
+            style={{
+              fontSize: "clamp(60px, 9vw, 86px)",
+              WebkitTextStroke: "1.5px rgba(255,255,255,0.9)",
+            }}
+          >
+            история
+          </h2>
+        </div>
+
+        <div className="flex max-w-[340px] flex-col items-start gap-6 md:items-end lg:gap-8">
+          <p
+            className="text-[15px] font-light leading-relaxed text-white/95 md:text-right md:text-[16px]"
+            style={{ textShadow: "0 1px 8px rgba(0,0,0,0.4)" }}
+          >
+            С 1998 года «ТЕКОС-ИНДУСТРИЯ» создаёт хозяйственные товары, которые делают каждый дом чище и уютнее.
+          </p>
+          <a
+            href="#products"
+            className="group flex w-full items-center justify-between rounded-full bg-white px-6 py-4 font-medium text-black shadow-lg hover:bg-gray-50 sm:w-[240px]"
+          >
+            Смотреть продукцию
+            <ArrowUpRight className="h-5 w-5 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </a>
+        </div>
+      </main>
+    </section>
+  );
+}
