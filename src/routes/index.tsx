@@ -473,14 +473,15 @@ function CinematicHero() {
           {packs.map((p, i) => {
             const slot = (i - current + packs.length) % packs.length;
             const s = slotStyles[slot];
+            const { widthClass, scaleBoost } = packSize(p);
             return (
               <img
                 key={p.src}
                 src={p.src}
                 alt={p.alt}
-                className="absolute left-1/2 top-1/2 h-auto w-[30vw] max-w-[414px] min-w-[210px] will-change-transform"
+                className={`absolute left-1/2 top-1/2 h-auto ${widthClass} will-change-transform`}
                 style={{
-                  transform: `translate(-50%, -50%) translate(${s.x}, ${s.y}) scale(${s.scale})`,
+                  transform: `translate(-50%, -50%) translate(${s.x}, ${s.y}) scale(${s.scale * scaleBoost})`,
                   filter: `blur(${s.blur}px) drop-shadow(0 30px 40px rgba(0,0,0,0.25))`,
                   opacity: s.opacity,
                   zIndex: s.z,
