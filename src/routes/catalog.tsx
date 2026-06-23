@@ -1,4 +1,5 @@
-import { createFileRoute, Link, useNavigate, useSearch } from "@tanstack/react-router";
+import { useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import img01 from "@/assets/products/01-gubki-universalnye-1.asset.json";
 import img02 from "@/assets/products/02-gubki-s-aromatom-myaty-1.asset.json";
@@ -14,8 +15,6 @@ import img11 from "@/assets/products/11-stelki-kozhanye-klassika-1.asset.json";
 import img12 from "@/assets/products/12-stelki-sportivnye-dyshaschie-1.asset.json";
 
 type Category = "Все" | "Губки" | "Салфетки" | "Стельки";
-
-type CatalogSearch = { category: Category };
 
 const items = [
   { image: img01, title: "Губки универсальные", desc: "Для повседневной уборки", category: "Губки" },
@@ -35,29 +34,26 @@ const items = [
 const categories: Category[] = ["Все", "Губки", "Салфетки", "Стельки"];
 
 function isCategory(value: unknown): value is Category {
-  return typeof value === "string" && categories.includes(value as Category);
+  return typeof value === "string" && (categories as string[]).includes(value);
 }
 
-export const Route = createFileRoute("/catalog")({
-  head: () => ({
-    meta: [
-      { title: "Каталог — 1998 Блестящая история" },
-      { name: "description", content: "Каталог хозяйственных товаров бренда «1998 Блестящая история»: губки, салфетки, стельки и аксессуары для ежедневной чистоты." },
-      { property: "og:title", content: "Каталог — 1998 Блестящая история" },
-      { property: "og:description", content: "Полный каталог продукции для ежедневной чистоты." },
-    ],
-  }),
-  validateSearch: (search: Record<string, unknown>): CatalogSearch => ({
-    category: isCategory(search.category) ? search.category : "Все",
-  }),
-  component: CatalogPage,
-});
-
-function CatalogPage() {
-  const navigate = useNavigate({ from: "/catalog" });
-  const { category } = useSearch({ from: "/catalog" });
-  const active = category;
+export default function CatalogPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const raw = searchParams.get("category");
+  const active: Category = isCategory(raw) ? raw : "Все";
   const visible = active === "Все" ? items : items.filter((i) => i.category === active);
+
+  useEffect(() => {
+    document.title = "Каталог — 1998 Блестящая история";
+  }, []);
+
+  const setCategory = (cat: Category) => {
+    if (cat === "Все") {
+      setSearchParams({});
+    } else {
+      setSearchParams({ category: cat });
+    }
+  };
 
   return (
     <section className="relative min-h-screen bg-[oklch(0.93_0.005_260)] px-6 py-16 lg:px-12 lg:py-24">
