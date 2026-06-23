@@ -116,39 +116,23 @@ export function SiteHeader() {
             height: pill.height,
           }}
         />
-        {ROUTE_LINKS.map((l) =>
-          l.to.startsWith("#") ? (
-            <a
-              key={l.label}
-              ref={(el) => { linkRefs.current[l.label] = el; }}
-              href={l.to}
-              onClick={() => setActiveLabel(l.label)}
-              className={
-                navLinkClass +
-                (activeLabel === l.label
-                  ? "text-black"
-                  : "text-gray-700 hover:text-black")
-              }
-            >
-              {l.label}
-            </a>
-          ) : (
-            <Link
-              key={l.label}
-              ref={(el) => { linkRefs.current[l.label] = el; }}
-              to={l.to}
-              onClick={() => setActiveLabel(l.label)}
-              className={
-                navLinkClass +
-                (activeLabel === l.label
-                  ? "text-black"
-                  : "text-gray-700 hover:text-black")
-              }
-            >
-              {l.label}
-            </Link>
-          )
-        )}
+        {ROUTE_LINKS.map((l) => (
+          <Link
+            key={l.label}
+            ref={(el) => { linkRefs.current[l.label] = el; }}
+            to={l.to}
+            hash={l.hash}
+            onClick={() => setActiveLabel(l.label)}
+            className={
+              navLinkClass +
+              (activeLabel === l.label
+                ? "text-black"
+                : "text-gray-700 hover:text-black")
+            }
+          >
+            {l.label}
+          </Link>
+        ))}
       </nav>
 
       <a
