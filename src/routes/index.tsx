@@ -117,6 +117,115 @@ function AboutSlider() {
 }
 
 
+function ProductsSection() {
+  const [catalogOpen, setCatalogOpen] = useState(false);
+
+  const catalogItems = [
+    { image: packagingDelikatnye, title: "Губки деликатные", desc: "Мягкая очистка без царапин" },
+    { image: packagingKostochka, title: "Губки с абразивом", desc: "Для стойких загрязнений" },
+    { image: packagingChernye, title: "Чёрные губки", desc: "Прочные и универсальные" },
+    { image: packMetallic, title: "Металлические губки", desc: "Для сложных поверхностей" },
+    { image: packCelulosa, title: "Целлюлозные губки", desc: "Натуральный материал" },
+    { image: packViscosa, title: "Салфетки вискозные", desc: "Универсальные и долговечные" },
+  ];
+
+  return (
+    <section
+      id="products"
+      className="relative min-h-screen bg-[oklch(0.93_0.005_260)] px-6 py-8 lg:px-12"
+    >
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
+        }}
+      />
+      <div className="relative z-10 mx-auto flex w-full flex-col">
+        <div className="mb-6 flex shrink-0 flex-col justify-between gap-4 md:flex-row md:items-end">
+          <div className="max-w-2xl space-y-3">
+            <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
+              Всё для ежедневной чистоты
+            </h2>
+            <p className="max-w-xl text-sm font-light leading-relaxed text-gray-700 lg:text-base">
+              Функциональные, долговечные и удобные товары для дома.
+            </p>
+          </div>
+          <button
+            onClick={() => setCatalogOpen((v) => !v)}
+            className="inline-flex items-center gap-2 self-start rounded-full bg-[#4B66D1] px-5 py-2.5 text-[13px] font-medium text-white transition-colors hover:bg-[#3B54B4] md:self-end"
+          >
+            {catalogOpen ? "Скрыть каталог" : "Посмотреть каталог"}
+            <ArrowUpRight className={`h-4 w-4 transition-transform ${catalogOpen ? "rotate-90" : ""}`} strokeWidth={1.75} />
+          </button>
+        </div>
+
+        <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 md:grid-cols-2 md:grid-rows-2 md:gap-4 lg:gap-5">
+          {/* Губки */}
+          <article className="group relative flex h-[430px] min-h-0 flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:col-start-1 md:row-start-1 md:h-full">
+            <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
+              <img src={packagingDelikatnye.url} alt="Губки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+            </div>
+            <div className="shrink-0 p-3 md:p-5">
+              <h3 className="text-sm font-extrabold tracking-tight text-gray-900 md:text-lg">Губки</h3>
+              <p className="mt-0.5 text-[10px] font-medium text-gray-600 md:text-xs">Высокая износостойкость и эффективность</p>
+            </div>
+          </article>
+
+          {/* Стельки */}
+          <article className="group relative flex h-[430px] min-h-0 flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:col-start-2 md:row-start-1 md:h-full">
+            <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
+              <img src={wipes} alt="Стельки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+            </div>
+            <div className="shrink-0 p-3 md:p-5">
+              <h3 className="text-sm font-extrabold tracking-tight text-gray-900 md:text-lg">Стельки</h3>
+              <p className="mt-0.5 text-[10px] font-medium text-gray-600 md:text-xs">Натуральные материалы и комфорт</p>
+            </div>
+          </article>
+
+          {/* Салфетки */}
+          <article className="group relative flex h-[430px] min-h-0 flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:col-start-1 md:row-start-2 md:h-full">
+            <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
+              <img src={packViscosa.url} alt="Салфетки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+            </div>
+            <div className="shrink-0 p-3 md:p-5">
+              <h3 className="text-sm font-extrabold tracking-tight text-gray-900 md:text-lg">Салфетки</h3>
+              <p className="mt-0.5 text-[10px] font-medium text-gray-600 md:text-xs">Универсальные материалы для ежедневной уборки</p>
+            </div>
+          </article>
+        </div>
+
+        {catalogOpen && (
+          <div className="mt-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <h3 className="mb-6 text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl">Каталог</h3>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+              {catalogItems.map((item) => (
+                <article
+                  key={item.title}
+                  className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/50 backdrop-blur-md shadow-[0_12px_30px_rgba(20,24,40,0.08)] transition-all hover:bg-white/70 hover:shadow-[0_20px_40px_rgba(20,24,40,0.12)]"
+                >
+                  <div className="aspect-[4/3] overflow-hidden">
+                    <img
+                      src={item.image.url}
+                      alt={item.title}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h4 className="text-base font-extrabold tracking-tight text-gray-900">{item.title}</h4>
+                    <p className="mt-1 text-xs font-medium text-gray-600">{item.desc}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   return (
     <div className="overflow-x-hidden bg-background text-foreground antialiased">
@@ -124,72 +233,7 @@ function Index() {
       <AboutSlider />
 
       {/* Products */}
-      <section
-        id="products"
-        className="relative min-h-screen md:h-screen md:overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 py-8 lg:px-12"
-      >
-        <div
-          className="pointer-events-none absolute inset-0 z-0"
-          style={{
-            background:
-              "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
-          }}
-        />
-        <div className="relative z-10 mx-auto flex h-full w-full flex-col">
-          <div className="mb-6 flex shrink-0 flex-col justify-between gap-4 md:flex-row md:items-end">
-            <div className="max-w-2xl space-y-3">
-              <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
-                Всё для ежедневной чистоты
-              </h2>
-              <p className="max-w-xl text-sm font-light leading-relaxed text-gray-700 lg:text-base">
-                Функциональные, долговечные и удобные товары для дома.
-              </p>
-            </div>
-            <a
-              href="#products"
-              className="inline-flex items-center gap-2 self-start rounded-full bg-[#4B66D1] px-5 py-2.5 text-[13px] font-medium text-white transition-colors hover:bg-[#3B54B4] md:self-end"
-            >
-              Посмотреть каталог
-              <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
-            </a>
-          </div>
-
-          <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 md:grid-cols-2 md:grid-rows-2 md:gap-4 lg:gap-5">
-            {/* Губки */}
-            <article className="group relative flex h-[430px] min-h-0 flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:col-start-1 md:row-start-1 md:h-full">
-              <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
-                <img src={packagingDelikatnye.url} alt="Губки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-              </div>
-              <div className="shrink-0 p-3 md:p-5">
-                <h3 className="text-sm font-extrabold tracking-tight text-gray-900 md:text-lg">Губки</h3>
-                <p className="mt-0.5 text-[10px] font-medium text-gray-600 md:text-xs">Высокая износостойкость и эффективность</p>
-              </div>
-            </article>
-
-            {/* Стельки */}
-            <article className="group relative flex h-[430px] min-h-0 flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:col-start-2 md:row-start-1 md:h-full">
-              <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
-                <img src={wipes} alt="Стельки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-              </div>
-              <div className="shrink-0 p-3 md:p-5">
-                <h3 className="text-sm font-extrabold tracking-tight text-gray-900 md:text-lg">Стельки</h3>
-                <p className="mt-0.5 text-[10px] font-medium text-gray-600 md:text-xs">Натуральные материалы и комфорт</p>
-              </div>
-            </article>
-
-            {/* Салфетки */}
-            <article className="group relative flex h-[430px] min-h-0 flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:col-start-1 md:row-start-2 md:h-full">
-              <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
-                <img src={packViscosa.url} alt="Салфетки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-              </div>
-              <div className="shrink-0 p-3 md:p-5">
-                <h3 className="text-sm font-extrabold tracking-tight text-gray-900 md:text-lg">Салфетки</h3>
-                <p className="mt-0.5 text-[10px] font-medium text-gray-600 md:text-xs">Универсальные материалы для ежедневной уборки</p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+      <ProductsSection />
 
       {/* History */}
       <section
