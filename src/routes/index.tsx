@@ -81,7 +81,7 @@ function AboutSlider() {
                 }
               }}
               aria-label={item.title}
-              className={`relative h-full cursor-pointer overflow-hidden text-left transition-all duration-700 ease-out $${
+              className={`relative h-full cursor-pointer overflow-hidden text-left transition-all duration-700 ease-out ${
                 isActive ? "flex-[3]" : "flex-1"
               } rounded-[1.25rem] border md:rounded-[1.75rem] lg:rounded-[2rem] ${
                 isActive
