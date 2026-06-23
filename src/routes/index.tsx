@@ -457,11 +457,8 @@ function CinematicHero() {
             Блестящая
           </h1>
           <h2
-            className="font-medium leading-[0.85] tracking-[-0.04em] text-transparent"
-            style={{
-              fontSize: "clamp(60px, 9vw, 86px)",
-              WebkitTextStroke: "1.5px rgba(20,24,40,0.85)",
-            }}
+            className="outline-text font-medium leading-[0.85] tracking-[-0.04em]"
+            style={{ fontSize: "clamp(60px, 9vw, 86px)" }}
           >
             история
           </h2>
