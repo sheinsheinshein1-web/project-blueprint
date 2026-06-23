@@ -29,6 +29,28 @@ export const Route = createFileRoute("/")({
 });
 
 function AboutSlider() {
+  const items = [
+    {
+      stat: "30+",
+      statLabel: "Лет экспертизы",
+      title: "Полный цикл",
+      text: "Контроль качества на каждом этапе — от разработки рецептуры до полки магазина.",
+    },
+    {
+      stat: "100%",
+      statLabel: "Собственный цикл",
+      title: "Российское сырьё",
+      text: "Надёжные поставщики и собственные стандарты контроля материалов.",
+    },
+    {
+      stat: "ТОП",
+      statLabel: "Федеральные сети",
+      title: "Доверие сетей",
+      text: "Многолетнее партнёрство с крупнейшими ритейлерами по всей стране.",
+      accent: true,
+    },
+  ];
+
   return (
     <section
       id="about"
@@ -42,102 +64,58 @@ function AboutSlider() {
         }}
       />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1400px] flex-col gap-16">
-        {/* Eyebrow row */}
-        <div className="flex items-end justify-between gap-6 border-b border-gray-900/10 pb-6">
-          <span className="text-[11px] font-bold uppercase tracking-[0.35em] text-gray-700">
-            № 01 — О бренде
-          </span>
-          <span className="hidden text-[11px] font-medium uppercase tracking-[0.25em] text-gray-500 md:inline">
-            Ленинградская область · с 1998 года
-          </span>
-        </div>
-
-        {/* Editorial headline */}
-        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12">
-          <h2 className="col-span-1 text-5xl font-extrabold leading-[0.95] tracking-tight text-gray-900 md:text-6xl lg:col-span-8 lg:text-[88px]">
-            Блестящая история,<br />
-            <span className="italic font-light text-gray-500">которой</span>{" "}
-            <span className="text-[#4B66D1]">уже 30+ лет</span>
-          </h2>
-          <div className="col-span-1 flex flex-col justify-end gap-6 lg:col-span-4">
-            <p className="text-base font-light leading-relaxed text-gray-700 lg:text-lg">
-              <span className="font-semibold text-gray-900">«1998 Блестящая история»</span> — собственный бренд старейшего российского производителя хозяйственных товаров{" "}
-              <span className="font-semibold text-gray-900">«ТЕКОС-ИНДУСТРИЯ»</span>. Назван в честь года строительства завода в Ленинградской области.
-            </p>
+      <div className="relative z-10 mx-auto flex w-full max-w-[1200px] flex-col gap-16">
+        {/* Header */}
+        <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+          <div className="max-w-xl space-y-5">
+            <div className="inline-flex items-center gap-2 rounded-full border border-gray-900/10 bg-white/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-gray-500 backdrop-blur">
+              О бренде
+            </div>
+            <h2 className="text-4xl font-light leading-[1.1] tracking-tight text-gray-900 md:text-5xl">
+              <span className="bg-gradient-to-br from-gray-900 via-gray-700 to-gray-400 bg-clip-text text-transparent">
+                1998. Блестящая история
+              </span>
+              <br />
+              <span className="text-gray-400">ТЕКОС-ИНДУСТРИЯ</span>
+            </h2>
           </div>
+          <p className="max-w-sm text-base font-light leading-relaxed text-gray-600">
+            Собственный бренд старейшего российского производителя хозяйственных товаров. Назван в честь года строительства завода в Ленинградской области.
+          </p>
         </div>
 
-        {/* Magazine facts row */}
-        <div className="grid grid-cols-1 gap-px overflow-hidden rounded-[2rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.10)] md:grid-cols-3">
-          <FactCell
-            kicker="Опыт"
-            value="30+"
-            unit="лет"
-            caption="на российском рынке хозяйственных товаров"
-          />
-          <FactCell
-            kicker="Производство"
-            value="100%"
-            unit="цикл"
-            caption="от разработки рецептуры до отгрузки"
-          />
-          <FactCell
-            kicker="Дистрибуция"
-            value="ТОП"
-            unit="сети"
-            caption="крупнейшие федеральные ритейлеры"
-            last
-          />
-        </div>
-
-        {/* Principles row */}
-        <div className="grid grid-cols-1 gap-10 border-t border-gray-900/10 pt-12 md:grid-cols-3">
-          <Principle
-            icon={<RefreshCw className="h-5 w-5" strokeWidth={1.75} />}
-            title="Полный цикл"
-            text="Контроль качества на каждом этапе — от идеи до полки магазина."
-          />
-          <Principle
-            icon={<ShieldCheck className="h-5 w-5" strokeWidth={1.75} />}
-            title="Российское сырьё"
-            text="Надёжные поставщики и собственные стандарты контроля материалов."
-          />
-          <Principle
-            icon={<Building2 className="h-5 w-5" strokeWidth={1.75} />}
-            title="Доверие сетей"
-            text="Нас выбирают крупнейшие ритейлеры по всей стране."
-          />
+        {/* Cards */}
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+          {items.map((it) => (
+            <div
+              key={it.title}
+              className="group flex flex-col gap-8 rounded-[1.5rem] border border-white/60 bg-white/55 p-8 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.06)] transition-colors hover:bg-white/75"
+            >
+              <div className="space-y-2">
+                <span
+                  className={`block text-4xl font-light tracking-tight ${
+                    it.accent ? "text-[#4B66D1]" : "text-gray-900"
+                  }`}
+                >
+                  {it.stat}
+                </span>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-gray-400">
+                  {it.statLabel}
+                </p>
+              </div>
+              <div className="h-px w-full bg-gray-900/10 transition-colors group-hover:bg-[#4B66D1]/20" />
+              <div className="space-y-3">
+                <h3 className="text-lg font-medium text-gray-900">{it.title}</h3>
+                <p className="text-sm font-light leading-relaxed text-gray-600">{it.text}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-function FactCell({ kicker, value, unit, caption, last }: { kicker: string; value: string; unit: string; caption: string; last?: boolean }) {
-  return (
-    <div className={`relative flex flex-col gap-4 bg-white/55 p-8 md:p-10 ${last ? "" : "md:border-r md:border-gray-900/10"}`}>
-      <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#4B66D1]">{kicker}</span>
-      <div className="flex items-baseline gap-3">
-        <span className="text-6xl font-extrabold leading-none tracking-tight text-gray-900 md:text-7xl">{value}</span>
-        <span className="text-base font-medium text-gray-500">{unit}</span>
-      </div>
-      <p className="max-w-[24ch] text-sm font-light leading-relaxed text-gray-600">{caption}</p>
-    </div>
-  );
-}
-
-function Principle({ icon, title, text }: { icon: React.ReactNode; title: string; text: string }) {
-  return (
-    <div className="flex flex-col gap-4">
-      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-900/10 bg-white/60 text-[#4B66D1] backdrop-blur">
-        {icon}
-      </div>
-      <h3 className="text-xl font-extrabold tracking-tight text-gray-900">{title}</h3>
-      <p className="text-sm font-light leading-relaxed text-gray-600">{text}</p>
-    </div>
-  );
-}
 
 
 function ProductsSection() {
