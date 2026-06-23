@@ -173,7 +173,7 @@ function Index() {
       {/* Products */}
       <section
         id="products"
-        className="relative h-screen overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 py-8 lg:px-12"
+        className="relative min-h-screen md:h-screen md:overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 py-8 lg:px-12"
       >
         <div
           className="pointer-events-none absolute inset-0 z-0"
@@ -235,16 +235,18 @@ function Index() {
             </article>
 
             {/* Салфетки */}
-            <article className="group relative h-full min-h-0 overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/75 md:col-start-2 md:row-span-2">
+            <article className="group relative flex h-full min-h-0 flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/75 md:col-start-2 md:row-span-2">
               <div className="absolute right-4 top-4 z-10">
                 <span className="rounded-full bg-[#4B66D1] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm">
                   Для дома
                 </span>
               </div>
-              <img src={packViscosa.url} alt="Салфетки" loading="lazy" className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-              <div className="absolute inset-x-0 bottom-0 z-10 bg-gradient-to-t from-black/60 to-transparent p-6 md:p-8">
-                <h3 className="text-2xl font-extrabold tracking-tight text-white">Салфетки</h3>
-                <p className="mt-1.5 text-sm font-medium text-white/80">Универсальные материалы для ежедневной уборки</p>
+              <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] md:absolute md:inset-0 md:rounded-[1.5rem]">
+                <img src={packViscosa.url} alt="Салфетки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
+              </div>
+              <div className="shrink-0 p-5 md:absolute md:bottom-0 md:inset-x-0 md:bg-gradient-to-t md:from-black/60 md:to-transparent md:p-8">
+                <h3 className="text-lg font-extrabold tracking-tight text-gray-900 md:text-2xl md:text-white">Салфетки</h3>
+                <p className="mt-1 text-xs font-medium text-gray-600 md:text-sm md:text-white/80">Универсальные материалы для ежедневной уборки</p>
               </div>
             </article>
           </div>
