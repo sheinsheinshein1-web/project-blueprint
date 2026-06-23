@@ -135,7 +135,7 @@ function Index() {
               "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
           }}
         />
-        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col">
+        <div className="relative z-10 mx-auto flex h-full w-full flex-col">
           <div className="mb-6 flex shrink-0 flex-col justify-between gap-4 md:flex-row md:items-end">
             <div className="max-w-2xl space-y-3">
               <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
@@ -203,7 +203,7 @@ function Index() {
               "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
           }}
         />
-        <div className="relative z-10 mx-auto flex max-w-7xl flex-col gap-24 lg:flex-row">
+        <div className="relative z-10 mx-auto flex w-full flex-col gap-24 lg:flex-row">
           <div className="space-y-8 lg:w-5/12">
             <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
               Опыт, за которым<br />
@@ -245,7 +245,7 @@ function Index() {
 
       {/* Footer */}
       <footer id="contact" className="border-t border-border bg-background px-6 pb-16 pt-32 lg:px-12">
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto w-full">
           <div className="mb-32 grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-10 lg:col-span-1">
               <img src={logo.url} alt="1998 Блестящая история" className="h-20 w-auto" />
