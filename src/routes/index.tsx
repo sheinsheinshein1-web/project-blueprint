@@ -121,7 +121,7 @@ function ProductsSection() {
   return (
     <section
       id="products"
-      className="relative min-h-screen bg-[oklch(0.93_0.005_260)] px-6 py-8 lg:px-12"
+      className="relative bg-[oklch(0.93_0.005_260)] px-6 py-24 lg:px-12"
     >
       <div
         className="pointer-events-none absolute inset-0 z-0"
@@ -131,7 +131,7 @@ function ProductsSection() {
         }}
       />
       <div className="relative z-10 mx-auto flex w-full flex-col">
-        <div className="mb-6 flex shrink-0 flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div className="max-w-2xl space-y-3">
             <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
               Всё для ежедневной чистоты
@@ -149,7 +149,7 @@ function ProductsSection() {
           </Link>
         </div>
 
-        <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 md:grid-cols-2 md:grid-rows-2 md:gap-4 lg:gap-5">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:grid-rows-2 md:gap-4 lg:grid-cols-3 lg:gap-5">
           {/* Губки */}
           <article className="group relative flex h-[430px] min-h-0 flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:col-start-1 md:row-start-1 md:h-full">
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
