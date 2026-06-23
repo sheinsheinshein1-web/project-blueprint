@@ -110,7 +110,7 @@ export default function CatalogPage() {
             >
               <div className="flex h-[240px] items-center justify-center overflow-hidden bg-white p-4 md:h-[280px] md:p-6">
                 <img
-                  src={item.image.url}
+                  src={item.image}
                   alt={item.title}
                   loading="lazy"
                   className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
