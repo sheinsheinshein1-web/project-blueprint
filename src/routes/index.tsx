@@ -49,10 +49,7 @@ function Index() {
               </div>
               <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
                 Семейная история,<br />
-                <span
-                  className="text-transparent"
-                  style={{ WebkitTextStroke: "1.5px rgba(20,24,40,0.85)" }}
-                >
+                <span className="outline-text">
                   ставшая брендом
                 </span>
               </h2>
