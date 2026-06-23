@@ -136,9 +136,7 @@ function Index() {
               </div>
               <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
                 Всё для<br />
-                <span className="outline-text">
-                  ежедневной чистоты
-                </span>
+                <span>ежедневной чистоты</span>
               </h2>
               <p className="text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
                 Функциональные, долговечные и удобные товары для дома — в линейке «1998» только то, что прошло проверку реальным опытом.
