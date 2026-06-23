@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useRouterState } from "@tanstack/react-router";
+import { Link, useLocation } from "react-router-dom";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import logo from "@/assets/logo-1998.png.asset.json";
 
-const ROUTE_LINKS = [
+const ROUTE_LINKS: Array<{ label: string; to: string; id: string }> = [
   { label: "Главная", to: "/", id: "home" },
-  { label: "О бренде", to: "/", hash: "about", id: "about" },
+  { label: "О бренде", to: "/#about", id: "about" },
   { label: "Продукция", to: "/catalog", id: "products" },
-  { label: "История", to: "/", hash: "history", id: "history" },
-  { label: "Контакты", to: "/", hash: "contact", id: "contact" },
+  { label: "История", to: "/#history", id: "history" },
+  { label: "Контакты", to: "/#contact", id: "contact" },
 ];
 
 export function SiteHeader() {
@@ -17,7 +17,7 @@ export function SiteHeader() {
   const [activeLabel, setActiveLabel] = useState("Главная");
   const [pill, setPill] = useState({ left: 0, top: 0, width: 0, height: 0 });
   const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
-  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { pathname } = useLocation();
   const isHome = pathname === "/";
 
   useEffect(() => {
@@ -27,12 +27,9 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Active label based on route (non-home) or scroll (home)
   useEffect(() => {
     if (!isHome) {
-      const match = ROUTE_LINKS.find((l) =>
-        l.to.startsWith("#") ? false : pathname === l.to
-      );
+      const match = ROUTE_LINKS.find((l) => !l.to.includes("#") && pathname === l.to);
       setActiveLabel(match?.label ?? "Главная");
       return;
     }
@@ -56,7 +53,6 @@ export function SiteHeader() {
     return () => window.removeEventListener("scroll", getActive);
   }, [isHome, pathname]);
 
-  // Position the active pill
   useEffect(() => {
     const link = linkRefs.current[activeLabel];
     const nav = link?.parentElement;
@@ -119,9 +115,10 @@ export function SiteHeader() {
         {ROUTE_LINKS.map((l) => (
           <Link
             key={l.label}
-            ref={(el) => { linkRefs.current[l.label] = el; }}
+            ref={(el: HTMLAnchorElement | null) => {
+              linkRefs.current[l.label] = el;
+            }}
             to={l.to}
-            hash={l.hash}
             onClick={() => setActiveLabel(l.label)}
             className={
               navLinkClass +
@@ -136,8 +133,7 @@ export function SiteHeader() {
       </nav>
 
       <Link
-        to="/"
-        hash="contact"
+        to="/#contact"
         className="hidden items-center gap-2 rounded-full bg-[#4B66D1] px-5 py-2 text-[13px] font-medium text-white transition-colors hover:bg-[#3B54B4] md:inline-flex"
       >
         Связаться
@@ -158,7 +154,6 @@ export function SiteHeader() {
             <Link
               key={l.label}
               to={l.to}
-              hash={l.hash}
               onClick={() => setMobileOpen(false)}
               className="block rounded-xl px-4 py-2 text-sm font-medium text-gray-800 hover:bg-white"
             >
@@ -166,8 +161,7 @@ export function SiteHeader() {
             </Link>
           ))}
           <Link
-            to="/"
-            hash="contact"
+            to="/#contact"
             onClick={() => setMobileOpen(false)}
             className="mt-2 flex items-center justify-between rounded-full bg-[#4B66D1] px-5 py-2.5 text-sm font-medium text-white"
           >
