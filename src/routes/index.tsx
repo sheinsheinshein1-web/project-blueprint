@@ -454,13 +454,13 @@ function CinematicHero() {
       <main className="relative z-20 mt-auto flex flex-col items-start justify-between gap-10 pb-4 md:flex-row md:items-end lg:gap-20">
         <div className="space-y-4 md:space-y-6">
           <h1
-            className="font-light leading-[0.85] tracking-[-0.04em] text-gray-900"
+            className="bg-gradient-to-br from-gray-900 via-gray-600 to-gray-300 bg-clip-text font-light leading-[0.85] tracking-[-0.04em] text-transparent"
             style={{ fontSize: "clamp(60px, 9vw, 86px)" }}
           >
             Блестящая
           </h1>
           <h2
-            className="font-normal leading-[0.85] tracking-[-0.04em] text-gray-900"
+            className="bg-gradient-to-br from-gray-800 via-gray-500 to-gray-300 bg-clip-text font-normal leading-[0.85] tracking-[-0.04em] text-transparent"
             style={{ fontSize: "clamp(60px, 9vw, 86px)" }}
           >
             история
