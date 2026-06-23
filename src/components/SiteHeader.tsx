@@ -5,10 +5,10 @@ import logo from "@/assets/logo-1998.png.asset.json";
 
 const ROUTE_LINKS = [
   { label: "Главная", to: "/", id: "home" },
-  { label: "О бренде", to: "/about", id: "about" },
+  { label: "О бренде", to: "/", hash: "about", id: "about" },
   { label: "Продукция", to: "/catalog", id: "products" },
-  { label: "История", to: "/about", id: "history" },
-  { label: "Контакты", to: "#contact", id: "contact" },
+  { label: "История", to: "/", hash: "history", id: "history" },
+  { label: "Контакты", to: "/", hash: "contact", id: "contact" },
 ];
 
 export function SiteHeader() {
