@@ -173,7 +173,7 @@ function ProductsSection() {
           </article>
 
           {/* Салфетки */}
-          <article className="group relative flex h-[320px] flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:col-span-2 lg:col-auto">
+          <article className="group relative flex h-[320px] flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55">
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem]">
               <img src={packViscosa.url} alt="Салфетки" loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
             </div>
