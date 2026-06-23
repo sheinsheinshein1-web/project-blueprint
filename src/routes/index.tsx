@@ -7,8 +7,8 @@ import packagingChernye from "@/assets/packaging-chernye.png";
 import packMetallic from "@/assets/pack-metallic.png";
 import packCelulosa from "@/assets/pack-celulosa.png";
 import packViscosa from "@/assets/pack-viscosa.png";
-import packStelkiProbka from "@/assets/stelki-probka-upak.png";
-import packStelkiKozha from "@/assets/stelki-kozha-upak.png";
+import packKaplyaGray from "@/assets/pack-kaplya-gray.png";
+import packOvalEzhevika from "@/assets/pack-oval-ezhevika.png";
 import img01 from "@/assets/products/01-gubki-universalnye-1.jpg";
 import img07 from "@/assets/products/07-salfetki-viskoznye-1.jpg";
 import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.jpg";
@@ -222,13 +222,13 @@ function CinematicHero() {
   const rafRef = useRef<number | null>(null);
   const [current, setCurrent] = useState(0);
 
-  const packs = [
+  const packs: Array<{ src: string; alt: string; widthClass?: string; scaleBoost?: number }> = [
     { src: packagingDelikatnye, alt: "Губки деликатные 1998" },
     { src: packMetallic, alt: "Салфетки металлизированные 1998" },
-    { src: packStelkiProbka, alt: "Пробковые стельки летние 1998", widthClass: "w-[24vw] max-w-[320px] min-w-[170px]", scaleBoost: 0.82 },
+    { src: packKaplyaGray, alt: "Губки эргономичные капля 1998" },
     { src: packagingKostochka, alt: "Губки эргономичные 1998" },
     { src: packViscosa, alt: "Салфетки универсальные 1998" },
-    { src: packStelkiKozha, alt: "Кожаные стельки классика 1998", widthClass: "w-[24vw] max-w-[320px] min-w-[170px]", scaleBoost: 0.82 },
+    { src: packOvalEzhevika, alt: "Губки эргономичные овал 1998" },
     { src: packagingChernye, alt: "Губки универсальные 1998" },
     { src: packCelulosa, alt: "Салфетки губчатые 1998" },
   ];
