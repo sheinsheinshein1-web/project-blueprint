@@ -119,32 +119,62 @@ function Index() {
       </div>
 
       {/* Products */}
-      <section id="products" className="mx-auto max-w-7xl px-6 py-32 lg:px-12">
-        <div className="mb-20 flex flex-col justify-between gap-8 md:flex-row md:items-end">
-          <div className="max-w-xl">
-            <h2 className="mb-6 text-5xl font-extrabold tracking-tight">Наша продукция</h2>
-            <p className="text-lg font-light leading-relaxed text-muted-foreground">
-              В линейке «1998» — всё, что нужно для ежедневной чистоты. Функциональные, долговечные и удобные товары для дома.
-            </p>
+      <section
+        id="products"
+        className="relative overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 py-32 lg:px-12"
+      >
+        <div
+          className="pointer-events-none absolute inset-0 z-0"
+          style={{
+            background:
+              "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
+          }}
+        />
+        <div className="relative z-10 mx-auto max-w-7xl">
+          <div className="mb-20 flex flex-col justify-between gap-10 md:flex-row md:items-end">
+            <div className="max-w-2xl space-y-8">
+              <div className="inline-flex items-center gap-3 rounded-full bg-white/60 px-4 py-1.5 backdrop-blur-md">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
+                <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-700">
+                  Наша продукция
+                </span>
+              </div>
+              <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
+                Всё для<br />
+                <span
+                  className="text-transparent"
+                  style={{ WebkitTextStroke: "1.5px rgba(20,24,40,0.85)" }}
+                >
+                  ежедневной чистоты
+                </span>
+              </h2>
+              <p className="text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
+                Функциональные, долговечные и удобные товары для дома — в линейке «1998» только то, что прошло проверку реальным опытом.
+              </p>
+            </div>
+            <a
+              href="#products"
+              className="inline-flex items-center gap-2 self-start rounded-full bg-[#4B66D1] px-6 py-3 text-[14px] font-medium text-white transition-colors hover:bg-[#3B54B4] md:self-end"
+            >
+              Посмотреть каталог
+              <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
+            </a>
           </div>
-          <a href="#products" className="border-b-2 border-primary pb-1 text-sm font-bold uppercase tracking-widest text-primary">
-            Посмотреть каталог
-          </a>
-        </div>
 
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
-          <ProductCard
-            img={packagingDelikatnye.url}
-            tag="Для уборки"
-            title="Губки и скребки"
-            subtitle="Высокая износостойкость и эффективность"
-          />
-          <ProductCard
-            img={wipes}
-            tag="Для дома"
-            title="Салфетки и стельки"
-            subtitle="Натуральные материалы и комфорт"
-          />
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+            <ProductCard
+              img={packagingDelikatnye.url}
+              tag="Для уборки"
+              title="Губки и скребки"
+              subtitle="Высокая износостойкость и эффективность"
+            />
+            <ProductCard
+              img={wipes}
+              tag="Для дома"
+              title="Салфетки и стельки"
+              subtitle="Натуральные материалы и комфорт"
+            />
+          </div>
         </div>
       </section>
 
