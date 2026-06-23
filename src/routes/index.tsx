@@ -256,6 +256,7 @@ function Index() {
             <div>
               <h5 className="mb-10 text-[11px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">Навигация</h5>
               <ul className="space-y-5 text-sm font-semibold">
+                <li><a href="#" className="transition-colors hover:text-primary">Главная</a></li>
                 <li><a href="#about" className="transition-colors hover:text-primary">О бренде</a></li>
                 <li><a href="#products" className="transition-colors hover:text-primary">Продукция</a></li>
                 <li><a href="#history" className="transition-colors hover:text-primary">История</a></li>
