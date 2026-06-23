@@ -278,13 +278,15 @@ function CinematicHero() {
 
       {/* Floating packaging */}
       <div className="pointer-events-none absolute inset-0 z-[6] flex items-center justify-center" style={{ perspective: "1200px" }}>
-        <img
-          ref={packRef}
-          src={packagingDelikatnye.url}
-          alt="Упаковка 1998"
-          className="h-auto w-[28vw] max-w-[420px] min-w-[200px] animate-float drop-shadow-[0_40px_60px_rgba(0,0,0,0.6)] will-change-transform"
-          style={{ transition: "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)" }}
-        />
+        <div className="animate-float">
+          <img
+            ref={packRef}
+            src={packagingDelikatnye.url}
+            alt="Упаковка 1998"
+            className="h-auto w-[28vw] max-w-[420px] min-w-[200px] drop-shadow-[0_40px_60px_rgba(0,0,0,0.6)] will-change-transform"
+            style={{ transition: "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)" }}
+          />
+        </div>
       </div>
 
       <div
