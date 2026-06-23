@@ -63,6 +63,10 @@ function AboutPage() {
                 className="h-full w-full object-cover"
               />
             </div>
+            <p className="mt-5 text-sm font-bold uppercase tracking-widest text-[#4B66D1]">
+              Валерий Дворянкин
+            </p>
+            <p className="text-sm text-gray-500">Основатель</p>
           </div>
         </section>
 
