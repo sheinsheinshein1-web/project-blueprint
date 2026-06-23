@@ -337,10 +337,10 @@ function CinematicHero() {
   const packs = [
     { src: packagingDelikatnye.url, alt: "Губки деликатные 1998" },
     { src: packMetallic.url, alt: "Салфетки металлизированные 1998" },
-    { src: packStelkiProbka.url, alt: "Пробковые стельки летние 1998" },
+    { src: packStelkiProbka.url, alt: "Пробковые стельки летние 1998", widthClass: "w-[24vw] max-w-[320px] min-w-[170px]", scaleBoost: 0.82 },
     { src: packagingKostochka.url, alt: "Губки эргономичные 1998" },
     { src: packViscosa.url, alt: "Салфетки универсальные 1998" },
-    { src: packStelkiKozha.url, alt: "Кожаные стельки классика 1998" },
+    { src: packStelkiKozha.url, alt: "Кожаные стельки классика 1998", widthClass: "w-[24vw] max-w-[320px] min-w-[170px]", scaleBoost: 0.82 },
     { src: packagingChernye.url, alt: "Губки универсальные 1998" },
     { src: packCelulosa.url, alt: "Салфетки губчатые 1998" },
   ];
@@ -361,6 +361,11 @@ function CinematicHero() {
     { x: "-26vw", y: "-20px", scale: 0.55, blur: 5,  z: 38, opacity: 0.7 },
     { x: "-16vw", y: "-8px",  scale: 0.78, blur: 2,  z: 44, opacity: 0.9 },
   ];
+
+  const packSize = (pack: (typeof packs)[number]) => ({
+    widthClass: pack.widthClass ?? "w-[30vw] max-w-[414px] min-w-[210px]",
+    scaleBoost: pack.scaleBoost ?? 1,
+  });
 
   const handleMove = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -468,14 +473,15 @@ function CinematicHero() {
           {packs.map((p, i) => {
             const slot = (i - current + packs.length) % packs.length;
             const s = slotStyles[slot];
+            const { widthClass, scaleBoost } = packSize(p);
             return (
               <img
                 key={p.src}
                 src={p.src}
                 alt={p.alt}
-                className="absolute left-1/2 top-1/2 h-auto w-[30vw] max-w-[414px] min-w-[210px] will-change-transform"
+                className={`absolute left-1/2 top-1/2 h-auto ${widthClass} will-change-transform`}
                 style={{
-                  transform: `translate(-50%, -50%) translate(${s.x}, ${s.y}) scale(${s.scale})`,
+                  transform: `translate(-50%, -50%) translate(${s.x}, ${s.y}) scale(${s.scale * scaleBoost})`,
                   filter: `blur(${s.blur}px) drop-shadow(0 30px 40px rgba(0,0,0,0.25))`,
                   opacity: s.opacity,
                   zIndex: s.z,
