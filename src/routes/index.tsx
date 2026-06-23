@@ -509,15 +509,26 @@ function CinematicHero() {
           <img src={logo.url} alt="1998" className="h-10 w-auto md:h-12" />
         </a>
 
-        <nav className="hidden items-center gap-1 rounded-full bg-gray-200/50 p-1 backdrop-blur-md md:flex">
+        <nav className="relative hidden items-center gap-1 rounded-full bg-gray-200/50 p-1 backdrop-blur-md md:flex">
+          <span
+            className="pointer-events-none absolute rounded-full bg-white/80 shadow-sm transition-all duration-300 ease-out"
+            style={{
+              left: pill.left,
+              top: pill.top,
+              width: pill.width,
+              height: pill.height,
+            }}
+          />
           {navLinks.map((l) => (
             <a
               key={l.label}
+              ref={(el) => { linkRefs.current[l.label] = el; }}
               href={l.href}
+              onClick={() => setActiveLabel(l.label)}
               className={
-                "rounded-full px-5 py-2 text-[13px] font-medium transition-colors " +
-                (l.active
-                  ? "bg-white/80 text-black shadow-sm"
+                "relative z-10 rounded-full px-5 py-2 text-[13px] font-medium transition-colors " +
+                (activeLabel === l.label
+                  ? "text-black"
                   : "text-gray-700 hover:text-black")
               }
             >
