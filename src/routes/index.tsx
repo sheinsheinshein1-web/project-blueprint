@@ -9,6 +9,8 @@ import packCelulosa from "@/assets/pack-celulosa.png.asset.json";
 import packViscosa from "@/assets/pack-viscosa.png.asset.json";
 import wipes from "@/assets/wipes.jpg";
 import logo from "@/assets/logo-1998.png.asset.json";
+import nikolayPhoto from "@/assets/nikolay.jpg.asset.json";
+import valeryPhoto from "@/assets/valery.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
