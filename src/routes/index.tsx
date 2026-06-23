@@ -230,16 +230,17 @@ function CinematicHero() {
     return () => clearInterval(id);
   }, [packs.length]);
 
-  // slot 0 = front, then right side (near→far), back, left side (far→near)
+  // slot 0 = front center, then right side (near→far→off-screen),
+  // off-screen wrap, then left side (off-screen→far→near)
   const slotStyles: Array<{ x: string; y: string; scale: number; blur: number; brightness: number; z: number; opacity: number }> = [
-    { x: "0vw",   y: "0px",   scale: 1.35, blur: 0,   brightness: 1.00, z: 50, opacity: 1 },
-    { x: "17vw",  y: "-8px",  scale: 0.70, blur: 4,   brightness: 1.10, z: 44, opacity: 0.75 },
-    { x: "28vw",  y: "-22px", scale: 0.48, blur: 9,   brightness: 1.25, z: 38, opacity: 0.5 },
-    { x: "37vw",  y: "-46px", scale: 0.30, blur: 15,  brightness: 1.45, z: 32, opacity: 0.28 },
-    { x: "0vw",   y: "-68px", scale: 0.22, blur: 20,  brightness: 1.60, z: 20, opacity: 0.15 },
-    { x: "-37vw", y: "-46px", scale: 0.30, blur: 15,  brightness: 1.45, z: 32, opacity: 0.28 },
-    { x: "-28vw", y: "-22px", scale: 0.48, blur: 9,   brightness: 1.25, z: 38, opacity: 0.5 },
-    { x: "-17vw", y: "-8px",  scale: 0.70, blur: 4,   brightness: 1.10, z: 44, opacity: 0.75 },
+    { x: "0vw",    y: "0px",    scale: 1.35, blur: 0,  brightness: 1.00, z: 50, opacity: 1 },
+    { x: "16vw",   y: "18px",   scale: 0.82, blur: 2,  brightness: 1.06, z: 45, opacity: 0.88 },
+    { x: "30vw",   y: "62px",   scale: 0.58, blur: 5,  brightness: 1.16, z: 40, opacity: 0.66 },
+    { x: "46vw",   y: "130px",  scale: 0.36, blur: 10, brightness: 1.30, z: 35, opacity: 0.40 },
+    { x: "70vw",   y: "220px",  scale: 0.20, blur: 18, brightness: 1.50, z: 30, opacity: 0 },
+    { x: "-70vw",  y: "220px",  scale: 0.20, blur: 18, brightness: 1.50, z: 30, opacity: 0 },
+    { x: "-46vw",  y: "130px",  scale: 0.36, blur: 10, brightness: 1.30, z: 35, opacity: 0.40 },
+    { x: "-18vw",  y: "42px",   scale: 0.78, blur: 3,  brightness: 1.10, z: 42, opacity: 0.74 },
   ];
 
   const packSize = (pack: (typeof packs)[number]) => ({
