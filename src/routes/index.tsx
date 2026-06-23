@@ -429,9 +429,9 @@ function CinematicHero() {
 
 
       {/* Header */}
-      <header className="relative z-50 flex w-full items-center justify-between">
+      <header className="fixed left-0 right-0 top-0 z-50 flex w-full items-center justify-between bg-white/40 px-6 py-4 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-md md:px-8 lg:px-12">
         <a href="#" className="flex items-center" aria-label="1998">
-          <img src={logo.url} alt="1998" className="h-14 w-auto md:h-20" />
+          <img src={logo.url} alt="1998" className="h-10 w-auto md:h-12" />
         </a>
 
         <nav className="hidden items-center gap-1 rounded-full bg-gray-200/50 p-1 backdrop-blur-md md:flex">
@@ -440,7 +440,7 @@ function CinematicHero() {
               key={l.label}
               href={l.href}
               className={
-                "rounded-full px-6 py-2 text-[14px] font-medium transition-colors " +
+                "rounded-full px-5 py-2 text-[13px] font-medium transition-colors " +
                 (l.active
                   ? "bg-white/80 text-black shadow-sm"
                   : "text-gray-700 hover:text-black")
@@ -453,7 +453,7 @@ function CinematicHero() {
 
         <a
           href="#contact"
-          className="hidden items-center gap-2 rounded-full bg-[#4B66D1] px-6 py-2.5 text-[14px] font-medium text-white transition-colors hover:bg-[#3B54B4] md:inline-flex"
+          className="hidden items-center gap-2 rounded-full bg-[#4B66D1] px-5 py-2 text-[13px] font-medium text-white transition-colors hover:bg-[#3B54B4] md:inline-flex"
         >
           Связаться
           <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
@@ -468,7 +468,7 @@ function CinematicHero() {
         </button>
 
         {mobileOpen && (
-          <div className="absolute right-0 top-14 z-50 w-64 space-y-2 rounded-2xl border border-white/40 bg-white/70 p-4 shadow-xl backdrop-blur-xl md:hidden">
+          <div className="absolute right-4 top-16 z-50 w-64 space-y-2 rounded-2xl border border-white/40 bg-white/90 p-4 shadow-xl backdrop-blur-xl md:hidden">
             {navLinks.map((l) => (
               <a
                 key={l.label}
