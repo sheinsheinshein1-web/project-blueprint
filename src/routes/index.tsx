@@ -49,10 +49,7 @@ function Index() {
               </div>
               <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
                 Семейная история,<br />
-                <span
-                  className="text-transparent"
-                  style={{ WebkitTextStroke: "1.5px rgba(20,24,40,0.85)" }}
-                >
+                <span className="outline-text">
                   ставшая брендом
                 </span>
               </h2>
@@ -141,10 +138,7 @@ function Index() {
               </div>
               <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
                 Всё для<br />
-                <span
-                  className="text-transparent"
-                  style={{ WebkitTextStroke: "1.5px rgba(20,24,40,0.85)" }}
-                >
+                <span className="outline-text">
                   ежедневной чистоты
                 </span>
               </h2>
@@ -200,10 +194,7 @@ function Index() {
             </div>
             <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
               Опыт, за которым<br />
-              <span
-                className="text-transparent"
-                style={{ WebkitTextStroke: "1.5px rgba(20,24,40,0.85)" }}
-              >
+              <span className="outline-text">
                 стоит история
               </span>
             </h2>
@@ -466,11 +457,8 @@ function CinematicHero() {
             Блестящая
           </h1>
           <h2
-            className="font-medium leading-[0.85] tracking-[-0.04em] text-transparent"
-            style={{
-              fontSize: "clamp(60px, 9vw, 86px)",
-              WebkitTextStroke: "1.5px rgba(20,24,40,0.85)",
-            }}
+            className="outline-text font-medium leading-[0.85] tracking-[-0.04em]"
+            style={{ fontSize: "clamp(60px, 9vw, 86px)" }}
           >
             история
           </h2>
