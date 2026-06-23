@@ -244,7 +244,7 @@ function CinematicHero() {
   ];
 
   const packSize = (pack: (typeof packs)[number]) => ({
-    widthClass: pack.widthClass ?? "w-[55vw] sm:w-[30vw] max-w-[414px] min-w-[210px]",
+    widthClass: pack.widthClass ?? "w-[60vw] sm:w-[30vw] max-w-[414px] min-w-[210px]",
     scaleBoost: pack.scaleBoost ?? 1,
   });
 
