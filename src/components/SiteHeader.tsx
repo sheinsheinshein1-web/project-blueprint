@@ -135,13 +135,14 @@ export function SiteHeader() {
         ))}
       </nav>
 
-      <a
-        href="#contact"
+      <Link
+        to="/"
+        hash="contact"
         className="hidden items-center gap-2 rounded-full bg-[#4B66D1] px-5 py-2 text-[13px] font-medium text-white transition-colors hover:bg-[#3B54B4] md:inline-flex"
       >
         Связаться
         <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
-      </a>
+      </Link>
 
       <button
         onClick={() => setMobileOpen((v) => !v)}
