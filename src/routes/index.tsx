@@ -190,9 +190,7 @@ function Index() {
             </div>
             <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
               Опыт, за которым<br />
-              <span className="outline-text">
-                стоит история
-              </span>
+              <span>стоит история</span>
             </h2>
             <p className="text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
               Бренд «1998» — часть семейной компании с большой производственной историей. Сегодня компанией управляет уже второе поколение семьи, сохраняя верность качеству.
