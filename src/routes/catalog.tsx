@@ -88,7 +88,7 @@ export default function CatalogPage() {
               <li key={cat}>
                 <button
                   type="button"
-                  onClick={() => navigate({ search: { category: cat } })}
+                  onClick={() => setCategory(cat)}
                   className={`rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
                     active === cat
                       ? "bg-[#4B66D1] text-white"
