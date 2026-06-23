@@ -65,86 +65,114 @@ function AboutSlider() {
         }}
       />
 
-      {/* Eyebrow */}
-      <div className="absolute left-1/2 top-10 z-20 -translate-x-1/2 md:top-14">
-        <div className="inline-flex items-center gap-3 rounded-full bg-white/70 px-4 py-1.5 backdrop-blur-md">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
-          <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-700">
-            Чистота начинается с 1998
-          </span>
-        </div>
-      </div>
-
-      {/* Slider track */}
-      <div className="relative z-10 flex h-full items-center">
-        <div
-          className="flex h-[72%] w-full items-stretch transition-transform duration-700 ease-out"
-          style={{
-            // 84% slide width + 2% gap on each side ≈ peek of adjacent cards
-            transform: `translateX(calc(8% - ${index * 88}%))`,
-          }}
-        >
+      <div className="relative z-10 flex h-full w-full items-stretch gap-4 p-6 md:gap-6 md:p-10">
+        {/* Active slide */}
+        <div className="relative flex-1 overflow-hidden rounded-[2.5rem] border border-[#4B66D1]/20 bg-white/90 shadow-[0_30px_80px_rgba(75,102,209,0.18)]">
           {items.map((item, i) => {
             const isActive = i === index;
             return (
               <div
                 key={item.title}
-                className="h-full shrink-0 px-[2%]"
-                style={{ width: "84%" }}
+                className={`absolute inset-0 flex flex-col justify-between p-10 transition-opacity duration-500 md:p-16 lg:p-20 ${
+                  isActive ? "opacity-100" : "pointer-events-none opacity-0"
+                }`}
               >
-                <button
-                  onClick={() => setIndex(i)}
-                  className={`flex h-full w-full flex-col justify-between rounded-[2.5rem] border p-10 text-left transition-all duration-500 md:p-16 ${
-                    isActive
-                      ? "scale-100 border-[#4B66D1]/25 bg-white/90 opacity-100 shadow-[0_30px_80px_rgba(75,102,209,0.18)]"
-                      : "scale-[0.94] border-white/60 bg-white/55 opacity-60 backdrop-blur-md"
-                  }`}
-                >
-                  <div className="flex items-center gap-5">
-                    <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-[#4B66D1]/30 bg-[#4B66D1]/15 md:h-16 md:w-16">
-                      <item.icon className="h-7 w-7 text-[#4B66D1]" strokeWidth={1.5} />
-                    </div>
-                    <span className="text-xs font-semibold uppercase tracking-[0.25em] text-gray-500">
-                      0{i + 1} / 0{total}
+                <div className="flex items-center justify-between">
+                  <div className="inline-flex items-center gap-3 rounded-full bg-white/70 px-4 py-1.5 backdrop-blur-md">
+                    <span className="h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.25em] text-gray-700">
+                      Чистота начинается с 1998
                     </span>
                   </div>
+                  <span className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">
+                    0{i + 1} / 0{total}
+                  </span>
+                </div>
 
+                <div className="flex items-end gap-8">
+                  <div className="hidden h-20 w-20 shrink-0 items-center justify-center rounded-full border border-[#4B66D1]/30 bg-[#4B66D1]/15 md:flex">
+                    <item.icon className="h-9 w-9 text-[#4B66D1]" strokeWidth={1.5} />
+                  </div>
                   <div className="space-y-6">
-                    <h3 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
+                    <h3 className="text-3xl font-extrabold leading-[1.02] tracking-tight text-gray-900 md:text-5xl lg:text-6xl xl:text-7xl">
                       {item.title}
                     </h3>
                     <p className="max-w-2xl text-base leading-relaxed text-gray-700 md:text-lg">
                       {item.body}
                     </p>
                   </div>
-                </button>
+                </div>
+
+                {/* Arrows bottom-right of active slide */}
+                <div className="absolute bottom-8 right-8 flex items-center gap-3 md:bottom-12 md:right-12">
+                  <button
+                    onClick={prev}
+                    aria-label="Назад"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-300 bg-white/80 text-gray-800 backdrop-blur-md transition hover:border-[#4B66D1] hover:text-[#4B66D1] md:h-14 md:w-14"
+                  >
+                    <ArrowLeft className="h-5 w-5" strokeWidth={1.5} />
+                  </button>
+                  <button
+                    onClick={next}
+                    aria-label="Вперёд"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-300 bg-white/80 text-gray-800 backdrop-blur-md transition hover:border-[#4B66D1] hover:text-[#4B66D1] md:h-14 md:w-14"
+                  >
+                    <ArrowRight className="h-5 w-5" strokeWidth={1.5} />
+                  </button>
+                </div>
               </div>
             );
           })}
         </div>
-      </div>
 
-      {/* Controls bottom-right */}
-      <div className="absolute bottom-8 right-6 z-20 flex items-center gap-4 md:bottom-12 md:right-12">
-        <span className="text-sm font-semibold tracking-[0.2em] text-gray-600">
-          {String(index + 1).padStart(2, "0")}
-          <span className="mx-2 text-gray-400">/</span>
-          {String(total).padStart(2, "0")}
-        </span>
-        <button
-          onClick={prev}
-          aria-label="Назад"
-          className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-300 bg-white/80 text-gray-800 backdrop-blur-md transition hover:border-[#4B66D1] hover:text-[#4B66D1] md:h-14 md:w-14"
-        >
-          <ArrowLeft className="h-5 w-5" strokeWidth={1.5} />
-        </button>
-        <button
-          onClick={next}
-          aria-label="Вперёд"
-          className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-300 bg-white/80 text-gray-800 backdrop-blur-md transition hover:border-[#4B66D1] hover:text-[#4B66D1] md:h-14 md:w-14"
-        >
-          <ArrowRight className="h-5 w-5" strokeWidth={1.5} />
-        </button>
+        {/* Vertical "peek" pages on the right */}
+        <div className="flex w-16 shrink-0 flex-col gap-3 md:w-24 md:gap-4">
+          {items.map((item, i) => {
+            const isActive = i === index;
+            return (
+              <button
+                key={`peek-${item.title}`}
+                onClick={() => setIndex(i)}
+                aria-label={item.title}
+                className={`group relative flex-1 overflow-hidden rounded-l-none rounded-r-[1.25rem] border text-left transition-all duration-500 md:rounded-r-[1.75rem] ${
+                  isActive
+                    ? "border-[#4B66D1]/25 bg-white/90 shadow-[0_15px_40px_rgba(75,102,209,0.12)]"
+                    : "border-white/60 bg-white/55 backdrop-blur-md hover:bg-white/75"
+                }`}
+              >
+                <div className="flex h-full flex-col items-center justify-between py-5 md:py-7">
+                  <span className={`text-[10px] font-semibold tracking-[0.25em] md:text-xs ${
+                    isActive ? "text-[#4B66D1]" : "text-gray-500"
+                  }`}>
+                    0{i + 1}
+                  </span>
+                  <div
+                    className="flex-1 px-2"
+                    style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+                  >
+                    <span className={`text-[11px] font-bold uppercase tracking-[0.18em] md:text-sm ${
+                      isActive ? "text-gray-900" : "text-gray-600"
+                    }`}>
+                      {item.title}
+                    </span>
+                  </div>
+                  <item.icon
+                    className={`h-4 w-4 md:h-5 md:w-5 ${
+                      isActive ? "text-[#4B66D1]" : "text-gray-400"
+                    }`}
+                    strokeWidth={1.5}
+                  />
+                </div>
+                {/* Left edge indicator */}
+                <span
+                  className={`absolute left-0 top-1/2 h-12 w-[3px] -translate-y-1/2 rounded-r-full transition-colors ${
+                    isActive ? "bg-[#4B66D1]" : "bg-transparent"
+                  }`}
+                />
+              </button>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
