@@ -429,7 +429,7 @@ function CinematicHero() {
 
 
       {/* Header */}
-      <header className="fixed left-0 right-0 top-0 z-50 flex w-full items-center justify-between bg-white/40 px-6 py-4 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-md md:px-8 lg:px-12">
+      <header className="fixed left-0 right-0 top-0 z-50 flex w-full items-center justify-between border-b border-white/40 bg-white/80 px-6 py-4 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-xl md:px-8 lg:px-12">
         <a href="#" className="flex items-center" aria-label="1998">
           <img src={logo.url} alt="1998" className="h-10 w-auto md:h-12" />
         </a>
