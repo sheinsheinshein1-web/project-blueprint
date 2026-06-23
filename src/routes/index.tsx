@@ -135,7 +135,7 @@ function Index() {
               "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
           }}
         />
-        <div className="relative z-10 mx-auto flex h-full max-w-6xl flex-col">
+        <div className="relative z-10 mx-auto flex h-full max-w-7xl flex-col">
           <div className="mb-6 flex shrink-0 flex-col justify-between gap-4 md:flex-row md:items-end">
             <div className="max-w-2xl space-y-3">
               <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
