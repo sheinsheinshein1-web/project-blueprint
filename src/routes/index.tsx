@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, Menu, RefreshCw, ShieldCheck, X } from "lucide-react";
 import packagingDelikatnye from "@/assets/packaging-delikatnye.png.asset.json";
@@ -118,17 +118,6 @@ function AboutSlider() {
 
 
 function ProductsSection() {
-  const [catalogOpen, setCatalogOpen] = useState(false);
-
-  const catalogItems = [
-    { image: packagingDelikatnye, title: "Губки деликатные", desc: "Мягкая очистка без царапин" },
-    { image: packagingKostochka, title: "Губки с абразивом", desc: "Для стойких загрязнений" },
-    { image: packagingChernye, title: "Чёрные губки", desc: "Прочные и универсальные" },
-    { image: packMetallic, title: "Металлические губки", desc: "Для сложных поверхностей" },
-    { image: packCelulosa, title: "Целлюлозные губки", desc: "Натуральный материал" },
-    { image: packViscosa, title: "Салфетки вискозные", desc: "Универсальные и долговечные" },
-  ];
-
   return (
     <section
       id="products"
@@ -151,13 +140,13 @@ function ProductsSection() {
               Функциональные, долговечные и удобные товары для дома.
             </p>
           </div>
-          <button
-            onClick={() => setCatalogOpen((v) => !v)}
+          <Link
+            to="/catalog"
             className="inline-flex items-center gap-2 self-start rounded-full bg-[#4B66D1] px-5 py-2.5 text-[13px] font-medium text-white transition-colors hover:bg-[#3B54B4] md:self-end"
           >
-            {catalogOpen ? "Скрыть каталог" : "Посмотреть каталог"}
-            <ArrowUpRight className={`h-4 w-4 transition-transform ${catalogOpen ? "rotate-90" : ""}`} strokeWidth={1.75} />
-          </button>
+            Посмотреть каталог
+            <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
+          </Link>
         </div>
 
         <div className="grid min-h-0 flex-1 grid-cols-1 gap-4 md:grid-cols-2 md:grid-rows-2 md:gap-4 lg:gap-5">
@@ -194,37 +183,11 @@ function ProductsSection() {
             </div>
           </article>
         </div>
-
-        {catalogOpen && (
-          <div className="mt-10 animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h3 className="mb-6 text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl">Каталог</h3>
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
-              {catalogItems.map((item) => (
-                <article
-                  key={item.title}
-                  className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/50 backdrop-blur-md shadow-[0_12px_30px_rgba(20,24,40,0.08)] transition-all hover:bg-white/70 hover:shadow-[0_20px_40px_rgba(20,24,40,0.12)]"
-                >
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <img
-                      src={item.image.url}
-                      alt={item.title}
-                      loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="p-4">
-                    <h4 className="text-base font-extrabold tracking-tight text-gray-900">{item.title}</h4>
-                    <p className="mt-1 text-xs font-medium text-gray-600">{item.desc}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );
 }
+
 
 function Index() {
   return (
