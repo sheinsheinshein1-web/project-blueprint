@@ -21,7 +21,7 @@ export default function AboutPage() {
       <div className="relative z-10 mx-auto w-full px-6 py-16 lg:px-12 lg:py-24">
         <Link
           to="/"
-          className="inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
+          className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
         >
           <ArrowLeft className="h-4 w-4" strokeWidth={1.75} />
           На главную
