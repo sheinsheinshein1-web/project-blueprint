@@ -5,10 +5,10 @@ import logo from "@/assets/logo-1998.png.asset.json";
 
 const ROUTE_LINKS = [
   { label: "Главная", to: "/", id: "home" },
-  { label: "О бренде", to: "/about", id: "about" },
+  { label: "О бренде", to: "/", hash: "about", id: "about" },
   { label: "Продукция", to: "/catalog", id: "products" },
-  { label: "История", to: "/about", id: "history" },
-  { label: "Контакты", to: "#contact", id: "contact" },
+  { label: "История", to: "/", hash: "history", id: "history" },
+  { label: "Контакты", to: "/", hash: "contact", id: "contact" },
 ];
 
 export function SiteHeader() {
@@ -116,48 +116,33 @@ export function SiteHeader() {
             height: pill.height,
           }}
         />
-        {ROUTE_LINKS.map((l) =>
-          l.to.startsWith("#") ? (
-            <a
-              key={l.label}
-              ref={(el) => { linkRefs.current[l.label] = el; }}
-              href={l.to}
-              onClick={() => setActiveLabel(l.label)}
-              className={
-                navLinkClass +
-                (activeLabel === l.label
-                  ? "text-black"
-                  : "text-gray-700 hover:text-black")
-              }
-            >
-              {l.label}
-            </a>
-          ) : (
-            <Link
-              key={l.label}
-              ref={(el) => { linkRefs.current[l.label] = el; }}
-              to={l.to}
-              onClick={() => setActiveLabel(l.label)}
-              className={
-                navLinkClass +
-                (activeLabel === l.label
-                  ? "text-black"
-                  : "text-gray-700 hover:text-black")
-              }
-            >
-              {l.label}
-            </Link>
-          )
-        )}
+        {ROUTE_LINKS.map((l) => (
+          <Link
+            key={l.label}
+            ref={(el) => { linkRefs.current[l.label] = el; }}
+            to={l.to}
+            hash={l.hash}
+            onClick={() => setActiveLabel(l.label)}
+            className={
+              navLinkClass +
+              (activeLabel === l.label
+                ? "text-black"
+                : "text-gray-700 hover:text-black")
+            }
+          >
+            {l.label}
+          </Link>
+        ))}
       </nav>
 
-      <a
-        href="#contact"
+      <Link
+        to="/"
+        hash="contact"
         className="hidden items-center gap-2 rounded-full bg-[#4B66D1] px-5 py-2 text-[13px] font-medium text-white transition-colors hover:bg-[#3B54B4] md:inline-flex"
       >
         Связаться
         <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
-      </a>
+      </Link>
 
       <button
         onClick={() => setMobileOpen((v) => !v)}
@@ -169,34 +154,25 @@ export function SiteHeader() {
 
       {mobileOpen && (
         <div className="absolute right-4 top-16 z-50 w-64 space-y-2 rounded-2xl border border-white/40 bg-white/90 p-4 shadow-xl backdrop-blur-xl md:hidden">
-          {ROUTE_LINKS.map((l) =>
-            l.to.startsWith("#") ? (
-              <a
-                key={l.label}
-                href={l.to}
-                onClick={() => setMobileOpen(false)}
-                className="block rounded-xl px-4 py-2 text-sm font-medium text-gray-800 hover:bg-white"
-              >
-                {l.label}
-              </a>
-            ) : (
-              <Link
-                key={l.label}
-                to={l.to}
-                onClick={() => setMobileOpen(false)}
-                className="block rounded-xl px-4 py-2 text-sm font-medium text-gray-800 hover:bg-white"
-              >
-                {l.label}
-              </Link>
-            )
-          )}
-          <a
-            href="#contact"
+          {ROUTE_LINKS.map((l) => (
+            <Link
+              key={l.label}
+              to={l.to}
+              hash={l.hash}
+              onClick={() => setMobileOpen(false)}
+              className="block rounded-xl px-4 py-2 text-sm font-medium text-gray-800 hover:bg-white"
+            >
+              {l.label}
+            </Link>
+          ))}
+          <Link
+            to="/"
+            hash="contact"
             onClick={() => setMobileOpen(false)}
             className="mt-2 flex items-center justify-between rounded-full bg-[#4B66D1] px-5 py-2.5 text-sm font-medium text-white"
           >
             Связаться <ArrowUpRight className="h-4 w-4" />
-          </a>
+          </Link>
         </div>
       )}
     </header>
