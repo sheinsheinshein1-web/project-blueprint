@@ -283,7 +283,7 @@ function CinematicHero() {
             ref={packRef}
             src={packagingDelikatnye.url}
             alt="Упаковка 1998"
-            className="h-auto w-[28vw] max-w-[420px] min-w-[200px] drop-shadow-[0_40px_60px_rgba(0,0,0,0.6)] will-change-transform"
+            className="h-auto w-[44vw] max-w-[640px] min-w-[280px] drop-shadow-[0_40px_60px_rgba(0,0,0,0.6)] will-change-transform"
             style={{ transition: "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)" }}
           />
         </div>
