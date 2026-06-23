@@ -102,12 +102,12 @@ function CatalogPage() {
               key={item.title}
               className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/50 backdrop-blur-md shadow-[0_12px_30px_rgba(20,24,40,0.08)] transition-all hover:bg-white/70 hover:shadow-[0_20px_40px_rgba(20,24,40,0.12)]"
             >
-              <div className="aspect-[4/3] overflow-hidden">
+              <div className="flex h-[240px] items-center justify-center overflow-hidden bg-white p-4 md:h-[280px] md:p-6">
                 <img
                   src={item.image.url}
                   alt={item.title}
                   loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
               <div className="p-4">
