@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import family from "@/assets/family.jpg";
-import sponges from "@/assets/sponges.jpg";
+import sponges from "@/assets/packaging-delikatnye.png.asset.json";
 import wipes from "@/assets/wipes.jpg";
 import logo from "@/assets/logo-1998.jpg.asset.json";
 import heroSponge from "@/assets/hero-sponge.mp4.asset.json";
