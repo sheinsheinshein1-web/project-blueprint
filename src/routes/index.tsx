@@ -9,6 +9,8 @@ import packCelulosa from "@/assets/pack-celulosa.png.asset.json";
 import packViscosa from "@/assets/pack-viscosa.png.asset.json";
 import wipes from "@/assets/wipes.jpg";
 import logo from "@/assets/logo-1998.png.asset.json";
+import nikolayPhoto from "@/assets/nikolay.jpg.asset.json";
+import valeryPhoto from "@/assets/valery.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -220,12 +222,16 @@ function Index() {
           </div>
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:w-7/12">
             {[
-              { name: "Николай Дворянкин", role: "Основатель" },
-              { name: "Валерий Дворянкин", role: "Руководитель", offset: true },
+              { name: "Николай Дворянкин", role: "Основатель", photo: nikolayPhoto.url },
+              { name: "Валерий Дворянкин", role: "Руководитель", photo: valeryPhoto.url, offset: true },
             ].map((p) => (
               <div key={p.name} className={`group space-y-8 ${p.offset ? "lg:translate-y-20" : ""}`}>
                 <div className="aspect-[3/4] overflow-hidden rounded-[2rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)]">
-                  <div className="h-full w-full bg-gradient-to-br from-[#4B66D1]/20 to-[oklch(0.90_0.005_260)] opacity-80 transition-all duration-700 group-hover:scale-105 group-hover:opacity-100" />
+                  <img
+                    src={p.photo}
+                    alt={p.name}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-gray-900">{p.name}</h4>
