@@ -233,14 +233,14 @@ function CinematicHero() {
   // slot 0 = front center, then right side (near→far→off-screen),
   // off-screen wrap, then left side (off-screen→far→near)
   const slotStyles: Array<{ x: string; y: string; scale: number; blur: number; brightness: number; z: number; opacity: number }> = [
-    { x: "0vw",    y: "0px",   scale: 1.55, blur: 0,  brightness: 1.00, z: 50, opacity: 1 },
-    { x: "34vw",   y: "0px",   scale: 0.74, blur: 2,  brightness: 1.06, z: 45, opacity: 0.88 },
-    { x: "50vw",   y: "0px",   scale: 0.50, blur: 5,  brightness: 1.16, z: 40, opacity: 0.66 },
-    { x: "68vw",   y: "0px",   scale: 0.32, blur: 10, brightness: 1.30, z: 35, opacity: 0.40 },
-    { x: "88vw",   y: "0px",   scale: 0.18, blur: 18, brightness: 1.50, z: 30, opacity: 0 },
-    { x: "-88vw",  y: "0px",   scale: 0.18, blur: 18, brightness: 1.50, z: 30, opacity: 0 },
-    { x: "-50vw",  y: "0px",   scale: 0.50, blur: 5,  brightness: 1.16, z: 40, opacity: 0.66 },
-    { x: "-34vw",  y: "0px",   scale: 0.74, blur: 2,  brightness: 1.06, z: 45, opacity: 0.88 },
+    { x: "0vw",     y: "0px",   scale: 1.55, blur: 0,  brightness: 1.00, z: 50, opacity: 1 },
+    { x: "40vw",    y: "0px",   scale: 0.58, blur: 2,  brightness: 1.06, z: 45, opacity: 0.88 },
+    { x: "60vw",    y: "0px",   scale: 0.36, blur: 5,  brightness: 1.16, z: 40, opacity: 0.66 },
+    { x: "80vw",    y: "0px",   scale: 0.22, blur: 10, brightness: 1.30, z: 35, opacity: 0.40 },
+    { x: "100vw",   y: "0px",   scale: 0.14, blur: 18, brightness: 1.50, z: 30, opacity: 0 },
+    { x: "-100vw",  y: "0px",   scale: 0.14, blur: 18, brightness: 1.50, z: 30, opacity: 0 },
+    { x: "-60vw",   y: "0px",   scale: 0.36, blur: 5,  brightness: 1.16, z: 40, opacity: 0.66 },
+    { x: "-40vw",   y: "0px",   scale: 0.58, blur: 2,  brightness: 1.06, z: 45, opacity: 0.88 },
   ];
 
   const packSize = (pack: (typeof packs)[number]) => ({
