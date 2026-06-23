@@ -337,8 +337,10 @@ function CinematicHero() {
   const packs = [
     { src: packagingDelikatnye.url, alt: "Губки деликатные 1998" },
     { src: packMetallic.url, alt: "Салфетки металлизированные 1998" },
+    { src: packStelkiProbka.url, alt: "Пробковые стельки летние 1998" },
     { src: packagingKostochka.url, alt: "Губки эргономичные 1998" },
     { src: packViscosa.url, alt: "Салфетки универсальные 1998" },
+    { src: packStelkiKozha.url, alt: "Кожаные стельки классика 1998" },
     { src: packagingChernye.url, alt: "Губки универсальные 1998" },
     { src: packCelulosa.url, alt: "Салфетки губчатые 1998" },
   ];
