@@ -5,7 +5,7 @@ import family from "@/assets/family.jpg";
 import packagingDelikatnye from "@/assets/packaging-delikatnye.png.asset.json";
 import wipes from "@/assets/wipes.jpg";
 import logo from "@/assets/logo-1998.jpg.asset.json";
-import heroSponge from "@/assets/hero-sponge.mp4.asset.json";
+import heroPackaging from "@/assets/hero-packaging.mp4.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -260,7 +260,7 @@ function CinematicHero() {
         muted
         playsInline
         className="absolute inset-0 z-0 h-full w-full object-cover"
-        src={heroSponge.url}
+        src={heroPackaging.url}
       />
       <div className="pointer-events-none absolute inset-0 z-[5] bg-black/25" />
       <div
