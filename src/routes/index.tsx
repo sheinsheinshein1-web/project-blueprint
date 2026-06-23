@@ -29,10 +29,11 @@ export const Route = createFileRoute("/")({
 });
 
 function AboutSlider() {
-  const stats = [
-    { value: "30+", label: "лет на рынке" },
-    { value: "100%", label: "собственное производство" },
-    { value: "ТОП", label: "федеральные сети" },
+  const features = [
+    { Icon: CalendarClock, label: "Более 30 лет опыта" },
+    { Icon: ThumbsUp, label: "Российское сырьё и надёжные поставщики" },
+    { Icon: Factory, label: "Полный цикл производства" },
+    { Icon: Sparkles, label: "Доверие сетей и лидеров рынка" },
   ];
 
   return (
@@ -48,89 +49,27 @@ function AboutSlider() {
         }}
       />
 
-      <div className="relative z-10 mx-auto flex w-full max-w-[1240px] flex-col gap-20">
-        {/* Top: image + text */}
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
-          {/* Visual */}
-          <div className="relative lg:col-span-6">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)]">
-              <div
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "radial-gradient(ellipse at 50% 60%, oklch(0.99 0.003 260) 0%, oklch(0.94 0.006 260) 100%)",
-                }}
-              />
-              <img
-                src={packagingDelikatnye.url}
-                alt="Упаковка 1998 Блестящая история"
-                className="absolute inset-0 m-auto h-[85%] w-auto object-contain drop-shadow-[0_30px_40px_rgba(0,0,0,0.18)]"
-              />
-              {/* Floating year badge */}
-              <div className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full border border-white/60 bg-white/70 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-[0.25em] text-gray-700 backdrop-blur-md">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
-                с 1998 года
-              </div>
-              {/* Floating fact card */}
-              <div className="absolute bottom-6 right-6 max-w-[200px] rounded-2xl border border-white/60 bg-white/85 p-4 backdrop-blur-md shadow-[0_10px_30px_rgba(20,24,40,0.12)]">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#4B66D1]">Производство</p>
-                <p className="mt-1 text-sm font-medium text-gray-900 leading-snug">
-                  Ленинградская область, собственный завод
-                </p>
-              </div>
-            </div>
+      <div className="relative z-10 mx-auto flex w-full max-w-[1180px] flex-col items-center gap-20 text-center">
+        <div className="space-y-6">
+          <div className="inline-flex items-center gap-2 rounded-full border border-gray-900/10 bg-white/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-gray-500 backdrop-blur">
+            О бренде
           </div>
-
-          {/* Text */}
-          <div className="space-y-8 lg:col-span-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-gray-900/10 bg-white/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-gray-500 backdrop-blur">
-              О бренде
-            </div>
-            <h2 className="text-4xl font-light leading-[1.05] tracking-tight text-gray-900 md:text-5xl lg:text-[56px]">
-              <span className="bg-gradient-to-br from-gray-900 via-gray-700 to-gray-400 bg-clip-text text-transparent">
-                Блестящая история
-              </span>
-              <br />
-              <span className="text-gray-400">длиною в 30+ лет</span>
-            </h2>
-            <p className="max-w-xl text-base font-light leading-relaxed text-gray-600 md:text-lg">
-              <span className="font-medium text-gray-900">«1998 Блестящая история»</span> — собственный бренд старейшего российского производителя хозяйственных товаров{" "}
-              <span className="font-medium text-gray-900">«ТЕКОС-ИНДУСТРИЯ»</span>. Назван в честь года строительства завода в Ленинградской области.
-            </p>
-
-            {/* Principles inline */}
-            <ul className="space-y-3 pt-2">
-              {[
-                "Полный цикл — от рецептуры до отгрузки",
-                "Российское сырьё и собственные стандарты контроля",
-                "Доверие крупнейших федеральных сетей",
-              ].map((p) => (
-                <li key={p} className="flex items-start gap-3 text-sm font-light text-gray-700 md:text-base">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#4B66D1]" />
-                  {p}
-                </li>
-              ))}
-            </ul>
-          </div>
+          <p className="mx-auto max-w-[920px] text-xl font-light leading-[1.5] tracking-tight text-gray-800 md:text-[28px] md:leading-[1.4]">
+            <span className="font-medium text-gray-900">«1998 Блестящая история»</span> — бренд российского производителя хозяйственных товаров{" "}
+            <span className="font-medium text-gray-900">«ТЕКОС-ИНДУСТРИЯ»</span>. Он назван в честь года строительства собственного завода в Ленинградской области.
+          </p>
         </div>
 
-        {/* Stats row */}
-        <div className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl border border-white/60 bg-gray-900/10">
-          {stats.map((s, i) => (
-            <div
-              key={s.value}
-              className="flex flex-col items-start gap-2 bg-white/60 p-6 backdrop-blur-md md:p-8"
-            >
-              <span
-                className={`text-3xl font-light leading-none tracking-tight md:text-5xl ${
-                  i === 2 ? "text-[#4B66D1]" : "text-gray-900"
-                }`}
-              >
-                {s.value}
-              </span>
-              <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-gray-500 md:text-xs">
-                {s.label}
-              </span>
+        <div className="grid w-full grid-cols-2 gap-10 md:grid-cols-4 md:gap-6">
+          {features.map(({ Icon, label }) => (
+            <div key={label} className="flex flex-col items-center gap-5">
+              <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-gray-900/15 bg-white/70 backdrop-blur-md shadow-[0_10px_30px_rgba(20,24,40,0.06)]">
+                <Icon strokeWidth={1.25} className="h-9 w-9 text-gray-800" />
+                <span className="absolute -bottom-1 right-1 h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
+              </div>
+              <p className="max-w-[200px] text-sm font-light leading-snug text-gray-600 md:text-[15px]">
+                {label}
+              </p>
             </div>
           ))}
         </div>
@@ -138,6 +77,7 @@ function AboutSlider() {
     </section>
   );
 }
+
 
 
 
