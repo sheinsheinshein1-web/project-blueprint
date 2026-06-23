@@ -194,19 +194,6 @@ function Index() {
       <CinematicHero />
       <AboutSlider />
 
-      {/* Marquee */}
-      {/* Marquee */}
-      <div className="relative overflow-hidden bg-primary py-10">
-        <div className="flex animate-marquee whitespace-nowrap">
-          {Array.from({ length: 6 }).map((_, i) => (
-            <span key={i} className="flex items-center px-10 text-2xl font-black uppercase tracking-[0.4em] text-primary-foreground">
-              Блестящая история каждый день
-              <span className="mx-16 h-3 w-3 rotate-45 bg-primary-foreground" />
-            </span>
-          ))}
-        </div>
-      </div>
-
       {/* Products */}
       <section
         id="products"
