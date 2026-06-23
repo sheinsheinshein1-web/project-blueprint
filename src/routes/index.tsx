@@ -49,9 +49,7 @@ function Index() {
               </div>
               <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
                 Семейная история,<br />
-                <span className="outline-text">
-                  ставшая брендом
-                </span>
+                <span>ставшая брендом</span>
               </h2>
               <div className="space-y-6 text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
                 <p className="font-medium text-gray-900">
