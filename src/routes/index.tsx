@@ -25,41 +25,29 @@ export const Route = createFileRoute("/")({
 });
 
 function AboutSlider() {
-  const [index, setIndex] = useState(0);
-
   const items = [
     {
-      icon: CalendarClock,
-      title: "Более 30 лет опыта",
-      body: "Компания «ТЕКОС-ИНДУСТРИЯ» работает с 1991 года. За это время накоплен глубокий опыт в производстве хозяйственных товаров и выстроены надёжные процессы, которым доверяют крупнейшие ритейлеры.",
-    },
-    {
       icon: ShieldCheck,
-      title: "Российское сырье и надёжные поставщики",
-      body: "Мы используем качественные материалы от проверенных поставщиков и контролируем каждый этап: от входящего сырья до готовой продукции на складе.",
+      title: "Российское сырьё и надёжные поставщики",
     },
     {
       icon: RefreshCw,
       title: "Полный цикл производства",
-      body: "Вся линейка «1998» проходит полный производственный цикл на собственных мощностях: проектирование, изготовление, упаковка и отгрузка партий заказчикам.",
     },
     {
       icon: Award,
       title: "Доверие сетей и лидеров рынка",
-      body: "Продукция бренда представлена в ведущих торговых сетях России и СНГ. Партнёры ценят стабильность качества, соблюдение сроков и гибкий подход к заказам.",
+    },
+    {
+      icon: CalendarClock,
+      title: "Больше 30 лет опыта",
     },
   ];
-
-  const total = items.length;
-  const prev = () => setIndex((i) => (i - 1 + total) % total);
-  const next = () => setIndex((i) => (i + 1) % total);
-
-  const item = items[index];
 
   return (
     <section
       id="about"
-      className="relative h-screen w-full overflow-hidden bg-[#F8FAFC]"
+      className="relative min-h-screen w-full overflow-hidden bg-[#F8FAFC]"
     >
       <div
         className="pointer-events-none absolute inset-0 z-0"
@@ -69,48 +57,25 @@ function AboutSlider() {
         }}
       />
 
-      <div
-        key={item.title}
-        className="relative z-10 flex h-full w-full flex-col justify-between p-6 transition-opacity duration-500 md:p-10 lg:p-14"
-      >
-        <div className="flex items-start justify-between gap-6">
-          <p className="max-w-3xl text-base leading-relaxed text-gray-800 md:text-lg lg:text-xl">
-            «1998 Блестящая история» — бренд российского производителя хозяйственных товаров «ТЕКОС-ИНДУСТРИЯ». Он назван в честь года строительства собственного завода в Ленинградской области.
+      <div className="relative z-10 flex min-h-screen w-full flex-col justify-center gap-16 p-6 md:gap-24 md:p-10 lg:gap-28 lg:p-14">
+        <div className="mx-auto w-full max-w-5xl">
+          <p className="text-xl leading-relaxed text-gray-800 md:text-2xl lg:text-3xl">
+            <span className="font-semibold">«1998 Блестящая история»</span> — собственный бренд старейшего российского производителя хозяйственных товаров{" "}
+            <span className="font-semibold">«ТЕКОС-ИНДУСТРИЯ»</span>. Он назван в честь года строительства собственного завода в Ленинградской области.
           </p>
-          <span className="shrink-0 text-xs font-semibold uppercase tracking-[0.3em] text-gray-500">
-            0{index + 1} / 0{total}
-          </span>
         </div>
 
-        <div className="flex flex-col gap-6 md:flex-row md:items-end">
-          <div className="hidden h-20 w-20 shrink-0 items-center justify-center rounded-full border border-[#4B66D1]/30 bg-[#4B66D1]/15 md:flex">
-            <item.icon className="h-9 w-9 text-[#4B66D1]" strokeWidth={1.5} />
-          </div>
-          <div className="space-y-5">
-            <h3 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-5xl lg:text-6xl">
-              {item.title}
-            </h3>
-            <p className="max-w-2xl text-base leading-relaxed text-gray-700 md:text-lg">
-              {item.body}
-            </p>
-          </div>
-        </div>
-
-        <div className="flex items-center justify-end gap-3">
-          <button
-            onClick={prev}
-            aria-label="Назад"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white/80 text-gray-800 backdrop-blur-md transition hover:border-[#4B66D1] hover:text-[#4B66D1] md:h-12 md:w-12"
-          >
-            <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
-          </button>
-          <button
-            onClick={next}
-            aria-label="Вперёд"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-gray-300 bg-white/80 text-gray-800 backdrop-blur-md transition hover:border-[#4B66D1] hover:text-[#4B66D1] md:h-12 md:w-12"
-          >
-            <ArrowRight className="h-4 w-4" strokeWidth={1.5} />
-          </button>
+        <div className="mx-auto grid w-full max-w-6xl grid-cols-2 gap-10 md:grid-cols-4 md:gap-8 lg:gap-12">
+          {items.map((item) => (
+            <div key={item.title} className="flex flex-col items-center text-center">
+              <div className="mb-6 flex h-28 w-28 items-center justify-center rounded-full border border-white/70 bg-white/60 shadow-[0_20px_40px_rgba(75,102,209,0.15)] backdrop-blur-md md:h-32 md:w-32 lg:h-36 lg:w-36">
+                <item.icon className="h-10 w-10 text-[#4B66D1] md:h-12 md:w-12 lg:h-14 lg:w-14" strokeWidth={1.5} />
+              </div>
+              <h3 className="max-w-[180px] text-sm font-semibold leading-snug text-gray-900 md:text-base lg:text-lg">
+                {item.title}
+              </h3>
+            </div>
+          ))}
         </div>
       </div>
     </section>
