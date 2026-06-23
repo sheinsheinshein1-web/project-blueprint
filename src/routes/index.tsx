@@ -218,25 +218,39 @@ function ProductCard({ img, tag, title, subtitle }: { img: string; tag: string; 
 
 function CinematicHero() {
   const glowRef = useRef<HTMLDivElement>(null);
+  const packRef = useRef<HTMLImageElement>(null);
   const rafRef = useRef<number | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleMove = (e: React.MouseEvent<HTMLElement>) => {
-    const el = glowRef.current;
-    if (!el) return;
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+    const nx = (x / rect.width - 0.5) * 2; // -1..1
+    const ny = (y / rect.height - 0.5) * 2;
     if (rafRef.current) cancelAnimationFrame(rafRef.current);
     rafRef.current = requestAnimationFrame(() => {
-      el.style.setProperty("--mx", `${x}px`);
-      el.style.setProperty("--my", `${y}px`);
-      el.style.setProperty("--r", `220px`);
+      const glow = glowRef.current;
+      if (glow) {
+        glow.style.setProperty("--mx", `${x}px`);
+        glow.style.setProperty("--my", `${y}px`);
+        glow.style.setProperty("--r", `220px`);
+      }
+      const pack = packRef.current;
+      if (pack) {
+        const tx = nx * 24;
+        const ty = ny * 24;
+        const rx = (-ny * 8).toFixed(2);
+        const ry = (nx * 10).toFixed(2);
+        pack.style.transform = `translate3d(${tx}px, ${ty}px, 0) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      }
     });
   };
   const handleLeave = () => {
     const el = glowRef.current;
     if (el) el.style.setProperty("--r", `0px`);
+    const pack = packRef.current;
+    if (pack) pack.style.transform = "translate3d(0,0,0) rotateX(0deg) rotateY(0deg)";
   };
 
   const navLinks = [
@@ -253,15 +267,26 @@ function CinematicHero() {
       className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-black p-6 md:p-8 lg:p-12"
       style={{ maxWidth: 1920, marginInline: "auto" }}
     >
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 z-0 h-full w-full object-cover"
-        src={heroPackaging.url}
+      {/* Ambient backdrop */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 55%, oklch(0.28 0.04 260) 0%, oklch(0.16 0.02 260) 45%, #000 90%)",
+        }}
       />
-      <div className="pointer-events-none absolute inset-0 z-[5] bg-black/25" />
+
+      {/* Floating packaging */}
+      <div className="pointer-events-none absolute inset-0 z-[6] flex items-center justify-center" style={{ perspective: "1200px" }}>
+        <img
+          ref={packRef}
+          src={packagingDelikatnye.url}
+          alt="Упаковка 1998"
+          className="h-auto w-[28vw] max-w-[420px] min-w-[200px] animate-float drop-shadow-[0_40px_60px_rgba(0,0,0,0.6)] will-change-transform"
+          style={{ transition: "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)" }}
+        />
+      </div>
+
       <div
         ref={glowRef}
         className="pointer-events-none absolute inset-0 z-10"
@@ -271,6 +296,7 @@ function CinematicHero() {
           transition: "background 0.8s cubic-bezier(0.25, 1, 0.5, 1)",
         }}
       />
+
 
       {/* Header */}
       <header className="relative z-50 flex w-full items-center justify-between">
