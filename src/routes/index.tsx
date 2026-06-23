@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Building2, CalendarClock, Factory, Menu, RefreshCw, ShieldCheck, Sparkles, ThumbsUp, X } from "lucide-react";
+import { ArrowUpRight, CalendarClock, Factory, Sparkles, ThumbsUp } from "lucide-react";
 import packagingDelikatnye from "@/assets/packaging-delikatnye.png.asset.json";
 import packagingKostochka from "@/assets/packaging-kostochka.png.asset.json";
 import packagingChernye from "@/assets/packaging-chernye.png.asset.json";
@@ -224,85 +224,15 @@ function Index() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer id="contact" className="border-t border-border bg-background px-6 pb-16 pt-32 lg:px-12">
-        <div className="mx-auto w-full">
-          <div className="mb-32 grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-4">
-            <div className="space-y-10 lg:col-span-1">
-              <img src={logo.url} alt="1998 Блестящая история" className="h-20 w-auto" />
-              <p className="max-w-[200px] text-sm leading-relaxed text-muted-foreground">
-                Хозяйственные товары от российского производителя «ТЕКОС-ИНДУСТРИЯ».
-              </p>
-            </div>
-            <div>
-              <h5 className="mb-10 text-[11px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">Навигация</h5>
-              <ul className="space-y-5 text-sm font-semibold">
-                <li><a href="#" className="transition-colors hover:text-primary">Главная</a></li>
-                <li><a href="#about" className="transition-colors hover:text-primary">О бренде</a></li>
-                <li><a href="#products" className="transition-colors hover:text-primary">Продукция</a></li>
-                <li><a href="#history" className="transition-colors hover:text-primary">История</a></li>
-                <li><a href="#contact" className="transition-colors hover:text-primary">Где купить</a></li>
-              </ul>
-            </div>
-            <div className="lg:col-span-2">
-              <h5 className="mb-10 text-[11px] font-black uppercase tracking-[0.3em] text-muted-foreground/60">Контакты</h5>
-              <div className="grid gap-10 md:grid-cols-2">
-                <address className="text-sm font-medium not-italic leading-loose text-muted-foreground">
-                  Санкт-Петербург,<br />
-                  пр. Юрия Гагарина, д. 1, оф. 306
-                </address>
-                <div className="space-y-4">
-                  <p className="text-lg font-bold">+7 (812) 329-36-42</p>
-                  <a href="mailto:info@tecos.spb.ru" className="text-sm font-bold text-primary underline underline-offset-8">info@tecos.spb.ru</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-col items-center justify-between gap-6 border-t border-border pt-12 md:flex-row">
-            <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">© {new Date().getFullYear()} 1998 Блестящая история. Все права защищены.</p>
-            <div className="flex space-x-8 text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
-              <a href="#" className="transition-colors hover:text-foreground">Политика конфиденциальности</a>
-              <a href="#" className="transition-colors hover:text-foreground">Cookies</a>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }
 
-function ProductCard({ img, tag, title, subtitle }: { img: string; tag: string; title: string; subtitle: string }) {
-  return (
-    <article className="group relative overflow-hidden rounded-[2.5rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)] transition-colors hover:bg-white/75">
-      <div className="absolute right-6 top-6 z-10">
-        <span className="rounded-full bg-[#4B66D1] px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white shadow-sm">
-          {tag}
-        </span>
-      </div>
-      <div className="aspect-[4/3] overflow-hidden rounded-t-[2.5rem]">
-        <img src={img} alt={title} loading="lazy" className="h-full w-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-      </div>
-      <div className="p-10">
-        <h3 className="text-3xl font-extrabold tracking-tight text-gray-900">{title}</h3>
-        <p className="mt-3 font-medium text-gray-600">{subtitle}</p>
-      </div>
-    </article>
-  );
-}
 
 function CinematicHero() {
   const glowRef = useRef<HTMLDivElement>(null);
   const rafRef = useRef<number | null>(null);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const packs = [
     { src: packagingDelikatnye.url, alt: "Губки деликатные 1998" },
@@ -356,72 +286,6 @@ function CinematicHero() {
     if (el) el.style.setProperty("--r", `0px`);
   };
 
-  const navLinks = [
-    { label: "Главная", href: "#" },
-    { label: "О бренде", href: "#about" },
-    { label: "Продукция", href: "#products" },
-    { label: "История", href: "#history" },
-    { label: "Контакты", href: "#contact" },
-  ];
-
-  const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
-  const [activeLabel, setActiveLabel] = useState("Главная");
-  const [pill, setPill] = useState({ left: 0, top: 0, width: 0, height: 0 });
-
-  useEffect(() => {
-    const getActive = () => {
-      const trigger = window.innerHeight * 0.25;
-      let active = "Главная";
-      for (const { label, href } of navLinks) {
-        const id = href === "#" ? null : href.slice(1);
-        const el = id ? document.getElementById(id) : document.querySelector("section");
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= trigger) active = label;
-        }
-      }
-      setActiveLabel(active);
-    };
-
-    getActive();
-    window.addEventListener("scroll", getActive, { passive: true });
-    return () => window.removeEventListener("scroll", getActive);
-  }, []);
-
-  useEffect(() => {
-    const link = linkRefs.current[activeLabel];
-    const nav = link?.parentElement;
-    if (link && nav) {
-      const linkRect = link.getBoundingClientRect();
-      const navRect = nav.getBoundingClientRect();
-      setPill({
-        left: linkRect.left - navRect.left,
-        top: linkRect.top - navRect.top,
-        width: linkRect.width,
-        height: linkRect.height,
-      });
-    }
-  }, [activeLabel]);
-
-  useEffect(() => {
-    const onResize = () => {
-      const link = linkRefs.current[activeLabel];
-      const nav = link?.parentElement;
-      if (link && nav) {
-        const linkRect = link.getBoundingClientRect();
-        const navRect = nav.getBoundingClientRect();
-        setPill({
-          left: linkRect.left - navRect.left,
-          top: linkRect.top - navRect.top,
-          width: linkRect.width,
-          height: linkRect.height,
-        });
-      }
-    };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
-  }, [activeLabel]);
-
   return (
     <section
       onMouseMove={handleMove}
@@ -474,86 +338,6 @@ function CinematicHero() {
           transition: "background 0.8s cubic-bezier(0.25, 1, 0.5, 1)",
         }}
       />
-
-
-      {/* Header */}
-      <header
-        className={`fixed left-0 right-0 top-0 z-50 flex w-full items-center justify-between px-6 py-4 transition-all duration-300 md:px-8 lg:px-12 ${
-          scrolled
-            ? "border-b border-white/40 bg-white/80 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-xl"
-            : "bg-transparent"
-        }`}
-      >
-        <a href="#" className="flex items-center" aria-label="1998">
-          <img src={logo.url} alt="1998" className="h-10 w-auto md:h-12" />
-        </a>
-
-        <nav className="relative hidden items-center gap-1 rounded-full bg-gray-200/50 p-1 backdrop-blur-md md:flex">
-          <span
-            className="pointer-events-none absolute rounded-full bg-white/80 shadow-sm transition-all duration-300 ease-out"
-            style={{
-              left: pill.left,
-              top: pill.top,
-              width: pill.width,
-              height: pill.height,
-            }}
-          />
-          {navLinks.map((l) => (
-            <a
-              key={l.label}
-              ref={(el) => { linkRefs.current[l.label] = el; }}
-              href={l.href}
-              onClick={() => setActiveLabel(l.label)}
-              className={
-                "relative z-10 rounded-full px-5 py-2 text-[13px] font-medium transition-colors " +
-                (activeLabel === l.label
-                  ? "text-black"
-                  : "text-gray-700 hover:text-black")
-              }
-            >
-              {l.label}
-            </a>
-          ))}
-        </nav>
-
-        <a
-          href="#contact"
-          className="hidden items-center gap-2 rounded-full bg-[#4B66D1] px-5 py-2 text-[13px] font-medium text-white transition-colors hover:bg-[#3B54B4] md:inline-flex"
-        >
-          Связаться
-          <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
-        </a>
-
-        <button
-          onClick={() => setMobileOpen((v) => !v)}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-black backdrop-blur md:hidden"
-          aria-label="Меню"
-        >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
-
-        {mobileOpen && (
-          <div className="absolute right-4 top-16 z-50 w-64 space-y-2 rounded-2xl border border-white/40 bg-white/90 p-4 shadow-xl backdrop-blur-xl md:hidden">
-            {navLinks.map((l) => (
-              <a
-                key={l.label}
-                href={l.href}
-                onClick={() => setMobileOpen(false)}
-                className="block rounded-xl px-4 py-2 text-sm font-medium text-gray-800 hover:bg-white"
-              >
-                {l.label}
-              </a>
-            ))}
-            <a
-              href="#contact"
-              onClick={() => setMobileOpen(false)}
-              className="mt-2 flex items-center justify-between rounded-full bg-[#4B66D1] px-5 py-2.5 text-sm font-medium text-white"
-            >
-              Связаться <ArrowUpRight className="h-4 w-4" />
-            </a>
-          </div>
-        )}
-      </header>
 
       {/* Bottom */}
       <main className="relative z-20 mt-auto flex flex-col items-start justify-between gap-10 pb-4 md:flex-row md:items-end lg:gap-20">
