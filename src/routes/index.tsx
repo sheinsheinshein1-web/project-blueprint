@@ -369,7 +369,6 @@ function CinematicHero() {
       onMouseMove={handleMove}
       onMouseLeave={handleLeave}
       className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-[oklch(0.90_0.015_260)] p-6 md:p-8 lg:p-12"
-      style={{ maxWidth: 1920, marginInline: "auto" }}
     >
       {/* Ambient backdrop */}
       <div
