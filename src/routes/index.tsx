@@ -337,10 +337,10 @@ function CinematicHero() {
   const packs = [
     { src: packagingDelikatnye.url, alt: "Губки деликатные 1998" },
     { src: packMetallic.url, alt: "Салфетки металлизированные 1998" },
-    { src: packStelkiProbka.url, alt: "Пробковые стельки летние 1998" },
+    { src: packStelkiProbka.url, alt: "Пробковые стельки летние 1998", widthClass: "w-[24vw] max-w-[320px] min-w-[170px]", scaleBoost: 0.82 },
     { src: packagingKostochka.url, alt: "Губки эргономичные 1998" },
     { src: packViscosa.url, alt: "Салфетки универсальные 1998" },
-    { src: packStelkiKozha.url, alt: "Кожаные стельки классика 1998" },
+    { src: packStelkiKozha.url, alt: "Кожаные стельки классика 1998", widthClass: "w-[24vw] max-w-[320px] min-w-[170px]", scaleBoost: 0.82 },
     { src: packagingChernye.url, alt: "Губки универсальные 1998" },
     { src: packCelulosa.url, alt: "Салфетки губчатые 1998" },
   ];
@@ -361,6 +361,11 @@ function CinematicHero() {
     { x: "-26vw", y: "-20px", scale: 0.55, blur: 5,  z: 38, opacity: 0.7 },
     { x: "-16vw", y: "-8px",  scale: 0.78, blur: 2,  z: 44, opacity: 0.9 },
   ];
+
+  const packSize = (pack: (typeof packs)[number]) => ({
+    widthClass: pack.widthClass ?? "w-[30vw] max-w-[414px] min-w-[210px]",
+    scaleBoost: pack.scaleBoost ?? 1,
+  });
 
   const handleMove = (e: React.MouseEvent<HTMLElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
