@@ -157,15 +157,10 @@ export default function Index() {
       {/* History */}
       <section
         id="history"
-        className="relative overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 py-32 lg:px-12"
+        className="relative overflow-hidden bg-white px-6 py-32 lg:px-12"
       >
-        <div
-          className="pointer-events-none absolute inset-0 z-0"
-          style={{
-            background:
-              "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
-          }}
-        />
+        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-white via-gray-50/50 to-white" />
+
         <div className="relative z-10 mx-auto flex w-full flex-col gap-24 lg:flex-row">
           <div className="space-y-8 lg:w-5/12">
             <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
