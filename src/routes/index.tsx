@@ -184,7 +184,8 @@ export default function Index() {
               { name: "Валерий Дворянкин", role: "Основатель", photo: valeryPhoto, offset: true },
             ].map((p) => (
               <div key={p.name} className={`group space-y-8 ${p.offset ? "lg:translate-y-20" : ""}`}>
-                <div className="aspect-[3/4] overflow-hidden rounded-[2rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)]">
+                <div className="aspect-[3/4] overflow-hidden rounded-[2rem] border border-gray-100 bg-white shadow-[0_30px_60px_rgba(20,24,40,0.08)]">
+
                   <img
                     src={p.photo}
                     alt={p.name}
