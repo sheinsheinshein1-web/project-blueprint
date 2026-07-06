@@ -1,19 +1,13 @@
 import { Link } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { ArrowUpRight, CalendarClock, Factory, Sparkles, ThumbsUp } from "lucide-react";
-import packagingDelikatnye from "@/assets/packaging-delikatnye.png";
-import packagingKostochka from "@/assets/packaging-kostochka.png";
-import packagingChernye from "@/assets/packaging-chernye.png";
-import packMetallic from "@/assets/pack-metallic.png";
-import packCelulosa from "@/assets/pack-celulosa.png";
-import packViscosa from "@/assets/pack-viscosa.png";
-import packKaplyaGray from "@/assets/pack-kaplya-gray.png";
-import packOvalEzhevika from "@/assets/pack-oval-ezhevika.png";
+import heroLifestyle from "@/assets/hero-lifestyle.png.asset.json";
 import img01 from "@/assets/products/01-gubki-universalnye-1.jpg";
 import img07 from "@/assets/products/07-salfetki-viskoznye-1.jpg";
 import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.jpg";
 import nikolayPhoto from "@/assets/nikolay.jpg";
 import valeryPhoto from "@/assets/valery.png";
+
 
 
 function AboutSlider() {
