@@ -3,7 +3,8 @@ import logo from "@/assets/logo-1998.png";
 
 export function SiteFooter() {
   return (
-    <footer id="contact" className="border-t border-border bg-background px-6 pb-16 pt-32 lg:px-12">
+    <footer id="contact" className="bg-[oklch(0.90_0.006_260)] px-6 pb-16 pt-32 lg:px-12">
+
       <div className="mx-auto w-full">
         <div className="mb-32 grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-10 lg:col-span-1">
