@@ -209,7 +209,7 @@ function CinematicHero() {
         src={heroLifestyle.url}
         alt="Женщина моет посуду губкой 1998"
         loading="eager"
-        className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-[70%_center] sm:object-center"
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-[80%_center] sm:object-center"
       />
 
       {/* Gradient overlay for readability */}
