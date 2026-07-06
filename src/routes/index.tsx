@@ -1,19 +1,13 @@
 import { Link } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { ArrowUpRight, CalendarClock, Factory, Sparkles, ThumbsUp } from "lucide-react";
-import packagingDelikatnye from "@/assets/packaging-delikatnye.png";
-import packagingKostochka from "@/assets/packaging-kostochka.png";
-import packagingChernye from "@/assets/packaging-chernye.png";
-import packMetallic from "@/assets/pack-metallic.png";
-import packCelulosa from "@/assets/pack-celulosa.png";
-import packViscosa from "@/assets/pack-viscosa.png";
-import packKaplyaGray from "@/assets/pack-kaplya-gray.png";
-import packOvalEzhevika from "@/assets/pack-oval-ezhevika.png";
+import heroLifestyle from "@/assets/hero-lifestyle.png.asset.json";
 import img01 from "@/assets/products/01-gubki-universalnye-1.jpg";
 import img07 from "@/assets/products/07-salfetki-viskoznye-1.jpg";
 import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.jpg";
 import nikolayPhoto from "@/assets/nikolay.jpg";
 import valeryPhoto from "@/assets/valery.png";
+
 
 
 function AboutSlider() {
@@ -208,127 +202,30 @@ export default function Index() {
 
 
 function CinematicHero() {
-  const glowRef = useRef<HTMLDivElement>(null);
-  const rafRef = useRef<number | null>(null);
-  const [current, setCurrent] = useState(0);
-
-  const packs: Array<{ src: string; alt: string; widthClass?: string; scaleBoost?: number }> = [
-    { src: packagingDelikatnye, alt: "Губки деликатные 1998" },
-    { src: packMetallic, alt: "Салфетки металлизированные 1998" },
-    { src: packKaplyaGray, alt: "Губки эргономичные капля 1998" },
-    { src: packagingKostochka, alt: "Губки эргономичные 1998" },
-    { src: packViscosa, alt: "Салфетки универсальные 1998" },
-    { src: packOvalEzhevika, alt: "Губки эргономичные овал 1998" },
-    { src: packagingChernye, alt: "Губки универсальные 1998" },
-    { src: packCelulosa, alt: "Салфетки губчатые 1998" },
-  ];
-
-  useEffect(() => {
-    const id = setInterval(() => setCurrent((c) => (c + 1) % packs.length), 3200);
-    return () => clearInterval(id);
-  }, [packs.length]);
-
-  // slot 0 = front center, then right side (near→far→off-screen),
-  // off-screen wrap, then left side (off-screen→far→near)
-  const slotStyles: Array<{ x: string; y: string; scale: number; blur: number; brightness: number; z: number; opacity: number }> = [
-    { x: "0vw",     y: "0px",   scale: 1.55, blur: 0,  brightness: 1.00, z: 50, opacity: 1 },
-    { x: "38vw",    y: "0px",   scale: 0.54, blur: 2,  brightness: 1.06, z: 45, opacity: 0.88 },
-    { x: "56vw",    y: "0px",   scale: 0.30, blur: 5,  brightness: 1.16, z: 40, opacity: 0.66 },
-    { x: "74vw",    y: "0px",   scale: 0.18, blur: 10, brightness: 1.30, z: 35, opacity: 0.40 },
-    { x: "92vw",    y: "0px",   scale: 0.12, blur: 18, brightness: 1.50, z: 30, opacity: 0 },
-    { x: "-92vw",   y: "0px",   scale: 0.12, blur: 18, brightness: 1.50, z: 30, opacity: 0 },
-    { x: "-56vw",   y: "0px",   scale: 0.30, blur: 5,  brightness: 1.16, z: 40, opacity: 0.66 },
-    { x: "-38vw",   y: "0px",   scale: 0.54, blur: 2,  brightness: 1.06, z: 45, opacity: 0.88 },
-  ];
-
-  const packSize = (pack: (typeof packs)[number]) => ({
-    widthClass: pack.widthClass ?? "w-[60vw] sm:w-[30vw] max-w-[414px] min-w-[210px]",
-    scaleBoost: pack.scaleBoost ?? 1,
-  });
-
-  const handleMove = (e: React.MouseEvent<HTMLElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    rafRef.current = requestAnimationFrame(() => {
-      const glow = glowRef.current;
-      if (glow) {
-        glow.style.setProperty("--mx", `${x}px`);
-        glow.style.setProperty("--my", `${y}px`);
-        glow.style.setProperty("--r", `220px`);
-      }
-    });
-  };
-  const handleLeave = () => {
-    const el = glowRef.current;
-    if (el) el.style.setProperty("--r", `0px`);
-  };
-
   return (
-    <section
-      onMouseMove={handleMove}
-      onMouseLeave={handleLeave}
-      className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden bg-[oklch(0.90_0.006_260)] px-6 pb-6 pt-24 md:px-8 md:pb-8 md:pt-28 lg:px-12 lg:pb-12 lg:pt-32"
-    >
-      {/* Ambient backdrop */}
-      <div
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 55%, oklch(0.97 0.006 260) 0%, oklch(0.92 0.008 260) 50%, oklch(0.84 0.012 260) 100%)",
-        }}
+    <section className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden px-6 pb-6 pt-24 md:px-8 md:pb-8 md:pt-28 lg:px-12 lg:pb-12 lg:pt-32">
+      {/* Lifestyle background */}
+      <img
+        src={heroLifestyle.url}
+        alt="Женщина моет посуду губкой 1998"
+        loading="eager"
+        className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover"
       />
 
-      {/* Rotating packaging carousel */}
-      <div className="pointer-events-none absolute inset-0 z-[6] flex items-center justify-center" style={{ perspective: "1400px" }}>
-        <div className="relative h-[60vh] w-full max-w-[1100px] max-sm:-translate-y-28">
-          {packs.map((p, i) => {
-            const slot = (i - current + packs.length) % packs.length;
-            const s = slotStyles[slot];
-            const { widthClass, scaleBoost } = packSize(p);
-            return (
-              <img
-                key={p.src}
-                src={p.src}
-                alt={p.alt}
-                className={`absolute left-1/2 top-1/2 h-auto ${widthClass} will-change-transform`}
-                style={{
-                  transform: `translate(-50%, -50%) translate(${s.x}, ${s.y}) scale(${s.scale * scaleBoost})`,
-                  filter: `blur(${s.blur}px) brightness(${s.brightness})`,
-                  opacity: s.opacity,
-                  zIndex: s.z,
-                  transition: "transform 1.1s cubic-bezier(0.65, 0, 0.35, 1), filter 1.1s ease, opacity 1.1s ease",
-                }}
-              />
-            );
-          })}
-        </div>
-      </div>
-
-
-
-      <div
-        ref={glowRef}
-        className="pointer-events-none absolute inset-0 z-10"
-        style={{
-          background:
-            "radial-gradient(circle var(--r,0px) at var(--mx,50%) var(--my,50%), rgba(75,102,209,0.18), transparent 70%)",
-          transition: "background 0.8s cubic-bezier(0.25, 1, 0.5, 1)",
-        }}
-      />
+      {/* Gradient overlay for readability */}
+      <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/60 via-black/25 to-black/10" />
 
       {/* Bottom */}
       <main className="relative z-20 mt-auto flex flex-col items-start justify-between gap-10 pb-4 md:flex-row md:items-end lg:gap-20">
         <div className="space-y-4 md:space-y-6">
           <h1
-            className="bg-gradient-to-br from-gray-900 via-gray-600 to-gray-300 bg-clip-text font-semibold leading-[0.85] tracking-[-0.04em] text-transparent"
+            className="font-semibold leading-[0.85] tracking-[-0.04em] text-white"
             style={{ fontSize: "clamp(60px, 9vw, 86px)" }}
           >
             Блестящая
           </h1>
           <h2
-            className="bg-gradient-to-br from-gray-800 via-gray-500 to-gray-300 bg-clip-text font-semibold leading-[0.85] tracking-[-0.04em] text-transparent"
+            className="font-semibold leading-[0.85] tracking-[-0.04em] text-white"
             style={{ fontSize: "clamp(60px, 9vw, 86px)" }}
           >
             история
@@ -337,7 +234,7 @@ function CinematicHero() {
 
         <div className="flex max-w-[520px] flex-col items-start gap-6 md:items-end lg:gap-8">
           <p
-            className="text-balance text-[15px] font-light leading-relaxed text-gray-700 md:text-right md:text-[16px]"
+            className="text-balance text-[15px] font-light leading-relaxed text-white/90 md:text-right md:text-[16px]"
           >
             С 1998 года мы создаём хозяйственные товары,
             <span className="sm:hidden"> </span>
@@ -346,7 +243,7 @@ function CinematicHero() {
           </p>
           <a
             href="#products"
-            className="group inline-flex w-full items-center justify-between gap-2 whitespace-nowrap rounded-full bg-[#4B66D1] px-8 py-4 text-[14px] font-semibold text-white shadow-lg transition-colors hover:bg-[#3B54B4] sm:w-auto"
+            className="group inline-flex w-full items-center justify-between gap-2 whitespace-nowrap rounded-full bg-white px-8 py-4 text-[14px] font-semibold text-[#4B66D1] shadow-lg transition-colors hover:bg-gray-100 sm:w-auto"
           >
             Смотреть продукцию
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" strokeWidth={2} />
