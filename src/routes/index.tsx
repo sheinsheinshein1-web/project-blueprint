@@ -333,7 +333,7 @@ function ReviewsSection() {
 
   return (
     <section className="relative overflow-hidden bg-[#f4f4f0] px-6 py-24 lg:px-12 lg:py-32">
-      <div className="mx-auto w-full max-w-[1440px]">
+      <div className="mx-auto w-full">
         <div className="mb-10 max-w-2xl lg:mb-14">
           <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
             Нам доверяют
