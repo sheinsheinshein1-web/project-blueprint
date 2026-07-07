@@ -351,6 +351,7 @@ function ReviewsSection() {
 }
 
 
+export default function Index() {
   useEffect(() => {
     document.title = "1998 Блестящая история — хозяйственные товары";
   }, []);
