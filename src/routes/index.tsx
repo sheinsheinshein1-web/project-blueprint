@@ -64,7 +64,7 @@ function AboutSlider() {
               className="h-[220px] w-full object-cover sm:h-[280px] md:h-[380px] lg:h-[420px]"
             />
           </div>
-          <div className="mt-4 grid grid-cols-3 gap-4">
+          <div className="mt-4 grid grid-cols-3 gap-3 sm:gap-4">
             <div className="overflow-hidden rounded-[1.25rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)]">
               <img
                 src={factoryLine}
