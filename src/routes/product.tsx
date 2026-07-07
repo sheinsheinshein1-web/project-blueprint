@@ -5,6 +5,7 @@ import { DynamicIcon } from "lucide-react/dynamic";
 import { getProductById, getRelatedProducts } from "@/data/products";
 import wildberriesLogo from "@/assets/wildberries.gif.asset.json";
 import ozonLogo from "@/assets/ozon.gif.asset.json";
+import yaMarketLogo from "@/assets/ya_market.gif.asset.json";
 
 
 export default function ProductPage() {
@@ -91,6 +92,7 @@ export default function ProductPage() {
               {product.marketplaces.map((m) => {
                 const isWB = m.name.toUpperCase() === "WILDBERRIES";
                 const isOzon = m.name.toUpperCase() === "OZON";
+                const isYa = m.name.toLowerCase().includes("яндекс");
                 return (
                   <a
                     key={m.name}
@@ -104,6 +106,8 @@ export default function ProductPage() {
                       <img src={wildberriesLogo.url} alt="Wildberries" className="h-5 w-auto" />
                     ) : isOzon ? (
                       <img src={ozonLogo.url} alt="Ozon" className="h-5 w-auto" />
+                    ) : isYa ? (
+                      <img src={yaMarketLogo.url} alt="Яндекс Маркет" className="h-5 w-auto" />
                     ) : (
                       m.name
                     )}
