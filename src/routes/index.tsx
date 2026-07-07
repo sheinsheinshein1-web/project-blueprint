@@ -121,6 +121,7 @@ function ProductsSection() {
   const [perPage, setPerPage] = useState(1);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
+  const hasDragged = useRef(false);
 
   const products = [
     { id: "gubki-universalnye", name: "Губки универсальные", image: img01, link: "/product/gubki-universalnye", desc: "Высокая износостойкость и эффективность" },
