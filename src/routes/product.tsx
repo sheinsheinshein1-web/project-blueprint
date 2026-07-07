@@ -36,7 +36,7 @@ export default function ProductPage() {
         <nav aria-label="Хлебные крошки" className="mb-8 flex items-center gap-2 text-sm text-gray-500">
           <Link to="/" className="transition-colors hover:text-[#4B66D1]">Главная</Link>
           <ChevronRight className="h-4 w-4" />
-          <Link to="/catalog" className="transition-colors hover:text-[#4B66D1]">Для уборки</Link>
+          <Link to={`/catalog?category=${encodeURIComponent(product.category)}`} className="transition-colors hover:text-[#4B66D1]">{product.category}</Link>
           <ChevronRight className="h-4 w-4" />
           <span className="text-gray-900">{product.title}</span>
         </nav>
