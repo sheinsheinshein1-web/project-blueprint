@@ -9,9 +9,9 @@ import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.jpg";
 import nikolayPhoto from "@/assets/nikolay.jpg";
 import valeryPhoto from "@/assets/valery.png";
 import factoryExterior from "@/assets/factory-exterior.png.asset.json";
-import factorySponges from "@/assets/factory-sponges.png.asset.json";
-import factoryLine from "@/assets/factory-line.jpg";
-import factoryRolls from "@/assets/factory-rolls.jpg";
+import factory1 from "@/assets/factory-1.jpg.asset.json";
+import factory2 from "@/assets/factory-2.jpg.asset.json";
+import factory3 from "@/assets/factory-3.jpg.asset.json";
 
 
 
