@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import heroLifestyle from "@/assets/hero-lifestyle.png";
 import heroMobile from "@/assets/hero-mobile.png";
 import img01 from "@/assets/products/01-gubki-universalnye-1.jpg";
