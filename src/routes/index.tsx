@@ -199,9 +199,158 @@ function ProductsSection() {
     </section>
   );
 }
+function ReviewsSection() {
+  const [page, setPage] = useState(0);
+
+  const reviews = [
+    {
+      name: "Анна",
+      photo: img01,
+      initials: "А",
+      color: "#4B66D1",
+      rating: 5,
+      text: "Губки отличные! Плотные, не крошатся и хорошо пенятся. Использую каждый день.",
+      date: "12.04.2024",
+    },
+    {
+      name: "Денис",
+      photo: img02,
+      initials: "Д",
+      color: "#2d8a9e",
+      rating: 5,
+      text: "Качественные губки, беру не первый раз. Удобная упаковка, хватает надолго.",
+      date: "09.04.2024",
+    },
+    {
+      name: "Ольга",
+      photo: img04,
+      initials: "О",
+      color: "#c4654a",
+      rating: 5,
+      text: "Даже после недели использования выглядят как новые. Очень довольна качеством!",
+      date: "09.04.2024",
+    },
+    {
+      name: "Алла",
+      photo: img06,
+      initials: "А",
+      color: "#7d9b76",
+      rating: 5,
+      text: "Используем дома и на даче. Очень довольна — никаких царапин и разводов.",
+      date: "01.04.2024",
+    },
+    {
+      name: "Мария",
+      photo: img07,
+      initials: "М",
+      color: "#9b72cf",
+      rating: 5,
+      text: "Лучшие губки, что я пробовала! Хорошо моют и не теряют форму. Рекомендую!",
+      date: "28.03.2024",
+    },
+  ];
+
+  const perPage = typeof window !== "undefined" && window.innerWidth >= 1280 ? 5 : typeof window !== "undefined" && window.innerWidth >= 1024 ? 3 : typeof window !== "undefined" && window.innerWidth >= 640 ? 2 : 1;
+  const totalPages = Math.max(1, reviews.length - perPage + 1);
+  const canPrev = page > 0;
+  const canNext = page < totalPages - 1;
+
+  const goPrev = () => setPage((p) => Math.max(0, p - 1));
+  const goNext = () => setPage((p) => Math.min(totalPages - 1, p + 1));
+
+  return (
+    <section className="relative overflow-hidden bg-[#f4f4f0] px-6 py-24 lg:px-12 lg:py-32">
+      <div className="mx-auto w-full max-w-[1440px]">
+        <div className="mb-10 max-w-2xl lg:mb-14">
+          <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
+            Нам доверяют
+          </h2>
+          <p className="mt-4 text-base font-light leading-relaxed text-gray-700 lg:text-lg">
+            Спасибо всем, кто выбирает продукцию «1998» и делится своими впечатлениями.
+          </p>
+        </div>
+
+        <div className="relative">
+          <button
+            onClick={goPrev}
+            disabled={!canPrev}
+            className="absolute left-0 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-[#e8e8e3] p-3 text-gray-900 transition-all hover:bg-[#deded6] disabled:opacity-30 lg:left-[-28px] lg:flex h-12 w-12"
+            aria-label="Назад"
+          >
+            <ChevronLeft className="h-5 w-5" strokeWidth={1.75} />
+          </button>
+
+          <button
+            onClick={goNext}
+            disabled={!canNext}
+            className="absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-[#e8e8e3] p-3 text-gray-900 transition-all hover:bg-[#deded6] disabled:opacity-30 lg:right-[-28px] lg:flex h-12 w-12"
+            aria-label="Вперед"
+          >
+            <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
+          </button>
+
+          <div className="overflow-hidden">
+            <div
+              className="flex gap-4 transition-transform duration-500 ease-out md:gap-5 lg:gap-6"
+              style={{ transform: `translateX(-${page * (100 / perPage)}%)` }}
+            >
+              {reviews.map((r) => (
+                <div
+                  key={r.name}
+                  className="w-[calc(100%-8px)] shrink-0 overflow-hidden rounded-[1.5rem] border border-white/60 bg-white shadow-[0_20px_40px_rgba(20,24,40,0.08)] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(20%-19.2px)]"
+                >
+                  <div className="aspect-[4/3] w-full overflow-hidden bg-[#f4f4f0]">
+                    <img
+                      src={r.photo}
+                      alt={`Фото отзыва ${r.name}`}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="p-5 lg:p-6">
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold text-white"
+                        style={{ backgroundColor: r.color }}
+                      >
+                        {r.initials}
+                      </div>
+                      <div>
+                        <p className="text-base font-bold text-gray-900">{r.name}</p>
+                        <div className="flex items-center gap-0.5">
+                          {Array.from({ length: r.rating }).map((_, i) => (
+                            <Star key={i} className="h-4 w-4 fill-[#0f1b3d] text-[#0f1b3d]" />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                    <p className="mt-4 text-sm font-light leading-relaxed text-gray-700">
+                      {r.text}
+                    </p>
+                    <p className="mt-5 text-xs font-medium text-gray-400">{r.date}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 flex items-center justify-center gap-2">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setPage(i)}
+                className={`h-2.5 w-2.5 rounded-full transition-colors ${i === page ? "bg-[#0f1b3d]" : "bg-[#0f1b3d]/20"}`}
+                aria-label={`Перейти к странице ${i + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 
-export default function Index() {
   useEffect(() => {
     document.title = "1998 Блестящая история — хозяйственные товары";
   }, []);
