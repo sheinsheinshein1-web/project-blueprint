@@ -212,8 +212,10 @@ function ProductsSection() {
     track.style.cursor = "grab";
   };
 
-  const handleCardClick = () => {
-    // Click intentionally allowed; drag state is handled by pointer capture
+  const handleCardClick = (e: React.MouseEvent) => {
+    if (hasDragged.current) {
+      e.preventDefault();
+    }
   };
 
   return (
