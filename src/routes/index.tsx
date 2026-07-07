@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, ChevronLeft, ChevronRight, Play, Volume2, VolumeX } from "lucide-react";
+import { ArrowUpRight, Play, Volume2, VolumeX } from "lucide-react";
 import heroLifestyle from "@/assets/hero-lifestyle.png";
 import heroMobile from "@/assets/hero-mobile.png";
 import img01 from "@/assets/products/01-gubki-universalnye-1.jpg";
@@ -268,9 +268,6 @@ function ReviewsSection() {
     setPage((p) => Math.max(0, Math.min(totalPages - 1, p)));
   }, [totalPages]);
 
-  const canPrev = page > 0;
-  const canNext = page < totalPages - 1;
-
   const scrollToPage = (nextPage: number) => {
     const track = trackRef.current;
     if (!track) return;
@@ -281,9 +278,6 @@ function ReviewsSection() {
     track.scrollTo({ left: step * nextPage, behavior: "smooth" });
     setPage(nextPage);
   };
-
-  const goPrev = () => scrollToPage(Math.max(0, page - 1));
-  const goNext = () => scrollToPage(Math.min(totalPages - 1, page + 1));
 
   useEffect(() => {
     const track = trackRef.current;
@@ -333,7 +327,7 @@ function ReviewsSection() {
 
   return (
     <section className="relative overflow-hidden bg-[#f4f4f0] px-6 py-24 lg:px-12 lg:py-32">
-      <div className="mx-auto w-full max-w-[1440px]">
+      <div className="mx-auto w-full">
         <div className="mb-10 max-w-2xl lg:mb-14">
           <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
             Нам доверяют
@@ -341,24 +335,6 @@ function ReviewsSection() {
         </div>
 
         <div className="relative">
-          <button
-            onClick={goPrev}
-            disabled={!canPrev}
-            className="absolute left-0 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-[#e8e8e3] p-3 text-gray-900 transition-all hover:bg-[#deded6] disabled:opacity-30 lg:left-[-28px] lg:flex h-12 w-12"
-            aria-label="Назад"
-          >
-            <ChevronLeft className="h-5 w-5" strokeWidth={1.75} />
-          </button>
-
-          <button
-            onClick={goNext}
-            disabled={!canNext}
-            className="absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-[#e8e8e3] p-3 text-gray-900 transition-all hover:bg-[#deded6] disabled:opacity-30 lg:right-[-28px] lg:flex h-12 w-12"
-            aria-label="Вперед"
-          >
-            <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
-          </button>
-
           <div
             ref={trackRef}
             className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:gap-5 lg:gap-6 scrollbar-hide"
