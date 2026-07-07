@@ -4,8 +4,17 @@ import { ArrowUpRight, Play, Volume2, VolumeX } from "lucide-react";
 import heroLifestyle from "@/assets/hero-lifestyle.png";
 import heroMobile from "@/assets/hero-mobile.png";
 import img01 from "@/assets/products/01-gubki-universalnye-1.jpg";
+import img02 from "@/assets/products/02-gubki-s-aromatom-myaty-1.jpg";
+import img03 from "@/assets/products/03-gubki-s-aromatom-kofe-1.jpg";
+import img04 from "@/assets/products/04-gubki-delikatnye-1.jpg";
+import img05 from "@/assets/products/05-gubki-ergonomichnye-1.jpg";
+import img06 from "@/assets/products/06-salfetki-celyuloznye-1.jpg";
 import img07 from "@/assets/products/07-salfetki-viskoznye-1.jpg";
 import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.jpg";
+import img09 from "@/assets/products/09-stelki-lnyanye-universalnye-1.jpg";
+import img10 from "@/assets/products/10-stelki-probkovye-letnie-1.jpg";
+import img11 from "@/assets/products/11-stelki-kozhanye-klassika-1.jpg";
+import img12 from "@/assets/products/12-stelki-sportivnye-dyshaschie-1.jpg";
 import review1 from "@/assets/reviews/review-1.jpg";
 import review2 from "@/assets/reviews/review-2.jpg";
 import review3 from "@/assets/reviews/review-3.jpg";
@@ -106,10 +115,65 @@ function AboutSlider() {
 
 
 function ProductsSection() {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const startX = useRef(0);
+  const scrollLeft = useRef(0);
+
+  const products = [
+    { name: "Губки универсальные", image: img01, link: "/catalog?category=Губки", desc: "Высокая износостойкость и эффективность" },
+    { name: "Губки с ароматом мяты", image: img02, link: "/catalog?category=Губки", desc: "Свежесть и мягкость в каждой уборке" },
+    { name: "Губки с ароматом кофе", image: img03, link: "/catalog?category=Губки", desc: "Приятный аромат при мытье посуды" },
+    { name: "Губки деликатные", image: img04, link: "/catalog?category=Губки", desc: "Бережный уход за хрупкими поверхностями" },
+    { name: "Губки эргономичные", image: img05, link: "/catalog?category=Губки", desc: "Удобная форма для руки и крепления" },
+    { name: "Салфетки целлюлозные", image: img06, link: "/catalog?category=Салфетки", desc: "Отлично впитывают влагу и очищают" },
+    { name: "Салфетки вискозные", image: img07, link: "/catalog?category=Салфетки", desc: "Универсальные материалы для ежедневной уборки" },
+    { name: "Стельки зимние с фольгой", image: img08, link: "/catalog?category=Стельки", desc: "Сохраняют тепло в холодную погоду" },
+    { name: "Стельки льняные", image: img09, link: "/catalog?category=Стельки", desc: "Натуральные материалы и комфорт" },
+    { name: "Стельки пробковые", image: img10, link: "/catalog?category=Стельки", desc: "Легкие и дышащие на лето" },
+    { name: "Стельки кожаные", image: img11, link: "/catalog?category=Стельки", desc: "Классический вариант на каждый день" },
+    { name: "Стельки спортивные", image: img12, link: "/catalog?category=Стельки", desc: "Дышащие и амортизирующие" },
+  ];
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    const track = trackRef.current;
+    if (!track) return;
+    setIsDragging(true);
+    startX.current = e.clientX;
+    scrollLeft.current = track.scrollLeft;
+    track.setPointerCapture(e.pointerId);
+    track.style.cursor = "grabbing";
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!isDragging) return;
+    const track = trackRef.current;
+    if (!track) return;
+    const x = e.clientX;
+    const walk = (x - startX.current) * 1.4;
+    track.scrollLeft = scrollLeft.current - walk;
+  };
+
+  const handlePointerUp = (e: React.PointerEvent) => {
+    const track = trackRef.current;
+    if (!track) return;
+    setIsDragging(false);
+    try {
+      track.releasePointerCapture(e.pointerId);
+    } catch {}
+    track.style.cursor = "grab";
+  };
+
+  const handleCardClick = (e: React.MouseEvent) => {
+    if (Math.abs(e.clientX - startX.current) > 8) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <section
       id="products"
-      className="relative bg-[oklch(0.93_0.005_260)] px-6 py-24 lg:px-12"
+      className="relative overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 py-24 lg:px-12"
     >
       <div
         className="pointer-events-none absolute inset-0 z-0"
@@ -118,7 +182,7 @@ function ProductsSection() {
             "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
         }}
       />
-      <div className="relative z-10 mx-auto flex w-full flex-col">
+      <div className="relative z-10 mx-auto w-full">
         <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div className="max-w-2xl space-y-3">
             <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
@@ -138,68 +202,49 @@ function ProductsSection() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 items-stretch gap-4 md:grid-cols-2 md:gap-5 lg:grid-cols-3 lg:gap-6">
-          {/* Губки */}
-          <Link
-            to="/catalog?category=Губки"
-            className="group relative flex h-[380px] cursor-pointer flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:h-[440px]"
-          >
-            <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
-              <img src={img01} alt="Губки" loading="lazy" className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105" />
-            </div>
+        <div
+          ref={trackRef}
+          className="-mr-6 flex cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto pb-4 pt-2 md:gap-5 lg:-mr-12 lg:gap-6 scrollbar-hide select-none"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerLeave={handlePointerUp}
+        >
+          {products.map((p) => (
+            <Link
+              key={p.name}
+              to={p.link}
+              draggable={false}
+              onClick={handleCardClick}
+              className="group relative w-[72%] shrink-0 snap-start overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 sm:w-[46%] lg:w-[31%] xl:w-[23%]"
+            >
+              <div className="relative aspect-[4/5] overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
+                <img
+                  src={p.image}
+                  alt={p.name}
+                  loading="lazy"
+                  draggable={false}
+                  className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105"
+                />
+              </div>
               <div className="flex items-center justify-between p-4 md:p-6">
-              <div>
-                <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">Губки</h3>
-                <p className="mt-0.5 text-xs font-medium text-gray-600 md:text-sm">Высокая износостойкость и эффективность</p>
+                <div>
+                  <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">{p.name}</h3>
+                  <p className="mt-0.5 text-xs font-medium text-gray-600 md:text-sm">{p.desc}</p>
+                </div>
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <ArrowUpRight className="h-4 w-4 text-white" strokeWidth={1.75} />
+                </div>
               </div>
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                <ArrowUpRight className="h-4 w-4 text-white" strokeWidth={1.75} />
-              </div>
-            </div>
-          </Link>
-
-          {/* Стельки */}
-          <Link
-            to="/catalog?category=Стельки"
-            className="group relative flex h-[380px] cursor-pointer flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:h-[440px]"
-          >
-            <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
-              <img src={img08} alt="Стельки" loading="lazy" className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105" />
-            </div>
-              <div className="flex items-center justify-between p-4 md:p-6">
-              <div>
-                <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">Стельки</h3>
-                <p className="mt-0.5 text-xs font-medium text-gray-600 md:text-sm">Натуральные материалы и комфорт</p>
-              </div>
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                <ArrowUpRight className="h-4 w-4 text-white" strokeWidth={1.75} />
-              </div>
-            </div>
-          </Link>
-
-          {/* Салфетки */}
-          <Link
-            to="/catalog?category=Салфетки"
-            className="group relative flex h-[380px] cursor-pointer flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 md:h-[440px]"
-          >
-            <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
-              <img src={img07} alt="Салфетки" loading="lazy" className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105" />
-            </div>
-              <div className="flex items-center justify-between p-4 md:p-6">
-              <div>
-                <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">Салфетки</h3>
-                <p className="mt-0.5 text-xs font-medium text-gray-600 md:text-sm">Универсальные материалы для ежедневной уборки</p>
-              </div>
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                <ArrowUpRight className="h-4 w-4 text-white" strokeWidth={1.75} />
-              </div>
-            </div>
-          </Link>
+            </Link>
+          ))}
         </div>
       </div>
     </section>
   );
 }
+
 
 function ReviewsSection() {
   const trackRef = useRef<HTMLDivElement>(null);
