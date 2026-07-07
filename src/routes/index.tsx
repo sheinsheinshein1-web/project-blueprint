@@ -165,8 +165,8 @@ function ProductsSection() {
                 <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">Стельки</h3>
                 <p className="mt-0.5 text-xs font-medium text-gray-600 md:text-sm">Натуральные материалы и комфорт</p>
               </div>
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/80 shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                <ArrowUpRight className="h-4 w-4 text-gray-800" strokeWidth={1.75} />
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                <ArrowUpRight className="h-4 w-4 text-white" strokeWidth={1.75} />
               </div>
             </div>
           </Link>
