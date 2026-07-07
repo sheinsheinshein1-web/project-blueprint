@@ -187,6 +187,7 @@ function ProductsSection() {
     const track = trackRef.current;
     if (!track) return;
     setIsDragging(true);
+    hasDragged.current = false;
     startX.current = e.clientX;
     scrollLeft.current = track.scrollLeft;
     track.setPointerCapture(e.pointerId);
@@ -198,6 +199,9 @@ function ProductsSection() {
     const track = trackRef.current;
     if (!track) return;
     const x = e.clientX;
+    if (Math.abs(x - startX.current) > 5) {
+      hasDragged.current = true;
+    }
     const walk = (x - startX.current) * 1.4;
     track.scrollLeft = scrollLeft.current - walk;
   };
@@ -213,7 +217,7 @@ function ProductsSection() {
   };
 
   const handleCardClick = (e: React.MouseEvent) => {
-    if (Math.abs(e.clientX - startX.current) > 8) {
+    if (hasDragged.current) {
       e.preventDefault();
     }
   };
