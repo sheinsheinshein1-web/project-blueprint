@@ -104,6 +104,7 @@ function AboutSlider() {
 
 
 
+
 function ProductsSection() {
   return (
     <section
@@ -199,56 +200,50 @@ function ProductsSection() {
     </section>
   );
 }
+
 function ReviewsSection() {
   const trackRef = useRef<HTMLDivElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const [page, setPage] = useState(0);
   const [perPage, setPerPage] = useState(1);
+  const [playing, setPlaying] = useState<Record<string, boolean>>({});
+  const [muted, setMuted] = useState<Record<string, boolean>>({});
 
   const reviews = [
     {
       name: "Анна",
+      username: "@tvartirka_pik",
       photo: review1,
       initials: "А",
       color: "#4B66D1",
-      rating: 5,
-      text: "Губки отличные! Плотные, не крошатся и хорошо пенятся. Использую каждый день.",
-      date: "12.04.2024",
     },
     {
       name: "Денис",
+      username: "@spb.denchik",
       photo: review2,
       initials: "Д",
       color: "#2d8a9e",
-      rating: 5,
-      text: "Качественные губки, беру не первый раз. Удобная упаковка, хватает надолго.",
-      date: "09.04.2024",
     },
     {
       name: "Ольга",
+      username: "@wildberries",
       photo: review3,
       initials: "О",
       color: "#c4654a",
-      rating: 5,
-      text: "Даже после недели использования выглядят как новые. Очень довольна качеством!",
-      date: "09.04.2024",
     },
     {
       name: "Алла",
+      username: "@feallkin_dom",
       photo: review4,
       initials: "А",
       color: "#7d9b76",
-      rating: 5,
-      text: "Используем дома и на даче. Очень довольна — никаких царапин и разводов.",
-      date: "01.04.2024",
     },
     {
       name: "Мария",
+      username: "@mariya_foods",
       photo: review5,
       initials: "М",
       color: "#9b72cf",
-      rating: 5,
-      text: "Лучшие губки, что я пробовала! Хорошо моют и не теряют форму. Рекомендую!",
-      date: "28.03.2024",
     },
   ];
 
@@ -300,6 +295,37 @@ function ReviewsSection() {
     return () => track.removeEventListener("scroll", handleScroll);
   }, [totalPages]);
 
+  const togglePlay = (idx: number) => {
+    const video = videoRefs.current[idx];
+    if (!video) return;
+    const r = reviews[idx];
+    if (video.paused) {
+      video.play().catch(() => {});
+      setPlaying((p) => ({ ...p, [r.name]: true }));
+    } else {
+      video.pause();
+      setPlaying((p) => ({ ...p, [r.name]: false }));
+    }
+  };
+
+  const toggleMute = (idx: number) => {
+    const video = videoRefs.current[idx];
+    if (!video) return;
+    const r = reviews[idx];
+    video.muted = !video.muted;
+    setMuted((p) => ({ ...p, [r.name]: video.muted }));
+  };
+
+  const handleVideoClick = (idx: number) => {
+    const video = videoRefs.current[idx];
+    if (!video) return;
+    if (video.paused) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  };
+
   return (
     <section className="relative overflow-hidden bg-[#f4f4f0] px-6 py-24 lg:px-12 lg:py-32">
       <div className="mx-auto w-full max-w-[1440px]">
@@ -307,9 +333,6 @@ function ReviewsSection() {
           <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
             Нам доверяют
           </h2>
-          <p className="mt-4 text-base font-light leading-relaxed text-gray-700 lg:text-lg">
-            Спасибо всем, кто выбирает продукцию «1998» и делится своими впечатлениями.
-          </p>
         </div>
 
         <div className="relative">
@@ -336,40 +359,60 @@ function ReviewsSection() {
             className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:gap-5 lg:gap-6 scrollbar-hide"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
-            {reviews.map((r) => (
+            {reviews.map((r, idx) => (
               <div
                 key={r.name}
-                className="w-[calc(100%-8px)] shrink-0 snap-start overflow-hidden rounded-[1.5rem] border border-white/60 bg-white shadow-[0_20px_40px_rgba(20,24,40,0.08)] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(20%-19.2px)]"
+                className="w-[calc(72%-8px)] shrink-0 snap-start overflow-hidden rounded-[1.5rem] bg-white shadow-[0_20px_40px_rgba(20,24,40,0.08)] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(20%-19.2px)]"
               >
-                <div className="aspect-[4/3] w-full overflow-hidden bg-[#f4f4f0]">
-                  <img
-                    src={r.photo}
-                    alt={`Фото отзыва ${r.name}`}
-                    loading="lazy"
+                <div className="relative aspect-[9/16] w-full overflow-hidden bg-[#f4f4f0]">
+                  <video
+                    ref={(el) => { videoRefs.current[idx] = el; }}
+                    src={r.videoSrc}
+                    poster={r.photo}
+                    preload="metadata"
+                    playsInline
+                    muted
+                    loop
                     className="h-full w-full object-cover"
+                    onClick={() => handleVideoClick(idx)}
+                    onPlay={() => setPlaying((p) => ({ ...p, [r.name]: true }))}
+                    onPause={() => setPlaying((p) => ({ ...p, [r.name]: false }))}
                   />
-                </div>
-                <div className="p-5 lg:p-6">
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold text-white"
-                      style={{ backgroundColor: r.color }}
+
+                  {!playing[r.name] && (
+                    <button
+                      onClick={() => togglePlay(idx)}
+                      className="absolute left-1/2 top-1/2 z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/25 text-white backdrop-blur-sm transition-colors hover:bg-white/40"
+                      aria-label="Воспроизвести"
                     >
-                      {r.initials}
-                    </div>
-                    <div>
-                      <p className="text-base font-bold text-gray-900">{r.name}</p>
-                      <div className="flex items-center gap-0.5">
-                        {Array.from({ length: r.rating }).map((_, i) => (
-                          <Star key={i} className="h-4 w-4 fill-[#0f1b3d] text-[#0f1b3d]" />
-                        ))}
-                      </div>
-                    </div>
+                      <Play className="h-6 w-6 fill-white" strokeWidth={1.5} />
+                    </button>
+                  )}
+
+                  <button
+                    onClick={() => toggleMute(idx)}
+                    className="absolute bottom-4 left-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/25 text-white backdrop-blur-sm transition-colors hover:bg-black/40"
+                    aria-label={muted[r.name] ? "Включить звук" : "Выключить звук"}
+                  >
+                    {muted[r.name] ? (
+                      <VolumeX className="h-4 w-4" strokeWidth={1.75} />
+                    ) : (
+                      <Volume2 className="h-4 w-4" strokeWidth={1.75} />
+                    )}
+                  </button>
+                </div>
+
+                <div className="flex items-center gap-3 p-4 lg:p-5">
+                  <div
+                    className="flex h-10 w-10 items-center justify-center rounded-full text-sm font-bold text-white"
+                    style={{ backgroundColor: r.color }}
+                  >
+                    {r.initials}
                   </div>
-                  <p className="mt-4 text-sm font-light leading-relaxed text-gray-700">
-                    {r.text}
-                  </p>
-                  <p className="mt-5 text-xs font-medium text-gray-400">{r.date}</p>
+                  <div>
+                    <p className="text-sm font-bold text-gray-900">{r.name}</p>
+                    <p className="text-xs font-medium text-gray-500">{r.username}</p>
+                  </div>
                 </div>
               </div>
             ))}
