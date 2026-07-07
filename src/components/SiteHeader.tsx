@@ -162,7 +162,7 @@ export function SiteHeader() {
       </button>
 
       {mobileOpen && (
-        <div className="absolute right-4 top-16 z-50 w-64 space-y-2 rounded-2xl border border-white/40 bg-white/80 p-4 shadow-xl backdrop-blur-3xl md:hidden">
+        <div className="absolute right-4 top-16 z-50 w-64 space-y-2 rounded-2xl border border-white/70 bg-white/90 p-4 shadow-[0_24px_70px_rgba(15,23,42,0.18),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-[36px] backdrop-saturate-150 md:hidden">
           {ROUTE_LINKS.map((l) => {
             const hashIdx = l.to.indexOf("#");
             const isHashOnHome = hashIdx >= 0 && isHome;
