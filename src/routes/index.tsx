@@ -269,7 +269,7 @@ function CinematicHero() {
 
           <a
             href="#products"
-            className="group inline-flex w-full items-center justify-between gap-2 whitespace-nowrap rounded-full bg-[#4B66D1] px-8 py-4 text-[14px] font-semibold text-white shadow-lg transition-colors hover:bg-[#3B54B4] sm:w-auto"
+            className="group inline-flex w-full items-center justify-between gap-2 whitespace-nowrap rounded-full bg-black px-8 py-4 text-[14px] font-semibold text-white shadow-lg transition-colors hover:bg-gray-800 sm:w-auto"
           >
             Смотреть продукцию
             <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" strokeWidth={2} />
