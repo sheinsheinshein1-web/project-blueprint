@@ -216,6 +216,7 @@ function ProductsSection() {
               key={p.name}
               to={p.link}
               draggable={false}
+              onClick={handleCardClick}
               className="group relative w-[72%] shrink-0 snap-start overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 sm:w-[46%] lg:w-[31%] xl:w-[23%]"
             >
               <div className="relative aspect-[4/5] overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
