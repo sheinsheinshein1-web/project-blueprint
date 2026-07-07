@@ -326,10 +326,10 @@ function ProductsSection() {
   return (
     <section
       id="products"
-      className="relative overflow-hidden bg-white px-6 pb-16 pt-8 lg:px-12 lg:pb-20 lg:pt-16"
+      className="relative overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 pb-16 pt-8 lg:px-12 lg:pb-20 lg:pt-16"
     >
       <div
-        className="pointer-events-none absolute inset-x-0 bottom-0 top-8 z-0 lg:top-16"
+        className="pointer-events-none absolute inset-0 z-0"
         style={{
           background:
             "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
