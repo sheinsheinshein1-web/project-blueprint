@@ -217,7 +217,7 @@ function ProductsSection() {
               to={p.link}
               draggable={false}
               onClick={handleCardClick}
-              className="group relative w-[72%] shrink-0 snap-start overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 sm:w-[46%] lg:w-[31%] xl:w-[23%]"
+              className="group relative w-[72%] shrink-0 snap-start overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md transition-colors hover:bg-white/55 sm:w-[46%] lg:w-[31%] xl:w-[23%]"
             >
               <div className="relative aspect-[4/5] overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
                 <img
@@ -232,6 +232,9 @@ function ProductsSection() {
                 <div>
                   <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">{p.name}</h3>
                   <p className="mt-0.5 text-xs font-medium text-gray-600 md:text-sm">{p.desc}</p>
+                </div>
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <ArrowUpRight className="h-4 w-4 text-white" strokeWidth={1.75} />
                 </div>
               </div>
             </Link>
