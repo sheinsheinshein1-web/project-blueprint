@@ -184,7 +184,7 @@ export default function ProductPage() {
                       className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <div className="flex items-center justify-between p-4">
+                  <div className="flex items-center justify-between bg-[#f1f3f6] p-4">
                     <div>
                       <h3 className="text-base font-extrabold tracking-tight text-gray-900">
                         {item.title}

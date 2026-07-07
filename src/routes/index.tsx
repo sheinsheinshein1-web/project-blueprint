@@ -326,8 +326,15 @@ function ProductsSection() {
   return (
     <section
       id="products"
-      className="relative overflow-hidden bg-white px-6 pb-16 pt-8 lg:px-12 lg:pb-20 lg:pt-16"
+      className="relative overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 pb-16 pt-8 lg:px-12 lg:pb-20 lg:pt-16"
     >
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
+        }}
+      />
       <div className="relative z-10 mx-auto w-full">
         <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end lg:mb-8">
           <div className="max-w-2xl space-y-3">
@@ -396,7 +403,7 @@ function ProductsSection() {
                     className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105"
                   />
                 </div>
-                <div className="flex items-center justify-between p-4 md:p-6">
+                <div className="flex items-center justify-between bg-[#f1f3f6] p-4 md:p-6">
                   <div>
                     <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">
                       {p.name}

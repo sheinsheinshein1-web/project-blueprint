@@ -87,7 +87,7 @@ export default function CatalogPage() {
                   className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-              <div className="flex items-center justify-between p-4">
+              <div className="flex items-center justify-between bg-[#f1f3f6] p-4">
                 <div>
                   <h2 className="text-base font-extrabold tracking-tight text-gray-900">{item.title}</h2>
                   <p className="mt-1 text-xs font-medium uppercase tracking-wide text-gray-600">{item.desc}</p>
