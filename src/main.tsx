@@ -7,6 +7,8 @@ import { SiteFooter } from "./components/SiteFooter";
 import IndexPage from "./routes/index";
 import AboutPage from "./routes/about";
 import CatalogPage from "./routes/catalog";
+import ProductPage from "./routes/product";
+
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
