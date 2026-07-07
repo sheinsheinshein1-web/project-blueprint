@@ -164,6 +164,12 @@ function ProductsSection() {
     track.style.cursor = "grab";
   };
 
+  const handleCardClick = (e: React.MouseEvent) => {
+    if (Math.abs(e.clientX - startX.current) > 8) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <section
       id="products"
