@@ -9,9 +9,9 @@ import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.jpg";
 import nikolayPhoto from "@/assets/nikolay.jpg";
 import valeryPhoto from "@/assets/valery.png";
 import factoryExterior from "@/assets/factory-exterior.png.asset.json";
-import factorySponges from "@/assets/factory-sponges.png.asset.json";
-import factoryLine from "@/assets/factory-line.jpg";
-import factoryRolls from "@/assets/factory-rolls.jpg";
+import factory1 from "@/assets/factory-1.jpg.asset.json";
+import factory2 from "@/assets/factory-2.jpg.asset.json";
+import factory3 from "@/assets/factory-3.jpg.asset.json";
 
 
 
@@ -66,7 +66,7 @@ function AboutSlider() {
           <div className="mt-4 grid grid-cols-3 gap-3 sm:gap-4">
             <div className="overflow-hidden rounded-[1rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)] sm:rounded-[1.25rem]">
               <img
-                src={factoryLine}
+                src={factory1.url}
                 alt="Производственная линия губок"
                 loading="lazy"
                 className="h-[100px] w-full object-cover sm:h-[120px] md:h-[180px] lg:h-[200px]"
@@ -74,7 +74,7 @@ function AboutSlider() {
             </div>
             <div className="overflow-hidden rounded-[1rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)] sm:rounded-[1.25rem]">
               <img
-                src={factoryRolls}
+                src={factory2.url}
                 alt="Сырьё для производства"
                 loading="lazy"
                 className="h-[100px] w-full object-cover sm:h-[120px] md:h-[180px] lg:h-[200px]"
@@ -82,7 +82,7 @@ function AboutSlider() {
             </div>
             <div className="overflow-hidden rounded-[1rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)] sm:rounded-[1.25rem]">
               <img
-                src={factorySponges.url}
+                src={factory3.url}
                 alt="Склад готовой продукции"
                 loading="lazy"
                 className="h-[100px] w-full object-cover sm:h-[120px] md:h-[180px] lg:h-[200px]"
