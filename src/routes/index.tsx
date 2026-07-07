@@ -263,6 +263,11 @@ function ReviewsSection() {
   }, []);
 
   const totalPages = Math.max(1, reviews.length - perPage + 1);
+
+  useEffect(() => {
+    setPage((p) => Math.max(0, Math.min(totalPages - 1, p)));
+  }, [totalPages]);
+
   const canPrev = page > 0;
   const canNext = page < totalPages - 1;
 
