@@ -75,8 +75,7 @@ function ProductsSection() {
             </h2>
             <p className="max-w-xl whitespace-pre-line text-sm font-light leading-relaxed text-gray-700 lg:text-base">
               В линейке «1998» — всё, что нужно для ежедневной чистоты.{"\n"}
-              Функциональные, долговечные и удобные в использовании{"\n"}
-              товары для дома.
+              Функциональные, долговечные и удобные в использовании товары для дома.
             </p>
           </div>
           <Link
