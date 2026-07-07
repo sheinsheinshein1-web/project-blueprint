@@ -34,7 +34,14 @@ export default function ProductPage() {
   const related = getRelatedProducts(product.id, 4);
 
   return (
-    <section className="relative min-h-screen bg-white px-6 py-16 lg:px-12 lg:py-24">
+    <section className="relative min-h-screen bg-[oklch(0.93_0.005_260)] px-6 py-16 lg:px-12 lg:py-24">
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 30%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
+        }}
+      />
       <div className="relative z-10 mx-auto w-full">
         {/* Breadcrumbs */}
         <nav aria-label="Хлебные крошки" className="mb-8 flex items-center gap-2 text-sm text-gray-500">
@@ -49,7 +56,7 @@ export default function ProductPage() {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Gallery */}
           <div className="space-y-4">
-            <div className="flex aspect-square items-center justify-center overflow-hidden rounded-[2rem] bg-[oklch(0.93_0.005_260)] p-6 md:p-10">
+            <div className="flex aspect-square items-center justify-center overflow-hidden rounded-[2rem] bg-white p-6 md:p-10 shadow-[0_12px_30px_rgba(20,24,40,0.08)]">
               <img
                 src={product.image}
                 alt={product.title}
@@ -60,7 +67,7 @@ export default function ProductPage() {
               {[product.image].map((src, i) => (
                 <button
                   key={i}
-                  className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-xl border-2 border-[#4B66D1] bg-[oklch(0.93_0.005_260)] p-2"
+                  className="flex h-20 w-20 items-center justify-center overflow-hidden rounded-xl border-2 border-[#4B66D1] bg-white/80 p-2"
                 >
                   <img src={src} alt={`${product.title} ${i + 1}`} className="h-full w-full object-contain" />
                 </button>
