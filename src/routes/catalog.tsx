@@ -61,7 +61,7 @@ export default function CatalogPage() {
                   onClick={() => setCategory(cat)}
                   className={`rounded-full px-5 py-2.5 text-sm font-medium transition-colors ${
                     active === cat
-                      ? "bg-[#4B66D1] text-white"
+                      ? "bg-black text-white"
                       : "bg-white/60 text-gray-700 hover:bg-white/90"
                   }`}
                 >

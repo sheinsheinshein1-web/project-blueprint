@@ -147,7 +147,7 @@ export function SiteHeader() {
 
       <Link
         to="/#contact"
-        className="hidden items-center gap-2 rounded-full bg-gray-900 px-5 py-2 text-[13px] font-medium text-white transition-colors hover:bg-black md:inline-flex"
+        className="hidden items-center gap-2 rounded-full bg-white px-5 py-2 text-[13px] font-medium text-gray-900 shadow-sm transition-colors hover:bg-gray-100 md:inline-flex"
       >
         Связаться
         <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
@@ -196,7 +196,7 @@ export function SiteHeader() {
               }
               setMobileOpen(false);
             }}
-            className="mt-2 flex items-center justify-between rounded-full bg-gray-900 px-5 py-2.5 text-sm font-medium text-white"
+            className="mt-2 flex items-center justify-between rounded-full bg-white px-5 py-2.5 text-sm font-medium text-gray-900 shadow-sm"
           >
             Связаться <ArrowUpRight className="h-4 w-4" />
           </Link>
