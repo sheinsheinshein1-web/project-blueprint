@@ -212,8 +212,9 @@ function CinematicHero() {
         className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-[80%_center] sm:object-center"
       />
 
-      {/* Blur overlay for readability */}
-      <div className="pointer-events-none absolute inset-0 z-[1] bg-gradient-to-t from-black/30 via-black/10 to-transparent backdrop-blur-xl" />
+      {/* Bottom blur overlay for readability */}
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] h-[55%] bg-gradient-to-t from-black/30 via-black/10 to-transparent backdrop-blur-xl" />
+
 
 
       {/* Bottom */}
