@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ChevronRight, Minus, Plus } from "lucide-react";
-import { getProductById, getRelatedProducts, products } from "@/data/products";
+import { ArrowLeft, ChevronRight } from "lucide-react";
+import { getProductById, getRelatedProducts } from "@/data/products";
+
 
 export default function ProductPage() {
   const { id } = useParams<{ id: string }>();
