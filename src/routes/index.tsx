@@ -341,24 +341,6 @@ function ReviewsSection() {
         </div>
 
         <div className="relative">
-          <button
-            onClick={goPrev}
-            disabled={!canPrev}
-            className="absolute left-0 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-[#e8e8e3] p-3 text-gray-900 transition-all hover:bg-[#deded6] disabled:opacity-30 lg:left-[-28px] lg:flex h-12 w-12"
-            aria-label="Назад"
-          >
-            <ChevronLeft className="h-5 w-5" strokeWidth={1.75} />
-          </button>
-
-          <button
-            onClick={goNext}
-            disabled={!canNext}
-            className="absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-[#e8e8e3] p-3 text-gray-900 transition-all hover:bg-[#deded6] disabled:opacity-30 lg:right-[-28px] lg:flex h-12 w-12"
-            aria-label="Вперед"
-          >
-            <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
-          </button>
-
           <div
             ref={trackRef}
             className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:gap-5 lg:gap-6 scrollbar-hide"
