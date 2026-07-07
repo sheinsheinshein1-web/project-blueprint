@@ -44,7 +44,7 @@ export default function ProductPage() {
       />
       <div className="relative z-10 mx-auto w-full">
         {/* Breadcrumbs */}
-        <nav aria-label="Хлебные крошки" className="mb-8 flex items-center gap-2 text-sm text-gray-500">
+        <nav aria-label="Хлебные крошки" className="mb-8 mt-8 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-gray-500">
           <Link to="/" className="transition-colors hover:text-[#4B66D1]">Главная</Link>
           <ChevronRight className="h-4 w-4" />
           <Link to={`/catalog?category=${encodeURIComponent(product.category)}`} className="transition-colors hover:text-[#4B66D1]">{product.category}</Link>
