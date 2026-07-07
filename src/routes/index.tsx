@@ -253,7 +253,7 @@ function ProductsSection() {
           <button
             onClick={goPrev}
             disabled={page === 0}
-            className="absolute left-0 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-white/80 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-xl text-gray-900 transition-all hover:bg-white disabled:opacity-30 lg:flex"
+            className="absolute left-0 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/60 bg-white/40 shadow-[0_4px_20px_rgba(0,0,0,0.06)] backdrop-blur-xl text-gray-900 transition-all hover:bg-white/60 disabled:opacity-30 lg:flex"
             aria-label="Назад"
           >
             <ChevronLeft className="h-5 w-5" strokeWidth={1.75} />
@@ -262,7 +262,7 @@ function ProductsSection() {
           <button
             onClick={goNext}
             disabled={page === totalPages - 1}
-            className="absolute right-0 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/40 bg-white/80 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-xl text-gray-900 transition-all hover:bg-white disabled:opacity-30 lg:flex"
+            className="absolute right-0 top-1/2 z-10 hidden h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/60 bg-white/40 shadow-[0_4px_20px_rgba(0,0,0,0.06)] backdrop-blur-xl text-gray-900 transition-all hover:bg-white/60 disabled:opacity-30 lg:flex"
             aria-label="Вперед"
           >
             <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
