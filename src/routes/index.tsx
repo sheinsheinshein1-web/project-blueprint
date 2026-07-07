@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
-import { ArrowUpRight, CalendarClock, Factory, Sparkles, ThumbsUp } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import heroLifestyle from "@/assets/hero-lifestyle.png";
 import heroMobile from "@/assets/hero-mobile.png";
 import img01 from "@/assets/products/01-gubki-universalnye-1.jpg";
@@ -8,42 +8,88 @@ import img07 from "@/assets/products/07-salfetki-viskoznye-1.jpg";
 import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.jpg";
 import nikolayPhoto from "@/assets/nikolay.jpg";
 import valeryPhoto from "@/assets/valery.png";
+import factoryExterior from "@/assets/factory-exterior.png.asset.json";
+import factorySponges from "@/assets/factory-sponges.png.asset.json";
+import factoryLine from "@/assets/factory-line.jpg";
+import factoryRolls from "@/assets/factory-rolls.jpg";
 
 
 
 function AboutSlider() {
-  const features = [
-    { Icon: CalendarClock, label: "Более 30 лет опыта" },
-    { Icon: ThumbsUp, label: "Российское сырьё и надёжные поставщики" },
-    { Icon: Factory, label: "Полный цикл производства" },
-    { Icon: Sparkles, label: "Доверие сетей и лидеров рынка" },
-  ];
-
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-white px-6 py-32 lg:px-12"
+      className="relative overflow-hidden bg-[#f4f4f0] px-6 py-24 lg:px-12 lg:py-32"
     >
-      <div className="relative z-10 mx-auto flex w-full max-w-[1180px] flex-col items-center gap-20 text-center">
-        <div className="space-y-6">
-          <p className="mx-auto max-w-[920px] text-xl font-light leading-[1.5] tracking-tight text-gray-800 md:text-[28px] md:leading-[1.4]">
-            <span className="font-medium text-gray-900">«1998 Блестящая история»</span> — бренд российского производителя хозяйственных товаров{" "}
-            <span className="font-medium text-gray-900">«ТЕКОС-ИНДУСТРИЯ»</span>. Он назван в честь года строительства собственного завода в Ленинградской области.
-          </p>
+      <div className="relative z-10 mx-auto grid w-full max-w-[1400px] grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+        {/* Left column */}
+        <div className="relative lg:col-span-5">
+          <span className="inline-flex items-center rounded-full border border-gray-900/20 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-900">
+            Более 30 лет опыта
+          </span>
+
+          <h2 className="mt-8 text-4xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-5xl lg:text-[56px]">
+            <span className="text-gray-900">1998</span>
+            <span className="text-gray-500"> — блестящая история</span>
+            <br />
+            российского производителя хозяйственных товаров{" "}
+            <span className="whitespace-nowrap">«ТЕКОС-ИНДУСТРИЯ»</span>
+          </h2>
+
+          <div className="mt-10 border-l border-gray-900/25 pl-5">
+            <p className="max-w-[440px] text-[15px] font-light leading-relaxed text-gray-700">
+              Он назван в честь года строительства собственного завода
+              в Ленинградской области. С тех пор мы создаём товары,
+              которые помогают миллионам людей каждый день.
+            </p>
+          </div>
+
+          {/* Watermark */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -bottom-6 left-0 select-none text-[180px] font-extrabold leading-none tracking-tight text-gray-900/[0.06] md:text-[240px] lg:text-[280px]"
+            style={{ WebkitTextStroke: "1px rgba(17,24,39,0.12)", color: "transparent" }}
+          >
+            1998
+          </div>
         </div>
 
-        <div className="grid w-full grid-cols-2 gap-10 md:grid-cols-4 md:gap-6">
-          {features.map(({ Icon, label }) => (
-            <div key={label} className="flex flex-col items-center gap-5">
-              <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-gray-900/15 bg-white/70 backdrop-blur-md shadow-[0_10px_30px_rgba(20,24,40,0.06)]">
-                <Icon strokeWidth={1.25} className="h-9 w-9 text-gray-800" />
-                <span className="absolute -bottom-1 right-1 h-1.5 w-1.5 rounded-full bg-[#4B66D1]" />
-              </div>
-              <p className="max-w-[200px] text-sm font-light leading-snug text-gray-600 md:text-[15px]">
-                {label}
-              </p>
+        {/* Right column — image collage */}
+        <div className="lg:col-span-7">
+          <div className="overflow-hidden rounded-[1.5rem] shadow-[0_20px_60px_rgba(20,24,40,0.12)]">
+            <img
+              src={factoryExterior.url}
+              alt="Завод «ТЕКОС-ИНДУСТРИЯ» в Ленинградской области"
+              loading="lazy"
+              className="h-[280px] w-full object-cover md:h-[380px] lg:h-[420px]"
+            />
+          </div>
+          <div className="mt-4 grid grid-cols-3 gap-4">
+            <div className="overflow-hidden rounded-[1.25rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)]">
+              <img
+                src={factoryLine}
+                alt="Производственная линия губок"
+                loading="lazy"
+                className="h-[140px] w-full object-cover md:h-[180px] lg:h-[200px]"
+              />
             </div>
-          ))}
+            <div className="overflow-hidden rounded-[1.25rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)]">
+              <img
+                src={factoryRolls}
+                alt="Сырьё для производства"
+                loading="lazy"
+                className="h-[140px] w-full object-cover md:h-[180px] lg:h-[200px]"
+              />
+            </div>
+            <div className="overflow-hidden rounded-[1.25rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)]">
+              <img
+                src={factorySponges.url}
+                alt="Склад готовой продукции"
+                loading="lazy"
+                className="h-[140px] w-full object-cover md:h-[180px] lg:h-[200px]"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
