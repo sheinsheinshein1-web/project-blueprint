@@ -244,16 +244,16 @@ function CinematicHero() {
 
 
       {/* Bottom */}
-      <main className="relative z-20 mt-auto flex flex-col items-start justify-between gap-10 pb-4 md:flex-row md:items-end lg:gap-20">
-        <div className="space-y-4 md:space-y-6">
+      <main className="relative z-20 mt-auto flex flex-col items-start justify-between gap-4 pb-4 md:flex-row md:items-end md:gap-10 lg:gap-20">
+        <div className="space-y-1 md:space-y-6">
           <h1
-            className="font-semibold leading-[0.85] tracking-[-0.04em] text-white"
+            className="font-semibold leading-[0.8] tracking-[-0.04em] text-white md:leading-[0.85]"
             style={{ fontSize: "clamp(60px, 9vw, 86px)", textShadow: "0 2px 24px rgba(0,0,0,0.35)" }}
           >
             Блестящая
           </h1>
           <h2
-            className="font-semibold leading-[0.85] tracking-[-0.04em] text-white"
+            className="font-semibold leading-[0.8] tracking-[-0.04em] text-white md:leading-[0.85]"
             style={{ fontSize: "clamp(60px, 9vw, 86px)", textShadow: "0 2px 24px rgba(0,0,0,0.35)" }}
           >
             история
