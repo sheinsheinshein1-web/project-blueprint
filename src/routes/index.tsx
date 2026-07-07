@@ -221,13 +221,13 @@ function CinematicHero() {
         <div className="space-y-4 md:space-y-6">
           <h1
             className="font-semibold leading-[0.85] tracking-[-0.04em] text-white"
-            style={{ fontSize: "clamp(60px, 9vw, 86px)" }}
+            style={{ fontSize: "clamp(60px, 9vw, 86px)", textShadow: "0 2px 24px rgba(0,0,0,0.35)" }}
           >
             Блестящая
           </h1>
           <h2
             className="font-semibold leading-[0.85] tracking-[-0.04em] text-white"
-            style={{ fontSize: "clamp(60px, 9vw, 86px)" }}
+            style={{ fontSize: "clamp(60px, 9vw, 86px)", textShadow: "0 2px 24px rgba(0,0,0,0.35)" }}
           >
             история
           </h2>
@@ -236,12 +236,14 @@ function CinematicHero() {
         <div className="flex max-w-[520px] flex-col items-start gap-6 md:items-end lg:gap-8">
           <p
             className="text-balance text-[15px] font-light leading-relaxed text-white/90 md:text-right md:text-[16px]"
+            style={{ textShadow: "0 1px 12px rgba(0,0,0,0.35)" }}
           >
             С 1998 года мы создаём хозяйственные товары,
             <span className="sm:hidden"> </span>
             <br className="hidden sm:block" />
             которые помогают вам каждый день.
           </p>
+
           <a
             href="#products"
             className="group inline-flex w-full items-center justify-between gap-2 whitespace-nowrap rounded-full bg-white px-8 py-4 text-[14px] font-semibold text-[#4B66D1] shadow-lg transition-colors hover:bg-gray-100 sm:w-auto"
