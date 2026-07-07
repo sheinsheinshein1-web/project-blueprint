@@ -63,7 +63,7 @@ const aboutImages = [
 
 function AboutSlider() {
   return (
-    <section id="about" className="relative overflow-hidden bg-white px-6 py-24 lg:px-12 lg:py-32">
+    <section id="about" className="relative overflow-hidden bg-white px-6 pb-12 pt-20 lg:px-12 lg:py-32">
       <div className="relative z-10 mx-auto grid w-full grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
         {/* Left column */}
         <div className="relative lg:col-span-5">
@@ -90,11 +90,11 @@ function AboutSlider() {
         {/* Right column — image collage */}
         <div className="lg:col-span-7">
           <div className="-mx-6 overflow-hidden py-2 lg:hidden">
-            <div className="flex animate-marquee-right">
-              {[0, 1].map((group) => (
+            <div className="flex animate-about-marquee">
+              {[0, 1, 2].map((group) => (
                 <div
                   key={group}
-                  aria-hidden={group === 1}
+                  aria-hidden={group > 0}
                   className="flex shrink-0 gap-4 pr-4"
                 >
                   {aboutImages.map((image) => (
@@ -105,7 +105,8 @@ function AboutSlider() {
                       <img
                         src={image.src}
                         alt={group === 0 ? image.alt : ""}
-                        loading="lazy"
+                        loading="eager"
+                        decoding="async"
                         className="h-[220px] w-full object-cover sm:h-[280px] md:h-[380px]"
                       />
                     </div>
@@ -325,15 +326,8 @@ function ProductsSection() {
   return (
     <section
       id="products"
-      className="relative overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 py-24 lg:px-12"
+      className="relative overflow-hidden bg-white px-6 pb-24 pt-12 lg:px-12 lg:py-24"
     >
-      <div
-        className="pointer-events-none absolute inset-0 z-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
-        }}
-      />
       <div className="relative z-10 mx-auto w-full">
         <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div className="max-w-2xl space-y-3">
