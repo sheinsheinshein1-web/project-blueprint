@@ -7,6 +7,8 @@ import { SiteFooter } from "./components/SiteFooter";
 import IndexPage from "./routes/index";
 import AboutPage from "./routes/about";
 import CatalogPage from "./routes/catalog";
+import ProductPage from "./routes/product";
+
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -42,6 +44,8 @@ function App() {
             <Route path="/" element={<IndexPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/catalog" element={<CatalogPage />} />
+            <Route path="/product/:id" element={<ProductPage />} />
+
             <Route path="*" element={<IndexPage />} />
           </Routes>
         </main>
