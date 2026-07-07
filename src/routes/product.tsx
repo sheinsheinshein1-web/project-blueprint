@@ -135,9 +135,9 @@ export default function ProductPage() {
                 <Link
                   key={item.id}
                   to={`/product/${item.id}`}
-                  className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-gray-100 bg-white shadow-[0_12px_30px_rgba(20,24,40,0.08)] transition-all hover:shadow-[0_20px_40px_rgba(20,24,40,0.12)]"
+                  className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/50 backdrop-blur-md shadow-[0_12px_30px_rgba(20,24,40,0.08)] transition-all hover:bg-white/70 hover:shadow-[0_20px_40px_rgba(20,24,40,0.12)]"
                 >
-                  <div className="flex h-[200px] items-center justify-center overflow-hidden bg-[oklch(0.93_0.005_260)] p-4">
+                  <div className="flex h-[200px] items-center justify-center overflow-hidden bg-white p-4">
                     <img
                       src={item.image}
                       alt={item.title}
@@ -145,9 +145,14 @@ export default function ProductPage() {
                       className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
                     />
                   </div>
-                  <div className="p-4">
-                    <h3 className="text-base font-extrabold tracking-tight text-gray-900">{item.title}</h3>
-                    <p className="mt-1 text-xs font-medium uppercase tracking-wide text-gray-600">{item.desc}</p>
+                  <div className="flex items-center justify-between p-4">
+                    <div>
+                      <h3 className="text-base font-extrabold tracking-tight text-gray-900">{item.title}</h3>
+                      <p className="mt-1 text-xs font-medium uppercase tracking-wide text-gray-600">{item.desc}</p>
+                    </div>
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                      <ArrowUpRight className="h-4 w-4 text-white" strokeWidth={1.75} />
+                    </div>
                   </div>
                 </Link>
               ))}
