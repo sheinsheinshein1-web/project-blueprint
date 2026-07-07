@@ -113,9 +113,12 @@ function ProductsSection() {
             <div className="min-h-0 flex-1 overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
               <img src={img08} alt="Стельки" loading="lazy" className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105" />
             </div>
-            <div className="shrink-0 p-4 md:p-6">
-              <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">Стельки</h3>
-              <p className="mt-0.5 text-xs font-medium text-gray-600 md:text-sm">Натуральные материалы и комфорт</p>
+            <div className="shrink-0 flex items-center justify-between p-4 md:p-6">
+              <div>
+                <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">Стельки</h3>
+                <p className="mt-0.5 text-xs font-medium text-gray-600 md:text-sm">Натуральные материалы и комфорт</p>
+              </div>
+              <ArrowUpRight className="h-5 w-5 text-gray-800 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.75} />
             </div>
           </Link>
 
