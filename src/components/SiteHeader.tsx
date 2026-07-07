@@ -162,7 +162,7 @@ export function SiteHeader() {
       </button>
 
       {mobileOpen && (
-        <div className="absolute right-4 top-16 z-50 w-64 space-y-2 rounded-2xl border border-white/70 bg-white/90 p-4 shadow-[0_24px_70px_rgba(15,23,42,0.18),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-[36px] backdrop-saturate-150 md:hidden">
+        <div className="absolute right-4 top-16 z-50 w-64 space-y-2 overflow-hidden rounded-2xl border border-white/85 bg-white/[0.97] p-4 shadow-[0_24px_70px_rgba(15,23,42,0.18),inset_0_1px_0_rgba(255,255,255,0.98)] backdrop-blur-[80px] backdrop-saturate-200 before:pointer-events-none before:absolute before:inset-0 before:bg-white/85 before:content-[''] md:hidden">
           {ROUTE_LINKS.map((l) => {
             const hashIdx = l.to.indexOf("#");
             const isHashOnHome = hashIdx >= 0 && isHome;
@@ -180,7 +180,7 @@ export function SiteHeader() {
                   }
                   setMobileOpen(false);
                 }}
-                className="block rounded-xl px-4 py-2 text-sm font-medium text-gray-800 hover:bg-white"
+                className="relative z-10 block rounded-xl px-4 py-2 text-sm font-medium text-gray-800 hover:bg-white"
               >
                 {l.label}
               </Link>
@@ -196,7 +196,7 @@ export function SiteHeader() {
               }
               setMobileOpen(false);
             }}
-            className="mt-2 flex items-center justify-between rounded-full bg-white px-5 py-2.5 text-sm font-medium text-gray-900 shadow-sm"
+            className="relative z-10 mt-2 flex items-center justify-between rounded-full bg-white px-5 py-2.5 text-sm font-medium text-gray-900 shadow-sm"
           >
             Связаться <ArrowUpRight className="h-4 w-4" />
           </Link>
