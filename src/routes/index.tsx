@@ -212,14 +212,15 @@ function CinematicHero() {
         className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover object-[80%_center] sm:object-center"
       />
 
-      {/* Bottom blur overlay with smooth fade */}
+      {/* Bottom blur overlay with quick fade */}
       <div
-        className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] h-[70%] bg-gradient-to-t from-black/30 via-black/10 to-transparent backdrop-blur-md"
+        className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] h-[40%] bg-gradient-to-t from-black/30 via-black/10 to-transparent backdrop-blur-md"
         style={{
-          maskImage: "linear-gradient(to top, black 0%, black 40%, transparent 100%)",
-          WebkitMaskImage: "linear-gradient(to top, black 0%, black 40%, transparent 100%)",
+          maskImage: "linear-gradient(to top, black 0%, black 35%, transparent 80%)",
+          WebkitMaskImage: "linear-gradient(to top, black 0%, black 35%, transparent 80%)",
         }}
       />
+
 
 
 
