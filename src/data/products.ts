@@ -20,13 +20,18 @@ export type Marketplace = {
   text: string;
 };
 
+export type Feature = {
+  text: string;
+  icon: string;
+};
+
 export type Product = {
   id: string;
   title: string;
   desc: string;
   category: Category;
   image: string;
-  features: string[];
+  features: Feature[];
   marketplaces: Marketplace[];
 };
 
@@ -40,10 +45,10 @@ export const products: Product[] = [
     category: "Губки",
     image: img01,
     features: [
-      "Плотный поролон для устойчивости к износу",
-      "Абразивная сторона удаляет стойкие загрязнения",
-      "Подходят для посуды, кухонных поверхностей и раковин",
-      "Легко промываются и быстро сохнут",
+      { text: "Плотный поролон для устойчивости к износу", icon: "shield" },
+      { text: "Абразивная сторона удаляет стойкие загрязнения", icon: "sparkles" },
+      { text: "Подходят для посуды, кухонных поверхностей и раковин", icon: "utensils" },
+      { text: "Легко промываются и быстро сохнут", icon: "droplets" },
     ],
     marketplaces: [
       { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
@@ -58,10 +63,10 @@ export const products: Product[] = [
     category: "Губки",
     image: img02,
     features: [
-      "Свежий аромат мяты во время уборки",
-      "Мягкий абразив не царапает поверхности",
-      "Сохраняют приятный запах после мытья",
-      "Компактный размер для удобного захвата",
+      { text: "Свежий аромат мяты во время уборки", icon: "leaf" },
+      { text: "Мягкий абразив не царапает поверхности", icon: "hand" },
+      { text: "Сохраняют приятный запах после мытья", icon: "wind" },
+      { text: "Компактный размер для удобного захвата", icon: "maximize" },
     ],
     marketplaces: [
       { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
@@ -76,10 +81,10 @@ export const products: Product[] = [
     category: "Губки",
     image: img03,
     features: [
-      "Тёплый аромат кофе при мытье посуды",
-      "Двухслойная структура для деликатной и глубокой очистки",
-      "Не оставляют разводов на поверхностях",
-      "Долго сохраняют форму и запах",
+      { text: "Тёплый аромат кофе при мытье посуды", icon: "coffee" },
+      { text: "Двухслойная структура для деликатной и глубокой очистки", icon: "layers" },
+      { text: "Не оставляют разводов на поверхностях", icon: "sparkles" },
+      { text: "Долго сохраняют форму и запах", icon: "clock" },
     ],
     marketplaces: [
       { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
@@ -94,10 +99,10 @@ export const products: Product[] = [
     category: "Губки",
     image: img04,
     features: [
-      "Мягкий поролон без абразива",
-      "Безопасны для посуды с антипригарным покрытием",
-      "Не оставляют царапин на стекле и керамике",
-      "Идеальны для деликатных и нержавеющих поверхностей",
+      { text: "Мягкий поролон без абразива", icon: "heart" },
+      { text: "Безопасны для посуды с антипригарным покрытием", icon: "shield" },
+      { text: "Не оставляют царапин на стекле и керамике", icon: "sparkles" },
+      { text: "Идеальны для деликатных и нержавеющих поверхностей", icon: "gem" },
     ],
     marketplaces: [
       { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
@@ -112,10 +117,10 @@ export const products: Product[] = [
     category: "Губки",
     image: img05,
     features: [
-      "Фигурная форма повторяет изгиб ладони",
-      "Удобно держать даже при длительной уборке",
-      "Двойная текстура для разных типов загрязнений",
-      "Прочное крепление абразива к поролону",
+      { text: "Фигурная форма повторяет изгиб ладони", icon: "hand" },
+      { text: "Удобно держать даже при длительной уборке", icon: "clock" },
+      { text: "Двойная текстура для разных типов загрязнений", icon: "layers" },
+      { text: "Прочное крепление абразива к поролону", icon: "anchor" },
     ],
     marketplaces: [
       { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
@@ -130,10 +135,10 @@ export const products: Product[] = [
     category: "Салфетки",
     image: img06,
     features: [
-      "Высокая впитываемость благодаря целлюлозе",
-      "Не крошатся и не оставляют ворсинок",
-      "Можно использовать для уборки и вытирания рук",
-      "Прочные при намокании, легко отжимаются",
+      { text: "Высокая впитываемость благодаря целлюлозе", icon: "droplets" },
+      { text: "Не крошатся и не оставляют ворсинок", icon: "shield" },
+      { text: "Можно использовать для уборки и вытирания рук", icon: "hand" },
+      { text: "Прочные при намокании, легко отжимаются", icon: "arrow-down" },
     ],
     marketplaces: [
       { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
@@ -148,10 +153,10 @@ export const products: Product[] = [
     category: "Салфетки",
     image: img07,
     features: [
-      "Мягкая вискоза для деликатных поверхностей",
-      "Хорошо собирают пыль и влагу",
-      "Многоразовые: легко стираются",
-      "Большой размер для удобной уборки",
+      { text: "Мягкая вискоза для деликатных поверхностей", icon: "heart" },
+      { text: "Хорошо собирают пыль и влагу", icon: "droplets" },
+      { text: "Многоразовые: легко стираются", icon: "refresh-cw" },
+      { text: "Большой размер для удобной уборки", icon: "maximize" },
     ],
     marketplaces: [
       { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
@@ -166,10 +171,10 @@ export const products: Product[] = [
     category: "Стельки",
     image: img08,
     features: [
-      "Фольгированный слой отражает тепло ног",
-      "Мягкая основа из фетра для комфорта",
-      "Сохраняют тепло при минусовых температурах",
-      "Универсальный размер: легко подрезаются",
+      { text: "Фольгированный слой отражает тепло ног", icon: "sun" },
+      { text: "Мягкая основа из фетра для комфорта", icon: "heart" },
+      { text: "Сохраняют тепло при минусовых температурах", icon: "thermometer" },
+      { text: "Универсальный размер: легко подрезаются", icon: "scissors" },
     ],
     marketplaces: [
       { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
@@ -184,10 +189,10 @@ export const products: Product[] = [
     category: "Стельки",
     image: img09,
     features: [
-      "Натуральный лён регулирует влажность",
-      "Приятны коже и предотвращают запах",
-      "Универсальная форма для любой обуви",
-      "Долговечны и легко заменяются",
+      { text: "Натуральный лён регулирует влажность", icon: "droplets" },
+      { text: "Приятны коже и предотвращают запах", icon: "heart" },
+      { text: "Универсальная форма для любой обуви", icon: "move" },
+      { text: "Долговечны и легко заменяются", icon: "refresh-cw" },
     ],
     marketplaces: [
       { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
@@ -202,10 +207,10 @@ export const products: Product[] = [
     category: "Стельки",
     image: img10,
     features: [
-      "Пробковый материал позволяет ногам дышать",
-      "Лёгкие и тонкие: не уменьшают объём обуви",
-      "Абсорбируют излишки влаги",
-      "Идеальны для летней и спортивной обуви",
+      { text: "Пробковый материал позволяет ногам дышать", icon: "wind" },
+      { text: "Лёгкие и тонкие: не уменьшают объём обуви", icon: "feather" },
+      { text: "Абсорбируют излишки влаги", icon: "droplets" },
+      { text: "Идеальны для летней и спортивной обуви", icon: "sun" },
     ],
     marketplaces: [
       { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
@@ -220,10 +225,10 @@ export const products: Product[] = [
     category: "Стельки",
     image: img11,
     features: [
-      "Натуральная кожа для деловой обуви",
-      "Приятная поверхность и долговечность",
-      "Поддерживают комфортный микроклимат",
-      "Элегантный вид при использовании",
+      { text: "Натуральная кожа для деловой обуви", icon: "briefcase" },
+      { text: "Приятная поверхность и долговечность", icon: "heart" },
+      { text: "Поддерживают комфортный микроклимат", icon: "thermometer" },
+      { text: "Элегантный вид при использовании", icon: "sparkles" },
     ],
     marketplaces: [
       { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
@@ -238,10 +243,10 @@ export const products: Product[] = [
     category: "Стельки",
     image: img12,
     features: [
-      "Дышащая структура для активных нагрузок",
-      "Амортизация при ходьбе и беге",
-      "Отвод влаги для сухости ног",
-      "Усиленная поддержка свода стопы",
+      { text: "Дышащая структура для активных нагрузок", icon: "wind" },
+      { text: "Амортизация при ходьбе и беге", icon: "activity" },
+      { text: "Отвод влаги для сухости ног", icon: "droplets" },
+      { text: "Усиленная поддержка свода стопы", icon: "shield" },
     ],
     marketplaces: [
       { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
