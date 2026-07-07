@@ -8,7 +8,7 @@ import img07 from "@/assets/products/07-salfetki-viskoznye-1.jpg";
 import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.jpg";
 import nikolayPhoto from "@/assets/nikolay.jpg";
 import valeryPhoto from "@/assets/valery.png";
-import factoryExterior from "@/assets/factory-exterior.png.asset.json";
+import factoryExterior from "@/assets/factory-exterior.png";
 import factory1 from "@/assets/factory-new-1.jpg";
 import factory2 from "@/assets/factory-new-2.jpg";
 import factory3 from "@/assets/factory-new-3.jpg";
@@ -57,7 +57,7 @@ function AboutSlider() {
         <div className="lg:col-span-7">
           <div className="overflow-hidden rounded-[1.5rem] shadow-[0_20px_60px_rgba(20,24,40,0.12)]">
             <img
-              src={factoryExterior.url}
+              src={factoryExterior}
               alt="Завод «ТЕКОС-ИНДУСТРИЯ» в Ленинградской области"
               loading="lazy"
               className="h-[220px] w-full object-cover sm:h-[280px] md:h-[380px] lg:h-[420px]"

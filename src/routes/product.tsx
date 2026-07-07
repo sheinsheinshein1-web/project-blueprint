@@ -3,9 +3,9 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ChevronRight } from "lucide-react";
 import { DynamicIcon } from "lucide-react/dynamic";
 import { getProductById, getRelatedProducts } from "@/data/products";
-import wildberriesLogo from "@/assets/wildberries.gif.asset.json";
-import ozonLogo from "@/assets/ozon.gif.asset.json";
-import yaMarketLogo from "@/assets/ya_market.gif.asset.json";
+import wildberriesLogo from "@/assets/wildberries.gif";
+import ozonLogo from "@/assets/ozon.gif";
+import yaMarketLogo from "@/assets/ya_market.gif";
 
 
 export default function ProductPage() {
@@ -103,11 +103,11 @@ export default function ProductPage() {
                     style={{ color: m.text, border: "1px solid #E5E7EB" }}
                   >
                     {isWB ? (
-                      <img src={wildberriesLogo.url} alt="Wildberries" className="h-5 w-auto" />
+                      <img src={wildberriesLogo} alt="Wildberries" className="h-5 w-auto" />
                     ) : isOzon ? (
-                      <img src={ozonLogo.url} alt="Ozon" className="h-5 w-auto" />
+                      <img src={ozonLogo} alt="Ozon" className="h-5 w-auto" />
                     ) : isYa ? (
-                      <img src={yaMarketLogo.url} alt="Яндекс Маркет" className="h-5 w-auto" />
+                      <img src={yaMarketLogo} alt="Яндекс Маркет" className="h-5 w-auto" />
                     ) : (
                       m.name
                     )}
