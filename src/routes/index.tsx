@@ -67,7 +67,7 @@ function AboutSlider() {
       <div className="relative z-10 mx-auto grid w-full grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
         {/* Left column */}
         <div className="relative lg:col-span-5">
-          <span className="inline-flex items-center rounded-full border border-gray-900 bg-gray-900 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-white shadow-[0_10px_24px_rgba(17,24,39,0.18)]">
+          <span className="inline-flex items-center rounded-full border border-white/70 bg-white/45 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-950 shadow-[0_12px_30px_rgba(17,24,39,0.08),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-xl">
             БОЛЕЕ 25 ЛЕТ ОПЫТА
           </span>
 
