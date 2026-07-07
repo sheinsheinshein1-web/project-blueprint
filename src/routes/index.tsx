@@ -117,6 +117,8 @@ function AboutSlider() {
 function ProductsSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [page, setPage] = useState(0);
+  const [perPage, setPerPage] = useState(1);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
 
@@ -134,6 +136,51 @@ function ProductsSection() {
     { name: "Стельки кожаные", image: img11, link: "/catalog?category=Стельки", desc: "Классический вариант на каждый день" },
     { name: "Стельки спортивные", image: img12, link: "/catalog?category=Стельки", desc: "Дышащие и амортизирующие" },
   ];
+
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      setPerPage(w >= 1280 ? 4 : w >= 1024 ? 3 : w >= 640 ? 2 : 1);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const totalPages = Math.max(1, products.length - perPage + 1);
+
+  useEffect(() => {
+    setPage((p) => Math.max(0, Math.min(totalPages - 1, p)));
+  }, [totalPages]);
+
+  const scrollToPage = (nextPage: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.firstElementChild as HTMLElement | null;
+    if (!card) return;
+    const gap = parseFloat(getComputedStyle(track).gap || "0");
+    const step = card.offsetWidth + gap;
+    track.scrollTo({ left: step * nextPage, behavior: "smooth" });
+    setPage(nextPage);
+  };
+
+  const goPrev = () => scrollToPage(Math.max(0, page - 1));
+  const goNext = () => scrollToPage(Math.min(totalPages - 1, page + 1));
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const handleScroll = () => {
+      const card = track.firstElementChild as HTMLElement | null;
+      if (!card) return;
+      const gap = parseFloat(getComputedStyle(track).gap || "0");
+      const step = card.offsetWidth + gap;
+      const next = Math.round(track.scrollLeft / step);
+      setPage(Math.max(0, Math.min(totalPages - 1, next)));
+    };
+    track.addEventListener("scroll", handleScroll, { passive: true });
+    return () => track.removeEventListener("scroll", handleScroll);
+  }, [totalPages]);
 
   const handlePointerDown = (e: React.PointerEvent) => {
     const track = trackRef.current;
@@ -202,43 +249,74 @@ function ProductsSection() {
           </Link>
         </div>
 
-        <div
-          ref={trackRef}
-          className="-mr-6 flex cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto pb-4 pt-2 md:gap-5 lg:-mr-12 lg:gap-6 scrollbar-hide select-none"
-          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          onPointerDown={handlePointerDown}
-          onPointerMove={handlePointerMove}
-          onPointerUp={handlePointerUp}
-          onPointerLeave={handlePointerUp}
-        >
-          {products.map((p) => (
-            <Link
-              key={p.name}
-              to={p.link}
-              draggable={false}
-              onClick={handleCardClick}
-              className="group relative w-[72%] shrink-0 snap-start overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md transition-colors hover:bg-white/55 sm:w-[46%] lg:w-[31%] xl:w-[23%]"
-            >
-              <div className="relative aspect-[4/5] overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
-                <img
-                  src={p.image}
-                  alt={p.name}
-                  loading="lazy"
-                  draggable={false}
-                  className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105"
-                />
-              </div>
-              <div className="flex items-center justify-between p-4 md:p-6">
-                <div>
-                  <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">{p.name}</h3>
-                  <p className="mt-0.5 text-xs font-medium text-gray-600 md:text-sm">{p.desc}</p>
+        <div className="relative">
+          <button
+            onClick={goPrev}
+            disabled={page === 0}
+            className="absolute left-0 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-[#e8e8e3] p-3 text-gray-900 transition-all hover:bg-[#deded6] disabled:opacity-30 lg:flex h-12 w-12"
+            aria-label="Назад"
+          >
+            <ChevronLeft className="h-5 w-5" strokeWidth={1.75} />
+          </button>
+
+          <button
+            onClick={goNext}
+            disabled={page === totalPages - 1}
+            className="absolute right-0 top-1/2 z-10 hidden -translate-y-1/2 items-center justify-center rounded-full bg-[#e8e8e3] p-3 text-gray-900 transition-all hover:bg-[#deded6] disabled:opacity-30 lg:flex h-12 w-12"
+            aria-label="Вперед"
+          >
+            <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
+          </button>
+
+          <div
+            ref={trackRef}
+            className="-mr-6 flex cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto pb-4 pt-2 md:gap-5 lg:-mr-12 lg:gap-6 scrollbar-hide select-none"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerLeave={handlePointerUp}
+          >
+            {products.map((p) => (
+              <Link
+                key={p.name}
+                to={p.link}
+                draggable={false}
+                onClick={handleCardClick}
+                className="group relative w-[72%] shrink-0 snap-start overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md transition-colors hover:bg-white/55 sm:w-[46%] lg:w-[31%] xl:w-[23%]"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
+                  <img
+                    src={p.image}
+                    alt={p.name}
+                    loading="lazy"
+                    draggable={false}
+                    className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105"
+                  />
                 </div>
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                  <ArrowUpRight className="h-4 w-4 text-white" strokeWidth={1.75} />
+                <div className="flex items-center justify-between p-4 md:p-6">
+                  <div>
+                    <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">{p.name}</h3>
+                    <p className="mt-0.5 text-xs font-medium text-gray-600 md:text-sm">{p.desc}</p>
+                  </div>
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                    <ArrowUpRight className="h-4 w-4 text-white" strokeWidth={1.75} />
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-8 flex items-center justify-center gap-2">
+            {Array.from({ length: totalPages }).map((_, i) => (
+              <button
+                key={i}
+                onClick={() => scrollToPage(i)}
+                className={`h-2.5 w-2.5 rounded-full transition-colors ${i === page ? "bg-[#0f1b3d]" : "bg-[#0f1b3d]/20"}`}
+                aria-label={`Перейти к странице ${i + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
