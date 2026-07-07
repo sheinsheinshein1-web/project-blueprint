@@ -6,7 +6,7 @@ import logo from "@/assets/logo-1998.png";
 const ROUTE_LINKS: Array<{ label: string; to: string; id: string }> = [
   { label: "Главная", to: "/", id: "home" },
   { label: "О бренде", to: "/#about", id: "about" },
-  { label: "Продукция", to: "/catalog", id: "products" },
+  { label: "Продукция", to: "/#products", id: "products" },
   { label: "История", to: "/#history", id: "history" },
   { label: "Контакты", to: "/#contact", id: "contact" },
 ];
@@ -112,24 +112,37 @@ export function SiteHeader() {
             height: pill.height,
           }}
         />
-        {ROUTE_LINKS.map((l) => (
-          <Link
-            key={l.label}
-            ref={(el: HTMLAnchorElement | null) => {
-              linkRefs.current[l.label] = el;
-            }}
-            to={l.to}
-            onClick={() => setActiveLabel(l.label)}
-            className={
-              navLinkClass +
-              (activeLabel === l.label
-                ? "text-black"
-                : "text-gray-700 hover:text-black")
-            }
-          >
-            {l.label}
-          </Link>
-        ))}
+        {ROUTE_LINKS.map((l) => {
+          const hashIdx = l.to.indexOf("#");
+          const isHashOnHome = hashIdx >= 0 && isHome;
+          return (
+            <Link
+              key={l.label}
+              ref={(el: HTMLAnchorElement | null) => {
+                linkRefs.current[l.label] = el;
+              }}
+              to={l.to}
+              onClick={(e) => {
+                if (isHashOnHome) {
+                  e.preventDefault();
+                  const id = l.to.slice(hashIdx + 1);
+                  const el = document.getElementById(id);
+                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  else window.scrollTo({ top: 0, behavior: "smooth" });
+                }
+                setActiveLabel(l.label);
+              }}
+              className={
+                navLinkClass +
+                (activeLabel === l.label
+                  ? "text-black"
+                  : "text-gray-700 hover:text-black")
+              }
+            >
+              {l.label}
+            </Link>
+          );
+        })}
       </nav>
 
       <Link
