@@ -28,12 +28,12 @@ function AboutSlider() {
             Более 30 лет опыта
           </span>
 
-          <h2 className="mt-8 text-4xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-5xl lg:text-[56px]">
+          <h2 className="mt-8 text-[28px] font-extrabold leading-[1.05] tracking-tight text-gray-900 sm:text-[32px] md:text-4xl lg:text-[56px]">
             <span className="text-gray-900">1998</span>
             <span className="text-gray-500"> — блестящая история</span>
             <br />
             российского производителя хозяйственных товаров{" "}
-            <span className="whitespace-nowrap">«ТЕКОС-ИНДУСТРИЯ»</span>
+            <span className="whitespace-normal sm:whitespace-nowrap">«ТЕКОС-ИНДУСТРИЯ»</span>
           </h2>
 
           <div className="mt-10 border-l border-gray-900/25 pl-5">
@@ -47,7 +47,7 @@ function AboutSlider() {
           {/* Watermark */}
           <div
             aria-hidden
-            className="pointer-events-none absolute -bottom-6 left-0 select-none text-[180px] font-extrabold leading-none tracking-tight text-gray-900/[0.06] md:text-[240px] lg:text-[280px]"
+            className="pointer-events-none absolute -bottom-2 left-0 select-none text-[120px] font-extrabold leading-none tracking-tight text-gray-900/[0.06] sm:text-[160px] md:text-[200px] lg:text-[280px]"
             style={{ WebkitTextStroke: "1px rgba(17,24,39,0.12)", color: "transparent" }}
           >
             1998
@@ -61,32 +61,32 @@ function AboutSlider() {
               src={factoryExterior.url}
               alt="Завод «ТЕКОС-ИНДУСТРИЯ» в Ленинградской области"
               loading="lazy"
-              className="h-[280px] w-full object-cover md:h-[380px] lg:h-[420px]"
+              className="h-[220px] w-full object-cover sm:h-[280px] md:h-[380px] lg:h-[420px]"
             />
           </div>
-          <div className="mt-4 grid grid-cols-3 gap-4">
-            <div className="overflow-hidden rounded-[1.25rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)]">
+          <div className="mt-4 grid grid-cols-3 gap-3 sm:gap-4">
+            <div className="overflow-hidden rounded-[1rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)] sm:rounded-[1.25rem]">
               <img
                 src={factoryLine}
                 alt="Производственная линия губок"
                 loading="lazy"
-                className="h-[140px] w-full object-cover md:h-[180px] lg:h-[200px]"
+                className="h-[100px] w-full object-cover sm:h-[120px] md:h-[180px] lg:h-[200px]"
               />
             </div>
-            <div className="overflow-hidden rounded-[1.25rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)]">
+            <div className="overflow-hidden rounded-[1rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)] sm:rounded-[1.25rem]">
               <img
                 src={factoryRolls}
                 alt="Сырьё для производства"
                 loading="lazy"
-                className="h-[140px] w-full object-cover md:h-[180px] lg:h-[200px]"
+                className="h-[100px] w-full object-cover sm:h-[120px] md:h-[180px] lg:h-[200px]"
               />
             </div>
-            <div className="overflow-hidden rounded-[1.25rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)]">
+            <div className="overflow-hidden rounded-[1rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)] sm:rounded-[1.25rem]">
               <img
                 src={factorySponges.url}
                 alt="Склад готовой продукции"
                 loading="lazy"
-                className="h-[140px] w-full object-cover md:h-[180px] lg:h-[200px]"
+                className="h-[100px] w-full object-cover sm:h-[120px] md:h-[180px] lg:h-[200px]"
               />
             </div>
           </div>
