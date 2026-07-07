@@ -123,18 +123,18 @@ function ProductsSection() {
   const scrollLeft = useRef(0);
 
   const products = [
-    { name: "Губки универсальные", image: img01, link: "/catalog?category=Губки", desc: "Высокая износостойкость и эффективность" },
-    { name: "Губки с ароматом мяты", image: img02, link: "/catalog?category=Губки", desc: "Свежесть и мягкость в каждой уборке" },
-    { name: "Губки с ароматом кофе", image: img03, link: "/catalog?category=Губки", desc: "Приятный аромат при мытье посуды" },
-    { name: "Губки деликатные", image: img04, link: "/catalog?category=Губки", desc: "Бережный уход за хрупкими поверхностями" },
-    { name: "Губки эргономичные", image: img05, link: "/catalog?category=Губки", desc: "Удобная форма для руки и крепления" },
-    { name: "Салфетки целлюлозные", image: img06, link: "/catalog?category=Салфетки", desc: "Отлично впитывают влагу и очищают" },
-    { name: "Салфетки вискозные", image: img07, link: "/catalog?category=Салфетки", desc: "Универсальные материалы для ежедневной уборки" },
-    { name: "Стельки зимние с фольгой", image: img08, link: "/catalog?category=Стельки", desc: "Сохраняют тепло в холодную погоду" },
-    { name: "Стельки льняные", image: img09, link: "/catalog?category=Стельки", desc: "Натуральные материалы и комфорт" },
-    { name: "Стельки пробковые", image: img10, link: "/catalog?category=Стельки", desc: "Легкие и дышащие на лето" },
-    { name: "Стельки кожаные", image: img11, link: "/catalog?category=Стельки", desc: "Классический вариант на каждый день" },
-    { name: "Стельки спортивные", image: img12, link: "/catalog?category=Стельки", desc: "Дышащие и амортизирующие" },
+    { id: "gubki-universalnye", name: "Губки универсальные", image: img01, link: "/product/gubki-universalnye", desc: "Высокая износостойкость и эффективность" },
+    { id: "gubki-mynta", name: "Губки с ароматом мяты", image: img02, link: "/product/gubki-mynta", desc: "Свежесть и мягкость в каждой уборке" },
+    { id: "gubki-kofe", name: "Губки с ароматом кофе", image: img03, link: "/product/gubki-kofe", desc: "Приятный аромат при мытье посуды" },
+    { id: "gubki-delikatnye", name: "Губки деликатные", image: img04, link: "/product/gubki-delikatnye", desc: "Бережный уход за хрупкими поверхностями" },
+    { id: "gubki-ergonomichnye", name: "Губки эргономичные", image: img05, link: "/product/gubki-ergonomichnye", desc: "Удобная форма для руки и крепления" },
+    { id: "salfetki-celyuloznye", name: "Салфетки целлюлозные", image: img06, link: "/product/salfetki-celyuloznye", desc: "Отлично впитывают влагу и очищают" },
+    { id: "salfetki-viskoznye", name: "Салфетки вискозные", image: img07, link: "/product/salfetki-viskoznye", desc: "Универсальные материалы для ежедневной уборки" },
+    { id: "stelki-zimnie-folga", name: "Стельки зимние с фольгой", image: img08, link: "/product/stelki-zimnie-folga", desc: "Сохраняют тепло в холодную погоду" },
+    { id: "stelki-lnyanye", name: "Стельки льняные", image: img09, link: "/product/stelki-lnyanye", desc: "Натуральные материалы и комфорт" },
+    { id: "stelki-probkovye", name: "Стельки пробковые", image: img10, link: "/product/stelki-probkovye", desc: "Легкие и дышащие на лето" },
+    { id: "stelki-kozhanye", name: "Стельки кожаные", image: img11, link: "/product/stelki-kozhanye", desc: "Классический вариант на каждый день" },
+    { id: "stelki-sportivnye", name: "Стельки спортивные", image: img12, link: "/product/stelki-sportivnye", desc: "Дышащие и амортизирующие" },
   ];
 
   useEffect(() => {
