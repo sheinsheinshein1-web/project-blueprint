@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ChevronRight } from "lucide-react";
 import { DynamicIcon } from "lucide-react/dynamic";
 import { getProductById, getRelatedProducts } from "@/data/products";
+import wildberriesLogo from "@/assets/wildberries.gif.asset.json";
 
 
 export default function ProductPage() {
@@ -86,18 +87,25 @@ export default function ProductPage() {
             <div className="mt-10">
               <h2 className="mb-4 text-lg font-bold text-gray-900">Где нас купить</h2>
               <div className="flex flex-wrap items-center gap-4">
-              {product.marketplaces.map((m) => (
-                <a
-                  key={m.name}
-                  href={m.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold tracking-wide transition-transform hover:-translate-y-0.5"
-                  style={{ backgroundColor: m.bg, color: m.text }}
-                >
-                  {m.name}
-                </a>
-              ))}
+              {product.marketplaces.map((m) => {
+                const isWB = m.name.toUpperCase() === "WILDBERRIES";
+                return (
+                  <a
+                    key={m.name}
+                    href={m.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold tracking-wide transition-transform hover:-translate-y-0.5"
+                    style={{ backgroundColor: m.bg, color: m.text }}
+                  >
+                    {isWB ? (
+                      <img src={wildberriesLogo.url} alt="Wildberries" className="h-5 w-auto" />
+                    ) : (
+                      m.name
+                    )}
+                  </a>
+                );
+              })}
               </div>
             </div>
           </div>
