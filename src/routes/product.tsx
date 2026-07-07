@@ -5,6 +5,7 @@ import { DynamicIcon } from "lucide-react/dynamic";
 import { getProductById, getRelatedProducts } from "@/data/products";
 import wildberriesLogo from "@/assets/wildberries.gif.asset.json";
 import ozonLogo from "@/assets/ozon.gif.asset.json";
+import yaMarketLogo from "@/assets/ya_market.gif.asset.json";
 
 
 export default function ProductPage() {
