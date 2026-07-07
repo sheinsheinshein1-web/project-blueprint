@@ -61,7 +61,7 @@ function AboutSlider() {
               src={factoryExterior.url}
               alt="Завод «ТЕКОС-ИНДУСТРИЯ» в Ленинградской области"
               loading="lazy"
-              className="h-[280px] w-full object-cover md:h-[380px] lg:h-[420px]"
+              className="h-[220px] w-full object-cover sm:h-[280px] md:h-[380px] lg:h-[420px]"
             />
           </div>
           <div className="mt-4 grid grid-cols-3 gap-4">
