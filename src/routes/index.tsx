@@ -67,7 +67,7 @@ function AboutSlider() {
       <div className="relative z-10 mx-auto grid w-full grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
         {/* Left column */}
         <div className="relative lg:col-span-5">
-          <span className="inline-flex items-center rounded-full border border-gray-900/20 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-900">
+          <span className="inline-flex items-center rounded-full border border-gray-900 bg-gray-900 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-white shadow-[0_10px_24px_rgba(17,24,39,0.18)]">
             БОЛЕЕ 25 ЛЕТ ОПЫТА
           </span>
 
@@ -85,13 +85,6 @@ function AboutSlider() {
             </p>
           </div>
 
-          {/* Watermark */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -bottom-2 left-0 select-none text-[120px] font-extrabold leading-none tracking-tight text-gray-900/[0.04] sm:text-[160px] md:text-[200px] lg:text-[280px]"
-          >
-            1998
-          </div>
         </div>
 
         {/* Right column — image collage */}
