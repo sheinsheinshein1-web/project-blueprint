@@ -6,7 +6,7 @@ import logo from "@/assets/logo-1998.png";
 const ROUTE_LINKS: Array<{ label: string; to: string; id: string }> = [
   { label: "Главная", to: "/", id: "home" },
   { label: "О бренде", to: "/#about", id: "about" },
-  { label: "Продукция", to: "/catalog", id: "products" },
+  { label: "Продукция", to: "/#products", id: "products" },
   { label: "История", to: "/#history", id: "history" },
   { label: "Контакты", to: "/#contact", id: "contact" },
 ];
