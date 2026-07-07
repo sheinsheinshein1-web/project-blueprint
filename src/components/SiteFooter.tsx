@@ -37,10 +37,12 @@ export function SiteFooter() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-center justify-between gap-6 border-t border-border pt-12 md:flex-row">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-muted-foreground">© {new Date().getFullYear()} 1998 Блестящая история. Все права защищены.</p>
-          <div className="flex space-x-8 text-[11px] font-bold uppercase tracking-widest text-muted-foreground">
-            <a href="#" className="transition-colors hover:text-foreground">Политика конфиденциальности</a>
+        <div className="flex flex-col items-start justify-between gap-6 border-t border-border pt-12 md:flex-row md:items-center">
+          <p className="max-w-full text-left text-[11px] font-bold uppercase leading-relaxed tracking-widest text-muted-foreground">
+            © {new Date().getFullYear()} 1998 Блестящая история. Все права защищены.
+          </p>
+          <div className="flex w-full flex-col items-start gap-4 text-left text-[11px] font-bold uppercase leading-relaxed tracking-widest text-muted-foreground sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-3 md:w-auto md:justify-end">
+            <a href="#" className="max-w-full break-words transition-colors hover:text-foreground">Политика конфиденциальности</a>
             <a href="#" className="transition-colors hover:text-foreground">Cookies</a>
           </div>
         </div>
