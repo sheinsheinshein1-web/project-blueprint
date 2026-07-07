@@ -28,12 +28,12 @@ function AboutSlider() {
             Более 30 лет опыта
           </span>
 
-          <h2 className="mt-8 text-4xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-5xl lg:text-[56px]">
+          <h2 className="mt-8 text-[28px] font-extrabold leading-[1.05] tracking-tight text-gray-900 sm:text-[32px] md:text-4xl lg:text-[56px]">
             <span className="text-gray-900">1998</span>
             <span className="text-gray-500"> — блестящая история</span>
             <br />
             российского производителя хозяйственных товаров{" "}
-            <span className="whitespace-nowrap">«ТЕКОС-ИНДУСТРИЯ»</span>
+            <span className="whitespace-normal sm:whitespace-nowrap">«ТЕКОС-ИНДУСТРИЯ»</span>
           </h2>
 
           <div className="mt-10 border-l border-gray-900/25 pl-5">
