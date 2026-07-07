@@ -411,6 +411,9 @@ export default function Index() {
         </div>
       </section>
 
+      {/* Reviews */}
+      <ReviewsSection />
+
     </div>
   );
 }
