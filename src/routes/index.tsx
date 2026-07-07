@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { ArrowUpRight, CalendarClock, Factory, Sparkles, ThumbsUp } from "lucide-react";
-import heroLifestyle from "@/assets/hero-lifestyle.png.asset.json";
-import heroMobile from "@/assets/hero-mobile.png.asset.json";
+import heroLifestyle from "@/assets/hero-lifestyle.png";
+import heroMobile from "@/assets/hero-mobile.png";
 import img01 from "@/assets/products/01-gubki-universalnye-1.jpg";
 import img07 from "@/assets/products/07-salfetki-viskoznye-1.jpg";
 import img08 from "@/assets/products/08-stelki-zimnie-s-folgoy-1.jpg";
@@ -221,9 +221,9 @@ function CinematicHero() {
     <section className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden px-6 pb-6 pt-24 md:px-8 md:pb-8 md:pt-28 lg:px-12 lg:pb-12 lg:pt-32">
       {/* Lifestyle background — mobile image below md, desktop above */}
       <picture className="pointer-events-none absolute inset-0 z-0 h-full w-full">
-        <source srcSet={heroMobile.url} media="(max-width: 767px)" />
+        <source srcSet={heroMobile} media="(max-width: 767px)" />
         <img
-          src={heroLifestyle.url}
+          src={heroLifestyle}
           alt="Женщина моет посуду губкой 1998"
           loading="eager"
           className="h-full w-full object-cover object-center"
