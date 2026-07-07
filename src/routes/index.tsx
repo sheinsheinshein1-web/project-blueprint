@@ -190,7 +190,6 @@ function ProductsSection() {
     hasDragged.current = false;
     startX.current = e.clientX;
     scrollLeft.current = track.scrollLeft;
-    track.setPointerCapture(e.pointerId);
     track.style.cursor = "grabbing";
   };
 
