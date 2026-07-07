@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { categories, products, type Category } from "@/data/products";
 
 function isCategory(value: unknown): value is Category {
@@ -87,9 +87,14 @@ export default function CatalogPage() {
                   className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-              <div className="p-4">
-                <h2 className="text-base font-extrabold tracking-tight text-gray-900">{item.title}</h2>
-                <p className="mt-1 text-xs font-medium uppercase tracking-wide text-gray-600">{item.desc}</p>
+              <div className="flex items-center justify-between p-4">
+                <div>
+                  <h2 className="text-base font-extrabold tracking-tight text-gray-900">{item.title}</h2>
+                  <p className="mt-1 text-xs font-medium uppercase tracking-wide text-gray-600">{item.desc}</p>
+                </div>
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <ArrowUpRight className="h-4 w-4 text-white" strokeWidth={1.75} />
+                </div>
               </div>
             </Link>
           ))}
