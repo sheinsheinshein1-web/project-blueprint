@@ -388,7 +388,7 @@ function ReviewsSection() {
             {reviews.map((r, idx) => (
               <div
                 key={r.name}
-                className="w-[calc(72%-8px)] shrink-0 snap-start overflow-hidden rounded-[1.5rem] bg-white shadow-[0_10px_40px_rgba(20,24,40,0.05)] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(20%-19.2px)]"
+                className="w-[calc(72%-8px)] shrink-0 snap-start overflow-hidden rounded-[1.5rem] bg-white sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(20%-19.2px)]"
               >
                 <div className="relative aspect-[9/16] w-full overflow-hidden bg-[#f4f4f0]">
                   <video
