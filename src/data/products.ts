@@ -10,6 +10,20 @@ import img09 from "@/assets/products/clean/09-stelki-lnyanye-universalnye.png";
 import img10 from "@/assets/products/clean/10-stelki-probkovye-letnie.png";
 import img11 from "@/assets/products/clean/11-stelki-kozhanye-klassika.png";
 import img12 from "@/assets/products/clean/12-stelki-sportivnye-dyshaschie.png";
+import pack08 from "@/assets/products/clean/08-stelki-zimnie-s-folgoy-pack.png";
+import pack09 from "@/assets/products/clean/09-stelki-lnyanye-universalnye-pack.png";
+import pack10 from "@/assets/products/clean/10-stelki-probkovye-letnie-pack.png";
+import pack11 from "@/assets/products/clean/11-stelki-kozhanye-klassika-pack.png";
+import pack12 from "@/assets/products/clean/12-stelki-sportivnye-dyshaschie-pack.png";
+import materialZimaFolga from "@/assets/products/clean/material-zima-folga.png";
+import materialZimaSherst from "@/assets/products/clean/material-zima-sherst.png";
+import materialLenDemi from "@/assets/products/clean/material-len-demi.png";
+import materialProbkaCork from "@/assets/products/clean/material-probka-cork.png";
+import materialProbkaLen from "@/assets/products/clean/material-probka-len.png";
+import materialKozhaEco from "@/assets/products/clean/material-kozha-eco.png";
+import materialKozhaLatex from "@/assets/products/clean/material-kozha-latex.png";
+import materialSportLatex from "@/assets/products/clean/material-sport-latex.png";
+import materialSportTextile from "@/assets/products/clean/material-sport-textile.png";
 
 export type Category = "Все" | "Губки" | "Салфетки" | "Стельки";
 
@@ -31,6 +45,7 @@ export type Product = {
   desc: string;
   category: Category;
   image: string;
+  gallery?: string[];
   features: Feature[];
   marketplaces: Marketplace[];
 };
@@ -170,6 +185,7 @@ export const products: Product[] = [
     desc: "Для тепла в сильные морозы",
     category: "Стельки",
     image: img08,
+    gallery: [img08, pack08, materialZimaFolga, materialZimaSherst],
     features: [
       { text: "Фольгированный слой отражает тепло ног", icon: "sun" },
       { text: "Мягкая основа из фетра для комфорта", icon: "heart" },
@@ -188,6 +204,7 @@ export const products: Product[] = [
     desc: "На каждый день весной и осенью",
     category: "Стельки",
     image: img09,
+    gallery: [img09, pack09, materialLenDemi],
     features: [
       { text: "Натуральный лён регулирует влажность", icon: "droplets" },
       { text: "Приятны коже и предотвращают запах", icon: "heart" },
@@ -206,6 +223,7 @@ export const products: Product[] = [
     desc: "Для жары, легкие и дышащие",
     category: "Стельки",
     image: img10,
+    gallery: [img10, pack10, materialProbkaCork, materialProbkaLen],
     features: [
       { text: "Пробковый материал позволяет ногам дышать", icon: "wind" },
       { text: "Лёгкие и тонкие: не уменьшают объём обуви", icon: "feather" },
@@ -224,6 +242,7 @@ export const products: Product[] = [
     desc: "Для деловой обуви",
     category: "Стельки",
     image: img11,
+    gallery: [img11, pack11, materialKozhaEco, materialKozhaLatex],
     features: [
       { text: "Натуральная кожа для деловой обуви", icon: "briefcase" },
       { text: "Приятная поверхность и долговечность", icon: "heart" },
@@ -242,6 +261,7 @@ export const products: Product[] = [
     desc: "Для тренировок и спорта",
     category: "Стельки",
     image: img12,
+    gallery: [img12, pack12, materialSportTextile, materialSportLatex],
     features: [
       { text: "Дышащая структура для активных нагрузок", icon: "wind" },
       { text: "Амортизация при ходьбе и беге", icon: "activity" },

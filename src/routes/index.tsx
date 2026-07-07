@@ -27,14 +27,9 @@ import factory1 from "@/assets/factory-new-1.jpg";
 import factory2 from "@/assets/factory-new-2.jpg";
 import factory3 from "@/assets/factory-new-3.jpg";
 
-
-
 function AboutSlider() {
   return (
-    <section
-      id="about"
-      className="relative overflow-hidden bg-white px-6 py-24 lg:px-12 lg:py-32"
-    >
+    <section id="about" className="relative overflow-hidden bg-white px-6 py-24 lg:px-12 lg:py-32">
       <div className="relative z-10 mx-auto grid w-full grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
         {/* Left column */}
         <div className="relative lg:col-span-5">
@@ -43,18 +38,16 @@ function AboutSlider() {
           </span>
 
           <h2 className="mt-8 text-[28px] font-extrabold leading-[1.05] tracking-tight text-gray-900 sm:text-[32px] md:text-4xl lg:text-[56px]">
-            <span className="text-gray-900">1998</span>
-            <span className="text-gray-500"> — блестящая история</span>
+            <span className="text-gray-900">«1998 Блестящая история»</span>
+            <span className="text-gray-500"> — бренд российского производителя </span>
             <br />
-            российского производителя хозяйственных товаров{" "}
+            хозяйственных товаров{" "}
             <span className="whitespace-normal sm:whitespace-nowrap">«ТЕКОС-ИНДУСТРИЯ»</span>
           </h2>
 
           <div className="mt-10 border-l border-gray-900/25 pl-5">
             <p className="max-w-[440px] text-[15px] font-light leading-relaxed text-gray-700">
-              Он назван в честь года строительства собственного завода
-              в Ленинградской области. С тех пор мы создаём товары,
-              которые помогают миллионам людей каждый день.
+              Он назван в честь года строительства собственного завода в Ленинградской области.
             </p>
           </div>
 
@@ -109,11 +102,6 @@ function AboutSlider() {
   );
 }
 
-
-
-
-
-
 function ProductsSection() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -124,18 +112,90 @@ function ProductsSection() {
   const hasDragged = useRef(false);
 
   const products = [
-    { id: "gubki-universalnye", name: "Губки универсальные", image: img01, link: "/product/gubki-universalnye", desc: "Высокая износостойкость и эффективность" },
-    { id: "gubki-mynta", name: "Губки с ароматом мяты", image: img02, link: "/product/gubki-mynta", desc: "Свежесть и мягкость в каждой уборке" },
-    { id: "gubki-kofe", name: "Губки с ароматом кофе", image: img03, link: "/product/gubki-kofe", desc: "Приятный аромат при мытье посуды" },
-    { id: "gubki-delikatnye", name: "Губки деликатные", image: img04, link: "/product/gubki-delikatnye", desc: "Бережный уход за хрупкими поверхностями" },
-    { id: "gubki-ergonomichnye", name: "Губки эргономичные", image: img05, link: "/product/gubki-ergonomichnye", desc: "Удобная форма для руки и крепления" },
-    { id: "salfetki-celyuloznye", name: "Салфетки целлюлозные", image: img06, link: "/product/salfetki-celyuloznye", desc: "Отлично впитывают влагу и очищают" },
-    { id: "salfetki-viskoznye", name: "Салфетки вискозные", image: img07, link: "/product/salfetki-viskoznye", desc: "Универсальные материалы для ежедневной уборки" },
-    { id: "stelki-zimnie-folga", name: "Стельки зимние с фольгой", image: img08, link: "/product/stelki-zimnie-folga", desc: "Сохраняют тепло в холодную погоду" },
-    { id: "stelki-lnyanye", name: "Стельки льняные", image: img09, link: "/product/stelki-lnyanye", desc: "Натуральные материалы и комфорт" },
-    { id: "stelki-probkovye", name: "Стельки пробковые", image: img10, link: "/product/stelki-probkovye", desc: "Легкие и дышащие на лето" },
-    { id: "stelki-kozhanye", name: "Стельки кожаные", image: img11, link: "/product/stelki-kozhanye", desc: "Классический вариант на каждый день" },
-    { id: "stelki-sportivnye", name: "Стельки спортивные", image: img12, link: "/product/stelki-sportivnye", desc: "Дышащие и амортизирующие" },
+    {
+      id: "gubki-universalnye",
+      name: "Губки универсальные",
+      image: img01,
+      link: "/product/gubki-universalnye",
+      desc: "Высокая износостойкость и эффективность",
+    },
+    {
+      id: "gubki-mynta",
+      name: "Губки с ароматом мяты",
+      image: img02,
+      link: "/product/gubki-mynta",
+      desc: "Свежесть и мягкость в каждой уборке",
+    },
+    {
+      id: "gubki-kofe",
+      name: "Губки с ароматом кофе",
+      image: img03,
+      link: "/product/gubki-kofe",
+      desc: "Приятный аромат при мытье посуды",
+    },
+    {
+      id: "gubki-delikatnye",
+      name: "Губки деликатные",
+      image: img04,
+      link: "/product/gubki-delikatnye",
+      desc: "Бережный уход за хрупкими поверхностями",
+    },
+    {
+      id: "gubki-ergonomichnye",
+      name: "Губки эргономичные",
+      image: img05,
+      link: "/product/gubki-ergonomichnye",
+      desc: "Удобная форма для руки и крепления",
+    },
+    {
+      id: "salfetki-celyuloznye",
+      name: "Салфетки целлюлозные",
+      image: img06,
+      link: "/product/salfetki-celyuloznye",
+      desc: "Отлично впитывают влагу и очищают",
+    },
+    {
+      id: "salfetki-viskoznye",
+      name: "Салфетки вискозные",
+      image: img07,
+      link: "/product/salfetki-viskoznye",
+      desc: "Универсальные материалы для ежедневной уборки",
+    },
+    {
+      id: "stelki-zimnie-folga",
+      name: "Стельки зимние с фольгой",
+      image: img08,
+      link: "/product/stelki-zimnie-folga",
+      desc: "Сохраняют тепло в холодную погоду",
+    },
+    {
+      id: "stelki-lnyanye",
+      name: "Стельки льняные",
+      image: img09,
+      link: "/product/stelki-lnyanye",
+      desc: "Натуральные материалы и комфорт",
+    },
+    {
+      id: "stelki-probkovye",
+      name: "Стельки пробковые",
+      image: img10,
+      link: "/product/stelki-probkovye",
+      desc: "Легкие и дышащие на лето",
+    },
+    {
+      id: "stelki-kozhanye",
+      name: "Стельки кожаные",
+      image: img11,
+      link: "/product/stelki-kozhanye",
+      desc: "Классический вариант на каждый день",
+    },
+    {
+      id: "stelki-sportivnye",
+      name: "Стельки спортивные",
+      image: img12,
+      link: "/product/stelki-sportivnye",
+      desc: "Дышащие и амортизирующие",
+    },
   ];
 
   useEffect(() => {
@@ -246,7 +306,10 @@ function ProductsSection() {
             className="group inline-flex items-center gap-2 self-start rounded-full bg-black px-8 py-4 text-[14px] font-semibold text-white transition-colors hover:bg-gray-800 md:self-end"
           >
             Посмотреть каталог
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={1.75} />
+            <ArrowUpRight
+              className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              strokeWidth={1.75}
+            />
           </Link>
         </div>
 
@@ -297,7 +360,9 @@ function ProductsSection() {
                 </div>
                 <div className="flex items-center justify-between p-4 md:p-6">
                   <div>
-                    <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">{p.name}</h3>
+                    <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">
+                      {p.name}
+                    </h3>
                     <p className="mt-0.5 text-xs font-medium text-gray-600 md:text-sm">{p.desc}</p>
                   </div>
                   <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
@@ -323,7 +388,6 @@ function ProductsSection() {
     </section>
   );
 }
-
 
 function ReviewsSection() {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -471,7 +535,9 @@ function ReviewsSection() {
               >
                 <div className="relative aspect-[9/16] w-full overflow-hidden bg-[#f4f4f0]">
                   <video
-                    ref={(el) => { videoRefs.current[idx] = el; }}
+                    ref={(el) => {
+                      videoRefs.current[idx] = el;
+                    }}
                     src={r.videoSrc}
                     poster={r.photo}
                     preload="metadata"
@@ -539,7 +605,6 @@ function ReviewsSection() {
   );
 }
 
-
 export default function Index() {
   useEffect(() => {
     document.title = "1998 Блестящая история — хозяйственные товары";
@@ -553,27 +618,30 @@ export default function Index() {
       <ProductsSection />
 
       {/* History */}
-      <section
-        id="history"
-        className="relative overflow-hidden bg-white px-6 py-32 lg:px-12"
-      >
+      <section id="history" className="relative overflow-hidden bg-white px-6 py-32 lg:px-12">
         <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-white via-gray-50/50 to-white" />
 
         <div className="relative z-10 mx-auto flex w-full flex-col gap-24 lg:flex-row">
           <div className="space-y-8 lg:w-5/12">
             <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
-              Опыт, за которым<br />
+              Опыт, за которым
+              <br />
               <span>стоит история</span>
             </h2>
             <p className="whitespace-pre-line text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
-              Бренд «1998» — часть семейной компании с большой производственной историей.{"\n"}Сегодня компанией управляет уже второе поколение семьи — сохраняя ответственность, внимание к деталям и подход, основанный на реальном опыте.
+              Бренд «1998» — часть семейной компании с большой производственной историей.{"\n"}
+              Сегодня компанией управляет уже второе поколение семьи — сохраняя ответственность,
+              внимание к деталям и подход, основанный на реальном опыте.
             </p>
             <Link
               to="/about"
               className="group inline-flex items-center gap-2 rounded-full bg-black px-8 py-4 text-[14px] font-semibold text-white transition-colors hover:bg-gray-800"
             >
               Узнать историю компании
-              <ArrowUpRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2} />
+              <ArrowUpRight
+                className="h-4 w-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                strokeWidth={2}
+              />
             </Link>
           </div>
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:w-7/12">
@@ -581,9 +649,11 @@ export default function Index() {
               { name: "Николай Дворянкин", role: "Руководитель", photo: nikolayPhoto },
               { name: "Валерий Дворянкин", role: "Основатель", photo: valeryPhoto, offset: true },
             ].map((p) => (
-              <div key={p.name} className={`group space-y-8 ${p.offset ? "lg:translate-y-20" : ""}`}>
+              <div
+                key={p.name}
+                className={`group space-y-8 ${p.offset ? "lg:translate-y-20" : ""}`}
+              >
                 <div className="aspect-[3/4] overflow-hidden rounded-[2rem] border border-gray-100 bg-white shadow-[0_30px_60px_rgba(20,24,40,0.08)]">
-
                   <img
                     src={p.photo}
                     alt={p.name}
@@ -592,7 +662,9 @@ export default function Index() {
                 </div>
                 <div>
                   <h4 className="text-xl font-bold text-gray-900">{p.name}</h4>
-                  <p className="mt-2 text-sm font-bold uppercase tracking-widest text-[#4B66D1]">{p.role}</p>
+                  <p className="mt-2 text-sm font-bold uppercase tracking-widest text-[#4B66D1]">
+                    {p.role}
+                  </p>
                 </div>
               </div>
             ))}
@@ -602,11 +674,9 @@ export default function Index() {
 
       {/* Reviews */}
       <ReviewsSection />
-
     </div>
   );
 }
-
 
 function CinematicHero() {
   return (
@@ -623,26 +693,26 @@ function CinematicHero() {
       </picture>
 
       {/* Bottom gradient overlay */}
-      <div
-        className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] h-[45%] bg-gradient-to-t from-black/55 via-black/20 to-transparent"
-      />
-
-
-
-
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] h-[45%] bg-gradient-to-t from-black/55 via-black/20 to-transparent" />
 
       {/* Bottom */}
       <main className="relative z-20 mt-auto flex flex-col items-start justify-between gap-4 pb-4 md:flex-row md:items-end md:gap-10 lg:gap-20">
         <div className="space-y-1 md:space-y-6">
           <h1
             className="font-semibold leading-[0.8] tracking-[-0.04em] text-white md:leading-[0.85]"
-            style={{ fontSize: "clamp(60px, 9vw, 86px)", textShadow: "0 2px 24px rgba(0,0,0,0.35)" }}
+            style={{
+              fontSize: "clamp(60px, 9vw, 86px)",
+              textShadow: "0 2px 24px rgba(0,0,0,0.35)",
+            }}
           >
             Блестящая
           </h1>
           <h2
             className="font-semibold leading-[0.8] tracking-[-0.04em] text-white md:leading-[0.85]"
-            style={{ fontSize: "clamp(60px, 9vw, 86px)", textShadow: "0 2px 24px rgba(0,0,0,0.35)" }}
+            style={{
+              fontSize: "clamp(60px, 9vw, 86px)",
+              textShadow: "0 2px 24px rgba(0,0,0,0.35)",
+            }}
           >
             история
           </h2>
@@ -664,7 +734,10 @@ function CinematicHero() {
             className="group inline-flex w-full items-center justify-between gap-2 whitespace-nowrap rounded-full bg-black px-8 py-4 text-[14px] font-semibold text-white shadow-lg transition-colors hover:bg-gray-800 sm:w-auto"
           >
             Смотреть продукцию
-            <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" strokeWidth={2} />
+            <ArrowUpRight
+              className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              strokeWidth={2}
+            />
           </a>
         </div>
       </main>
