@@ -200,7 +200,9 @@ function ProductsSection() {
   );
 }
 function ReviewsSection() {
+  const trackRef = useRef<HTMLDivElement>(null);
   const [page, setPage] = useState(0);
+  const [perPage, setPerPage] = useState(1);
 
   const reviews = [
     {
@@ -250,13 +252,48 @@ function ReviewsSection() {
     },
   ];
 
-  const perPage = typeof window !== "undefined" && window.innerWidth >= 1280 ? 5 : typeof window !== "undefined" && window.innerWidth >= 1024 ? 3 : typeof window !== "undefined" && window.innerWidth >= 640 ? 2 : 1;
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      setPerPage(w >= 1280 ? 5 : w >= 1024 ? 3 : w >= 640 ? 2 : 1);
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   const totalPages = Math.max(1, reviews.length - perPage + 1);
   const canPrev = page > 0;
   const canNext = page < totalPages - 1;
 
-  const goPrev = () => setPage((p) => Math.max(0, p - 1));
-  const goNext = () => setPage((p) => Math.min(totalPages - 1, p + 1));
+  const scrollToPage = (nextPage: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+    const card = track.firstElementChild as HTMLElement | null;
+    if (!card) return;
+    const gap = parseFloat(getComputedStyle(track).gap || "0");
+    const step = card.offsetWidth + gap;
+    track.scrollTo({ left: step * nextPage, behavior: "smooth" });
+    setPage(nextPage);
+  };
+
+  const goPrev = () => scrollToPage(Math.max(0, page - 1));
+  const goNext = () => scrollToPage(Math.min(totalPages - 1, page + 1));
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const handleScroll = () => {
+      const card = track.firstElementChild as HTMLElement | null;
+      if (!card) return;
+      const gap = parseFloat(getComputedStyle(track).gap || "0");
+      const step = card.offsetWidth + gap;
+      const next = Math.round(track.scrollLeft / step);
+      setPage(Math.max(0, Math.min(totalPages - 1, next)));
+    };
+    track.addEventListener("scroll", handleScroll, { passive: true });
+    return () => track.removeEventListener("scroll", handleScroll);
+  }, [totalPages]);
 
   return (
     <section className="relative overflow-hidden bg-[#f4f4f0] px-6 py-24 lg:px-12 lg:py-32">
@@ -289,56 +326,55 @@ function ReviewsSection() {
             <ChevronRight className="h-5 w-5" strokeWidth={1.75} />
           </button>
 
-          <div className="overflow-hidden">
-            <div
-              className="flex gap-4 transition-transform duration-500 ease-out md:gap-5 lg:gap-6"
-              style={{ transform: `translateX(-${page * (100 / perPage)}%)` }}
-            >
-              {reviews.map((r) => (
-                <div
-                  key={r.name}
-                  className="w-[calc(100%-8px)] shrink-0 overflow-hidden rounded-[1.5rem] border border-white/60 bg-white shadow-[0_20px_40px_rgba(20,24,40,0.08)] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(20%-19.2px)]"
-                >
-                  <div className="aspect-[4/3] w-full overflow-hidden bg-[#f4f4f0]">
-                    <img
-                      src={r.photo}
-                      alt={`Фото отзыва ${r.name}`}
-                      loading="lazy"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                  <div className="p-5 lg:p-6">
-                    <div className="flex items-center gap-3">
-                      <div
-                        className="flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold text-white"
-                        style={{ backgroundColor: r.color }}
-                      >
-                        {r.initials}
-                      </div>
-                      <div>
-                        <p className="text-base font-bold text-gray-900">{r.name}</p>
-                        <div className="flex items-center gap-0.5">
-                          {Array.from({ length: r.rating }).map((_, i) => (
-                            <Star key={i} className="h-4 w-4 fill-[#0f1b3d] text-[#0f1b3d]" />
-                          ))}
-                        </div>
+          <div
+            ref={trackRef}
+            className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-4 md:gap-5 lg:gap-6 scrollbar-hide"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+          >
+            {reviews.map((r) => (
+              <div
+                key={r.name}
+                className="w-[calc(100%-8px)] shrink-0 snap-start overflow-hidden rounded-[1.5rem] border border-white/60 bg-white shadow-[0_20px_40px_rgba(20,24,40,0.08)] sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(20%-19.2px)]"
+              >
+                <div className="aspect-[4/3] w-full overflow-hidden bg-[#f4f4f0]">
+                  <img
+                    src={r.photo}
+                    alt={`Фото отзыва ${r.name}`}
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <div className="p-5 lg:p-6">
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold text-white"
+                      style={{ backgroundColor: r.color }}
+                    >
+                      {r.initials}
+                    </div>
+                    <div>
+                      <p className="text-base font-bold text-gray-900">{r.name}</p>
+                      <div className="flex items-center gap-0.5">
+                        {Array.from({ length: r.rating }).map((_, i) => (
+                          <Star key={i} className="h-4 w-4 fill-[#0f1b3d] text-[#0f1b3d]" />
+                        ))}
                       </div>
                     </div>
-                    <p className="mt-4 text-sm font-light leading-relaxed text-gray-700">
-                      {r.text}
-                    </p>
-                    <p className="mt-5 text-xs font-medium text-gray-400">{r.date}</p>
                   </div>
+                  <p className="mt-4 text-sm font-light leading-relaxed text-gray-700">
+                    {r.text}
+                  </p>
+                  <p className="mt-5 text-xs font-medium text-gray-400">{r.date}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
 
           <div className="mt-8 flex items-center justify-center gap-2">
             {Array.from({ length: totalPages }).map((_, i) => (
               <button
                 key={i}
-                onClick={() => setPage(i)}
+                onClick={() => scrollToPage(i)}
                 className={`h-2.5 w-2.5 rounded-full transition-colors ${i === page ? "bg-[#0f1b3d]" : "bg-[#0f1b3d]/20"}`}
                 aria-label={`Перейти к странице ${i + 1}`}
               />
