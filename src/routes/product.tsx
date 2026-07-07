@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ChevronRight } from "lucide-react";
+import { DynamicIcon } from "lucide-react/dynamic";
 import { getProductById, getRelatedProducts } from "@/data/products";
 
 
