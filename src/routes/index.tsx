@@ -63,15 +63,15 @@ const aboutImages = [
 
 function AboutSlider() {
   return (
-    <section id="about" className="relative overflow-hidden bg-white px-6 pb-12 pt-20 lg:px-12 lg:py-32">
-      <div className="relative z-10 mx-auto grid w-full grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+    <section id="about" className="relative overflow-hidden bg-white px-6 pb-8 pt-16 lg:px-12 lg:pb-24 lg:pt-28">
+      <div className="relative z-10 mx-auto grid w-full grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
         {/* Left column */}
         <div className="relative lg:col-span-5">
           <span className="inline-flex items-center rounded-full border border-white/70 bg-white/45 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-950 shadow-[0_12px_30px_rgba(17,24,39,0.08),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-xl">
             БОЛЕЕ 25 ЛЕТ ОПЫТА
           </span>
 
-          <h2 className="mt-8 text-[28px] font-extrabold leading-[1.05] tracking-tight text-gray-900 sm:text-[32px] md:text-4xl lg:text-[56px]">
+          <h2 className="mt-6 text-[28px] font-extrabold leading-[1.05] tracking-tight text-gray-900 sm:text-[32px] md:text-4xl lg:mt-8 lg:text-[56px]">
             <span className="text-gray-900">«1998 Блестящая история»</span>
             <span className="text-gray-500"> — бренд российского производителя </span>
             <br />
@@ -79,7 +79,7 @@ function AboutSlider() {
             <span className="whitespace-normal sm:whitespace-nowrap">«ТЕКОС-ИНДУСТРИЯ»</span>
           </h2>
 
-          <div className="mt-10 border-l border-gray-900/25 pl-5">
+          <div className="mt-8 border-l border-gray-900/25 pl-5 lg:mt-10">
             <p className="max-w-[440px] text-[15px] font-light leading-relaxed text-gray-700">
               Он назван в честь года строительства собственного завода в Ленинградской области.
             </p>
@@ -326,10 +326,10 @@ function ProductsSection() {
   return (
     <section
       id="products"
-      className="relative overflow-hidden bg-white px-6 pb-24 pt-12 lg:px-12 lg:py-24"
+      className="relative overflow-hidden bg-white px-6 pb-16 pt-8 lg:px-12 lg:pb-20 lg:pt-16"
     >
       <div className="relative z-10 mx-auto w-full">
-        <div className="mb-8 flex flex-col justify-between gap-4 md:flex-row md:items-end">
+        <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end lg:mb-8">
           <div className="max-w-2xl space-y-3">
             <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
               Продукция
@@ -411,7 +411,7 @@ function ProductsSection() {
             ))}
           </div>
 
-          <div className="mt-8 flex items-center justify-center gap-2">
+          <div className="mt-6 flex items-center justify-center gap-2 lg:mt-8">
             {Array.from({ length: totalPages }).map((_, i) => (
               <button
                 key={i}
@@ -547,9 +547,9 @@ function ReviewsSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#f4f4f0] px-6 py-24 lg:px-12 lg:py-32">
+    <section className="relative overflow-hidden bg-[#f4f4f0] px-6 pb-20 pt-16 lg:px-12 lg:pb-28 lg:pt-24">
       <div className="mx-auto w-full">
-        <div className="mb-10 max-w-2xl lg:mb-14">
+        <div className="mb-8 max-w-2xl lg:mb-10">
           <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
             Нам доверяют
           </h2>
@@ -630,7 +630,7 @@ function ReviewsSection() {
             ))}
           </div>
 
-          <div className="mt-8 flex items-center justify-center gap-2">
+          <div className="mt-6 flex items-center justify-center gap-2 lg:mt-8">
             {Array.from({ length: totalPages }).map((_, i) => (
               <button
                 key={i}
@@ -659,11 +659,11 @@ export default function Index() {
       <ProductsSection />
 
       {/* History */}
-      <section id="history" className="relative overflow-hidden bg-white px-6 py-32 lg:px-12">
+      <section id="history" className="relative overflow-hidden bg-white px-6 pb-16 pt-16 lg:px-12 lg:pb-20 lg:pt-24">
         <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-white via-gray-50/50 to-white" />
 
-        <div className="relative z-10 mx-auto flex w-full flex-col gap-24 lg:flex-row">
-          <div className="space-y-8 lg:w-5/12">
+        <div className="relative z-10 mx-auto flex w-full flex-col gap-14 lg:flex-row lg:gap-20">
+          <div className="space-y-6 lg:w-5/12 lg:space-y-8">
             <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
               Опыт, за которым
               <br />
@@ -685,14 +685,14 @@ export default function Index() {
               />
             </Link>
           </div>
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:w-7/12">
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:w-7/12 lg:gap-10">
             {[
               { name: "Николай Дворянкин", role: "Руководитель", photo: nikolayPhoto },
               { name: "Валерий Дворянкин", role: "Основатель", photo: valeryPhoto, offset: true },
             ].map((p) => (
               <div
                 key={p.name}
-                className={`group space-y-8 ${p.offset ? "lg:translate-y-20" : ""}`}
+                className={`group space-y-6 lg:space-y-8 ${p.offset ? "lg:translate-y-16" : ""}`}
               >
                 <div className="aspect-[3/4] overflow-hidden rounded-[2rem] border border-gray-100 bg-white shadow-[0_30px_60px_rgba(20,24,40,0.08)]">
                   <img
