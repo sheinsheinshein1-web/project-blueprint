@@ -4,6 +4,7 @@ import { ArrowLeft, ChevronRight } from "lucide-react";
 import { DynamicIcon } from "lucide-react/dynamic";
 import { getProductById, getRelatedProducts } from "@/data/products";
 import wildberriesLogo from "@/assets/wildberries.gif.asset.json";
+import ozonLogo from "@/assets/ozon.gif.asset.json";
 
 
 export default function ProductPage() {
@@ -89,6 +90,7 @@ export default function ProductPage() {
               <div className="flex flex-wrap items-center gap-4">
               {product.marketplaces.map((m) => {
                 const isWB = m.name.toUpperCase() === "WILDBERRIES";
+                const isOzon = m.name.toUpperCase() === "OZON";
                 return (
                   <a
                     key={m.name}
@@ -100,6 +102,8 @@ export default function ProductPage() {
                   >
                     {isWB ? (
                       <img src={wildberriesLogo.url} alt="Wildberries" className="h-5 w-auto" />
+                    ) : isOzon ? (
+                      <img src={ozonLogo.url} alt="Ozon" className="h-5 w-auto" />
                     ) : (
                       m.name
                     )}
