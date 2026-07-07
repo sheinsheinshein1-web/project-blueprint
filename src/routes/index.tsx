@@ -33,7 +33,7 @@ function AboutSlider() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-[#f4f4f0] px-6 py-24 lg:px-12 lg:py-32"
+      className="relative overflow-hidden bg-white px-6 py-24 lg:px-12 lg:py-32"
     >
       <div className="relative z-10 mx-auto grid w-full grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
         {/* Left column */}
