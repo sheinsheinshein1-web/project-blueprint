@@ -202,9 +202,10 @@ function ProductsSection() {
           </Link>
         </div>
 
+        {/* Mobile carousel */}
         <div
           ref={trackRef}
-          className="-mr-6 flex cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto pb-4 pt-2 md:gap-5 lg:-mr-12 lg:gap-6 scrollbar-hide select-none"
+          className="-mr-6 flex cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto pb-4 pt-2 scrollbar-hide select-none md:hidden"
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
@@ -217,7 +218,7 @@ function ProductsSection() {
               to={p.link}
               draggable={false}
               onClick={handleCardClick}
-              className="group relative w-[72%] shrink-0 snap-start overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55 sm:w-[46%] lg:w-[31%] xl:w-[23%]"
+              className="group relative w-[72%] shrink-0 snap-start overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/35 backdrop-blur-md shadow-[0_20px_40px_rgba(20,24,40,0.1)] transition-colors hover:bg-white/55"
             >
               <div className="relative aspect-[4/5] overflow-hidden rounded-t-[1.5rem] bg-white p-4 md:p-6">
                 <img
@@ -239,6 +240,121 @@ function ProductsSection() {
               </div>
             </Link>
           ))}
+        </div>
+
+        {/* Desktop bento grid */}
+        <div className="hidden md:block">
+          {/* Featured large cards */}
+          <div className="grid grid-cols-1 gap-6 rounded-[2rem] bg-[#9a9ca5] p-6 lg:grid-cols-2">
+            <Link
+              to="/catalog?category=Губки"
+              className="group flex flex-col overflow-hidden rounded-[1.5rem] bg-white/95 p-6 transition-transform hover:scale-[1.01]"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1rem] bg-white">
+                <img
+                  src={img01}
+                  alt="Губка профильная макси"
+                  loading="lazy"
+                  className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105"
+                />
+              </div>
+              <div className="mt-5 flex items-center justify-between">
+                <div>
+                  <h3 className="text-lg font-extrabold tracking-tight text-gray-900 lg:text-xl">Губка профильная макси</h3>
+                  <p className="mt-1 text-sm font-medium text-gray-600">Удобная форма для эффективной уборки</p>
+                </div>
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <ArrowUpRight className="h-5 w-5 text-white" strokeWidth={1.75} />
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              to="/catalog?category=Салфетки"
+              className="group flex flex-col overflow-hidden rounded-[1.5rem] bg-white/95 p-6 transition-transform hover:scale-[1.01]"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1rem] bg-white">
+                <img
+                  src={img06}
+                  alt="Салфетки целлюлозные супервпитывающие"
+                  loading="lazy"
+                  className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105"
+                />
+              </div>
+              <div className="mt-5 flex items-center justify-between">
+                <div>
+                  <h3 className="text-lg font-extrabold tracking-tight text-gray-900 lg:text-xl">Салфетки целлюлозные супервпитывающие</h3>
+                  <p className="mt-1 text-sm font-medium text-gray-600">Отлично впитывают влагу и очищают</p>
+                </div>
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <ArrowUpRight className="h-5 w-5 text-white" strokeWidth={1.75} />
+                </div>
+              </div>
+            </Link>
+          </div>
+
+          {/* Bottom smaller cards */}
+          <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-3">
+            <Link
+              to="/catalog?category=Губки"
+              className="group flex flex-col overflow-hidden rounded-[2rem] bg-[#e8f07d] p-6 transition-transform hover:scale-[1.01]"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-white/60">
+                <img
+                  src={img02}
+                  alt="Губки с ароматом мяты"
+                  loading="lazy"
+                  className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105"
+                />
+              </div>
+              <div className="mt-4 flex items-center justify-between">
+                <h3 className="text-base font-extrabold tracking-tight text-gray-900 lg:text-lg">Губки с ароматом мяты</h3>
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <ArrowUpRight className="h-4 w-4 text-white" strokeWidth={1.75} />
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              to="/catalog?category=Салфетки"
+              className="group flex flex-col overflow-hidden rounded-[2rem] bg-[#b8d4e8] p-6 transition-transform hover:scale-[1.01]"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-white/60">
+                <img
+                  src={img07}
+                  alt="Салфетки вискозные"
+                  loading="lazy"
+                  className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105"
+                />
+              </div>
+              <div className="mt-4 flex items-center justify-between">
+                <h3 className="text-base font-extrabold tracking-tight text-gray-900 lg:text-lg">Салфетки вискозные</h3>
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <ArrowUpRight className="h-4 w-4 text-white" strokeWidth={1.75} />
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              to="/catalog?category=Стельки"
+              className="group flex flex-col overflow-hidden rounded-[2rem] bg-[#d4c4f7] p-6 transition-transform hover:scale-[1.01]"
+            >
+              <div className="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-white/60">
+                <img
+                  src={img10}
+                  alt="Стельки пробковые"
+                  loading="lazy"
+                  className="h-full w-full object-contain transition-transform duration-1000 group-hover:scale-105"
+                />
+              </div>
+              <div className="mt-4 flex items-center justify-between">
+                <h3 className="text-base font-extrabold tracking-tight text-gray-900 lg:text-lg">Стельки пробковые</h3>
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
+                  <ArrowUpRight className="h-4 w-4 text-white" strokeWidth={1.75} />
+                </div>
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
     </section>
