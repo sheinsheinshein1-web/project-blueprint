@@ -47,8 +47,7 @@ function AboutSlider() {
           {/* Watermark */}
           <div
             aria-hidden
-            className="pointer-events-none absolute -bottom-2 left-0 select-none text-[120px] font-extrabold leading-none tracking-tight text-gray-900/[0.06] sm:text-[160px] md:text-[200px] lg:text-[280px]"
-            style={{ WebkitTextStroke: "1px rgba(17,24,39,0.12)", color: "transparent" }}
+            className="pointer-events-none absolute -bottom-2 left-0 select-none text-[120px] font-extrabold leading-none tracking-tight text-gray-900/[0.04] sm:text-[160px] md:text-[200px] lg:text-[280px]"
           >
             1998
           </div>
