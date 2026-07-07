@@ -17,12 +17,10 @@ import img09 from "@/assets/products/clean/09-stelki-lnyanye-universalnye.png";
 import img10 from "@/assets/products/clean/10-stelki-probkovye-letnie.png";
 import img11 from "@/assets/products/clean/11-stelki-kozhanye-klassika.png";
 import img12 from "@/assets/products/clean/12-stelki-sportivnye-dyshaschie.png";
-import review1 from "@/assets/reviews/review-1.jpg";
-import review2 from "@/assets/reviews/review-2.jpg";
-import review3 from "@/assets/reviews/review-3.jpg";
-import review4 from "@/assets/reviews/review-4.jpg";
-import review5 from "@/assets/reviews/review-5.jpg";
+import ugcDarinaGubkiReview from "@/assets/reviews/ugc-darina-smiles-gubki.mp4";
 import ugcGubkiReview from "@/assets/reviews/ugc-gubki-review.mp4";
+import ugcMariaGubkiReview from "@/assets/reviews/ugc-maria-ryzhkova-gubki.mp4";
+import ugcSabrinaGubkiReview from "@/assets/reviews/ugc-sabrina-v-gubki.mp4";
 import ugcSalfetkiReview from "@/assets/reviews/ugc-salfetki-review.mp4";
 import nikolayPhoto from "@/assets/nikolay.jpg";
 import valeryPhoto from "@/assets/valery.png";
@@ -416,43 +414,38 @@ function ReviewsSection() {
 
   const reviews = [
     {
-      name: "Любовь",
-      username: "UGC-обзор губок",
-      photo: review1,
+      name: "Анна",
+      username: "Губки для посуды",
       videoSrc: ugcGubkiReview,
-      initials: "Л",
+      initials: "А",
       color: "#4B66D1",
     },
     {
-      name: "Обзор",
-      username: "UGC-обзор салфеток",
-      photo: review2,
+      name: "Екатерина",
+      username: "Салфетки целлюлозные",
       videoSrc: ugcSalfetkiReview,
-      initials: "О",
+      initials: "Е",
       color: "#2d8a9e",
     },
     {
-      name: "Ольга",
-      username: "@wildberries",
-      photo: review3,
-      videoSrc: undefined,
-      initials: "О",
+      name: "Мария Рыжкова",
+      username: "Губки для посуды",
+      videoSrc: ugcMariaGubkiReview,
+      initials: "М",
       color: "#c4654a",
     },
     {
-      name: "Алла",
-      username: "@feallkin_dom",
-      photo: review4,
-      videoSrc: undefined,
-      initials: "А",
+      name: "Дарина Смайльс",
+      username: "Губки для посуды",
+      videoSrc: ugcDarinaGubkiReview,
+      initials: "Д",
       color: "#7d9b76",
     },
     {
-      name: "Мария",
-      username: "@mariya_foods",
-      photo: review5,
-      videoSrc: undefined,
-      initials: "М",
+      name: "Сабрина Валиуллина",
+      username: "Губки для посуды",
+      videoSrc: ugcSabrinaGubkiReview,
+      initials: "С",
       color: "#9b72cf",
     },
   ];
@@ -559,8 +552,7 @@ function ReviewsSection() {
                           ref={(el) => {
                             videoRefs.current[idx] = el;
                           }}
-                          src={r.videoSrc}
-                          poster={r.photo}
+                          src={`${r.videoSrc}#t=0.001`}
                           preload="metadata"
                           playsInline
                           muted
