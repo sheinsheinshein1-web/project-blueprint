@@ -42,6 +42,25 @@ const heroSlides = [
   },
 ];
 
+const aboutImages = [
+  {
+    src: factoryExterior,
+    alt: "Продукция 1998 Блестящая история на сером фоне",
+  },
+  {
+    src: factory1,
+    alt: "Линейка губок 1998 Блестящая история",
+  },
+  {
+    src: factory2,
+    alt: "Салфетки 1998 Блестящая история",
+  },
+  {
+    src: factory3,
+    alt: "Средство для посуды и губка 1998 Блестящая история",
+  },
+];
+
 function AboutSlider() {
   return (
     <section id="about" className="relative overflow-hidden bg-white px-6 py-24 lg:px-12 lg:py-32">
@@ -77,38 +96,55 @@ function AboutSlider() {
 
         {/* Right column — image collage */}
         <div className="lg:col-span-7">
-          <div className="overflow-hidden rounded-[1.5rem] shadow-[0_20px_60px_rgba(20,24,40,0.12)]">
-            <img
-              src={factoryExterior}
-              alt="Завод «ТЕКОС-ИНДУСТРИЯ» в Ленинградской области"
-              loading="lazy"
-              className="h-[220px] w-full object-cover sm:h-[280px] md:h-[380px] lg:h-[420px]"
-            />
+          <div className="-mx-6 overflow-hidden py-2 lg:hidden">
+            <div className="flex animate-marquee-right">
+              {[0, 1].map((group) => (
+                <div
+                  key={group}
+                  aria-hidden={group === 1}
+                  className="flex shrink-0 gap-4 pr-4"
+                >
+                  {aboutImages.map((image) => (
+                    <div
+                      key={`${group}-${image.src}`}
+                      className="w-[calc(100vw-3rem)] shrink-0 overflow-hidden rounded-[1.5rem] shadow-[0_20px_60px_rgba(20,24,40,0.12)] sm:w-[min(78vw,680px)]"
+                    >
+                      <img
+                        src={image.src}
+                        alt={group === 0 ? image.alt : ""}
+                        loading="lazy"
+                        className="h-[220px] w-full object-cover sm:h-[280px] md:h-[380px]"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="mt-4 grid grid-cols-3 gap-3 sm:gap-4">
-            <div className="overflow-hidden rounded-[1rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)] sm:rounded-[1.25rem]">
+
+          <div className="hidden lg:block">
+            <div className="overflow-hidden rounded-[1.5rem] shadow-[0_20px_60px_rgba(20,24,40,0.12)]">
               <img
-                src={factory1}
-                alt="Производственная линия губок"
+                src={factoryExterior}
+                alt="Продукция 1998 Блестящая история на сером фоне"
                 loading="lazy"
-                className="h-[100px] w-full object-cover sm:h-[120px] md:h-[180px] lg:h-[200px]"
+                className="h-[420px] w-full object-cover"
               />
             </div>
-            <div className="overflow-hidden rounded-[1rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)] sm:rounded-[1.25rem]">
-              <img
-                src={factory2}
-                alt="Сырьё для производства"
-                loading="lazy"
-                className="h-[100px] w-full object-cover sm:h-[120px] md:h-[180px] lg:h-[200px]"
-              />
-            </div>
-            <div className="overflow-hidden rounded-[1rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)] sm:rounded-[1.25rem]">
-              <img
-                src={factory3}
-                alt="Склад готовой продукции"
-                loading="lazy"
-                className="h-[100px] w-full object-cover sm:h-[120px] md:h-[180px] lg:h-[200px]"
-              />
+            <div className="mt-4 grid grid-cols-3 gap-4">
+              {aboutImages.slice(1).map((image) => (
+                <div
+                  key={image.src}
+                  className="overflow-hidden rounded-[1.25rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)]"
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    loading="lazy"
+                    className="h-[200px] w-full object-cover"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
