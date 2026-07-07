@@ -31,7 +31,7 @@ export default function ProductPage() {
 
   return (
     <section className="relative min-h-screen bg-white px-6 py-16 lg:px-12 lg:py-24">
-      <div className="relative z-10 mx-auto w-full max-w-[1280px]">
+      <div className="relative z-10 mx-auto w-full">
         {/* Breadcrumbs */}
         <nav aria-label="Хлебные крошки" className="mb-8 flex items-center gap-2 text-sm text-gray-500">
           <Link to="/" className="transition-colors hover:text-[#4B66D1]">Главная</Link>
