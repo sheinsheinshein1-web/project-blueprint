@@ -275,6 +275,10 @@ function ProductsSection() {
             ref={trackRef}
             className="-mr-6 flex cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto pb-4 pt-2 md:gap-5 lg:-mr-12 lg:gap-6 scrollbar-hide select-none"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerLeave={handlePointerUp}
           >
             {products.map((p) => (
               <Link
