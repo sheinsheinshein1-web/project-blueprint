@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Play, Volume2, VolumeX } from "lucide-react";
+import heroCleaningDesktop from "@/assets/hero-cleaning-desktop.png";
+import heroCleaningMobile from "@/assets/hero-cleaning-mobile.png";
 import heroLifestyle from "@/assets/hero-lifestyle.png";
 import heroMobile from "@/assets/hero-mobile.png";
 import img01 from "@/assets/products/clean/01-gubki-universalnye.png";
@@ -28,6 +30,19 @@ import factoryExterior from "@/assets/factory-exterior.jpg";
 import factory1 from "@/assets/factory-new-1.jpg";
 import factory2 from "@/assets/factory-new-2.jpg";
 import factory3 from "@/assets/factory-new-3.jpg";
+
+const heroSlides = [
+  {
+    desktop: heroLifestyle,
+    mobile: heroMobile,
+    alt: "Женщина моет посуду губкой 1998",
+  },
+  {
+    desktop: heroCleaningDesktop,
+    mobile: heroCleaningMobile,
+    alt: "Женщина протирает стол салфеткой 1998",
+  },
+];
 
 function AboutSlider() {
   return (
@@ -690,18 +705,35 @@ export default function Index() {
 }
 
 function CinematicHero() {
+  const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveSlide((slide) => (slide + 1) % heroSlides.length);
+    }, 6000);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
   return (
     <section className="relative flex min-h-screen w-full flex-col justify-between overflow-hidden px-6 pb-6 pt-24 md:px-8 md:pb-8 md:pt-28 lg:px-12 lg:pb-12 lg:pt-32">
-      {/* Lifestyle background — mobile image below md, desktop above */}
-      <picture className="pointer-events-none absolute inset-0 z-0 h-full w-full">
-        <source srcSet={heroMobile} media="(max-width: 767px)" />
-        <img
-          src={heroLifestyle}
-          alt="Женщина моет посуду губкой 1998"
-          loading="eager"
-          className="h-full w-full object-cover object-center"
-        />
-      </picture>
+      {heroSlides.map((slide, index) => (
+        <picture
+          key={slide.desktop}
+          aria-hidden={activeSlide !== index}
+          className={`pointer-events-none absolute inset-0 z-0 h-full w-full transition-opacity duration-1000 ease-out ${
+            activeSlide === index ? "opacity-100" : "opacity-0"
+          }`}
+        >
+          <source srcSet={slide.mobile} media="(max-width: 767px)" />
+          <img
+            src={slide.desktop}
+            alt={activeSlide === index ? slide.alt : ""}
+            loading={index === 0 ? "eager" : "lazy"}
+            className="h-full w-full object-cover object-center"
+          />
+        </picture>
+      ))}
 
       {/* Bottom gradient overlay */}
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] h-[45%] bg-gradient-to-t from-black/55 via-black/20 to-transparent" />
