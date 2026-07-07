@@ -207,7 +207,7 @@ function ReviewsSection() {
   const reviews = [
     {
       name: "Анна",
-      photo: img01,
+      photo: review1,
       initials: "А",
       color: "#4B66D1",
       rating: 5,
@@ -216,7 +216,7 @@ function ReviewsSection() {
     },
     {
       name: "Денис",
-      photo: img02,
+      photo: review2,
       initials: "Д",
       color: "#2d8a9e",
       rating: 5,
@@ -225,7 +225,7 @@ function ReviewsSection() {
     },
     {
       name: "Ольга",
-      photo: img04,
+      photo: review3,
       initials: "О",
       color: "#c4654a",
       rating: 5,
@@ -234,7 +234,7 @@ function ReviewsSection() {
     },
     {
       name: "Алла",
-      photo: img06,
+      photo: review4,
       initials: "А",
       color: "#7d9b76",
       rating: 5,
@@ -243,7 +243,7 @@ function ReviewsSection() {
     },
     {
       name: "Мария",
-      photo: img07,
+      photo: review5,
       initials: "М",
       color: "#9b72cf",
       rating: 5,
