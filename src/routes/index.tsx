@@ -233,9 +233,6 @@ function ProductsSection() {
                   <h3 className="text-base font-extrabold tracking-tight text-gray-900 md:text-lg">{p.name}</h3>
                   <p className="mt-0.5 text-xs font-medium text-gray-600 md:text-sm">{p.desc}</p>
                 </div>
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-black shadow-sm transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                  <ArrowUpRight className="h-4 w-4 text-white" strokeWidth={1.75} />
-                </div>
               </div>
             </Link>
           ))}
