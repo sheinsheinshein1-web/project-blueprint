@@ -279,7 +279,7 @@ function ProductsSection() {
           >
             {products.map((p) => (
               <Link
-                key={p.name}
+                key={p.id}
                 to={p.link}
                 draggable={false}
                 onClick={handleCardClick}
