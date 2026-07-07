@@ -554,8 +554,15 @@ function ReviewsSection() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#f4f4f0] px-6 pb-20 pt-16 lg:px-12 lg:pb-28 lg:pt-24">
-      <div className="mx-auto w-full">
+    <section className="relative overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 pb-20 pt-16 lg:px-12 lg:pb-28 lg:pt-24">
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
+        }}
+      />
+      <div className="relative z-10 mx-auto w-full">
         <div className="mb-8 max-w-2xl lg:mb-10">
           <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
             Нам доверяют
