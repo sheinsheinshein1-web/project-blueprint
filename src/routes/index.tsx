@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import heroLifestyle from "@/assets/hero-lifestyle.png";
 import heroMobile from "@/assets/hero-mobile.png";
