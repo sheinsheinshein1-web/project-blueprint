@@ -20,6 +20,8 @@ import review2 from "@/assets/reviews/review-2.jpg";
 import review3 from "@/assets/reviews/review-3.jpg";
 import review4 from "@/assets/reviews/review-4.jpg";
 import review5 from "@/assets/reviews/review-5.jpg";
+import ugcGubkiReview from "@/assets/reviews/ugc-gubki-review.mp4";
+import ugcSalfetkiReview from "@/assets/reviews/ugc-salfetki-review.mp4";
 import nikolayPhoto from "@/assets/nikolay.jpg";
 import valeryPhoto from "@/assets/valery.png";
 import factoryExterior from "@/assets/factory-exterior.jpg";
@@ -399,19 +401,19 @@ function ReviewsSection() {
 
   const reviews = [
     {
-      name: "Анна",
-      username: "@tvartirka_pik",
+      name: "Любовь",
+      username: "UGC-обзор губок",
       photo: review1,
-      videoSrc: undefined,
-      initials: "А",
+      videoSrc: ugcGubkiReview,
+      initials: "Л",
       color: "#4B66D1",
     },
     {
-      name: "Денис",
-      username: "@spb.denchik",
+      name: "Обзор",
+      username: "UGC-обзор салфеток",
       photo: review2,
-      videoSrc: undefined,
-      initials: "Д",
+      videoSrc: ugcSalfetkiReview,
+      initials: "О",
       color: "#2d8a9e",
     },
     {
@@ -534,43 +536,52 @@ function ReviewsSection() {
                 className="w-[calc(72%-8px)] shrink-0 snap-start overflow-hidden rounded-[1.5rem] bg-white sm:w-[calc(50%-10px)] lg:w-[calc(33.333%-16px)] xl:w-[calc(20%-19.2px)]"
               >
                 <div className="relative aspect-[9/16] w-full overflow-hidden bg-[#f4f4f0]">
-                  <video
-                    ref={(el) => {
-                      videoRefs.current[idx] = el;
-                    }}
-                    src={r.videoSrc}
-                    poster={r.photo}
-                    preload="metadata"
-                    playsInline
-                    muted
-                    loop
-                    className="h-full w-full object-cover"
-                    onClick={() => handleVideoClick(idx)}
-                    onPlay={() => setPlaying((p) => ({ ...p, [r.name]: true }))}
-                    onPause={() => setPlaying((p) => ({ ...p, [r.name]: false }))}
-                  />
+                  {(() => {
+                    const isMuted = muted[r.name] ?? true;
+                    return (
+                      <>
+                        <video
+                          ref={(el) => {
+                            videoRefs.current[idx] = el;
+                          }}
+                          src={r.videoSrc}
+                          poster={r.photo}
+                          preload="metadata"
+                          playsInline
+                          muted
+                          loop
+                          className="h-full w-full object-cover"
+                          onClick={() => handleVideoClick(idx)}
+                          onPlay={() => setPlaying((p) => ({ ...p, [r.name]: true }))}
+                          onPause={() => setPlaying((p) => ({ ...p, [r.name]: false }))}
+                        />
 
-                  {!playing[r.name] && (
-                    <button
-                      onClick={() => togglePlay(idx)}
-                      className="absolute left-1/2 top-1/2 z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/25 text-white backdrop-blur-sm transition-colors hover:bg-white/40"
-                      aria-label="Воспроизвести"
-                    >
-                      <Play className="h-6 w-6 fill-white" strokeWidth={1.5} />
-                    </button>
-                  )}
+                        {r.videoSrc && !playing[r.name] && (
+                          <button
+                            onClick={() => togglePlay(idx)}
+                            className="absolute left-1/2 top-1/2 z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/25 text-white backdrop-blur-sm transition-colors hover:bg-white/40"
+                            aria-label="Воспроизвести"
+                          >
+                            <Play className="h-6 w-6 fill-white" strokeWidth={1.5} />
+                          </button>
+                        )}
 
-                  <button
-                    onClick={() => toggleMute(idx)}
-                    className="absolute bottom-4 left-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/25 text-white backdrop-blur-sm transition-colors hover:bg-black/40"
-                    aria-label={muted[r.name] ? "Включить звук" : "Выключить звук"}
-                  >
-                    {muted[r.name] ? (
-                      <VolumeX className="h-4 w-4" strokeWidth={1.75} />
-                    ) : (
-                      <Volume2 className="h-4 w-4" strokeWidth={1.75} />
-                    )}
-                  </button>
+                        {r.videoSrc && (
+                          <button
+                            onClick={() => toggleMute(idx)}
+                            className="absolute bottom-4 left-4 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-black/25 text-white backdrop-blur-sm transition-colors hover:bg-black/40"
+                            aria-label={isMuted ? "Включить звук" : "Выключить звук"}
+                          >
+                            {isMuted ? (
+                              <VolumeX className="h-4 w-4" strokeWidth={1.75} />
+                            ) : (
+                              <Volume2 className="h-4 w-4" strokeWidth={1.75} />
+                            )}
+                          </button>
+                        )}
+                      </>
+                    );
+                  })()}
                 </div>
 
                 <div className="flex items-center gap-3 p-4 lg:p-5">
