@@ -205,13 +205,10 @@ function ProductsSection() {
     track.scrollLeft = scrollLeft.current - walk;
   };
 
-  const handlePointerUp = (e: React.PointerEvent) => {
+  const handlePointerUp = () => {
     const track = trackRef.current;
     if (!track) return;
     setIsDragging(false);
-    try {
-      track.releasePointerCapture(e.pointerId);
-    } catch {}
     track.style.cursor = "grab";
   };
 
