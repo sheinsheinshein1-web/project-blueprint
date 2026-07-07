@@ -77,7 +77,7 @@ export default function CatalogPage() {
             <Link
               key={item.id}
               to={`/product/${item.id}`}
-              className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-white/50 backdrop-blur-md shadow-[0_12px_30px_rgba(20,24,40,0.08)] transition-all hover:bg-white/70 hover:shadow-[0_20px_40px_rgba(20,24,40,0.12)]"
+              className="group flex flex-col overflow-hidden rounded-[1.5rem] border border-white/60 bg-[#f1f3f6] backdrop-blur-md shadow-[0_12px_30px_rgba(20,24,40,0.08)] transition-all hover:shadow-[0_20px_40px_rgba(20,24,40,0.12)]"
             >
               <div className="flex h-[240px] items-center justify-center overflow-hidden bg-white p-4 md:h-[280px] md:p-6">
                 <img
@@ -87,7 +87,7 @@ export default function CatalogPage() {
                   className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
                 />
               </div>
-              <div className="flex items-center justify-between bg-[#f1f3f6] p-4">
+              <div className="flex items-center justify-between rounded-b-[1.5rem] bg-[#f1f3f6] p-4">
                 <div>
                   <h2 className="text-base font-extrabold tracking-tight text-gray-900">{item.title}</h2>
                   <p className="mt-1 text-xs font-medium uppercase tracking-wide text-gray-600">{item.desc}</p>
