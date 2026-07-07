@@ -10,11 +10,32 @@ import img09 from "@/assets/products/clean/09-stelki-lnyanye-universalnye.png";
 import img10 from "@/assets/products/clean/10-stelki-probkovye-letnie.png";
 import img11 from "@/assets/products/clean/11-stelki-kozhanye-klassika.png";
 import img12 from "@/assets/products/clean/12-stelki-sportivnye-dyshaschie.png";
+import pack01 from "@/assets/products/clean/01-gubki-universalnye-pack.png";
+import pack02 from "@/assets/products/clean/02-gubki-s-aromatom-myaty-pack.png";
+import pack03 from "@/assets/products/clean/03-gubki-s-aromatom-kofe-pack.png";
+import pack04 from "@/assets/products/clean/04-gubki-delikatnye-pack.png";
+import pack05 from "@/assets/products/clean/05-gubki-ergonomichnye-pack.png";
+import pack06 from "@/assets/products/clean/06-salfetki-celyuloznye-pack.png";
+import pack07 from "@/assets/products/clean/07-salfetki-viskoznye-pack.png";
 import pack08 from "@/assets/products/clean/08-stelki-zimnie-s-folgoy-pack.png";
 import pack09 from "@/assets/products/clean/09-stelki-lnyanye-universalnye-pack.png";
 import pack10 from "@/assets/products/clean/10-stelki-probkovye-letnie-pack.png";
 import pack11 from "@/assets/products/clean/11-stelki-kozhanye-klassika-pack.png";
 import pack12 from "@/assets/products/clean/12-stelki-sportivnye-dyshaschie-pack.png";
+import materialGubkiUniversalFiber from "@/assets/products/clean/material-gubki-universal-fiber.png";
+import materialGubkiUniversalFoam from "@/assets/products/clean/material-gubki-universal-foam.png";
+import materialGubkiMintFiber from "@/assets/products/clean/material-gubki-mint-fiber.png";
+import materialGubkiMintFoam from "@/assets/products/clean/material-gubki-mint-foam.png";
+import materialGubkiCoffeeFiber from "@/assets/products/clean/material-gubki-coffee-fiber.png";
+import materialGubkiCoffeeFoam from "@/assets/products/clean/material-gubki-coffee-foam.png";
+import materialGubkiDelicateFiber from "@/assets/products/clean/material-gubki-delicate-fiber.png";
+import materialGubkiDelicateFoam from "@/assets/products/clean/material-gubki-delicate-foam.png";
+import materialGubkiErgonomicFiber from "@/assets/products/clean/material-gubki-ergonomic-fiber.png";
+import materialGubkiErgonomicFoam from "@/assets/products/clean/material-gubki-ergonomic-foam.png";
+import materialCelyulozaDark from "@/assets/products/clean/material-celyuloza-dark.png";
+import materialCelyulozaGray from "@/assets/products/clean/material-celyuloza-gray.png";
+import materialCelyulozaLight from "@/assets/products/clean/material-celyuloza-light.png";
+import materialViskozaGray from "@/assets/products/clean/material-viskoza-gray.png";
 import materialZimaFolga from "@/assets/products/clean/material-zima-folga.png";
 import materialZimaSherst from "@/assets/products/clean/material-zima-sherst.png";
 import materialLenDemi from "@/assets/products/clean/material-len-demi.png";
@@ -59,6 +80,7 @@ export const products: Product[] = [
     desc: "Для повседневной уборки",
     category: "Губки",
     image: img01,
+    gallery: [img01, pack01, materialGubkiUniversalFoam, materialGubkiUniversalFiber],
     features: [
       { text: "Плотный поролон для устойчивости к износу", icon: "shield" },
       { text: "Абразивная сторона удаляет стойкие загрязнения", icon: "sparkles" },
@@ -77,6 +99,7 @@ export const products: Product[] = [
     desc: "Для свежести и чистоты",
     category: "Губки",
     image: img02,
+    gallery: [img02, pack02, materialGubkiMintFoam, materialGubkiMintFiber],
     features: [
       { text: "Свежий аромат мяты во время уборки", icon: "leaf" },
       { text: "Мягкий абразив не царапает поверхности", icon: "hand" },
@@ -95,6 +118,7 @@ export const products: Product[] = [
     desc: "Для приятной уборки",
     category: "Губки",
     image: img03,
+    gallery: [img03, pack03, materialGubkiCoffeeFoam, materialGubkiCoffeeFiber],
     features: [
       { text: "Тёплый аромат кофе при мытье посуды", icon: "coffee" },
       { text: "Двухслойная структура для деликатной и глубокой очистки", icon: "layers" },
@@ -113,6 +137,7 @@ export const products: Product[] = [
     desc: "Для чувствительных поверхностей",
     category: "Губки",
     image: img04,
+    gallery: [img04, pack04, materialGubkiDelicateFoam, materialGubkiDelicateFiber],
     features: [
       { text: "Мягкий поролон без абразива", icon: "heart" },
       { text: "Безопасны для посуды с антипригарным покрытием", icon: "shield" },
@@ -131,6 +156,7 @@ export const products: Product[] = [
     desc: "Удобно лежат в руке",
     category: "Губки",
     image: img05,
+    gallery: [img05, pack05, materialGubkiErgonomicFoam, materialGubkiErgonomicFiber],
     features: [
       { text: "Фигурная форма повторяет изгиб ладони", icon: "hand" },
       { text: "Удобно держать даже при длительной уборке", icon: "clock" },
@@ -149,6 +175,7 @@ export const products: Product[] = [
     desc: "Впитывают и не крошатся",
     category: "Салфетки",
     image: img06,
+    gallery: [img06, pack06, materialCelyulozaLight, materialCelyulozaGray, materialCelyulozaDark],
     features: [
       { text: "Высокая впитываемость благодаря целлюлозе", icon: "droplets" },
       { text: "Не крошатся и не оставляют ворсинок", icon: "shield" },
@@ -167,6 +194,7 @@ export const products: Product[] = [
     desc: "Для повседневной уборки",
     category: "Салфетки",
     image: img07,
+    gallery: [img07, pack07, materialViskozaGray],
     features: [
       { text: "Мягкая вискоза для деликатных поверхностей", icon: "heart" },
       { text: "Хорошо собирают пыль и влагу", icon: "droplets" },
