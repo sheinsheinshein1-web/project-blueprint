@@ -268,9 +268,6 @@ function ReviewsSection() {
     setPage((p) => Math.max(0, Math.min(totalPages - 1, p)));
   }, [totalPages]);
 
-  const canPrev = page > 0;
-  const canNext = page < totalPages - 1;
-
   const scrollToPage = (nextPage: number) => {
     const track = trackRef.current;
     if (!track) return;
@@ -281,9 +278,6 @@ function ReviewsSection() {
     track.scrollTo({ left: step * nextPage, behavior: "smooth" });
     setPage(nextPage);
   };
-
-  const goPrev = () => scrollToPage(Math.max(0, page - 1));
-  const goNext = () => scrollToPage(Math.min(totalPages - 1, page + 1));
 
   useEffect(() => {
     const track = trackRef.current;
