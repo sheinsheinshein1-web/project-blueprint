@@ -99,8 +99,8 @@ export default function ProductPage() {
                     href={m.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold tracking-wide transition-transform hover:-translate-y-0.5"
-                    style={{ backgroundColor: m.bg, color: m.text }}
+                    className="inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-bold tracking-wide transition-transform hover:-translate-y-0.5"
+                    style={{ color: m.text, border: `1px solid ${m.text}20` }}
                   >
                     {isWB ? (
                       <img src={wildberriesLogo.url} alt="Wildberries" className="h-5 w-auto" />
