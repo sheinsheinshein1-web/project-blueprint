@@ -74,8 +74,10 @@ export default function ProductPage() {
             <ul className="mt-8 space-y-4">
               {product.features.map((feature, i) => (
                 <li key={i} className="flex items-start gap-3 text-base text-gray-700 md:text-lg">
-                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#4B66D1]" />
-                  {feature}
+                  <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#4B66D1]/10 text-[#4B66D1]">
+                    <DynamicIcon name={feature.icon} size={14} strokeWidth={2} />
+                  </span>
+                  {feature.text}
                 </li>
               ))}
             </ul>
