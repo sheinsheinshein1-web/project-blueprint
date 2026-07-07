@@ -73,10 +73,10 @@ function ProductsSection() {
             <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
               Продукция
             </h2>
-            <p className="max-w-xl text-sm font-light leading-relaxed text-gray-700 lg:text-base">
-              В линейке «1998» — всё, что нужно для ежедневной чистоты.
-              <br />
-              Функциональные, долговечные и удобные в использовании товары для дома.
+            <p className="max-w-xl whitespace-pre-line text-sm font-light leading-relaxed text-gray-700 lg:text-base">
+              В линейке «1998» — всё, что нужно для ежедневной чистоты.{"\n"}
+              Функциональные, долговечные и удобные в использовании{"\n"}
+              товары для дома.
             </p>
           </div>
           <Link
