@@ -57,7 +57,7 @@ function AboutSlider() {
         <div className="lg:col-span-7">
           <div className="overflow-hidden rounded-[1.5rem] shadow-[0_20px_60px_rgba(20,24,40,0.12)]">
             <img
-              src={factoryExterior.url}
+              src={factory3}
               alt="Завод «ТЕКОС-ИНДУСТРИЯ» в Ленинградской области"
               loading="lazy"
               className="h-[220px] w-full object-cover sm:h-[280px] md:h-[380px] lg:h-[420px]"
@@ -82,7 +82,7 @@ function AboutSlider() {
             </div>
             <div className="overflow-hidden rounded-[1rem] shadow-[0_10px_30px_rgba(20,24,40,0.1)] sm:rounded-[1.25rem]">
               <img
-                src={factory3}
+                src={factoryExterior.url}
                 alt="Склад готовой продукции"
                 loading="lazy"
                 className="h-[100px] w-full object-cover sm:h-[120px] md:h-[180px] lg:h-[200px]"
