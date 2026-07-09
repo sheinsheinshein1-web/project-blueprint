@@ -92,74 +92,76 @@ export function SiteHeader() {
 
   return (
     <header
-      className={`fixed left-0 right-0 top-0 z-50 flex w-full items-center justify-between px-6 py-4 transition-all duration-300 md:px-8 lg:px-12 ${
+      className={`fixed left-0 right-0 top-0 z-50 w-full px-6 py-4 transition-all duration-300 md:px-8 lg:px-12 ${
         scrolled
           ? "border-b border-white/40 bg-white/80 shadow-[0_1px_0_rgba(0,0,0,0.04)] backdrop-blur-xl"
           : "bg-transparent"
       }`}
     >
-      <Link to="/" className="flex items-center" aria-label="1998">
-        <img src={logo} alt="1998" className="h-10 w-auto md:h-12" />
-      </Link>
+      <div className="site-container flex items-center justify-between">
+        <Link to="/" className="flex items-center" aria-label="1998">
+          <img src={logo} alt="1998" className="h-10 w-auto md:h-12" />
+        </Link>
 
-      <nav className="relative hidden items-center gap-1 rounded-full bg-gray-200/50 p-1 backdrop-blur-md md:flex">
-        <span
-          className="pointer-events-none absolute rounded-full bg-white/80 shadow-sm transition-all duration-300 ease-out"
-          style={{
-            left: pill.left,
-            top: pill.top,
-            width: pill.width,
-            height: pill.height,
-          }}
-        />
-        {ROUTE_LINKS.map((l) => {
-          const hashIdx = l.to.indexOf("#");
-          const isHashOnHome = hashIdx >= 0 && isHome;
-          return (
-            <Link
-              key={l.label}
-              ref={(el: HTMLAnchorElement | null) => {
-                linkRefs.current[l.label] = el;
-              }}
-              to={l.to}
-              onClick={(e) => {
-                if (isHashOnHome) {
-                  e.preventDefault();
-                  const id = l.to.slice(hashIdx + 1);
-                  const el = document.getElementById(id);
-                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-                  else window.scrollTo({ top: 0, behavior: "smooth" });
+        <nav className="relative hidden items-center gap-1 rounded-full bg-gray-200/50 p-1 backdrop-blur-md md:flex">
+          <span
+            className="pointer-events-none absolute rounded-full bg-white/80 shadow-sm transition-all duration-300 ease-out"
+            style={{
+              left: pill.left,
+              top: pill.top,
+              width: pill.width,
+              height: pill.height,
+            }}
+          />
+          {ROUTE_LINKS.map((l) => {
+            const hashIdx = l.to.indexOf("#");
+            const isHashOnHome = hashIdx >= 0 && isHome;
+            return (
+              <Link
+                key={l.label}
+                ref={(el: HTMLAnchorElement | null) => {
+                  linkRefs.current[l.label] = el;
+                }}
+                to={l.to}
+                onClick={(e) => {
+                  if (isHashOnHome) {
+                    e.preventDefault();
+                    const id = l.to.slice(hashIdx + 1);
+                    const el = document.getElementById(id);
+                    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                    else window.scrollTo({ top: 0, behavior: "smooth" });
+                  }
+                  setActiveLabel(l.label);
+                }}
+                className={
+                  navLinkClass +
+                  (activeLabel === l.label
+                    ? "text-black"
+                    : "text-gray-700 hover:text-black")
                 }
-                setActiveLabel(l.label);
-              }}
-              className={
-                navLinkClass +
-                (activeLabel === l.label
-                  ? "text-black"
-                  : "text-gray-700 hover:text-black")
-              }
-            >
-              {l.label}
-            </Link>
-          );
-        })}
-      </nav>
+              >
+                {l.label}
+              </Link>
+            );
+          })}
+        </nav>
 
-      <Link
-        to="/#contact"
-        className="hidden items-center gap-2 rounded-full bg-white px-5 py-2 text-[13px] font-medium text-gray-900 shadow-sm transition-colors hover:bg-gray-100 md:inline-flex"
-      >
-        Связаться
-        <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
-      </Link>
+        <Link
+          to="/#contact"
+          className="hidden items-center gap-2 rounded-full bg-white px-5 py-2 text-[13px] font-medium text-gray-900 shadow-sm transition-colors hover:bg-gray-100 md:inline-flex"
+        >
+          Связаться
+          <ArrowUpRight className="h-4 w-4" strokeWidth={1.75} />
+        </Link>
 
-      <button
-        onClick={() => setMobileOpen((v) => !v)}
-        className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-black backdrop-blur md:hidden"
-        aria-label="Меню"
-      >
-        {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-      </button>
+        <button
+          onClick={() => setMobileOpen((v) => !v)}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/80 text-black backdrop-blur md:hidden"
+          aria-label="Меню"
+        >
+          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </div>
 
       {mobileOpen && (
         <div className="absolute right-4 top-16 z-50 w-64 space-y-2 overflow-hidden rounded-2xl border border-white/85 bg-white/[0.97] p-4 shadow-[0_24px_70px_rgba(15,23,42,0.18),inset_0_1px_0_rgba(255,255,255,0.98)] backdrop-blur-[80px] backdrop-saturate-200 before:pointer-events-none before:absolute before:inset-0 before:bg-white/85 before:content-[''] md:hidden">

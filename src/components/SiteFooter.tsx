@@ -6,7 +6,7 @@ export function SiteFooter() {
     <footer id="contact" className="bg-white px-6 pb-16 pt-32 lg:px-12">
 
 
-      <div className="mx-auto w-full">
+      <div className="site-container">
         <div className="mb-32 grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-10 lg:col-span-1">
             <img src={logo} alt="1998 Блестящая история" className="h-20 w-auto" />

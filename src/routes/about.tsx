@@ -9,7 +9,7 @@ export default function AboutPage() {
     document.title = "О бренде — 1998 Блестящая история";
   }, []);
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[oklch(0.93_0.005_260)] text-gray-900">
+    <main className="relative min-h-screen overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 text-gray-900 lg:px-12">
       <div
         className="pointer-events-none absolute inset-0 z-0"
         style={{
@@ -18,7 +18,7 @@ export default function AboutPage() {
         }}
       />
 
-      <div className="relative z-10 mx-auto w-full px-6 py-16 lg:px-12 lg:py-24">
+      <div className="site-container relative z-10 py-16 lg:py-24">
         <Link
           to="/"
           className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"

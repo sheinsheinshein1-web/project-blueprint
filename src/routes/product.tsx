@@ -54,7 +54,7 @@ export default function ProductPage() {
             "radial-gradient(ellipse at 50% 30%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
         }}
       />
-      <div className="relative z-10 mx-auto w-full">
+      <div className="site-container relative z-10">
         {/* Breadcrumbs */}
         <nav
           aria-label="Хлебные крошки"

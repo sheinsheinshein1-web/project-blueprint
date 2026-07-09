@@ -64,7 +64,7 @@ const aboutImages = [
 function AboutSlider() {
   return (
     <section id="about" className="relative overflow-hidden bg-white px-6 pb-8 pt-16 lg:px-12 lg:pb-24 lg:pt-28">
-      <div className="relative z-10 mx-auto grid w-full grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
+      <div className="site-container relative z-10 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-12">
         {/* Left column */}
         <div className="relative lg:col-span-5">
           <span className="inline-flex items-center rounded-full border border-white/70 bg-white/45 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] text-gray-950 shadow-[0_12px_30px_rgba(17,24,39,0.08),inset_0_1px_0_rgba(255,255,255,0.9)] backdrop-blur-xl">
@@ -335,7 +335,7 @@ function ProductsSection() {
             "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
         }}
       />
-      <div className="relative z-10 mx-auto w-full">
+      <div className="site-container relative z-10">
         <div className="mb-6 flex flex-col justify-between gap-4 md:flex-row md:items-end lg:mb-8">
           <div className="max-w-2xl space-y-3">
             <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
@@ -379,7 +379,7 @@ function ProductsSection() {
 
           <div
             ref={trackRef}
-            className="-mr-6 flex cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto pb-4 pt-2 md:gap-5 lg:-mr-12 lg:gap-6 scrollbar-hide select-none"
+            className="-mr-6 flex cursor-grab snap-x snap-mandatory gap-4 overflow-x-auto pb-4 pt-2 md:gap-5 lg:mr-0 lg:gap-6 scrollbar-hide select-none"
             style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             onPointerDown={handlePointerDown}
             onPointerMove={handlePointerMove}
@@ -562,7 +562,7 @@ function ReviewsSection() {
             "radial-gradient(ellipse at 50% 40%, oklch(0.97 0.005 260) 0%, oklch(0.92 0.006 260) 55%, oklch(0.86 0.008 260) 100%)",
         }}
       />
-      <div className="relative z-10 mx-auto w-full">
+      <div className="site-container relative z-10">
         <div className="mb-8 max-w-2xl lg:mb-10">
           <h2 className="text-3xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-4xl lg:text-5xl">
             Нам доверяют
@@ -676,7 +676,7 @@ export default function Index() {
       <section id="history" className="relative overflow-hidden bg-white px-6 pb-16 pt-16 lg:px-12 lg:pb-20 lg:pt-24">
         <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-white via-gray-50/50 to-white" />
 
-        <div className="relative z-10 mx-auto flex w-full flex-col gap-14 lg:flex-row lg:gap-20">
+        <div className="site-container relative z-10 flex flex-col gap-14 lg:flex-row lg:gap-20">
           <div className="space-y-6 lg:w-5/12 lg:space-y-8">
             <h2 className="text-5xl font-extrabold leading-[1.05] tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
               Опыт, за которым
@@ -768,7 +768,7 @@ function CinematicHero() {
       <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-[1] h-[45%] bg-gradient-to-t from-black/55 via-black/20 to-transparent" />
 
       {/* Bottom */}
-      <main className="relative z-20 mt-auto flex flex-col items-start justify-between gap-4 pb-4 md:flex-row md:items-end md:gap-10 lg:gap-20">
+      <main className="site-container relative z-20 mt-auto flex flex-col items-start justify-between gap-4 pb-4 md:flex-row md:items-end md:gap-10 lg:gap-20">
         <div className="space-y-1 md:space-y-6">
           <h1
             className="font-semibold leading-[0.8] tracking-[-0.04em] text-white md:leading-[0.85]"
