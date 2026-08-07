@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { z } from "zod";
@@ -101,24 +102,23 @@ const faq = [
 const leadSchema = z.object({
   name: z.string().trim().min(2, "Укажите имя").max(80, "Не более 80 символов"),
   phone: z.string().trim().regex(/^\+?[\d\s()\-]{10,20}$/, "Введите корректный телефон"),
-  comment: z.string().trim().max(500, "Не более 500 символов"),
 });
 
-type LeadErrors = Partial<Record<"name" | "phone" | "comment", string>>;
+type LeadErrors = Partial<Record<"name" | "phone", string>>;
 
-function LeadForm({ compact = false }: { compact?: boolean }) {
+function LeadForm({ compact = false, buttonClassName = "" }: { compact?: boolean; buttonClassName?: string }) {
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState<LeadErrors>({});
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = { comment: "", ...Object.fromEntries(new FormData(event.currentTarget)) };
+    const data = Object.fromEntries(new FormData(event.currentTarget));
     const result = leadSchema.safeParse(data);
     if (!result.success) {
       const next: LeadErrors = {};
       result.error.issues.forEach((issue) => {
         const field = issue.path[0];
-        if (field === "name" || field === "phone" || field === "comment") next[field] = issue.message;
+        if (field === "name" || field === "phone") next[field] = issue.message;
       });
       setErrors(next);
       return;
@@ -141,15 +141,8 @@ function LeadForm({ compact = false }: { compact?: boolean }) {
           <input name="phone" type="tel" maxLength={20} placeholder="+7 999 000-00-00" className="h-12 border-b bg-transparent px-0 text-base font-medium normal-case text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary" />
           {errors.phone && <span className="normal-case text-destructive">{errors.phone}</span>}
         </label>
-        {!compact && (
-          <label className="grid gap-1.5 text-xs font-bold uppercase text-muted-foreground">
-            Задача
-            <textarea name="comment" maxLength={500} rows={3} placeholder="Маркетплейсы, объём, задачи" className="resize-none border-b bg-transparent px-0 py-3 text-base font-medium normal-case text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary" />
-            {errors.comment && <span className="normal-case text-destructive">{errors.comment}</span>}
-          </label>
-        )}
       </div>
-      <Button type="submit" size="lg" className="mt-6 h-14 w-full justify-between rounded-none px-6 text-sm font-bold">
+      <Button type="submit" size="lg" className={cn("mt-6 h-14 w-full justify-between rounded-none px-6 text-sm font-bold", buttonClassName)}>
         {sent ? <><span>Заявка принята</span><Check /></> : <><span>Получить расчёт</span><ArrowUpRight /></>}
       </Button>
       <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</p>
@@ -313,10 +306,12 @@ export default function FulfillmentPage() {
 
               </div>
 
-              <div className="border p-7 lg:col-span-5 lg:p-9">
+              <div className="border border-primary bg-primary p-7 text-primary-foreground lg:col-span-5 lg:p-9">
                 <h2 className="text-2xl font-bold leading-tight lg:text-3xl">Перезвоним в течение 10 минут</h2>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Уточним задачу, подберём схему работы и посчитаем стоимость под ваш ассортимент.</p>
-                <div className="mt-7"><LeadForm /></div>
+                <p className="mt-3 text-sm leading-relaxed text-primary-foreground/80">Уточним задачу, подберём схему работы и посчитаем стоимость под ваш ассортимент.</p>
+                <div className="mt-7 [&_input]:border-primary-foreground/30 [&_input]:text-primary-foreground [&_input]:placeholder:text-primary-foreground/50 [&_input]:focus:border-primary-foreground [&_label]:text-primary-foreground/70 [&_p]:text-primary-foreground/70">
+                  <LeadForm buttonClassName="bg-primary-foreground text-primary hover:bg-primary-foreground/90" />
+                </div>
               </div>
             </div>
 
@@ -410,7 +405,7 @@ export default function FulfillmentPage() {
 
         <section id="faq" className="scroll-mt-20 bg-secondary px-5 py-20 lg:px-0 lg:py-28"><div className="site-container grid gap-10 lg:grid-cols-12"><div className="lg:col-span-4"><h2 className="text-4xl font-bold leading-none md:text-6xl">Коротко<br />о важном</h2></div><div className="border-t lg:col-span-7 lg:col-start-6">{faq.map(([question, answer], index) => { const open = openFaq === index; return <div key={question} className="border-b"><Button type="button" variant="ghost" onClick={() => setOpenFaq(open ? -1 : index)} className="h-auto w-full justify-between whitespace-normal rounded-none px-0 py-6 text-left text-lg hover:bg-transparent" aria-expanded={open}><span>{question}</span><ChevronDown className={`shrink-0 transition-transform ${open ? "rotate-180" : ""}`} /></Button>{open && <p className="max-w-2xl pb-6 leading-relaxed text-muted-foreground">{answer}</p>}</div>; })}</div></div></section>
 
-        <section className="px-5 py-20 lg:px-0 lg:py-28"><div className="site-container grid overflow-hidden bg-foreground text-background lg:grid-cols-12"><div className="p-8 lg:col-span-7 lg:p-14"><h2 className=" max-w-3xl text-4xl font-bold leading-none md:text-6xl">Освободите время для продаж</h2><p className="mt-6 max-w-xl text-lg text-background/70">Оставьте контакты — за 10 минут уточним задачу и подготовим расчёт.</p></div><div className="border-t border-background/20 p-8 [&_input]:border-background/30 [&_input]:text-background [&_label]:text-background/60 [&_p]:text-background/50 [&_textarea]:border-background/30 [&_textarea]:text-background lg:col-span-5 lg:border-l lg:border-t-0 lg:p-12"><LeadForm /></div></div></section>
+        <section className="px-5 py-20 lg:px-0 lg:py-28"><div className="site-container grid overflow-hidden bg-foreground text-background lg:grid-cols-12"><div className="p-8 lg:col-span-7 lg:p-14"><h2 className=" max-w-3xl text-4xl font-bold leading-none md:text-6xl">Освободите время для продаж</h2><p className="mt-6 max-w-xl text-lg text-background/70">Оставьте контакты — за 10 минут уточним задачу и подготовим расчёт.</p></div><div className="border-t border-background/20 p-8 [&_input]:border-background/30 [&_input]:text-background [&_label]:text-background/60 [&_p]:text-background/50 lg:col-span-5 lg:border-l lg:border-t-0 lg:p-12"><LeadForm /></div></div></section>
       </main>
     </div>
   );
