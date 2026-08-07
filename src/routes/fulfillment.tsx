@@ -10,9 +10,7 @@ import {
   Check,
   ChevronDown,
   Clock,
-  Copy,
   Mail,
-  MapPin,
   Navigation as NavigationIcon,
   Menu,
   MessageCircle,
@@ -27,7 +25,7 @@ import {
   Warehouse,
   X,
 } from "lucide-react";
-import { toast } from "sonner";
+
 import { Button } from "@/components/ui/button";
 import warehouseHero from "@/assets/warehouse-hero.jpg";
 import logo from "@/assets/logo-1998.png";
@@ -163,87 +161,92 @@ const warehouseFacts: [string, string][] = [
 ];
 
 function WarehouseSection() {
-  const copyAddress = async () => {
-    try {
-      await navigator.clipboard.writeText(WAREHOUSE_ADDRESS);
-      toast.success("Адрес скопирован");
-    } catch {
-      toast.error("Не удалось скопировать адрес");
-    }
-  };
-
   return (
     <section id="warehouse" className="scroll-mt-20 px-5 py-20 lg:px-0 lg:py-28">
       <div className="site-container">
-        <div className="grid items-end gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-7">
-            <h2 className="text-4xl font-bold leading-none md:text-6xl">Собственный склад<br />в Петербурге</h2>
-          </div>
-          <p className="max-w-md text-lg leading-relaxed text-muted-foreground lg:col-span-5">
-            Приезжайте — покажем зоны приёмки, хранения и упаковки, разберём ваши процессы на месте.
-          </p>
-        </div>
+        <h2 className="text-4xl font-bold leading-none md:text-6xl">Контакты и склад</h2>
 
-        <div className="relative mt-12 border">
-          <iframe
-            title="Карта склада 1998"
-            src={`https://yandex.ru/map-widget/v1/?ll=30.322%2C59.855&z=16&pt=30.322,59.855,pm2rdm`}
-            className="block h-[360px] w-full border-0 lg:h-[520px]"
-            loading="lazy"
-          />
-          <div className="border-t bg-background p-6 lg:absolute lg:bottom-8 lg:left-8 lg:max-w-md lg:border lg:p-8 lg:shadow-[0_24px_60px_rgba(20,24,40,0.14)]">
-            <p className="mt-3 flex items-start gap-3 text-lg font-bold leading-snug">
-              <MapPin className="mt-1 shrink-0 text-primary" />
-              {WAREHOUSE_ADDRESS}
-            </p>
-            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-              <Button asChild size="lg" className="h-12 flex-1 rounded-none">
-                <a
-                  href={`https://yandex.ru/maps/?rtext=~${WAREHOUSE_COORDS}&rtt=auto`}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                >
-                  <NavigationIcon /> Построить маршрут
-                </a>
-              </Button>
-              <Button type="button" onClick={copyAddress} variant="outline" size="lg" className="h-12 rounded-none shadow-none">
-                <Copy /> Скопировать
-              </Button>
+        <div className="mt-10 grid gap-4 lg:mt-14 lg:grid-cols-12 lg:h-[520px]">
+          <div className="relative overflow-hidden rounded-2xl border bg-secondary lg:col-span-4 lg:h-full">
+            <iframe
+              title="Схема проезда к складу 1998"
+              src={`https://yandex.ru/map-widget/v1/?ll=30.322%2C59.855&z=17&pt=30.322,59.855,pm2rdm`}
+              className="block h-[260px] w-full border-0 lg:h-full"
+              loading="lazy"
+            />
+            <div className="pointer-events-none absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold shadow-lg">
+              <NavigationIcon className="h-4 w-4" />
+              Въезд
             </div>
           </div>
+
+          <div className="overflow-hidden rounded-2xl border lg:col-span-8 lg:h-full">
+            <iframe
+              title="Карта склада 1998"
+              src={`https://yandex.ru/map-widget/v1/?ll=30.322%2C59.855&z=12&pt=30.322,59.855,pm2rdm`}
+              className="block h-[360px] w-full border-0 lg:h-full"
+              loading="lazy"
+            />
+          </div>
         </div>
 
-        <div className="grid border-x border-t sm:grid-cols-2 lg:grid-cols-4">
-          <a href="tel:+78123293642" className="group border-b p-6 transition-colors hover:bg-secondary sm:border-r lg:p-8">
+        <div className="mt-8 grid gap-8 lg:mt-12 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-4">
+            <p className="text-sm font-bold uppercase text-muted-foreground">Адрес</p>
+            <p className="mt-2 text-xl font-bold leading-snug">{WAREHOUSE_ADDRESS}</p>
+          </div>
+          <div className="lg:col-span-4">
+            <p className="text-sm font-bold uppercase text-muted-foreground">График работы</p>
+            <p className="mt-2 text-xl font-bold leading-snug">Офис: Пн–Пт с 9:00 до 18:00</p>
+            <p className="mt-1 text-lg text-muted-foreground">Склад: Пн–Пт с 8:00 до 18:00, Сб с 9:00 до 15:00</p>
+          </div>
+          <div className="lg:col-span-4">
+            <Button
+              asChild
+              size="lg"
+              className="h-14 w-full rounded-full bg-[#0FA968] text-lg font-bold text-white hover:bg-[#0D8F59]"
+            >
+              <a
+                href={`https://yandex.ru/maps/?rtext=~${WAREHOUSE_COORDS}&rtt=auto`}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                <NavigationIcon className="h-5 w-5" /> Построить маршрут
+              </a>
+            </Button>
+          </div>
+        </div>
+
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
+          <a href="tel:+78123293642" className="group rounded-2xl border bg-background p-6 transition-colors hover:bg-secondary">
             <Phone className="text-primary" strokeWidth={1.5} />
-            <p className="mt-6 text-xs font-bold uppercase text-muted-foreground">Телефон</p>
-            <p className="mt-2 text-xl font-bold group-hover:text-primary">+7 (812) 329-36-42</p>
+            <p className="mt-4 text-xs font-bold uppercase text-muted-foreground">Телефон</p>
+            <p className="mt-1 text-xl font-bold group-hover:text-primary">+7 (812) 329-36-42</p>
           </a>
-          <a href="mailto:info@tecos.spb.ru" className="group border-b p-6 transition-colors hover:bg-secondary lg:border-r lg:p-8">
+          <a href="mailto:info@tecos.spb.ru" className="group rounded-2xl border bg-background p-6 transition-colors hover:bg-secondary">
             <Mail className="text-primary" strokeWidth={1.5} />
-            <p className="mt-6 text-xs font-bold uppercase text-muted-foreground">Почта</p>
-            <p className="mt-2 break-all text-xl font-bold group-hover:text-primary">info@tecos.spb.ru</p>
+            <p className="mt-4 text-xs font-bold uppercase text-muted-foreground">Почта</p>
+            <p className="mt-1 break-all text-xl font-bold group-hover:text-primary">info@tecos.spb.ru</p>
           </a>
-          <div className="border-b p-6 sm:border-r lg:p-8">
+          <div className="rounded-2xl border bg-background p-6">
             <Clock className="text-primary" strokeWidth={1.5} />
-            <p className="mt-6 text-xs font-bold uppercase text-muted-foreground">Режим работы</p>
-            <p className="mt-2 text-xl font-bold">Пн–Пт, 9:00–18:00</p>
+            <p className="mt-4 text-xs font-bold uppercase text-muted-foreground">Режим работы</p>
+            <p className="mt-1 text-xl font-bold">Пн–Пт, 9:00–18:00</p>
             <p className="mt-1 text-sm text-muted-foreground">Приём фур — по согласованию</p>
           </div>
-          <div className="border-b p-6 lg:p-8">
+          <div className="rounded-2xl border bg-background p-6">
             <MessageCircle className="text-primary" strokeWidth={1.5} />
-            <p className="mt-6 text-xs font-bold uppercase text-muted-foreground">Мессенджеры</p>
+            <p className="mt-4 text-xs font-bold uppercase text-muted-foreground">Мессенджеры</p>
             <div className="mt-3 flex gap-3">
-              <Button asChild variant="outline" size="icon" className="h-11 w-11 rounded-none shadow-none">
+              <Button asChild variant="outline" size="icon" className="h-11 w-11 rounded-full shadow-none">
                 <a href="https://wa.me/78123293642" target="_blank" rel="noreferrer noopener" aria-label="WhatsApp"><MessageCircle /></a>
               </Button>
-              <Button asChild variant="outline" size="icon" className="h-11 w-11 rounded-none shadow-none">
+              <Button asChild variant="outline" size="icon" className="h-11 w-11 rounded-full shadow-none">
                 <a href="https://t.me/tecos" target="_blank" rel="noreferrer noopener" aria-label="Telegram"><Send /></a>
               </Button>
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );
