@@ -315,12 +315,15 @@ export default function FulfillmentPage() {
 
             <div id="lead" className="mt-12 grid scroll-mt-24 items-stretch gap-8 lg:grid-cols-12 lg:gap-0">
               <div className="relative lg:col-span-7 lg:pr-10">
-                <div className="aspect-[16/11] overflow-hidden bg-secondary">
-                  <img src={warehouseHero} alt="Современный склад фулфилмента 1998 со стеллажами" width={1408} height={1104} className="h-full w-full object-cover" />
+                <div className="relative">
+                  <div className="aspect-[16/11] overflow-hidden bg-secondary lg:aspect-auto lg:h-full lg:min-h-[520px]">
+                    <img src={warehouseHero} alt="Современный склад фулфилмента 1998 со стеллажами" width={1408} height={1104} className="h-full w-full object-cover" />
+                  </div>
+                  <div className="absolute bottom-0 left-0 hidden w-52 bg-primary p-5 text-primary-foreground lg:block">
+                    <p className="text-3xl font-bold">до 14:00</p><p className="mt-1 text-xs font-bold uppercase opacity-80">сдадим заказ сегодня</p>
+                  </div>
                 </div>
-                <div className="absolute -bottom-7 left-0 hidden w-52 bg-primary p-5 text-primary-foreground lg:block">
-                  <p className="text-3xl font-bold">до 14:00</p><p className="mt-1 text-xs font-bold uppercase opacity-80">сдадим заказ сегодня</p>
-                </div>
+
               </div>
 
               <div className="border p-7 lg:col-span-5 lg:p-9">
