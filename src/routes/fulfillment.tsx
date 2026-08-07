@@ -26,6 +26,7 @@ import {
   Warehouse,
   X,
 } from "lucide-react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import warehouseHero from "@/assets/warehouse-hero.jpg";
 import logo from "@/assets/logo-1998.png";
@@ -195,7 +196,7 @@ function WarehouseSection() {
                   target="_blank"
                   rel="noreferrer noopener"
                 >
-                  <Navigation /> Построить маршрут
+                  <NavigationIcon /> Построить маршрут
                 </a>
               </Button>
               <Button type="button" onClick={copyAddress} variant="outline" size="lg" className="h-12 rounded-none shadow-none">
