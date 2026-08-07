@@ -149,10 +149,6 @@ function LeadForm({ compact = false }: { compact?: boolean }) {
   );
 }
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return <p className="mb-5 flex items-center gap-3 text-xs font-bold uppercase text-primary before:h-px before:w-8 before:bg-primary">{children}</p>;
-}
-
 const WAREHOUSE_ADDRESS = "Санкт-Петербург, пр. Юрия Гагарина, д. 1, оф. 306";
 const WAREHOUSE_COORDS = "59.855,30.322";
 
@@ -180,7 +176,6 @@ function WarehouseSection() {
       <div className="site-container">
         <div className="grid items-end gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <SectionLabel>Контакты и склад</SectionLabel>
             <h2 className="text-4xl font-bold leading-none md:text-6xl">Собственный склад<br />в Петербурге</h2>
           </div>
           <p className="max-w-md text-lg leading-relaxed text-muted-foreground lg:col-span-5">
@@ -196,7 +191,6 @@ function WarehouseSection() {
             loading="lazy"
           />
           <div className="border-t bg-background p-6 lg:absolute lg:bottom-8 lg:left-8 lg:max-w-md lg:border lg:p-8 lg:shadow-[0_24px_60px_rgba(20,24,40,0.14)]">
-            <p className="text-xs font-bold uppercase text-primary">Адрес склада</p>
             <p className="mt-3 flex items-start gap-3 text-lg font-bold leading-snug">
               <MapPin className="mt-1 shrink-0 text-primary" />
               {WAREHOUSE_ADDRESS}
@@ -251,7 +245,6 @@ function WarehouseSection() {
 
         <div className="mt-16 grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <SectionLabel>О складе</SectionLabel>
             <h3 className="text-3xl font-bold leading-none md:text-4xl">Что внутри</h3>
           </div>
           <div className="grid border-t sm:grid-cols-2 lg:col-span-8 lg:grid-cols-3">
@@ -308,8 +301,6 @@ export default function FulfillmentPage() {
               <Link to="/" className="inline-flex items-center gap-2 font-semibold text-muted-foreground hover:text-foreground"><ArrowLeft className="h-4 w-4" /> На главную</Link>
               <span className="hidden font-bold uppercase text-muted-foreground md:block">Собственный склад · Санкт-Петербург</span>
             </div>
-
-            <SectionLabel>Marketplace fulfillment</SectionLabel>
             <h1 className="max-w-5xl text-[clamp(2.4rem,4.6vw,4.6rem)] font-bold leading-[0.94] tracking-normal">Фулфилмент для маркетплейсов<br /><span className="text-primary">и интернет-магазинов</span></h1>
             <p className="mt-7 max-w-2xl text-lg leading-relaxed text-muted-foreground lg:text-xl">Полный цикл работы с товаром на собственном складе в Санкт-Петербурге: приёмка, хранение, маркировка, упаковка и отгрузка по схемам FBS и FBO.</p>
 
@@ -327,7 +318,6 @@ export default function FulfillmentPage() {
               </div>
 
               <div className="border p-7 lg:col-span-5 lg:p-9">
-                <SectionLabel>Оставить заявку</SectionLabel>
                 <h2 className="text-2xl font-bold leading-tight lg:text-3xl">Перезвоним в течение 10 минут</h2>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Уточним задачу, подберём схему работы и посчитаем стоимость под ваш ассортимент.</p>
                 <div className="mt-7"><LeadForm /></div>
@@ -345,7 +335,7 @@ export default function FulfillmentPage() {
 
         <section id="services" className="scroll-mt-20 bg-secondary px-5 py-20 lg:px-0 lg:py-28">
           <div className="site-container">
-            <div className="grid gap-8 lg:grid-cols-12"><div className="lg:col-span-5"><SectionLabel>Услуги</SectionLabel><h2 className="text-4xl font-bold leading-none md:text-6xl">Полный комплекс<br />услуг фулфилмента</h2></div><p className="max-w-xl self-end text-lg leading-relaxed text-muted-foreground lg:col-span-5 lg:col-start-8">Берём на себя все операции с товаром — от забора у поставщика до возвратов, чтобы вы управляли продажами, а не коробками.</p></div>
+            <div className="grid gap-8 lg:grid-cols-12"><div className="lg:col-span-5"><h2 className="text-4xl font-bold leading-none md:text-6xl">Полный комплекс<br />услуг фулфилмента</h2></div><p className="max-w-xl self-end text-lg leading-relaxed text-muted-foreground lg:col-span-5 lg:col-start-8">Берём на себя все операции с товаром — от забора у поставщика до возвратов, чтобы вы управляли продажами, а не коробками.</p></div>
             <div className="mt-14 grid border-l border-t md:grid-cols-2 lg:grid-cols-4">
               {services.map(({ icon: Icon, no, title, desc }) => <article key={no} className="group min-h-56 border-b border-r p-6 transition-colors hover:bg-background"><div className="flex items-start justify-between"><span className="text-xs font-bold text-muted-foreground">/{no}</span><Icon className="h-6 w-6 text-primary" strokeWidth={1.5} /></div><h3 className="mt-12 text-xl font-bold">{title}</h3><p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">{desc}</p></article>)}
             </div>
@@ -354,7 +344,7 @@ export default function FulfillmentPage() {
 
         <section id="rates" className="scroll-mt-20 px-5 py-20 lg:px-0 lg:py-28">
           <div className="site-container">
-            <div className="grid gap-8 lg:grid-cols-12"><div className="lg:col-span-5"><SectionLabel>Тарифы</SectionLabel><h2 className="text-4xl font-bold leading-none md:text-6xl">Прозрачно,<br />по операциям</h2></div><p className="max-w-xl self-end text-lg leading-relaxed text-muted-foreground lg:col-span-5 lg:col-start-8">Финальная стоимость зависит от габаритов, веса и регулярности поставок. Ниже — базовые цены по FBS и FBO.</p></div>
+            <div className="grid gap-8 lg:grid-cols-12"><div className="lg:col-span-5"><h2 className="text-4xl font-bold leading-none md:text-6xl">Прозрачно,<br />по операциям</h2></div><p className="max-w-xl self-end text-lg leading-relaxed text-muted-foreground lg:col-span-5 lg:col-start-8">Финальная стоимость зависит от габаритов, веса и регулярности поставок. Ниже — базовые цены по FBS и FBO.</p></div>
 
             {[["Стоимость основных FBS-операций", fbsRows], ["Стоимость основных FBO-операций", fboRows]].map(([title, rows]) => (
               <div key={title as string} className="mt-14 grid gap-8 lg:grid-cols-12">
@@ -379,7 +369,7 @@ export default function FulfillmentPage() {
 
         <section className="border-y bg-secondary px-5 py-14 lg:px-0">
           <div className="site-container">
-            <SectionLabel>Работаем с маркетплейсами</SectionLabel>
+            <h2 className="text-3xl font-bold leading-none md:text-4xl">Работаем с маркетплейсами</h2>
             <div className="mt-8 grid grid-cols-2 items-center gap-8 sm:grid-cols-3 lg:grid-cols-5">{[{ name: "Wildberries", logo: wildberriesLogo }, { name: "Ozon", logo: ozonLogo }, { name: "Яндекс Маркет", logo: yaMarketLogo }, { name: "Магнит Маркет", logo: null }, { name: "М.Видео", logo: null }].map((item) => <div key={item.name} className="flex h-16 items-center justify-center">{item.logo ? <img src={item.logo} alt={item.name} loading="lazy" className="max-h-8 max-w-32 object-contain grayscale transition-all hover:grayscale-0" /> : <span className="text-center text-lg font-bold text-muted-foreground">{item.name}</span>}</div>)}</div>
           </div>
         </section>
@@ -388,7 +378,7 @@ export default function FulfillmentPage() {
 
         <section id="blog" className="scroll-mt-20 px-5 pb-20 lg:px-0 lg:pb-28">
           <div className="site-container">
-            <div className="grid gap-8 lg:grid-cols-12"><div className="lg:col-span-5"><SectionLabel>Блог</SectionLabel><h2 className="text-4xl font-bold leading-none md:text-6xl">Полезное<br />для селлеров</h2></div><p className="max-w-xl self-end text-lg leading-relaxed text-muted-foreground lg:col-span-5 lg:col-start-8">Разбираем требования маркетплейсов, ошибки поставок и способы сэкономить на логистике.</p></div>
+            <div className="grid gap-8 lg:grid-cols-12"><div className="lg:col-span-5"><h2 className="text-4xl font-bold leading-none md:text-6xl">Полезное<br />для селлеров</h2></div><p className="max-w-xl self-end text-lg leading-relaxed text-muted-foreground lg:col-span-5 lg:col-start-8">Разбираем требования маркетплейсов, ошибки поставок и способы сэкономить на логистике.</p></div>
             <div className="mt-12 grid border-l border-t md:grid-cols-3">
               {posts.map(([title, desc, time]) => (
                 <article key={title} className="group border-b border-r p-7 transition-colors hover:bg-secondary">
@@ -404,9 +394,9 @@ export default function FulfillmentPage() {
 
 
 
-        <section id="faq" className="scroll-mt-20 bg-secondary px-5 py-20 lg:px-0 lg:py-28"><div className="site-container grid gap-10 lg:grid-cols-12"><div className="lg:col-span-4"><SectionLabel>FAQ</SectionLabel><h2 className="text-4xl font-bold leading-none md:text-6xl">Коротко<br />о важном</h2></div><div className="border-t lg:col-span-7 lg:col-start-6">{faq.map(([question, answer], index) => { const open = openFaq === index; return <div key={question} className="border-b"><Button type="button" variant="ghost" onClick={() => setOpenFaq(open ? -1 : index)} className="h-auto w-full justify-between whitespace-normal rounded-none px-0 py-6 text-left text-lg hover:bg-transparent" aria-expanded={open}><span>{question}</span><ChevronDown className={`shrink-0 transition-transform ${open ? "rotate-180" : ""}`} /></Button>{open && <p className="max-w-2xl pb-6 leading-relaxed text-muted-foreground">{answer}</p>}</div>; })}</div></div></section>
+        <section id="faq" className="scroll-mt-20 bg-secondary px-5 py-20 lg:px-0 lg:py-28"><div className="site-container grid gap-10 lg:grid-cols-12"><div className="lg:col-span-4"><h2 className="text-4xl font-bold leading-none md:text-6xl">Коротко<br />о важном</h2></div><div className="border-t lg:col-span-7 lg:col-start-6">{faq.map(([question, answer], index) => { const open = openFaq === index; return <div key={question} className="border-b"><Button type="button" variant="ghost" onClick={() => setOpenFaq(open ? -1 : index)} className="h-auto w-full justify-between whitespace-normal rounded-none px-0 py-6 text-left text-lg hover:bg-transparent" aria-expanded={open}><span>{question}</span><ChevronDown className={`shrink-0 transition-transform ${open ? "rotate-180" : ""}`} /></Button>{open && <p className="max-w-2xl pb-6 leading-relaxed text-muted-foreground">{answer}</p>}</div>; })}</div></div></section>
 
-        <section className="px-5 py-20 lg:px-0 lg:py-28"><div className="site-container grid overflow-hidden bg-foreground text-background lg:grid-cols-12"><div className="p-8 lg:col-span-7 lg:p-14"><p className="text-xs font-bold uppercase text-primary">Готовы начать?</p><h2 className="mt-5 max-w-3xl text-4xl font-bold leading-none md:text-6xl">Освободите время для продаж</h2><p className="mt-6 max-w-xl text-lg text-background/70">Оставьте контакты — за 10 минут уточним задачу и подготовим расчёт.</p></div><div className="border-t border-background/20 p-8 [&_input]:border-background/30 [&_input]:text-background [&_label]:text-background/60 [&_p]:text-background/50 [&_textarea]:border-background/30 [&_textarea]:text-background lg:col-span-5 lg:border-l lg:border-t-0 lg:p-12"><LeadForm /></div></div></section>
+        <section className="px-5 py-20 lg:px-0 lg:py-28"><div className="site-container grid overflow-hidden bg-foreground text-background lg:grid-cols-12"><div className="p-8 lg:col-span-7 lg:p-14"><h2 className=" max-w-3xl text-4xl font-bold leading-none md:text-6xl">Освободите время для продаж</h2><p className="mt-6 max-w-xl text-lg text-background/70">Оставьте контакты — за 10 минут уточним задачу и подготовим расчёт.</p></div><div className="border-t border-background/20 p-8 [&_input]:border-background/30 [&_input]:text-background [&_label]:text-background/60 [&_p]:text-background/50 [&_textarea]:border-background/30 [&_textarea]:text-background lg:col-span-5 lg:border-l lg:border-t-0 lg:p-12"><LeadForm /></div></div></section>
       </main>
     </div>
   );
