@@ -35,11 +35,14 @@ function ScrollManager() {
 }
 
 function App() {
+  const { pathname } = useLocation();
+  const isFulfillmentPage = pathname === "/fulfillment";
+
   return (
-    <BrowserRouter>
+    <>
       <ScrollManager />
       <div className="relative flex min-h-screen flex-col bg-background text-foreground antialiased">
-        <SiteHeader />
+        {!isFulfillmentPage && <SiteHeader />}
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<IndexPage />} />
@@ -54,12 +57,14 @@ function App() {
         </main>
         <SiteFooter />
       </div>
-    </BrowserRouter>
+    </>
   );
 }
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </StrictMode>,
 );
