@@ -272,9 +272,7 @@ function WarehouseSection() {
 
 export default function FulfillmentPage() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [rate, setRate] = useState<"fbs" | "fbo">("fbs");
   const [openFaq, setOpenFaq] = useState(0);
-  const rateRows = rate === "fbs" ? fbsRows : fboRows;
 
   useEffect(() => {
     document.title = "Фулфилмент для маркетплейсов — 1998";
