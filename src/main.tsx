@@ -8,6 +8,7 @@ import IndexPage from "./routes/index";
 import AboutPage from "./routes/about";
 import CatalogPage from "./routes/catalog";
 import ProductPage from "./routes/product";
+import FulfillmentPage from "./routes/fulfillment";
 
 
 function ScrollManager() {
@@ -45,6 +46,8 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/catalog" element={<CatalogPage />} />
             <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/fulfillment" element={<FulfillmentPage />} />
+
 
             <Route path="*" element={<IndexPage />} />
           </Routes>
