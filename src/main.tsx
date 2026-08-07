@@ -58,6 +58,7 @@ function App() {
         </main>
         <SiteFooter />
       </div>
+      <Toaster />
     </>
   );
 }
