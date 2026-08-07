@@ -383,8 +383,25 @@ export default function FulfillmentPage() {
           </div>
         </section>
 
-
         <WarehouseSection />
+
+        <section id="blog" className="scroll-mt-20 px-5 pb-20 lg:px-0 lg:pb-28">
+          <div className="site-container">
+            <div className="grid gap-8 lg:grid-cols-12"><div className="lg:col-span-5"><SectionLabel>Блог</SectionLabel><h2 className="text-4xl font-bold leading-none md:text-6xl">Полезное<br />для селлеров</h2></div><p className="max-w-xl self-end text-lg leading-relaxed text-muted-foreground lg:col-span-5 lg:col-start-8">Разбираем требования маркетплейсов, ошибки поставок и способы сэкономить на логистике.</p></div>
+            <div className="mt-12 grid border-l border-t md:grid-cols-3">
+              {posts.map(([title, desc, time]) => (
+                <article key={title} className="group border-b border-r p-7 transition-colors hover:bg-secondary">
+                  <p className="text-xs font-bold uppercase text-muted-foreground">{time} чтения</p>
+                  <h3 className="mt-6 text-xl font-bold leading-snug">{title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{desc}</p>
+                  <span className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-primary">Читать <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
 
         <section id="faq" className="scroll-mt-20 bg-secondary px-5 py-20 lg:px-0 lg:py-28"><div className="site-container grid gap-10 lg:grid-cols-12"><div className="lg:col-span-4"><SectionLabel>FAQ</SectionLabel><h2 className="text-4xl font-bold leading-none md:text-6xl">Коротко<br />о важном</h2></div><div className="border-t lg:col-span-7 lg:col-start-6">{faq.map(([question, answer], index) => { const open = openFaq === index; return <div key={question} className="border-b"><Button type="button" variant="ghost" onClick={() => setOpenFaq(open ? -1 : index)} className="h-auto w-full justify-between whitespace-normal rounded-none px-0 py-6 text-left text-lg hover:bg-transparent" aria-expanded={open}><span>{question}</span><ChevronDown className={`shrink-0 transition-transform ${open ? "rotate-180" : ""}`} /></Button>{open && <p className="max-w-2xl pb-6 leading-relaxed text-muted-foreground">{answer}</p>}</div>; })}</div></div></section>
 
