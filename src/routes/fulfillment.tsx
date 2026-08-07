@@ -261,6 +261,7 @@ function WarehouseSection() {
 export default function FulfillmentPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
+  const [rateMode, setRateMode] = useState<"fbs" | "fbo">("fbs");
 
   useEffect(() => {
     document.title = "Фулфилмент для маркетплейсов — 1998";
@@ -341,22 +342,40 @@ export default function FulfillmentPage() {
           <div className="site-container">
             <div className="grid gap-8 lg:grid-cols-12"><div className="lg:col-span-5"><h2 className="text-4xl font-bold leading-none md:text-6xl">Прозрачно,<br />по операциям</h2></div><p className="max-w-xl self-end text-lg leading-relaxed text-muted-foreground lg:col-span-5 lg:col-start-8">Финальная стоимость зависит от габаритов, веса и регулярности поставок. Ниже — базовые цены по FBS и FBO.</p></div>
 
-            {[["Стоимость основных FBS-операций", fbsRows], ["Стоимость основных FBO-операций", fboRows]].map(([title, rows]) => (
-              <div key={title as string} className="mt-14 grid gap-8 lg:grid-cols-12">
-                <h3 className="text-2xl font-bold leading-tight lg:col-span-4 md:text-3xl">{title as string}</h3>
-                <div className="lg:col-span-8">
-                  <div className="border-t">
-                    {(rows as string[][]).map(([name, desc, price], index) => (
-                      <div key={name} className="grid gap-2 border-b py-6 md:grid-cols-12 md:items-center">
-                        <span className="text-xs font-bold text-muted-foreground md:col-span-1">0{index + 1}</span>
-                        <div className="md:col-span-7"><p className="text-lg font-bold">{name}</p><p className="mt-1 text-sm text-muted-foreground">{desc}</p></div>
-                        <p className="font-bold text-primary md:col-span-4 md:text-right">{price}</p>
-                      </div>
-                    ))}
-                  </div>
+            <div className="mt-14 grid gap-8 lg:grid-cols-12">
+              <div className="lg:col-span-4">
+                <h3 className="text-2xl font-bold leading-tight md:text-3xl">
+                  {rateMode === "fbs" ? "Стоимость основных FBS-операций" : "Стоимость основных FBO-операций"}
+                </h3>
+                <div className="mt-6 inline-flex border">
+                  <button
+                    type="button"
+                    onClick={() => setRateMode("fbs")}
+                    className={`px-5 py-2.5 text-sm font-bold transition-colors ${rateMode === "fbs" ? "bg-foreground text-background" : "bg-transparent text-foreground hover:bg-secondary"}`}
+                  >
+                    FBS
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setRateMode("fbo")}
+                    className={`px-5 py-2.5 text-sm font-bold transition-colors ${rateMode === "fbo" ? "bg-foreground text-background" : "bg-transparent text-foreground hover:bg-secondary"}`}
+                  >
+                    FBO
+                  </button>
                 </div>
               </div>
-            ))}
+              <div className="lg:col-span-8">
+                <div className="border-t">
+                  {(rateMode === "fbs" ? fbsRows : fboRows).map(([name, desc, price], index) => (
+                    <div key={name} className="grid gap-2 border-b py-6 md:grid-cols-12 md:items-center">
+                      <span className="text-xs font-bold text-muted-foreground md:col-span-1">0{index + 1}</span>
+                      <div className="md:col-span-7"><p className="text-lg font-bold">{name}</p><p className="mt-1 text-sm text-muted-foreground">{desc}</p></div>
+                      <p className="font-bold text-primary md:col-span-4 md:text-right">{price}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
 
             <Button asChild size="lg" className="mt-10 h-14 w-full rounded-none lg:w-auto lg:px-10"><a href="#lead">Получить точный расчёт <ArrowUpRight /></a></Button>
           </div>
