@@ -45,7 +45,7 @@ function App() {
             <Route path="/" element={<IndexPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/catalog" element={<CatalogPage />} />
-            <Route path="/product/:id" element={<ProductPage />} />
+            <Route path="/fulfillment" element={<FulfillmentPage />} />
 
             <Route path="*" element={<IndexPage />} />
           </Routes>
