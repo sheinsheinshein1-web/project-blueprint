@@ -255,7 +255,7 @@ export default function FulfillmentPage() {
   return (
     <div className="overflow-x-hidden bg-background text-foreground antialiased">
       {/* Page header per TZ */}
-      <div className="sticky top-[72px] z-40 border-b border-white/50 bg-white/80 px-6 py-3 backdrop-blur-xl lg:px-12">
+      <div className="sticky top-0 z-50 border-b border-white/50 bg-white/80 px-6 py-3 backdrop-blur-xl lg:px-12">
         <div className="site-container flex items-center justify-between gap-6">
           <div className="flex items-center gap-8">
             <Link to="/" className="flex items-center" aria-label="1998">
