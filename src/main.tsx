@@ -8,6 +8,7 @@ import IndexPage from "./routes/index";
 import AboutPage from "./routes/about";
 import CatalogPage from "./routes/catalog";
 import ProductPage from "./routes/product";
+import FulfillmentPage from "./routes/fulfillment";
 
 
 function ScrollManager() {
