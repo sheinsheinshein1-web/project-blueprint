@@ -306,10 +306,12 @@ export default function FulfillmentPage() {
 
               </div>
 
-              <div className="border p-7 lg:col-span-5 lg:p-9">
+              <div className="border border-primary bg-primary p-7 text-primary-foreground lg:col-span-5 lg:p-9">
                 <h2 className="text-2xl font-bold leading-tight lg:text-3xl">Перезвоним в течение 10 минут</h2>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Уточним задачу, подберём схему работы и посчитаем стоимость под ваш ассортимент.</p>
-                <div className="mt-7"><LeadForm /></div>
+                <p className="mt-3 text-sm leading-relaxed text-primary-foreground/80">Уточним задачу, подберём схему работы и посчитаем стоимость под ваш ассортимент.</p>
+                <div className="mt-7 [&_input]:border-primary-foreground/30 [&_input]:text-primary-foreground [&_input]:placeholder:text-primary-foreground/50 [&_input]:focus:border-primary-foreground [&_label]:text-primary-foreground/70 [&_p]:text-primary-foreground/70">
+                  <LeadForm buttonClassName="bg-primary-foreground text-primary hover:bg-primary-foreground/90" />
+                </div>
               </div>
             </div>
 
