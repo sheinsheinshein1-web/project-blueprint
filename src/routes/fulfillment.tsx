@@ -261,6 +261,7 @@ function WarehouseSection() {
 export default function FulfillmentPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [openFaq, setOpenFaq] = useState(0);
+  const [rateMode, setRateMode] = useState<"fbs" | "fbo">("fbs");
 
   useEffect(() => {
     document.title = "Фулфилмент для маркетплейсов — 1998";
