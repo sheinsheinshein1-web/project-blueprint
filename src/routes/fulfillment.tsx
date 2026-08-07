@@ -170,7 +170,7 @@ function WarehouseSection() {
           <div className="relative overflow-hidden rounded-2xl border bg-secondary lg:col-span-4 lg:h-full">
             <iframe
               title="Схема проезда к складу 1998"
-              src={`https://yandex.ru/map-widget/v1/?ll=30.322%2C59.855&z=17&pt=30.322,59.855,pm2rdm`}
+              src={`https://yandex.ru/map-widget/v1/?text=${encodeURIComponent("Санкт-Петербург, пр. Юрия Гагарина, д. 1")}&z=17`}
               className="block h-[260px] w-full border-0 lg:h-full"
               loading="lazy"
             />
@@ -183,7 +183,7 @@ function WarehouseSection() {
           <div className="overflow-hidden rounded-2xl border lg:col-span-8 lg:h-full">
             <iframe
               title="Карта склада 1998"
-              src={`https://yandex.ru/map-widget/v1/?ll=30.322%2C59.855&z=12&pt=30.322,59.855,pm2rdm`}
+              src={`https://yandex.ru/map-widget/v1/?text=${encodeURIComponent("Санкт-Петербург, пр. Юрия Гагарина, д. 1")}&z=12`}
               className="block h-[360px] w-full border-0 lg:h-full"
               loading="lazy"
             />
