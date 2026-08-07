@@ -64,40 +64,8 @@
   --slate-300: oklch(0.80 0.01 260);
   --slate-100: oklch(0.96 0.005 260);
   --slate-50: oklch(0.98 0.004 260);
-  --fulfillment-canvas: oklch(0.985 0.003 250);
-  --fulfillment-surface: oklch(0.945 0.008 250);
-  --fulfillment-steel: oklch(0.70 0.025 250);
-  --fulfillment-ink: oklch(0.19 0.035 255);
-  --fulfillment-blue: oklch(0.62 0.19 255);
-  --fulfillment-blue-soft: oklch(0.94 0.035 250);
 }
 
-@layer components {
-  .fulfillment-page {
-    --background: var(--fulfillment-canvas);
-    --foreground: var(--fulfillment-ink);
-    --primary: var(--fulfillment-blue);
-    --primary-foreground: oklch(1 0 0);
-    --secondary: var(--fulfillment-surface);
-    --secondary-foreground: var(--fulfillment-ink);
-    --muted: var(--fulfillment-surface);
-    --muted-foreground: oklch(0.52 0.025 250);
-    --accent: var(--fulfillment-blue-soft);
-    --accent-foreground: var(--fulfillment-blue);
-    --border: oklch(0.88 0.012 250);
-    --input: oklch(0.88 0.012 250);
-    --ring: var(--fulfillment-blue);
-    background: var(--fulfillment-canvas);
-    color: var(--fulfillment-ink);
-    font-family: var(--font-fulfillment-body);
-  }
-
-  .fulfillment-page h1,
-  .fulfillment-page h2,
-  .fulfillment-page h3 {
-    font-family: var(--font-fulfillment-display);
-  }
-}
 
 @layer base {
   * { border-color: var(--color-border); }
