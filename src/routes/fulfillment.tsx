@@ -344,21 +344,45 @@ export default function FulfillmentPage() {
 
         <section id="services" className="scroll-mt-20 bg-secondary px-5 py-20 lg:px-0 lg:py-28">
           <div className="site-container">
-            <div className="grid gap-8 lg:grid-cols-12"><div className="lg:col-span-5"><SectionLabel>Полный цикл</SectionLabel><h2 className="text-4xl font-bold leading-none md:text-6xl">Один склад.<br />Все операции.</h2></div><p className="max-w-xl self-end text-lg leading-relaxed text-muted-foreground lg:col-span-5 lg:col-start-8">Берём на себя физическую работу с товаром, чтобы вы управляли продажами, а не коробками.</p></div>
+            <div className="grid gap-8 lg:grid-cols-12"><div className="lg:col-span-5"><SectionLabel>Услуги</SectionLabel><h2 className="text-4xl font-bold leading-none md:text-6xl">Полный комплекс<br />услуг фулфилмента</h2></div><p className="max-w-xl self-end text-lg leading-relaxed text-muted-foreground lg:col-span-5 lg:col-start-8">Берём на себя все операции с товаром — от забора у поставщика до возвратов, чтобы вы управляли продажами, а не коробками.</p></div>
             <div className="mt-14 grid border-l border-t md:grid-cols-2 lg:grid-cols-4">
-              {services.map(({ icon: Icon, no, title, desc }, index) => <article key={title} className={`group min-h-64 border-b border-r p-6 transition-colors hover:bg-background ${index === 0 || index === 5 ? "lg:col-span-2" : ""}`}><div className="flex items-start justify-between"><span className="text-xs font-bold text-muted-foreground">/{no}</span><Icon className="h-6 w-6 text-primary" strokeWidth={1.5} /></div><h3 className="mt-16 text-2xl font-bold">{title}</h3><p className="mt-3 max-w-sm leading-relaxed text-muted-foreground">{desc}</p></article>)}
+              {services.map(({ icon: Icon, no, title, desc }) => <article key={no} className="group min-h-56 border-b border-r p-6 transition-colors hover:bg-background"><div className="flex items-start justify-between"><span className="text-xs font-bold text-muted-foreground">/{no}</span><Icon className="h-6 w-6 text-primary" strokeWidth={1.5} /></div><h3 className="mt-12 text-xl font-bold">{title}</h3><p className="mt-3 max-w-sm text-sm leading-relaxed text-muted-foreground">{desc}</p></article>)}
             </div>
           </div>
         </section>
 
         <section id="rates" className="scroll-mt-20 px-5 py-20 lg:px-0 lg:py-28">
-          <div className="site-container grid gap-10 lg:grid-cols-12">
-            <div className="lg:col-span-4"><div className="lg:sticky lg:top-28"><SectionLabel>Тарифы</SectionLabel><h2 className="text-4xl font-bold leading-none md:text-6xl">Прозрачно,<br />по операциям</h2><p className="mt-6 max-w-sm leading-relaxed text-muted-foreground">Финальная стоимость зависит от габаритов, веса и регулярности поставок.</p><div className="mt-8 flex border p-1"><Button type="button" onClick={() => setRate("fbs")} variant={rate === "fbs" ? "default" : "ghost"} className="h-11 flex-1 rounded-none shadow-none">FBS</Button><Button type="button" onClick={() => setRate("fbo")} variant={rate === "fbo" ? "default" : "ghost"} className="h-11 flex-1 rounded-none shadow-none">FBO</Button></div></div></div>
-            <div className="lg:col-span-7 lg:col-start-6"><div className="border-t">{rateRows.map(([name, desc, price], index) => <div key={name} className="grid gap-2 border-b py-6 md:grid-cols-12 md:items-center"><span className="text-xs font-bold text-muted-foreground md:col-span-1">0{index + 1}</span><div className="md:col-span-7"><h3 className="text-lg font-bold">{name}</h3><p className="mt-1 text-sm text-muted-foreground">{desc}</p></div><p className="font-bold text-primary md:col-span-4 md:text-right">{price}</p></div>)}</div><Button asChild size="lg" className="mt-8 h-14 w-full rounded-none"><a href="#lead">Получить точный расчёт <ArrowUpRight /></a></Button></div>
+          <div className="site-container">
+            <div className="grid gap-8 lg:grid-cols-12"><div className="lg:col-span-5"><SectionLabel>Тарифы</SectionLabel><h2 className="text-4xl font-bold leading-none md:text-6xl">Прозрачно,<br />по операциям</h2></div><p className="max-w-xl self-end text-lg leading-relaxed text-muted-foreground lg:col-span-5 lg:col-start-8">Финальная стоимость зависит от габаритов, веса и регулярности поставок. Ниже — базовые цены по FBS и FBO.</p></div>
+
+            {[["Стоимость основных FBS-операций", fbsRows], ["Стоимость основных FBO-операций", fboRows]].map(([title, rows]) => (
+              <div key={title as string} className="mt-14 grid gap-8 lg:grid-cols-12">
+                <h3 className="text-2xl font-bold leading-tight lg:col-span-4 md:text-3xl">{title as string}</h3>
+                <div className="lg:col-span-8">
+                  <div className="border-t">
+                    {(rows as string[][]).map(([name, desc, price], index) => (
+                      <div key={name} className="grid gap-2 border-b py-6 md:grid-cols-12 md:items-center">
+                        <span className="text-xs font-bold text-muted-foreground md:col-span-1">0{index + 1}</span>
+                        <div className="md:col-span-7"><p className="text-lg font-bold">{name}</p><p className="mt-1 text-sm text-muted-foreground">{desc}</p></div>
+                        <p className="font-bold text-primary md:col-span-4 md:text-right">{price}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            <Button asChild size="lg" className="mt-10 h-14 w-full rounded-none lg:w-auto lg:px-10"><a href="#lead">Получить точный расчёт <ArrowUpRight /></a></Button>
           </div>
         </section>
 
-        <section className="border-y bg-secondary py-8"><div className="site-container grid grid-cols-2 items-center gap-8 px-5 sm:grid-cols-3 lg:grid-cols-5 lg:px-0">{[{ name: "Wildberries", logo: wildberriesLogo }, { name: "Ozon", logo: ozonLogo }, { name: "Яндекс Маркет", logo: yaMarketLogo }, { name: "Магнит Маркет", logo: null }, { name: "М.Видео", logo: null }].map((item) => <div key={item.name} className="flex h-16 items-center justify-center">{item.logo ? <img src={item.logo} alt={item.name} loading="lazy" className="max-h-8 max-w-32 object-contain grayscale transition-all hover:grayscale-0" /> : <span className="text-center text-lg font-bold text-muted-foreground">{item.name}</span>}</div>)}</div></section>
+        <section className="border-y bg-secondary px-5 py-14 lg:px-0">
+          <div className="site-container">
+            <SectionLabel>Работаем с маркетплейсами</SectionLabel>
+            <div className="mt-8 grid grid-cols-2 items-center gap-8 sm:grid-cols-3 lg:grid-cols-5">{[{ name: "Wildberries", logo: wildberriesLogo }, { name: "Ozon", logo: ozonLogo }, { name: "Яндекс Маркет", logo: yaMarketLogo }, { name: "Магнит Маркет", logo: null }, { name: "М.Видео", logo: null }].map((item) => <div key={item.name} className="flex h-16 items-center justify-center">{item.logo ? <img src={item.logo} alt={item.name} loading="lazy" className="max-h-8 max-w-32 object-contain grayscale transition-all hover:grayscale-0" /> : <span className="text-center text-lg font-bold text-muted-foreground">{item.name}</span>}</div>)}</div>
+          </div>
+        </section>
+
 
         <WarehouseSection />
 
