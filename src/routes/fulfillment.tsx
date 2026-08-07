@@ -102,24 +102,23 @@ const faq = [
 const leadSchema = z.object({
   name: z.string().trim().min(2, "Укажите имя").max(80, "Не более 80 символов"),
   phone: z.string().trim().regex(/^\+?[\d\s()\-]{10,20}$/, "Введите корректный телефон"),
-  comment: z.string().trim().max(500, "Не более 500 символов"),
 });
 
-type LeadErrors = Partial<Record<"name" | "phone" | "comment", string>>;
+type LeadErrors = Partial<Record<"name" | "phone", string>>;
 
-function LeadForm({ compact = false }: { compact?: boolean }) {
+function LeadForm({ compact = false, buttonClassName = "" }: { compact?: boolean; buttonClassName?: string }) {
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState<LeadErrors>({});
 
   function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = { comment: "", ...Object.fromEntries(new FormData(event.currentTarget)) };
+    const data = Object.fromEntries(new FormData(event.currentTarget));
     const result = leadSchema.safeParse(data);
     if (!result.success) {
       const next: LeadErrors = {};
       result.error.issues.forEach((issue) => {
         const field = issue.path[0];
-        if (field === "name" || field === "phone" || field === "comment") next[field] = issue.message;
+        if (field === "name" || field === "phone") next[field] = issue.message;
       });
       setErrors(next);
       return;
@@ -142,15 +141,8 @@ function LeadForm({ compact = false }: { compact?: boolean }) {
           <input name="phone" type="tel" maxLength={20} placeholder="+7 999 000-00-00" className="h-12 border-b bg-transparent px-0 text-base font-medium normal-case text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary" />
           {errors.phone && <span className="normal-case text-destructive">{errors.phone}</span>}
         </label>
-        {!compact && (
-          <label className="grid gap-1.5 text-xs font-bold uppercase text-muted-foreground">
-            Задача
-            <textarea name="comment" maxLength={500} rows={3} placeholder="Маркетплейсы, объём, задачи" className="resize-none border-b bg-transparent px-0 py-3 text-base font-medium normal-case text-foreground outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-primary" />
-            {errors.comment && <span className="normal-case text-destructive">{errors.comment}</span>}
-          </label>
-        )}
       </div>
-      <Button type="submit" size="lg" className="mt-6 h-14 w-full justify-between rounded-none px-6 text-sm font-bold">
+      <Button type="submit" size="lg" className={cn("mt-6 h-14 w-full justify-between rounded-none px-6 text-sm font-bold", buttonClassName)}>
         {sent ? <><span>Заявка принята</span><Check /></> : <><span>Получить расчёт</span><ArrowUpRight /></>}
       </Button>
       <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</p>
