@@ -311,37 +311,34 @@ export default function FulfillmentPage() {
               <span className="hidden font-bold uppercase text-muted-foreground md:block">Собственный склад · Санкт-Петербург</span>
             </div>
 
-            <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-0">
-              <div className="relative z-10 lg:col-span-7 lg:pr-10">
-                <SectionLabel>Marketplace fulfillment</SectionLabel>
-                <h1 className="max-w-4xl text-[clamp(3rem,6.2vw,6.7rem)] font-bold leading-[0.88] tracking-normal">Ваш склад<br /><span className="text-primary">на автопилоте.</span></h1>
-                <p className="mt-7 max-w-xl text-lg leading-relaxed text-muted-foreground lg:text-xl">Полный цикл логистики для Wildberries, Ozon и Яндекс Маркета — от приёмки до отгрузки за 24 часа.</p>
-                <div className="mt-9 flex flex-wrap gap-3">
-                  <Button asChild size="lg" className="h-14 rounded-none px-7"><a href="#lead">Рассчитать стоимость <ArrowRight /></a></Button>
-                  <Button asChild variant="outline" size="lg" className="h-14 rounded-none px-7 shadow-none"><a href="#services">Все услуги</a></Button>
-                </div>
-              </div>
+            <SectionLabel>Marketplace fulfillment</SectionLabel>
+            <h1 className="max-w-5xl text-[clamp(2.4rem,4.6vw,4.6rem)] font-bold leading-[0.94] tracking-normal">Фулфилмент для маркетплейсов<br /><span className="text-primary">и интернет-магазинов</span></h1>
+            <p className="mt-7 max-w-2xl text-lg leading-relaxed text-muted-foreground lg:text-xl">Полный цикл работы с товаром на собственном складе в Санкт-Петербурге: приёмка, хранение, маркировка, упаковка и отгрузка по схемам FBS и FBO.</p>
 
-              <div className="relative lg:col-span-5 lg:mt-8">
-                <div className="aspect-[4/5] overflow-hidden bg-secondary">
-                  <img src={warehouseHero} alt="Современный склад фулфилмента 1998" width={1408} height={1104} className="h-full w-full object-cover" />
+            <div id="lead" className="mt-12 grid scroll-mt-24 items-stretch gap-8 lg:grid-cols-12 lg:gap-0">
+              <div className="relative lg:col-span-7 lg:pr-10">
+                <div className="aspect-[16/11] overflow-hidden bg-secondary">
+                  <img src={warehouseHero} alt="Современный склад фулфилмента 1998 со стеллажами" width={1408} height={1104} className="h-full w-full object-cover" />
                 </div>
-                <div className="absolute -bottom-7 -left-8 hidden w-52 bg-primary p-5 text-primary-foreground lg:block">
+                <div className="absolute -bottom-7 left-0 hidden w-52 bg-primary p-5 text-primary-foreground lg:block">
                   <p className="text-3xl font-bold">до 14:00</p><p className="mt-1 text-xs font-bold uppercase opacity-80">сдадим заказ сегодня</p>
                 </div>
               </div>
+
+              <div className="border p-7 lg:col-span-5 lg:p-9">
+                <SectionLabel>Оставить заявку</SectionLabel>
+                <h2 className="text-2xl font-bold leading-tight lg:text-3xl">Перезвоним в течение 10 минут</h2>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">Уточним задачу, подберём схему работы и посчитаем стоимость под ваш ассортимент.</p>
+                <div className="mt-7"><LeadForm /></div>
+              </div>
             </div>
 
-            <div className="mt-14 grid border-y sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-16 grid border-y sm:grid-cols-2 lg:grid-cols-4">
               {[["2 400 м²", "площадь склада"], ["10 минут", "ответ на заявку"], ["24/7", "охрана и контроль"], ["99,9%", "точность сборки"]].map(([value, label], index) => (
                 <div key={label} className={`py-5 sm:px-5 ${index > 0 ? "sm:border-l" : ""}`}><p className="text-2xl font-bold">{value}</p><p className="mt-1 text-xs font-bold uppercase text-muted-foreground">{label}</p></div>
               ))}
             </div>
 
-            <div id="lead" className="mt-16 grid scroll-mt-28 border bg-background lg:grid-cols-12">
-              <div className="border-b p-7 lg:col-span-5 lg:border-b-0 lg:border-r lg:p-10"><SectionLabel>Быстрый расчёт</SectionLabel><h2 className="text-3xl font-bold leading-tight lg:text-4xl">Расскажите о задаче — ответим за 10 минут</h2><p className="mt-4 max-w-md text-muted-foreground">Подберём схему работы и посчитаем стоимость под ваш ассортимент.</p></div>
-              <div className="p-7 lg:col-span-7 lg:p-10"><LeadForm compact /></div>
-            </div>
           </div>
         </section>
 
