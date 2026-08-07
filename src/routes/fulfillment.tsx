@@ -291,10 +291,13 @@ export default function FulfillmentPage() {
               {navLinks.map((item) => <a key={item.href} href={item.href} className="text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground">{item.label}</a>)}
             </nav>
           </div>
-          <div className="hidden items-center gap-4 md:flex">
+          <div className="hidden items-center gap-3 md:flex">
             <a href="tel:+78123293642" className="text-sm font-bold">+7 (812) 329-36-42</a>
-            <Button asChild size="lg" className="rounded-none"><a href="#lead">Рассчитать стоимость <ArrowUpRight /></a></Button>
+            <a href="https://wa.me/78123293642" target="_blank" rel="noreferrer noopener" aria-label="WhatsApp" className="text-muted-foreground transition-colors hover:text-foreground"><MessageCircle className="h-5 w-5" strokeWidth={1.75} /></a>
+            <a href="https://t.me/tecos" target="_blank" rel="noreferrer noopener" aria-label="Telegram" className="text-muted-foreground transition-colors hover:text-foreground"><Send className="h-5 w-5" strokeWidth={1.75} /></a>
+            <Button asChild size="lg" className="rounded-none"><a href="#lead">Оставить заявку <ArrowUpRight /></a></Button>
           </div>
+
           <Button type="button" variant="ghost" size="icon" className="md:hidden" aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"} onClick={() => setMenuOpen((value) => !value)}>{menuOpen ? <X /> : <Menu />}</Button>
         </div>
         {menuOpen && <nav className="grid border-t bg-background px-5 py-4 md:hidden">{navLinks.map((item) => <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)} className="border-b py-3 text-base font-bold">{item.label}</a>)}<a href="tel:+78123293642" className="pt-4 text-base font-bold text-primary">+7 (812) 329-36-42</a></nav>}
