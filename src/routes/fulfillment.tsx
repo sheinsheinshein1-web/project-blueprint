@@ -342,18 +342,23 @@ export default function FulfillmentPage() {
                 <h3 className="text-2xl font-bold leading-tight md:text-3xl">
                   {rateMode === "fbs" ? "Стоимость основных FBS-операций" : "Стоимость основных FBO-операций"}
                 </h3>
-                <div className="mt-6 inline-flex border">
+                <div className="relative mt-6 inline-flex rounded-full border bg-background p-1">
+                  <div
+                    className="absolute top-1 bottom-1 w-[calc(50%-4px)] rounded-full bg-primary transition-all duration-300 ease-out"
+                    style={{ left: rateMode === "fbs" ? "4px" : "calc(50% + 0px)" }}
+                    aria-hidden="true"
+                  />
                   <button
                     type="button"
                     onClick={() => setRateMode("fbs")}
-                    className={`px-5 py-2.5 text-sm font-bold transition-colors ${rateMode === "fbs" ? "bg-foreground text-background" : "bg-transparent text-foreground hover:bg-secondary"}`}
+                    className={`relative z-10 min-w-[88px] rounded-full px-6 py-2.5 text-sm font-bold transition-colors ${rateMode === "fbs" ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
                   >
                     FBS
                   </button>
                   <button
                     type="button"
                     onClick={() => setRateMode("fbo")}
-                    className={`px-5 py-2.5 text-sm font-bold transition-colors ${rateMode === "fbo" ? "bg-foreground text-background" : "bg-transparent text-foreground hover:bg-secondary"}`}
+                    className={`relative z-10 min-w-[88px] rounded-full px-6 py-2.5 text-sm font-bold transition-colors ${rateMode === "fbo" ? "text-primary-foreground" : "text-muted-foreground hover:text-foreground"}`}
                   >
                     FBO
                   </button>
