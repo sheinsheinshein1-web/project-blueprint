@@ -25,7 +25,7 @@ import {
   Warehouse,
   X,
 } from "lucide-react";
-import { toast } from "sonner";
+
 import { Button } from "@/components/ui/button";
 import warehouseHero from "@/assets/warehouse-hero.jpg";
 import logo from "@/assets/logo-1998.png";
