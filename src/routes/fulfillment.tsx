@@ -3,9 +3,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 import {
-  ArrowLeft,
-  ArrowRight,
-  ArrowUpRight,
   Boxes,
   Check,
   ChevronDown,
@@ -28,16 +25,27 @@ import {
 
 import { Button } from "@/components/ui/button";
 import warehouseHero from "@/assets/warehouse-hero.jpg";
+import warehouseDirections from "@/assets/warehouse-directions.png";
 import logo from "@/assets/logo-1998.png";
-import wildberriesLogo from "@/assets/wildberries.gif";
-import ozonLogo from "@/assets/ozon.gif";
-import yaMarketLogo from "@/assets/ya_market.gif";
+import wildberriesLogo from "@/assets/marketplaces/wildberries.svg";
+import ozonLogo from "@/assets/marketplaces/ozon.svg";
+import yandexMarketLogo from "@/assets/marketplaces/yandex-market.svg";
+import magnitMarketLogo from "@/assets/marketplaces/magnit-market.svg";
+import mvideoLogo from "@/assets/marketplaces/mvideo.jpg";
 
 const navLinks = [
   { label: "Услуги", href: "#services" },
   { label: "Тарифы", href: "#rates" },
   { label: "Блог", href: "#blog" },
   { label: "Контакты", href: "#warehouse" },
+];
+
+const marketplaceLogos = [
+  { name: "Wildberries", logo: wildberriesLogo, className: "max-h-8 max-w-[170px]" },
+  { name: "Ozon", logo: ozonLogo, className: "max-h-9 max-w-[150px]" },
+  { name: "Яндекс Маркет", logo: yandexMarketLogo, className: "max-h-9 max-w-[170px]" },
+  { name: "Магнит Маркет", logo: magnitMarketLogo, className: "max-h-12 max-w-[150px]" },
+  { name: "М.Видео", logo: mvideoLogo, className: "w-[180px] scale-[2]" },
 ];
 
 const services = [
@@ -104,13 +112,19 @@ const leadSchema = z.object({
 
 type LeadErrors = Partial<Record<"name" | "phone", string>>;
 
+const LEAD_FORM_ENDPOINT = "https://formsubmit.co/ajax/ff1998spb@mail.ru";
+
 function LeadForm({ compact = false, buttonClassName = "" }: { compact?: boolean; buttonClassName?: string }) {
   const [sent, setSent] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
   const [errors, setErrors] = useState<LeadErrors>({});
 
-  function submit(event: React.FormEvent<HTMLFormElement>) {
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const data = Object.fromEntries(new FormData(event.currentTarget));
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
     const result = leadSchema.safeParse(data);
     if (!result.success) {
       const next: LeadErrors = {};
@@ -121,13 +135,46 @@ function LeadForm({ compact = false, buttonClassName = "" }: { compact?: boolean
       setErrors(next);
       return;
     }
+
     setErrors({});
-    setSent(true);
+    setSubmitError("");
+    setSubmitting(true);
+
+    try {
+      const response = await fetch(LEAD_FORM_ENDPOINT, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          "Имя": result.data.name,
+          "Телефон": result.data.phone,
+          "Источник": "Страница фулфилмента 1998.ru",
+          "Страница": window.location.href,
+          "Дата заявки": new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow" }),
+          _subject: "Новая заявка на фулфилмент — 1998.ru",
+          _template: "table",
+          _captcha: "false",
+          _honey: String(formData.get("_honey") ?? ""),
+        }),
+      });
+
+      if (!response.ok) throw new Error("FormSubmit request failed");
+
+      form.reset();
+      setSent(true);
+    } catch {
+      setSubmitError("Не удалось отправить заявку. Попробуйте ещё раз или позвоните нам.");
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   const fields = compact ? "grid gap-3 md:grid-cols-2" : "grid gap-4";
   return (
     <form onSubmit={submit} noValidate className="flex h-full flex-col" aria-label="Форма расчёта стоимости">
+      <input name="_honey" type="text" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       <div className={fields}>
         <label className="grid gap-1.5 text-xs font-bold uppercase text-muted-foreground">
           Имя
@@ -140,16 +187,18 @@ function LeadForm({ compact = false, buttonClassName = "" }: { compact?: boolean
           {errors.phone && <span className="normal-case text-destructive">{errors.phone}</span>}
         </label>
       </div>
-      <Button type="submit" size="lg" className={cn("mt-6 h-14 w-full justify-between rounded-none px-6 text-sm font-bold", buttonClassName)}>
-        {sent ? <><span>Заявка принята</span><Check /></> : <><span>Получить расчёт</span><ArrowUpRight /></>}
+      <Button type="submit" size="lg" disabled={submitting || sent} className={cn("mt-6 h-14 w-full justify-center rounded-none px-6 text-sm font-bold", buttonClassName)}>
+        {sent ? <><span>Заявка принята</span><Check /></> : <span>{submitting ? "Отправляем…" : "Получить расчёт"}</span>}
       </Button>
+      {submitError && <p role="alert" className="mt-3 text-sm font-medium text-destructive">{submitError}</p>}
       <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</p>
     </form>
   );
 }
 
-const WAREHOUSE_ADDRESS = "Санкт-Петербург, пр. Юрия Гагарина, д. 1, оф. 306";
-const WAREHOUSE_COORDS = "59.855,30.322";
+const WAREHOUSE_ADDRESS = "Санкт-Петербург, ул. Предпортовая, д. 1Л";
+const WAREHOUSE_COORDS = "59.8320325,30.295602";
+const WAREHOUSE_MAP_CENTER = "30.295602,59.8320325";
 
 const warehouseFacts: [string, string][] = [
   ["2 400 м²", "Общая площадь склада"],
@@ -168,29 +217,26 @@ function WarehouseSection() {
 
         <div className="mt-10 grid gap-4 lg:mt-14 lg:grid-cols-12 lg:h-[520px]">
           <div className="relative overflow-hidden rounded-2xl border bg-secondary lg:col-span-4 lg:h-full">
-            <iframe
-              title="Схема проезда к складу 1998"
-              src={`https://yandex.ru/map-widget/v1/?text=${encodeURIComponent("Санкт-Петербург, пр. Юрия Гагарина, д. 1")}&z=17`}
-              className="block h-[260px] w-full border-0 lg:h-full"
-              loading="lazy"
+            <img
+              src={warehouseDirections}
+              alt="Схема въезда на склад 1998 с Предпортовой улицы"
+              width={1515}
+              height={1038}
+              className="block h-[260px] w-full object-cover object-center lg:h-full"
             />
-            <div className="pointer-events-none absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-bold shadow-lg">
-              <NavigationIcon className="h-4 w-4" />
-              Въезд
-            </div>
           </div>
 
           <div className="overflow-hidden rounded-2xl border lg:col-span-8 lg:h-full">
             <iframe
               title="Карта склада 1998"
-              src={`https://yandex.ru/map-widget/v1/?text=${encodeURIComponent("Санкт-Петербург, пр. Юрия Гагарина, д. 1")}&z=12`}
+              src={`https://yandex.ru/map-widget/v1/?ll=${WAREHOUSE_MAP_CENTER}&pt=${WAREHOUSE_MAP_CENTER},pm2rdm&z=12`}
               className="block h-[360px] w-full border-0 lg:h-full"
               loading="lazy"
             />
           </div>
         </div>
 
-        <div className="mt-8 grid gap-8 lg:mt-12 lg:grid-cols-12 lg:items-end">
+        <div className="mt-8 grid gap-8 lg:mt-12 lg:grid-cols-12 lg:items-start">
           <div className="lg:col-span-4">
             <p className="text-sm font-bold uppercase text-muted-foreground">Адрес</p>
             <p className="mt-2 text-xl font-bold leading-snug">{WAREHOUSE_ADDRESS}</p>
@@ -278,7 +324,7 @@ export default function FulfillmentPage() {
             <a href="tel:+78123293642" className="text-sm font-bold">+7 (812) 329-36-42</a>
             <a href="https://wa.me/78123293642" target="_blank" rel="noreferrer noopener" aria-label="WhatsApp" className="text-muted-foreground transition-colors hover:text-foreground"><MessageCircle className="h-5 w-5" strokeWidth={1.75} /></a>
             <a href="https://t.me/tecos" target="_blank" rel="noreferrer noopener" aria-label="Telegram" className="text-muted-foreground transition-colors hover:text-foreground"><Send className="h-5 w-5" strokeWidth={1.75} /></a>
-            <Button asChild size="lg" className="rounded-none"><a href="#lead">Оставить заявку <ArrowUpRight /></a></Button>
+            <Button asChild size="lg" className="rounded-none"><a href="#lead">Оставить заявку</a></Button>
           </div>
 
           <Button type="button" variant="ghost" size="icon" className="md:hidden" aria-label={menuOpen ? "Закрыть меню" : "Открыть меню"} onClick={() => setMenuOpen((value) => !value)}>{menuOpen ? <X /> : <Menu />}</Button>
@@ -289,10 +335,6 @@ export default function FulfillmentPage() {
       <main>
         <section className="relative px-5 pb-16 pt-8 lg:px-0 lg:pb-24 lg:pt-12">
           <div className="site-container">
-            <div className="mb-8 flex items-center justify-between border-b pb-5 text-sm">
-              <Link to="/" className="inline-flex items-center gap-2 font-semibold text-muted-foreground hover:text-foreground"><ArrowLeft className="h-4 w-4" /> На главную</Link>
-              <span className="hidden font-bold uppercase text-muted-foreground md:block">Собственный склад · Санкт-Петербург</span>
-            </div>
             <h1 className="max-w-5xl text-[clamp(2.4rem,4.6vw,4.6rem)] font-bold leading-[0.94] tracking-normal">Фулфилмент для маркетплейсов<br /><span className="text-primary">и интернет-магазинов</span></h1>
             <p className="mt-7 max-w-2xl text-lg leading-relaxed text-muted-foreground lg:text-xl">Полный цикл работы с товаром на собственном складе в Санкт-Петербурге: приёмка, хранение, маркировка, упаковка и отгрузка по схемам FBS и FBO.</p>
 
@@ -381,14 +423,29 @@ export default function FulfillmentPage() {
               </div>
             </div>
 
-            <Button asChild size="lg" className="mt-10 h-14 w-full rounded-none lg:w-auto lg:px-10"><a href="#lead">Получить точный расчёт <ArrowUpRight /></a></Button>
+            <div className="mt-10 grid gap-8 lg:grid-cols-12">
+              <Button asChild size="lg" className="h-14 w-full rounded-none lg:col-span-8 lg:col-start-5 lg:w-fit lg:px-10">
+                <a href="#lead">Получить точный расчёт</a>
+              </Button>
+            </div>
           </div>
         </section>
 
         <section className="border-y bg-secondary px-5 py-14 lg:px-0">
           <div className="site-container">
             <h2 className="text-3xl font-bold leading-none md:text-4xl">Работаем с маркетплейсами</h2>
-            <div className="mt-8 grid grid-cols-2 items-center gap-8 sm:grid-cols-3 lg:grid-cols-5">{[{ name: "Wildberries", logo: wildberriesLogo }, { name: "Ozon", logo: ozonLogo }, { name: "Яндекс Маркет", logo: yaMarketLogo }, { name: "Магнит Маркет", logo: null }, { name: "М.Видео", logo: null }].map((item) => <div key={item.name} className="flex h-16 items-center justify-center">{item.logo ? <img src={item.logo} alt={item.name} loading="lazy" className="max-h-8 max-w-32 object-contain grayscale transition-all hover:grayscale-0" /> : <span className="text-center text-lg font-bold text-muted-foreground">{item.name}</span>}</div>)}</div>
+            <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+              {marketplaceLogos.map((item) => (
+                <div key={item.name} className="flex h-24 items-center justify-center overflow-hidden border bg-background px-5">
+                  <img
+                    src={item.logo}
+                    alt={item.name}
+                    loading="lazy"
+                    className={`h-auto w-auto object-contain ${item.className}`}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -403,7 +460,7 @@ export default function FulfillmentPage() {
                   <p className="text-xs font-bold uppercase text-muted-foreground">{time} чтения</p>
                   <h3 className="mt-6 text-xl font-bold leading-snug">{title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{desc}</p>
-                  <span className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-primary">Читать <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
+                  <span className="mt-8 inline-flex items-center text-sm font-bold text-primary">Читать</span>
                 </article>
               ))}
             </div>

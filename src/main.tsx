@@ -5,6 +5,7 @@ import "./styles.css";
 import { Toaster } from "./components/ui/sonner";
 import { SiteHeader } from "./components/SiteHeader";
 import { SiteFooter } from "./components/SiteFooter";
+import { FulfillmentFooter } from "./components/FulfillmentFooter";
 import IndexPage from "./routes/index";
 import AboutPage from "./routes/about";
 import CatalogPage from "./routes/catalog";
@@ -56,7 +57,7 @@ function App() {
             <Route path="*" element={<IndexPage />} />
           </Routes>
         </main>
-        <SiteFooter />
+        {isFulfillmentPage ? <FulfillmentFooter /> : <SiteFooter />}
       </div>
       <Toaster />
     </>
