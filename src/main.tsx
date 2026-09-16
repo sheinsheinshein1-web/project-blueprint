@@ -11,7 +11,11 @@ import AboutPage from "./routes/about";
 import CatalogPage from "./routes/catalog";
 import ProductPage from "./routes/product";
 import FulfillmentPage from "./routes/fulfillment";
-
+import HomePreview from "./routes/home-preview";
+import { usePreviewRoutes } from "./lib/preview-routes";
+import { PreviewMetadata } from "./components/PreviewMetadata";
+import CollectionPage from "./routes/collection";
+import { seoCollections } from "./data/seo-collections";
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -39,20 +43,35 @@ function ScrollManager() {
 function App() {
   const { pathname } = useLocation();
   const isFulfillmentPage = pathname === "/fulfillment";
+  const { isPreviewRoute } = usePreviewRoutes();
 
   return (
     <>
       <ScrollManager />
+      {isPreviewRoute && <PreviewMetadata />}
       <div className="relative flex min-h-screen flex-col bg-background text-foreground antialiased">
-        {!isFulfillmentPage && <SiteHeader />}
+        {!isFulfillmentPage && <SiteHeader homePath={isPreviewRoute ? "/test-home" : "/"} />}
         <main className="flex-1">
           <Routes>
-            <Route path="/" element={<IndexPage />} />
+            <Route path="/" element={<HomePreview />} />
+            <Route path="/test-home" element={<HomePreview />} />
+            <Route path="/test-home/about" element={<AboutPage />} />
+            <Route path="/test-home/catalog" element={<CatalogPage />} />
+            <Route path="/test-home/product/:id" element={<ProductPage />} />
+            {seoCollections.map((page) => (
+              <Route
+                key={page.path}
+                path={`/test-home${page.path}`}
+                element={<CollectionPage page={page} />}
+              />
+            ))}
+            {seoCollections.map((page) => (
+              <Route key={page.path} path={page.path} element={<CollectionPage page={page} />} />
+            ))}
             <Route path="/about" element={<AboutPage />} />
             <Route path="/catalog" element={<CatalogPage />} />
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/fulfillment" element={<FulfillmentPage />} />
-
 
             <Route path="*" element={<IndexPage />} />
           </Routes>
@@ -64,6 +83,10 @@ function App() {
   );
 }
 
+// Static collection metadata is served to crawlers; client effects own it after navigation.
+document.head
+  .querySelectorAll("[data-collection-seo], [data-preview-robots]")
+  .forEach((node) => node.remove());
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>

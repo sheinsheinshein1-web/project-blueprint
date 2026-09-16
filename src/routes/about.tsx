@@ -3,13 +3,18 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import nikolayPhoto from "@/assets/nikolay.jpg";
 import valeryPhoto from "@/assets/valery.png";
+import { usePreviewRoutes } from "@/lib/preview-routes";
+import "./about-preview.css";
 
 export default function AboutPage() {
+  const { preview, sitePath } = usePreviewRoutes();
   useEffect(() => {
     document.title = "О бренде — 1998 Блестящая история";
   }, []);
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 text-gray-900 lg:px-12">
+    <main
+      className={`${preview ? "about-preview" : ""} relative min-h-screen overflow-hidden bg-[oklch(0.93_0.005_260)] px-6 text-gray-900 lg:px-12`}
+    >
       <div
         className="pointer-events-none absolute inset-0 z-0"
         style={{
@@ -20,7 +25,7 @@ export default function AboutPage() {
 
       <div className="site-container relative z-10 py-16 lg:py-24">
         <Link
-          to="/"
+          to={sitePath("/")}
           className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-gray-600 transition-colors hover:text-gray-900"
         >
           <ArrowLeft className="h-4 w-4" strokeWidth={1.75} />
@@ -28,25 +33,33 @@ export default function AboutPage() {
         </Link>
 
         {/* Section 1 */}
-        <section className="mt-12 grid gap-14 lg:mt-20 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-7">
+        <section className="about-story about-story--founder mt-12 grid gap-14 lg:mt-20 lg:grid-cols-12 lg:gap-16">
+          <div className="about-story__copy lg:col-span-7">
             <h1 className="text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
-              Опыт гарантирует<br />экспертизу
+              Опыт гарантирует
+              <br />
+              экспертизу
             </h1>
             <div className="mt-8 space-y-5 text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
               <p>
-                Основанная в 1998 году, компания «ТЕКОС-ИНДУСТРИЯ» является одним из крупнейших и старейшим производителем хозяйственных товаров в России.
+                Основанная в 1998 году, компания «ТЕКОС-ИНДУСТРИЯ» является одним из крупнейших и
+                старейшим производителем хозяйственных товаров в России.
               </p>
               <p>
-                Все эти годы мы экспериментировали, тестировали материалы и технологии, изучали потребности наших покупателей и научились производить безупречные хозяйственные товары в России.
+                Все эти годы мы экспериментировали, тестировали материалы и технологии, изучали
+                потребности наших покупателей и научились производить безупречные хозяйственные
+                товары в России.
               </p>
               <p>
-                За длительную историю мы накопили огромный багаж знаний и установили надёжные связи с поставщиками и партнёрами. Экспертиза «ТЕКОС-ИНДУСТРИЯ» признана крупными сетями, дистрибьюторами и другими участниками рынка, размещающими у нас заказы на производство товаров под своими брендами.
+                За длительную историю мы накопили огромный багаж знаний и установили надёжные связи
+                с поставщиками и партнёрами. Экспертиза «ТЕКОС-ИНДУСТРИЯ» признана крупными сетями,
+                дистрибьюторами и другими участниками рынка, размещающими у нас заказы на
+                производство товаров под своими брендами.
               </p>
             </div>
           </div>
 
-          <div className="lg:col-span-5">
+          <div className="about-story__portrait lg:col-span-5">
             <div className="aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)]">
               <img
                 src={valeryPhoto}
@@ -62,8 +75,8 @@ export default function AboutPage() {
         </section>
 
         {/* Section 2 */}
-        <section className="mt-24 grid gap-14 lg:mt-32 lg:grid-cols-12 lg:gap-16">
-          <div className="order-2 lg:order-1 lg:col-span-5">
+        <section className="about-story about-story--family mt-24 grid gap-14 lg:mt-32 lg:grid-cols-12 lg:gap-16">
+          <div className="about-story__portrait order-2 lg:order-1 lg:col-span-5">
             <div className="aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)]">
               <img
                 src={nikolayPhoto}
@@ -77,19 +90,29 @@ export default function AboutPage() {
             <p className="text-sm text-gray-500">Руководитель</p>
           </div>
 
-          <div className="order-1 lg:order-2 lg:col-span-7">
+          <div className="about-story__copy order-1 lg:order-2 lg:col-span-7">
             <h2 className="text-4xl font-extrabold leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
-              Семейные традиции<br />качества
+              Семейные традиции
+              <br />
+              качества
             </h2>
             <div className="mt-8 space-y-5 text-lg font-light leading-relaxed text-gray-700 lg:text-xl">
               <p>
-                Несмотря на масштабы бизнеса, «ТЕКОС-ИНДУСТРИЯ» остаётся семейной компанией. Традиции качества и ответственного отношения к делу передаются по наследству. Но новое поколение привносит свежий взгляд и передовые технологии управления.
+                Несмотря на масштабы бизнеса, «ТЕКОС-ИНДУСТРИЯ» остаётся семейной компанией.
+                Традиции качества и ответственного отношения к делу передаются по наследству. Но
+                новое поколение привносит свежий взгляд и передовые технологии управления.
               </p>
               <p>
-                Основатель компании Валерий Викторович Дворянкин начал работать с хозяйственными товарами ещё в 1992 году с импорта продукции крупного бельгийского бренда. В 1996 году он основал компанию «ТЕКОС». Он глубоко вникал во все процессы лично и всегда с особым вниманием относился к потребителям, пристально изучая их потребности. В 1998 году он создал первое собственное производство.
+                Основатель компании Валерий Викторович Дворянкин начал работать с хозяйственными
+                товарами ещё в 1992 году с импорта продукции крупного бельгийского бренда. В 1996
+                году он основал компанию «ТЕКОС». Он глубоко вникал во все процессы лично и всегда с
+                особым вниманием относился к потребителям, пристально изучая их потребности. В 1998
+                году он создал первое собственное производство.
               </p>
               <p>
-                С 2024 года компанией управляет сын Валерия Викторовича — Николай Дворянкин. Сохраняя уважение к семейным традициям, Николай привносит инновации в производство и управление компанией «ТЕКОС-ИНДУСТРИЯ».
+                С 2024 года компанией управляет сын Валерия Викторовича — Николай Дворянкин.
+                Сохраняя уважение к семейным традициям, Николай привносит инновации в производство и
+                управление компанией «ТЕКОС-ИНДУСТРИЯ».
               </p>
             </div>
           </div>

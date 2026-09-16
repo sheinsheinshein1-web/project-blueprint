@@ -11,14 +11,14 @@ const ROUTE_LINKS: Array<{ label: string; to: string; id: string }> = [
   { label: "Контакты", to: "/#contact", id: "contact" },
 ];
 
-export function SiteHeader() {
+export function SiteHeader({ homePath = "/" }: { homePath?: string }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeLabel, setActiveLabel] = useState("Главная");
   const [pill, setPill] = useState({ left: 0, top: 0, width: 0, height: 0 });
   const linkRefs = useRef<Record<string, HTMLAnchorElement | null>>({});
   const { pathname } = useLocation();
-  const isHome = pathname === "/";
+  const isHome = pathname === homePath;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -99,7 +99,7 @@ export function SiteHeader() {
       }`}
     >
       <div className="site-container flex items-center justify-between">
-        <Link to="/" className="flex items-center" aria-label="1998">
+        <Link to={homePath} className="flex items-center" aria-label="1998">
           <img src={logo} alt="1998" className="h-10 w-auto md:h-12" />
         </Link>
 
@@ -122,7 +122,7 @@ export function SiteHeader() {
                 ref={(el: HTMLAnchorElement | null) => {
                   linkRefs.current[l.label] = el;
                 }}
-                to={l.to}
+                to={`${homePath}${l.to.slice(1)}`}
                 onClick={(e) => {
                   if (isHashOnHome) {
                     e.preventDefault();
@@ -135,9 +135,7 @@ export function SiteHeader() {
                 }}
                 className={
                   navLinkClass +
-                  (activeLabel === l.label
-                    ? "text-black"
-                    : "text-gray-700 hover:text-black")
+                  (activeLabel === l.label ? "text-black" : "text-gray-700 hover:text-black")
                 }
               >
                 {l.label}
@@ -147,7 +145,7 @@ export function SiteHeader() {
         </nav>
 
         <Link
-          to="/#contact"
+          to={`${homePath}#contact`}
           className="hidden items-center gap-2 rounded-full bg-white px-5 py-2 text-[13px] font-medium text-gray-900 shadow-sm transition-colors hover:bg-gray-100 md:inline-flex"
         >
           Связаться
@@ -171,7 +169,7 @@ export function SiteHeader() {
             return (
               <Link
                 key={l.label}
-                to={l.to}
+                to={`${homePath}${l.to.slice(1)}`}
                 onClick={(e) => {
                   if (isHashOnHome) {
                     e.preventDefault();
@@ -189,7 +187,7 @@ export function SiteHeader() {
             );
           })}
           <Link
-            to="/#contact"
+            to={`${homePath}#contact`}
             onClick={(e) => {
               if (isHome) {
                 e.preventDefault();

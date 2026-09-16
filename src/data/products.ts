@@ -45,8 +45,22 @@ import materialKozhaEco from "@/assets/products/clean/material-kozha-eco.png";
 import materialKozhaLatex from "@/assets/products/clean/material-kozha-latex.png";
 import materialSportLatex from "@/assets/products/clean/material-sport-latex.png";
 import materialSportTextile from "@/assets/products/clean/material-sport-textile.png";
+import practicalMaxiPack from "@/assets/praktichnaya-istoriya-maxi-pack.png";
+import practicalMaxiProduct from "@/assets/praktichnaya-istoriya-maxi-product.png";
+import practicalUniversalPack from "@/assets/praktichnaya-istoriya-universal-pack.png";
+import practicalUniversalProduct from "@/assets/praktichnaya-istoriya-universal-product.png";
+import practicalBigPack from "@/assets/praktichnaya-istoriya-big-pack.png";
+import practicalBigProduct from "@/assets/praktichnaya-istoriya-big-product.png";
 
 export type Category = "Все" | "Губки" | "Салфетки" | "Стельки";
+export type Brand = "Блестящая история" | "Практичная история" | "История комфорта";
+
+export type BrandCollection = {
+  id: "shine" | "practical" | "comfort";
+  title: Brand;
+  eyebrow: string;
+  usp: string;
+};
 
 export type Marketplace = {
   name: string;
@@ -54,6 +68,44 @@ export type Marketplace = {
   bg: string;
   text: string;
 };
+
+const marketplaceStyles = {
+  wildberries: { bg: "#9b4dca", text: "white" },
+  ozon: { bg: "#005bff", text: "white" },
+  yandexMarket: { bg: "#fce000", text: "black" },
+} as const;
+
+const yandexSpongeCard =
+  "https://m.integration.vs.market.yandex.net/card/gubki-dlya-mytya-posudy-figurnyye-ergonomichnyye-nabor-gubok-kvadrat-10-sht/5718394497";
+
+function createMarketplaces(
+  query: string,
+  direct: { wildberries?: string; ozon?: string; yandexMarket?: string } = {},
+): Marketplace[] {
+  const encodedQuery = encodeURIComponent(query);
+
+  return [
+    {
+      name: "WILDBERRIES",
+      url:
+        direct.wildberries ??
+        `https://www.wildberries.ru/catalog/0/search.aspx?search=${encodedQuery}`,
+      ...marketplaceStyles.wildberries,
+    },
+    {
+      name: "OZON",
+      url:
+        direct.ozon ??
+        `https://www.ozon.ru/search/?deny_category_prediction=true&from_global=true&text=${encodedQuery}`,
+      ...marketplaceStyles.ozon,
+    },
+    {
+      name: "Яндекс Маркет",
+      url: direct.yandexMarket ?? `https://market.yandex.ru/search?text=${encodedQuery}`,
+      ...marketplaceStyles.yandexMarket,
+    },
+  ];
+}
 
 export type Feature = {
   text: string;
@@ -65,6 +117,7 @@ export type Product = {
   title: string;
   desc: string;
   category: Category;
+  brand: Brand;
   image: string;
   gallery?: string[];
   features: Feature[];
@@ -73,12 +126,34 @@ export type Product = {
 
 export const categories: Category[] = ["Все", "Губки", "Салфетки", "Стельки"];
 
+export const brandCollections: BrandCollection[] = [
+  {
+    id: "shine",
+    title: "Блестящая история",
+    eyebrow: "Для выразительной чистоты",
+    usp: "Продуманные формы, материалы и упаковка для ежедневного ухода за домом.",
+  },
+  {
+    id: "practical",
+    title: "Практичная история",
+    eyebrow: "Для ежедневных задач",
+    usp: "Понятные и надёжные решения для кухни без лишних деталей.",
+  },
+  {
+    id: "comfort",
+    title: "История комфорта",
+    eyebrow: "Для удобства каждый день",
+    usp: "Стельки для сезонного тепла, поддержки стопы и комфортной обуви.",
+  },
+];
+
 export const products: Product[] = [
   {
     id: "gubki-universalnye",
     title: "Губки универсальные",
     desc: "Для повседневной уборки",
     category: "Губки",
+    brand: "Блестящая история",
     image: img01,
     gallery: [img01, pack01, materialGubkiUniversalFoam, materialGubkiUniversalFiber],
     features: [
@@ -87,17 +162,17 @@ export const products: Product[] = [
       { text: "Подходят для посуды, кухонных поверхностей и раковин", icon: "utensils" },
       { text: "Легко промываются и быстро сохнут", icon: "droplets" },
     ],
-    marketplaces: [
-      { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
-      { name: "OZON", url: "https://www.ozon.ru", bg: "#005bff", text: "white" },
-      { name: "Яндекс Маркет", url: "https://market.yandex.ru", bg: "#fce000", text: "black" },
-    ],
+    marketplaces: createMarketplaces("1998 Блестящая история губки универсальные", {
+      wildberries: "https://www.wildberries.ru/catalog/895985685/detail.aspx",
+      yandexMarket: yandexSpongeCard,
+    }),
   },
   {
     id: "gubki-mynta",
     title: "Губки с ароматом мяты",
     desc: "Для свежести и чистоты",
     category: "Губки",
+    brand: "Блестящая история",
     image: img02,
     gallery: [img02, pack02, materialGubkiMintFoam, materialGubkiMintFiber],
     features: [
@@ -106,17 +181,17 @@ export const products: Product[] = [
       { text: "Сохраняют приятный запах после мытья", icon: "wind" },
       { text: "Компактный размер для удобного захвата", icon: "maximize" },
     ],
-    marketplaces: [
-      { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
-      { name: "OZON", url: "https://www.ozon.ru", bg: "#005bff", text: "white" },
-      { name: "Яндекс Маркет", url: "https://market.yandex.ru", bg: "#fce000", text: "black" },
-    ],
+    marketplaces: createMarketplaces("1998 Блестящая история губки с ароматом мяты", {
+      wildberries: "https://www.wildberries.ru/catalog/895985682/detail.aspx",
+      yandexMarket: yandexSpongeCard,
+    }),
   },
   {
     id: "gubki-kofe",
     title: "Губки с ароматом кофе",
     desc: "Для приятной уборки",
     category: "Губки",
+    brand: "Блестящая история",
     image: img03,
     gallery: [img03, pack03, materialGubkiCoffeeFoam, materialGubkiCoffeeFiber],
     features: [
@@ -125,17 +200,17 @@ export const products: Product[] = [
       { text: "Не оставляют разводов на поверхностях", icon: "sparkles" },
       { text: "Долго сохраняют форму и запах", icon: "clock" },
     ],
-    marketplaces: [
-      { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
-      { name: "OZON", url: "https://www.ozon.ru", bg: "#005bff", text: "white" },
-      { name: "Яндекс Маркет", url: "https://market.yandex.ru", bg: "#fce000", text: "black" },
-    ],
+    marketplaces: createMarketplaces("1998 Блестящая история губки с ароматом кофе", {
+      wildberries: "https://www.wildberries.ru/catalog/895985686/detail.aspx",
+      yandexMarket: yandexSpongeCard,
+    }),
   },
   {
     id: "gubki-delikatnye",
     title: "Губки деликатные",
     desc: "Для чувствительных поверхностей",
     category: "Губки",
+    brand: "Блестящая история",
     image: img04,
     gallery: [img04, pack04, materialGubkiDelicateFoam, materialGubkiDelicateFiber],
     features: [
@@ -144,17 +219,17 @@ export const products: Product[] = [
       { text: "Не оставляют царапин на стекле и керамике", icon: "sparkles" },
       { text: "Идеальны для деликатных и нержавеющих поверхностей", icon: "gem" },
     ],
-    marketplaces: [
-      { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
-      { name: "OZON", url: "https://www.ozon.ru", bg: "#005bff", text: "white" },
-      { name: "Яндекс Маркет", url: "https://market.yandex.ru", bg: "#fce000", text: "black" },
-    ],
+    marketplaces: createMarketplaces("1998 Блестящая история губки деликатные", {
+      wildberries: "https://www.wildberries.ru/catalog/895985680/detail.aspx",
+      yandexMarket: yandexSpongeCard,
+    }),
   },
   {
     id: "gubki-ergonomichnye",
     title: "Губки эргономичные",
     desc: "Удобно лежат в руке",
     category: "Губки",
+    brand: "Блестящая история",
     image: img05,
     gallery: [img05, pack05, materialGubkiErgonomicFoam, materialGubkiErgonomicFiber],
     features: [
@@ -163,17 +238,17 @@ export const products: Product[] = [
       { text: "Двойная текстура для разных типов загрязнений", icon: "layers" },
       { text: "Прочное крепление абразива к поролону", icon: "anchor" },
     ],
-    marketplaces: [
-      { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
-      { name: "OZON", url: "https://www.ozon.ru", bg: "#005bff", text: "white" },
-      { name: "Яндекс Маркет", url: "https://market.yandex.ru", bg: "#fce000", text: "black" },
-    ],
+    marketplaces: createMarketplaces("1998 Блестящая история губки эргономичные", {
+      wildberries: "https://www.wildberries.ru/catalog/895985679/detail.aspx",
+      yandexMarket: yandexSpongeCard,
+    }),
   },
   {
     id: "salfetki-celyuloznye",
     title: "Салфетки целлюлозные",
     desc: "Впитывают и не крошатся",
     category: "Салфетки",
+    brand: "Блестящая история",
     image: img06,
     gallery: [img06, pack06, materialCelyulozaLight, materialCelyulozaGray, materialCelyulozaDark],
     features: [
@@ -182,17 +257,14 @@ export const products: Product[] = [
       { text: "Можно использовать для уборки и вытирания рук", icon: "hand" },
       { text: "Прочные при намокании, легко отжимаются", icon: "arrow-down" },
     ],
-    marketplaces: [
-      { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
-      { name: "OZON", url: "https://www.ozon.ru", bg: "#005bff", text: "white" },
-      { name: "Яндекс Маркет", url: "https://market.yandex.ru", bg: "#fce000", text: "black" },
-    ],
+    marketplaces: createMarketplaces("1998 Блестящая история салфетки целлюлозные"),
   },
   {
     id: "salfetki-viskoznye",
     title: "Салфетки вискозные",
     desc: "Для повседневной уборки",
     category: "Салфетки",
+    brand: "Блестящая история",
     image: img07,
     gallery: [img07, pack07, materialViskozaGray],
     features: [
@@ -201,17 +273,14 @@ export const products: Product[] = [
       { text: "Многоразовые: легко стираются", icon: "refresh-cw" },
       { text: "Большой размер для удобной уборки", icon: "maximize" },
     ],
-    marketplaces: [
-      { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
-      { name: "OZON", url: "https://www.ozon.ru", bg: "#005bff", text: "white" },
-      { name: "Яндекс Маркет", url: "https://market.yandex.ru", bg: "#fce000", text: "black" },
-    ],
+    marketplaces: createMarketplaces("1998 Блестящая история салфетки вискозные"),
   },
   {
     id: "stelki-zimnie-folga",
     title: "Стельки зимние с фольгой",
     desc: "Для тепла в сильные морозы",
     category: "Стельки",
+    brand: "История комфорта",
     image: img08,
     gallery: [img08, pack08, materialZimaFolga, materialZimaSherst],
     features: [
@@ -220,17 +289,14 @@ export const products: Product[] = [
       { text: "Сохраняют тепло при минусовых температурах", icon: "thermometer" },
       { text: "Универсальный размер: легко подрезаются", icon: "scissors" },
     ],
-    marketplaces: [
-      { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
-      { name: "OZON", url: "https://www.ozon.ru", bg: "#005bff", text: "white" },
-      { name: "Яндекс Маркет", url: "https://market.yandex.ru", bg: "#fce000", text: "black" },
-    ],
+    marketplaces: createMarketplaces("1998 История комфорта стельки зимние с фольгой"),
   },
   {
     id: "stelki-lnyanye",
     title: "Стельки льняные универсальные",
     desc: "На каждый день весной и осенью",
     category: "Стельки",
+    brand: "История комфорта",
     image: img09,
     gallery: [img09, pack09, materialLenDemi],
     features: [
@@ -239,17 +305,14 @@ export const products: Product[] = [
       { text: "Универсальная форма для любой обуви", icon: "move" },
       { text: "Долговечны и легко заменяются", icon: "refresh-cw" },
     ],
-    marketplaces: [
-      { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
-      { name: "OZON", url: "https://www.ozon.ru", bg: "#005bff", text: "white" },
-      { name: "Яндекс Маркет", url: "https://market.yandex.ru", bg: "#fce000", text: "black" },
-    ],
+    marketplaces: createMarketplaces("1998 История комфорта стельки льняные универсальные"),
   },
   {
     id: "stelki-probkovye",
     title: "Стельки пробковые летние",
     desc: "Для жары, легкие и дышащие",
     category: "Стельки",
+    brand: "История комфорта",
     image: img10,
     gallery: [img10, pack10, materialProbkaCork, materialProbkaLen],
     features: [
@@ -258,17 +321,14 @@ export const products: Product[] = [
       { text: "Абсорбируют излишки влаги", icon: "droplets" },
       { text: "Идеальны для летней и спортивной обуви", icon: "sun" },
     ],
-    marketplaces: [
-      { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
-      { name: "OZON", url: "https://www.ozon.ru", bg: "#005bff", text: "white" },
-      { name: "Яндекс Маркет", url: "https://market.yandex.ru", bg: "#fce000", text: "black" },
-    ],
+    marketplaces: createMarketplaces("1998 История комфорта стельки пробковые летние"),
   },
   {
     id: "stelki-kozhanye",
     title: "Стельки кожаные классика",
     desc: "Для деловой обуви",
     category: "Стельки",
+    brand: "История комфорта",
     image: img11,
     gallery: [img11, pack11, materialKozhaEco, materialKozhaLatex],
     features: [
@@ -277,17 +337,14 @@ export const products: Product[] = [
       { text: "Поддерживают комфортный микроклимат", icon: "thermometer" },
       { text: "Элегантный вид при использовании", icon: "sparkles" },
     ],
-    marketplaces: [
-      { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
-      { name: "OZON", url: "https://www.ozon.ru", bg: "#005bff", text: "white" },
-      { name: "Яндекс Маркет", url: "https://market.yandex.ru", bg: "#fce000", text: "black" },
-    ],
+    marketplaces: createMarketplaces("1998 История комфорта стельки кожаные классика"),
   },
   {
     id: "stelki-sportivnye",
     title: "Стельки спортивные дышащие",
     desc: "Для тренировок и спорта",
     category: "Стельки",
+    brand: "История комфорта",
     image: img12,
     gallery: [img12, pack12, materialSportTextile, materialSportLatex],
     features: [
@@ -296,11 +353,61 @@ export const products: Product[] = [
       { text: "Отвод влаги для сухости ног", icon: "droplets" },
       { text: "Усиленная поддержка свода стопы", icon: "shield" },
     ],
-    marketplaces: [
-      { name: "WILDBERRIES", url: "https://www.wildberries.ru", bg: "#9b4dca", text: "white" },
-      { name: "OZON", url: "https://www.ozon.ru", bg: "#005bff", text: "white" },
-      { name: "Яндекс Маркет", url: "https://market.yandex.ru", bg: "#fce000", text: "black" },
+    marketplaces: createMarketplaces("1998 История комфорта стельки спортивные дышащие"),
+  },
+  {
+    id: "praktichnaya-maksi",
+    title: "Губки для посуды макси",
+    desc: "Крупный формат для ежедневных задач",
+    category: "Губки",
+    brand: "Практичная история",
+    image: practicalMaxiProduct,
+    gallery: [practicalMaxiProduct, practicalMaxiPack],
+    features: [
+      { text: "Увеличенный формат для посуды и кухонных поверхностей", icon: "maximize" },
+      { text: "Абразивный слой помогает удалять стойкие загрязнения", icon: "sparkles" },
+      { text: "Плотный поролон хорошо держит форму", icon: "shield" },
+      { text: "Пять губок разных цветов в упаковке", icon: "layers" },
     ],
+    marketplaces: createMarketplaces("1998 Практичная история губки макси", {
+      wildberries: "https://www.wildberries.ru/catalog/1537462087/detail.aspx",
+    }),
+  },
+  {
+    id: "praktichnaya-universalnye",
+    title: "Губки универсальные",
+    desc: "Разные цвета для разных зон кухни",
+    category: "Губки",
+    brand: "Практичная история",
+    image: practicalUniversalProduct,
+    gallery: [practicalUniversalProduct, practicalUniversalPack],
+    features: [
+      { text: "Универсальный размер для повседневного мытья посуды", icon: "utensils" },
+      { text: "Цвета помогают разделить губки по задачам", icon: "layers" },
+      { text: "Поролон хорошо пенится и легко промывается", icon: "droplets" },
+      { text: "Пять губок в практичной упаковке", icon: "package" },
+    ],
+    marketplaces: createMarketplaces("1998 Практичная история губки универсальные", {
+      wildberries: "https://www.wildberries.ru/catalog/1537462087/detail.aspx",
+    }),
+  },
+  {
+    id: "praktichnaya-bolshie",
+    title: "Губки большие",
+    desc: "Увеличенный размер и практичный набор",
+    category: "Губки",
+    brand: "Практичная история",
+    image: practicalBigProduct,
+    gallery: [practicalBigProduct, practicalBigPack],
+    features: [
+      { text: "Большой размер ускоряет уборку крупных поверхностей", icon: "maximize" },
+      { text: "Мягкий поролон создаёт обильную пену", icon: "droplets" },
+      { text: "Абразивный слой справляется с плотными загрязнениями", icon: "sparkles" },
+      { text: "Пять губок в цветном наборе", icon: "layers" },
+    ],
+    marketplaces: createMarketplaces("1998 Практичная история губки большие", {
+      wildberries: "https://www.wildberries.ru/catalog/1537462087/detail.aspx",
+    }),
   },
 ];
 
@@ -311,5 +418,10 @@ export function getProductById(id: string): Product | undefined {
 export function getRelatedProducts(id: string, limit = 4): Product[] {
   const product = getProductById(id);
   if (!product) return [];
-  return products.filter((p) => p.category === product.category && p.id !== id).slice(0, limit);
+  const sameBrand = products.filter((item) => item.brand === product.brand && item.id !== id);
+  const sameCategory = products.filter(
+    (item) =>
+      item.category === product.category && item.brand !== product.brand && item.id !== product.id,
+  );
+  return [...sameBrand, ...sameCategory].slice(0, limit);
 }

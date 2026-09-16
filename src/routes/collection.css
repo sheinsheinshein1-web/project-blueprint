@@ -1,0 +1,74 @@
+/* Supplementary copy inherits the catalog's typography, colors and spacing. */
+.catalog-editorial,
+.catalog-questions {
+  max-width: 780px;
+  margin-top: 80px;
+  border-top: 1px solid var(--commerce-line);
+  padding-top: 32px;
+  scroll-margin-top: 108px;
+}
+.catalog-editorial p,
+.catalog-questions p {
+  margin-top: 16px;
+  color: var(--commerce-copy);
+  font-size: 15px;
+  line-height: 1.75;
+}
+.catalog-editorial section {
+  margin-top: 28px;
+}
+.catalog-editorial h3 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.4;
+}
+.catalog-questions h2 {
+  margin-bottom: 24px;
+}
+.catalog-questions details {
+  border-bottom: 1px solid var(--commerce-line);
+}
+.catalog-questions summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 64px;
+  padding: 20px 0;
+  list-style: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.catalog-questions summary::-webkit-details-marker {
+  display: none;
+}
+.catalog-question-chevron {
+  flex: 0 0 20px;
+  color: var(--commerce-copy);
+  transition: transform 180ms ease;
+}
+.catalog-questions details[open] .catalog-question-chevron {
+  transform: rotate(180deg);
+}
+.catalog-questions details > p {
+  margin-top: 0;
+  padding: 0 44px 24px 0;
+}
+.catalog-questions summary:focus-visible {
+  outline: 2px solid var(--commerce-ink);
+  outline-offset: 5px;
+}
+@media (max-width: 767px) {
+  .catalog-editorial,
+  .catalog-questions {
+    margin-top: 56px;
+    padding-top: 28px;
+  }
+  .catalog-editorial p,
+  .catalog-questions p {
+    font-size: 14px;
+  }
+}
