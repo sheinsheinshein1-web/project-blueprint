@@ -16,6 +16,8 @@ import { usePreviewRoutes } from "./lib/preview-routes";
 import { PreviewMetadata } from "./components/PreviewMetadata";
 import CollectionPage from "./routes/collection";
 import { seoCollections } from "./data/seo-collections";
+import LegalPage from "./routes/legal";
+import { legalDocuments } from "./data/legal-documents";
 
 function ScrollManager() {
   const { pathname, hash } = useLocation();
@@ -72,6 +74,9 @@ function App() {
             <Route path="/catalog" element={<CatalogPage />} />
             <Route path="/product/:id" element={<ProductPage />} />
             <Route path="/fulfillment" element={<FulfillmentPage />} />
+            {legalDocuments.map((page) => (
+              <Route key={page.path} path={page.path} element={<LegalPage page={page} />} />
+            ))}
 
             <Route path="*" element={<IndexPage />} />
           </Routes>

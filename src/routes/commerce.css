@@ -280,38 +280,92 @@
   padding-top: 4px;
   color: var(--commerce-ink);
 }
-.product-buy {
+.product-lead {
   margin-top: 36px;
   border-top: 1px solid var(--commerce-line);
   padding-top: 28px;
 }
-.product-buy h2 {
+.product-lead h2 {
   font-size: 20px;
   letter-spacing: -0.025em;
 }
-.product-marketplaces {
-  display: grid;
-  gap: 10px;
-  margin-top: 18px;
+.product-lead__intro {
+  margin-top: 8px;
+  color: var(--commerce-copy);
+  font-size: 14px;
+  line-height: 1.6;
 }
-.product-marketplace {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  min-height: 58px;
-  padding: 16px 20px;
+.product-lead fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.product-lead__fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+.product-lead__fields label {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+}
+.product-lead__fields input {
+  width: 100%;
+  min-width: 0;
+  height: 52px;
+  padding: 0 14px;
+  border: 1px solid var(--commerce-line);
   border-radius: 12px;
   background: #fff;
+  color: var(--commerce-ink);
+  font: inherit;
+  font-size: 16px;
 }
-.product-marketplace img {
-  width: 134px;
-  height: 24px;
-  object-fit: contain;
-  object-position: left;
+.product-lead input:focus-visible {
+  outline: 2px solid var(--commerce-ink);
+  outline-offset: 3px;
 }
-.product-marketplace:hover {
-  box-shadow: inset 0 0 0 1px var(--commerce-line);
+.product-lead__submit {
+  width: 100%;
+  min-height: 52px;
+  margin-top: 20px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  background: var(--commerce-ink);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.product-lead__submit:hover {
+  background: #343a42;
+}
+.product-lead fieldset:disabled .product-lead__submit {
+  opacity: 0.6;
+  cursor: default;
+}
+.product-lead__feedback {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.product-lead__error {
+  color: #a52b31;
+  font-size: 12px;
+  font-weight: 400;
+}
+.product-lead__error a {
+  text-decoration: underline;
+}
+@media (max-width: 479px) {
+  .product-lead__fields {
+    grid-template-columns: 1fr;
+  }
 }
 .product-related {
   margin-top: 80px;

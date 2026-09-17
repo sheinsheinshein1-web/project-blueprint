@@ -1,3 +1,5 @@
+import { practicalProducts } from "./practical-products";
+import { OZON_STORE_URL } from "@/data/marketplace-links";
 import img01 from "@/assets/products/clean/01-gubki-universalnye.png";
 import img02 from "@/assets/products/clean/02-gubki-s-aromatom-myaty.png";
 import img03 from "@/assets/products/clean/03-gubki-s-aromatom-kofe.png";
@@ -7,9 +9,6 @@ import img06 from "@/assets/products/clean/06-salfetki-celyuloznye.png";
 import img07 from "@/assets/products/clean/07-salfetki-viskoznye.png";
 import img08 from "@/assets/products/clean/08-stelki-zimnie-s-folgoy.png";
 import img09 from "@/assets/products/clean/09-stelki-lnyanye-universalnye.png";
-import img10 from "@/assets/products/clean/10-stelki-probkovye-letnie.png";
-import img11 from "@/assets/products/clean/11-stelki-kozhanye-klassika.png";
-import img12 from "@/assets/products/clean/12-stelki-sportivnye-dyshaschie.png";
 import pack01 from "@/assets/products/clean/01-gubki-universalnye-pack.png";
 import pack02 from "@/assets/products/clean/02-gubki-s-aromatom-myaty-pack.png";
 import pack03 from "@/assets/products/clean/03-gubki-s-aromatom-kofe-pack.png";
@@ -19,9 +18,6 @@ import pack06 from "@/assets/products/clean/06-salfetki-celyuloznye-pack.png";
 import pack07 from "@/assets/products/clean/07-salfetki-viskoznye-pack.png";
 import pack08 from "@/assets/products/clean/08-stelki-zimnie-s-folgoy-pack.png";
 import pack09 from "@/assets/products/clean/09-stelki-lnyanye-universalnye-pack.png";
-import pack10 from "@/assets/products/clean/10-stelki-probkovye-letnie-pack.png";
-import pack11 from "@/assets/products/clean/11-stelki-kozhanye-klassika-pack.png";
-import pack12 from "@/assets/products/clean/12-stelki-sportivnye-dyshaschie-pack.png";
 import materialGubkiUniversalFiber from "@/assets/products/clean/material-gubki-universal-fiber.png";
 import materialGubkiUniversalFoam from "@/assets/products/clean/material-gubki-universal-foam.png";
 import materialGubkiMintFiber from "@/assets/products/clean/material-gubki-mint-fiber.png";
@@ -39,18 +35,6 @@ import materialViskozaGray from "@/assets/products/clean/material-viskoza-gray.p
 import materialZimaFolga from "@/assets/products/clean/material-zima-folga.png";
 import materialZimaSherst from "@/assets/products/clean/material-zima-sherst.png";
 import materialLenDemi from "@/assets/products/clean/material-len-demi.png";
-import materialProbkaCork from "@/assets/products/clean/material-probka-cork.png";
-import materialProbkaLen from "@/assets/products/clean/material-probka-len.png";
-import materialKozhaEco from "@/assets/products/clean/material-kozha-eco.png";
-import materialKozhaLatex from "@/assets/products/clean/material-kozha-latex.png";
-import materialSportLatex from "@/assets/products/clean/material-sport-latex.png";
-import materialSportTextile from "@/assets/products/clean/material-sport-textile.png";
-import practicalMaxiPack from "@/assets/praktichnaya-istoriya-maxi-pack.png";
-import practicalMaxiProduct from "@/assets/praktichnaya-istoriya-maxi-product.png";
-import practicalUniversalPack from "@/assets/praktichnaya-istoriya-universal-pack.png";
-import practicalUniversalProduct from "@/assets/praktichnaya-istoriya-universal-product.png";
-import practicalBigPack from "@/assets/praktichnaya-istoriya-big-pack.png";
-import practicalBigProduct from "@/assets/praktichnaya-istoriya-big-product.png";
 
 export type Category = "Все" | "Губки" | "Салфетки" | "Стельки";
 export type Brand = "Блестящая история" | "Практичная история" | "История комфорта";
@@ -80,7 +64,7 @@ const yandexSpongeCard =
 
 function createMarketplaces(
   query: string,
-  direct: { wildberries?: string; ozon?: string; yandexMarket?: string } = {},
+  direct: { wildberries?: string; yandexMarket?: string } = {},
 ): Marketplace[] {
   const encodedQuery = encodeURIComponent(query);
 
@@ -94,9 +78,7 @@ function createMarketplaces(
     },
     {
       name: "OZON",
-      url:
-        direct.ozon ??
-        `https://www.ozon.ru/search/?deny_category_prediction=true&from_global=true&text=${encodedQuery}`,
+      url: OZON_STORE_URL,
       ...marketplaceStyles.ozon,
     },
     {
@@ -137,7 +119,7 @@ export const brandCollections: BrandCollection[] = [
     id: "practical",
     title: "Практичная история",
     eyebrow: "Для ежедневных задач",
-    usp: "Понятные и надёжные решения для кухни без лишних деталей.",
+    usp: "Губки и салфетки для кухни, ванной, пола и автомобиля.",
   },
   {
     id: "comfort",
@@ -307,108 +289,10 @@ export const products: Product[] = [
     ],
     marketplaces: createMarketplaces("1998 История комфорта стельки льняные универсальные"),
   },
-  {
-    id: "stelki-probkovye",
-    title: "Стельки пробковые летние",
-    desc: "Для жары, легкие и дышащие",
-    category: "Стельки",
-    brand: "История комфорта",
-    image: img10,
-    gallery: [img10, pack10, materialProbkaCork, materialProbkaLen],
-    features: [
-      { text: "Пробковый материал позволяет ногам дышать", icon: "wind" },
-      { text: "Лёгкие и тонкие: не уменьшают объём обуви", icon: "feather" },
-      { text: "Абсорбируют излишки влаги", icon: "droplets" },
-      { text: "Идеальны для летней и спортивной обуви", icon: "sun" },
-    ],
-    marketplaces: createMarketplaces("1998 История комфорта стельки пробковые летние"),
-  },
-  {
-    id: "stelki-kozhanye",
-    title: "Стельки кожаные классика",
-    desc: "Для деловой обуви",
-    category: "Стельки",
-    brand: "История комфорта",
-    image: img11,
-    gallery: [img11, pack11, materialKozhaEco, materialKozhaLatex],
-    features: [
-      { text: "Натуральная кожа для деловой обуви", icon: "briefcase" },
-      { text: "Приятная поверхность и долговечность", icon: "heart" },
-      { text: "Поддерживают комфортный микроклимат", icon: "thermometer" },
-      { text: "Элегантный вид при использовании", icon: "sparkles" },
-    ],
-    marketplaces: createMarketplaces("1998 История комфорта стельки кожаные классика"),
-  },
-  {
-    id: "stelki-sportivnye",
-    title: "Стельки спортивные дышащие",
-    desc: "Для тренировок и спорта",
-    category: "Стельки",
-    brand: "История комфорта",
-    image: img12,
-    gallery: [img12, pack12, materialSportTextile, materialSportLatex],
-    features: [
-      { text: "Дышащая структура для активных нагрузок", icon: "wind" },
-      { text: "Амортизация при ходьбе и беге", icon: "activity" },
-      { text: "Отвод влаги для сухости ног", icon: "droplets" },
-      { text: "Усиленная поддержка свода стопы", icon: "shield" },
-    ],
-    marketplaces: createMarketplaces("1998 История комфорта стельки спортивные дышащие"),
-  },
-  {
-    id: "praktichnaya-maksi",
-    title: "Губки для посуды макси",
-    desc: "Крупный формат для ежедневных задач",
-    category: "Губки",
-    brand: "Практичная история",
-    image: practicalMaxiProduct,
-    gallery: [practicalMaxiProduct, practicalMaxiPack],
-    features: [
-      { text: "Увеличенный формат для посуды и кухонных поверхностей", icon: "maximize" },
-      { text: "Абразивный слой помогает удалять стойкие загрязнения", icon: "sparkles" },
-      { text: "Плотный поролон хорошо держит форму", icon: "shield" },
-      { text: "Пять губок разных цветов в упаковке", icon: "layers" },
-    ],
-    marketplaces: createMarketplaces("1998 Практичная история губки макси", {
-      wildberries: "https://www.wildberries.ru/catalog/1537462087/detail.aspx",
-    }),
-  },
-  {
-    id: "praktichnaya-universalnye",
-    title: "Губки универсальные",
-    desc: "Разные цвета для разных зон кухни",
-    category: "Губки",
-    brand: "Практичная история",
-    image: practicalUniversalProduct,
-    gallery: [practicalUniversalProduct, practicalUniversalPack],
-    features: [
-      { text: "Универсальный размер для повседневного мытья посуды", icon: "utensils" },
-      { text: "Цвета помогают разделить губки по задачам", icon: "layers" },
-      { text: "Поролон хорошо пенится и легко промывается", icon: "droplets" },
-      { text: "Пять губок в практичной упаковке", icon: "package" },
-    ],
-    marketplaces: createMarketplaces("1998 Практичная история губки универсальные", {
-      wildberries: "https://www.wildberries.ru/catalog/1537462087/detail.aspx",
-    }),
-  },
-  {
-    id: "praktichnaya-bolshie",
-    title: "Губки большие",
-    desc: "Увеличенный размер и практичный набор",
-    category: "Губки",
-    brand: "Практичная история",
-    image: practicalBigProduct,
-    gallery: [practicalBigProduct, practicalBigPack],
-    features: [
-      { text: "Большой размер ускоряет уборку крупных поверхностей", icon: "maximize" },
-      { text: "Мягкий поролон создаёт обильную пену", icon: "droplets" },
-      { text: "Абразивный слой справляется с плотными загрязнениями", icon: "sparkles" },
-      { text: "Пять губок в цветном наборе", icon: "layers" },
-    ],
-    marketplaces: createMarketplaces("1998 Практичная история губки большие", {
-      wildberries: "https://www.wildberries.ru/catalog/1537462087/detail.aspx",
-    }),
-  },
+  ...practicalProducts.map((product) => ({
+    ...product,
+    marketplaces: createMarketplaces(`1998 Практичная история ${product.title}`),
+  })),
 ];
 
 export function getProductById(id: string): Product | undefined {
@@ -418,7 +302,11 @@ export function getProductById(id: string): Product | undefined {
 export function getRelatedProducts(id: string, limit = 4): Product[] {
   const product = getProductById(id);
   if (!product) return [];
-  const sameBrand = products.filter((item) => item.brand === product.brand && item.id !== id);
+  const sameBrand = products
+    .filter((item) => item.brand === product.brand && item.id !== id)
+    .sort(
+      (a, b) => Number(b.category === product.category) - Number(a.category === product.category),
+    );
   const sameCategory = products.filter(
     (item) =>
       item.category === product.category && item.brand !== product.brand && item.id !== product.id,

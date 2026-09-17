@@ -22,8 +22,13 @@ try {
   );
   const template = await readFile(resolve(root, "dist/index.html"), "utf8");
   for (const page of renderSeoPages()) {
+    const robots = page.preview
+      ? "noindex, nofollow"
+      : page.noindex
+        ? "noindex, follow"
+        : "index, follow";
     const metadata = `
-    <meta name="robots" content="${page.preview ? "noindex, nofollow" : "index, follow"}" ${page.preview ? "data-preview-robots" : ""} />
+    <meta name="robots" content="${robots}" ${page.preview || page.noindex ? "data-preview-robots" : ""} />
     <link rel="canonical" href="https://1998.ru${page.path}" data-collection-seo />
     <meta property="og:title" content="${escape(page.title)}" data-collection-seo />
     <meta property="og:description" content="${escape(page.description)}" data-collection-seo />
@@ -37,10 +42,7 @@ try {
       )
       .replace("</head>", `${metadata}\n</head>`)
       .replace('<div id="root"></div>', `<div id="root">${page.html}</div>`);
-    if (
-      !html.includes("<h1") ||
-      !html.includes(page.preview ? "noindex, nofollow" : "index, follow")
-    )
+    if (!html.includes("<h1") || !html.includes(`content="${robots}"`))
       throw new Error(`Incomplete HTML: ${page.path}`);
     const destination = resolve(root, `dist${page.outputPath}/index.html`);
     await mkdir(dirname(destination), { recursive: true });

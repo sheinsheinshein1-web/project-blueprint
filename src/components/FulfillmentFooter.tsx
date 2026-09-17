@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 import logo from "@/assets/logo-1998.png";
 import { Button } from "@/components/ui/button";
+import { LegalFooterLinks } from "./LegalFooterLinks";
 
 const footerLinks = [
   { label: "Услуги", to: "/fulfillment#services" },
@@ -56,10 +57,7 @@ export function FulfillmentFooter() {
 
         <div className="mt-14 flex flex-col gap-5 border-t border-background/15 pt-8 text-[11px] font-bold uppercase leading-relaxed tracking-widest text-background/45 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} Фулфилмент 1998. Все права защищены.</p>
-          <div className="flex flex-wrap gap-x-8 gap-y-3">
-            <a href="#" className="transition-colors hover:text-background">Политика конфиденциальности</a>
-            <a href="#" className="transition-colors hover:text-background">Cookies</a>
-          </div>
+          <LegalFooterLinks />
         </div>
       </div>
     </footer>

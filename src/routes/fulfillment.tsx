@@ -1,4 +1,6 @@
 import { cn } from "@/lib/utils";
+import PersonalDataConsent from "@/components/PersonalDataConsent";
+import { consentEvidence, hasPersonalDataConsent } from "@/lib/personal-data";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { z } from "zod";
@@ -122,8 +124,15 @@ function LeadForm({ compact = false, buttonClassName = "" }: { compact?: boolean
 
   async function submit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (submitting || sent) return;
     const form = event.currentTarget;
     const formData = new FormData(form);
+    if (formData.get("_honey")) return;
+    if (!hasPersonalDataConsent(formData)) {
+      setSubmitError("Для отправки заявки необходимо согласие на обработку персональных данных.");
+      form.querySelector<HTMLInputElement>('[name="consent"]')?.focus();
+      return;
+    }
     const data = Object.fromEntries(formData);
     const result = leadSchema.safeParse(data);
     if (!result.success) {
@@ -151,7 +160,7 @@ function LeadForm({ compact = false, buttonClassName = "" }: { compact?: boolean
           "Имя": result.data.name,
           "Телефон": result.data.phone,
           "Источник": "Страница фулфилмента 1998.ru",
-          "Страница": window.location.href,
+          ...consentEvidence(true, window.location.href),
           "Дата заявки": new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow" }),
           _subject: "Новая заявка на фулфилмент — 1998.ru",
           _template: "table",
@@ -161,6 +170,8 @@ function LeadForm({ compact = false, buttonClassName = "" }: { compact?: boolean
       });
 
       if (!response.ok) throw new Error("FormSubmit request failed");
+      const responseData = await response.json();
+      if (responseData.success !== true && responseData.success !== "true") throw new Error("FormSubmit did not accept the request");
 
       form.reset();
       setSent(true);
@@ -187,11 +198,11 @@ function LeadForm({ compact = false, buttonClassName = "" }: { compact?: boolean
           {errors.phone && <span className="normal-case text-destructive">{errors.phone}</span>}
         </label>
       </div>
+      <PersonalDataConsent className="fulfillment-consent" />
       <Button type="submit" size="lg" disabled={submitting || sent} className={cn("mt-6 h-14 w-full justify-center rounded-none px-6 text-sm font-bold", buttonClassName)}>
         {sent ? <><span>Заявка принята</span><Check /></> : <span>{submitting ? "Отправляем…" : "Получить расчёт"}</span>}
       </Button>
       {submitError && <p role="alert" className="mt-3 text-sm font-medium text-destructive">{submitError}</p>}
-      <p className="mt-3 text-[11px] leading-relaxed text-muted-foreground">Нажимая кнопку, вы соглашаетесь с политикой обработки персональных данных.</p>
     </form>
   );
 }

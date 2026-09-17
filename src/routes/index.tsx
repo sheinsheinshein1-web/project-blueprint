@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import { usePreviewRoutes } from "@/lib/preview-routes";
 import { OZON_STORE_URL } from "@/data/marketplace-links";
+import { practicalProducts as practicalCatalogProducts } from "@/data/practical-products";
 import { previewProductMedia } from "@/data/preview-product-media";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { ArrowUpRight, ChevronLeft, ChevronRight, Play, Volume2, VolumeX } from "lucide-react";
 import heroCleaningDesktop from "@/assets/hero-cleaning-desktop-real-product-v2.png";
-import heroCleaningMobile from "@/assets/hero-cleaning-mobile-real-product-v2.png";
-import heroLifestyle from "@/assets/hero-lifestyle-real-product-v2.png";
-import heroMobile from "@/assets/hero-mobile-real-product-v2.png";
+import heroCleaningMobile from "@/assets/hero-cleaning-mobile-square-corners-v3.png";
+import heroLifestyle from "@/assets/hero-lifestyle-matched-sponge-v5.png";
+import heroMobile from "@/assets/hero-mobile-volume-sponge-v6.png";
 import img01 from "@/assets/products/clean/01-gubki-universalnye.png";
 import img02 from "@/assets/products/clean/02-gubki-s-aromatom-myaty.png";
 import img03 from "@/assets/products/clean/03-gubki-s-aromatom-kofe.png";
@@ -17,9 +18,6 @@ import img06 from "@/assets/products/clean/06-salfetki-celyuloznye.png";
 import img07 from "@/assets/products/clean/07-salfetki-viskoznye.png";
 import img08 from "@/assets/products/clean/08-stelki-zimnie-s-folgoy.png";
 import img09 from "@/assets/products/clean/09-stelki-lnyanye-universalnye.png";
-import img10 from "@/assets/products/clean/10-stelki-probkovye-letnie.png";
-import img11 from "@/assets/products/clean/11-stelki-kozhanye-klassika.png";
-import img12 from "@/assets/products/clean/12-stelki-sportivnye-dyshaschie.png";
 import pack01 from "@/assets/products/clean/01-gubki-universalnye-pack.png";
 import pack02 from "@/assets/products/clean/02-gubki-s-aromatom-myaty-pack.png";
 import pack03 from "@/assets/products/clean/03-gubki-s-aromatom-kofe-pack.png";
@@ -29,12 +27,6 @@ import pack06 from "@/assets/products/clean/06-salfetki-celyuloznye-pack.png";
 import pack07 from "@/assets/products/clean/07-salfetki-viskoznye-pack.png";
 import pack08 from "@/assets/products/clean/08-stelki-zimnie-s-folgoy-pack.png";
 import pack09 from "@/assets/products/clean/09-stelki-lnyanye-universalnye-pack.png";
-import pack10 from "@/assets/products/clean/10-stelki-probkovye-letnie-pack.png";
-import pack11 from "@/assets/products/clean/11-stelki-kozhanye-klassika-pack.png";
-import pack12 from "@/assets/products/clean/12-stelki-sportivnye-dyshaschie-pack.png";
-import practicalMaxiPack from "@/assets/praktichnaya-istoriya-maxi-pack.png";
-import practicalUniversalPack from "@/assets/praktichnaya-istoriya-universal-pack.png";
-import practicalBigPack from "@/assets/praktichnaya-istoriya-big-pack.png";
 import ugcDarinaGubkiReview from "@/assets/reviews/ugc-darina-smiles-gubki.mp4";
 import ugcDarinaGubkiPoster from "@/assets/reviews/ugc-darina-smiles-gubki-poster.png";
 import ugcGubkiReview from "@/assets/reviews/ugc-gubki-review.mp4";
@@ -263,58 +255,16 @@ function ProductsSection() {
       link: "/product/stelki-lnyanye",
       desc: "Натуральные материалы и комфорт",
     },
-    {
-      id: "stelki-probkovye",
-      name: "Стельки пробковые",
-      image: img10,
-      packImage: pack10,
-      link: "/product/stelki-probkovye",
-      desc: "Легкие и дышащие на лето",
-    },
-    {
-      id: "stelki-kozhanye",
-      name: "Стельки кожаные",
-      image: img11,
-      packImage: pack11,
-      link: "/product/stelki-kozhanye",
-      desc: "Классический вариант на каждый день",
-    },
-    {
-      id: "stelki-sportivnye",
-      name: "Стельки спортивные",
-      image: img12,
-      packImage: pack12,
-      link: "/product/stelki-sportivnye",
-      desc: "Дышащие и амортизирующие",
-    },
   ];
 
-  const practicalProducts = [
-    {
-      id: "praktichnaya-maksi",
-      name: "Губки для посуды макси",
-      image: practicalMaxiPack,
-      packImage: undefined,
-      link: "/product/praktichnaya-maksi",
-      desc: "Крупный формат для ежедневных задач",
-    },
-    {
-      id: "praktichnaya-universalnye",
-      name: "Губки универсальные",
-      image: practicalUniversalPack,
-      packImage: undefined,
-      link: "/product/praktichnaya-universalnye",
-      desc: "Разные цвета для разных зон кухни",
-    },
-    {
-      id: "praktichnaya-bolshie",
-      name: "Губки большие",
-      image: practicalBigPack,
-      packImage: undefined,
-      link: "/product/praktichnaya-bolshie",
-      desc: "Увеличенный размер и практичный набор",
-    },
-  ];
+  const practicalProducts = practicalCatalogProducts.map((product) => ({
+    id: product.id,
+    name: product.title,
+    image: product.image,
+    packImage: product.gallery?.[1],
+    link: `/product/${product.id}`,
+    desc: product.desc,
+  }));
 
   const brandCollections = [
     {
@@ -328,7 +278,7 @@ function ProductsSection() {
       id: "practical" as const,
       title: "Практичная история",
       eyebrow: "Для ежедневных задач",
-      usp: "Понятные и надёжные решения для кухни без лишних деталей.",
+      usp: "Губки и салфетки для кухни, ванной, пола и автомобиля.",
       products: practicalProducts,
     },
     {
@@ -610,18 +560,16 @@ function MarketplaceSection() {
     {
       name: "Ozon",
       logo: ozonLogo,
-      product: practicalUniversalPack,
-      href: preview
-        ? OZON_STORE_URL
-        : "https://www.ozon.ru/search/?deny_category_prediction=true&from_global=true&text=1998%20%D0%9F%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D1%87%D0%BD%D0%B0%D1%8F%20%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F%20%D0%B3%D1%83%D0%B1%D0%BA%D0%B8%20%D1%83%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B5",
-      label: preview ? "Открыть магазин" : "Найти товары",
+      product: practicalCatalogProducts[1].gallery?.[1],
+      href: OZON_STORE_URL,
+      label: "Открыть магазин",
       className: "md:col-span-4",
       accent: "bg-[#edf3ff]",
     },
     {
       name: "Яндекс Маркет",
       logo: yandexMarketLogo,
-      product: pack10,
+      product: pack09,
       href: preview
         ? "https://market.yandex.ru/business--blestiashchaia-istoriia/216728361"
         : "https://m.integration.vs.market.yandex.net/card/gubki-dlya-mytya-posudy-figurnyye-ergonomichnyye-nabor-gubok-kvadrat-10-sht/5718394497",

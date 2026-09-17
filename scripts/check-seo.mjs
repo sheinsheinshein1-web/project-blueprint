@@ -4,12 +4,12 @@ import { resolve } from "node:path";
 
 const root = resolve(import.meta.dirname, "..");
 const pages = [
-  ["catalog/gubki-dlya-posudy", 8],
-  ["catalog/salfetki-dlya-uborki", 2],
-  ["catalog/stelki-dlya-obuvi", 5],
+  ["catalog/gubki-dlya-posudy", 16],
+  ["catalog/salfetki-dlya-uborki", 8],
+  ["catalog/stelki-dlya-obuvi", 2],
   ["brands/blestyashchaya-istoriya", 7],
-  ["brands/praktichnaya-istoriya", 3],
-  ["brands/istoriya-komforta", 5],
+  ["brands/praktichnaya-istoriya", 17],
+  ["brands/istoriya-komforta", 2],
 ];
 for (const prefix of ["", "/test-home"]) {
   const titles = new Set();
@@ -75,4 +75,7 @@ for (const prefix of ["", "/test-home"]) {
 }
 const sitemap = await readFile(resolve(root, "dist/sitemap.xml"), "utf8");
 assert.ok(!sitemap.includes("test-home"));
+for (const id of ["stelki-probkovye", "stelki-kozhanye", "stelki-sportivnye"]) {
+  assert.ok(!sitemap.includes(`/product/${id}`), `Removed product in sitemap: ${id}`);
+}
 for (const [path] of pages) assert.ok(sitemap.includes(`https://1998.ru/${path}</loc>`));

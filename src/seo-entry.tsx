@@ -5,6 +5,8 @@ import { SiteFooter } from "./components/SiteFooter";
 import CollectionPage from "./routes/collection";
 import { seoCollections } from "./data/seo-collections";
 import { products } from "./data/products";
+import { legalDocuments } from "./data/legal-documents";
+import LegalPage from "./routes/legal";
 
 export const sitemapPaths = [
   "/",
@@ -16,7 +18,7 @@ export const sitemapPaths = [
 ];
 
 export function renderSeoPages() {
-  return seoCollections.flatMap((page) =>
+  const collections = seoCollections.flatMap((page) =>
     ["", "/test-home"].map((prefix) => {
       const path = `${prefix}${page.path}`;
       return {
@@ -37,4 +39,21 @@ export function renderSeoPages() {
       };
     }),
   );
+  const legal = legalDocuments.map((page) => ({
+    ...page,
+    description: page.intro,
+    outputPath: page.path,
+    preview: false,
+    noindex: true,
+    html: renderToStaticMarkup(
+      <MemoryRouter initialEntries={[page.path]}>
+        <SiteHeader homePath="/" />
+        <main>
+          <LegalPage page={page} />
+        </main>
+        <SiteFooter />
+      </MemoryRouter>,
+    ),
+  }));
+  return [...collections, ...legal];
 }

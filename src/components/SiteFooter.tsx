@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/logo-1998.png";
 import { usePreviewRoutes } from "@/lib/preview-routes";
+import { LegalFooterLinks } from "./LegalFooterLinks";
 
 export function SiteFooter() {
   const { sitePath } = usePreviewRoutes();
@@ -67,14 +68,7 @@ export function SiteFooter() {
           <p className="max-w-full text-left text-[11px] font-bold uppercase leading-relaxed tracking-widest text-muted-foreground">
             © {new Date().getFullYear()} 1998 Блестящая история. Все права защищены.
           </p>
-          <div className="flex w-full flex-col items-start gap-4 text-left text-[11px] font-bold uppercase leading-relaxed tracking-widest text-muted-foreground sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-3 md:w-auto md:justify-end">
-            <a href="#" className="max-w-full break-words transition-colors hover:text-foreground">
-              Политика конфиденциальности
-            </a>
-            <a href="#" className="transition-colors hover:text-foreground">
-              Cookies
-            </a>
-          </div>
+          <LegalFooterLinks />
         </div>
       </div>
     </footer>

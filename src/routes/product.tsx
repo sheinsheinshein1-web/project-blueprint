@@ -1,15 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowUpRight, ChevronRight } from "lucide-react";
+import { ArrowLeft, ChevronRight } from "lucide-react";
 import { DynamicIcon, type IconName } from "lucide-react/dynamic";
 import { brandCollections, getProductById, getRelatedProducts } from "@/data/products";
-import wildberriesLogo from "@/assets/wildberries.gif";
-import ozonLogo from "@/assets/ozon.gif";
-import yaMarketLogo from "@/assets/ya_market.gif";
 import ProductTile from "@/components/ProductTile";
+import ProductLeadForm from "@/components/ProductLeadForm";
 import { usePreviewRoutes } from "@/lib/preview-routes";
 import { withPreviewProductMedia } from "@/data/preview-product-media";
-import { OZON_STORE_URL } from "@/data/marketplace-links";
 
 export default function ProductPage() {
   const { preview, sitePath } = usePreviewRoutes();
@@ -17,20 +14,20 @@ export default function ProductPage() {
   const product = useMemo(() => {
     const original = id ? getProductById(id) : undefined;
     if (!original || !preview) return original;
-    return {
-      ...withPreviewProductMedia(original),
-      marketplaces: original.marketplaces.map((marketplace) =>
-        marketplace.name.toUpperCase() === "OZON"
-          ? { ...marketplace, url: OZON_STORE_URL }
-          : marketplace,
-      ),
-    };
+    return withPreviewProductMedia(original);
   }, [id, preview]);
 
   useEffect(() => {
     if (product) {
       document.title = `${product.title}: 1998`;
+      return;
     }
+    document.title = "Товар не найден — 1998";
+    const robots = document.createElement("meta");
+    robots.name = "robots";
+    robots.content = "noindex, follow";
+    document.head.appendChild(robots);
+    return () => robots.remove();
   }, [product]);
 
   const galleryImages = useMemo(() => {
@@ -198,45 +195,7 @@ export default function ProductPage() {
               ))}
             </ul>
 
-            {/* Where to buy */}
-            <div className={preview ? "product-buy" : "mt-10"}>
-              <h2 className={preview ? undefined : "mb-4 text-lg font-bold text-gray-900"}>
-                Где нас купить
-              </h2>
-              <div
-                className={preview ? "product-marketplaces" : "flex flex-wrap items-center gap-4"}
-              >
-                {product.marketplaces.map((m) => {
-                  const isWB = m.name.toUpperCase() === "WILDBERRIES";
-                  const isOzon = m.name.toUpperCase() === "OZON";
-                  const isYa = m.name.toLowerCase().includes("яндекс");
-                  return (
-                    <a
-                      key={m.name}
-                      href={m.url}
-                      aria-label={`Открыть ${m.name}: ${product.title}`}
-                      className={
-                        preview
-                          ? "product-marketplace"
-                          : "inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-sm font-bold tracking-wide shadow-[0_2px_8px_rgba(0,0,0,0.08)] transition-transform hover:-translate-y-0.5"
-                      }
-                      style={preview ? undefined : { color: m.text, border: "1px solid #E5E7EB" }}
-                    >
-                      {isWB ? (
-                        <img src={wildberriesLogo} alt="Wildberries" className="h-5 w-auto" />
-                      ) : isOzon ? (
-                        <img src={ozonLogo} alt="Ozon" className="h-5 w-auto" />
-                      ) : isYa ? (
-                        <img src={yaMarketLogo} alt="Яндекс Маркет" className="h-5 w-auto" />
-                      ) : (
-                        m.name
-                      )}
-                      {preview && <ArrowUpRight size={18} strokeWidth={1.75} aria-hidden="true" />}
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
+            <ProductLeadForm key={product.id} product={product} />
           </div>
         </div>
 
