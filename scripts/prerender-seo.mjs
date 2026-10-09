@@ -29,11 +29,11 @@ try {
         : "index, follow";
     const metadata = `
     <meta name="robots" content="${robots}" ${page.preview || page.noindex ? "data-preview-robots" : ""} />
-    <link rel="canonical" href="https://1998.ru${page.path}" data-collection-seo />
+    <link rel="canonical" href="https://www.1998.ru${page.path}" data-collection-seo />
     <meta property="og:title" content="${escape(page.title)}" data-collection-seo />
     <meta property="og:description" content="${escape(page.description)}" data-collection-seo />
     <meta property="og:type" content="website" data-collection-seo />
-    <meta property="og:url" content="https://1998.ru${page.path}" data-collection-seo />`;
+    <meta property="og:url" content="https://www.1998.ru${page.path}" data-collection-seo />`;
     const html = template
       .replace(/<title>.*?<\/title>/s, `<title>${escape(page.title)}</title>`)
       .replace(
@@ -51,11 +51,11 @@ try {
   }
   await writeFile(
     resolve(root, "dist/sitemap.xml"),
-    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPaths.map((path) => `  <url><loc>https://1998.ru${path}</loc></url>`).join("\n")}\n</urlset>\n`,
+    `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapPaths.map((path) => `  <url><loc>https://www.1998.ru${path}</loc></url>`).join("\n")}\n</urlset>\n`,
   );
   await writeFile(
     resolve(root, "dist/robots.txt"),
-    "User-agent: *\nAllow: /\n\nSitemap: https://1998.ru/sitemap.xml\n",
+    "User-agent: *\nAllow: /\n\nSitemap: https://www.1998.ru/sitemap.xml\n",
   );
 } finally {
   // Only this script's freshly created temporary build directory is removed.

@@ -28,7 +28,7 @@ export function consentEvidence(accepted: boolean, pageUrl: string) {
   return {
     "Согласие на обработку персональных данных": CONSENT_TEXT,
     "Редакция согласия": CONSENT_VERSION,
-    "Текст согласия": `https://1998.ru${CONSENT_PATH}`,
+    "Текст согласия": `https://www.1998.ru${CONSENT_PATH}`,
     "Время согласия (браузер, UTC)": new Date().toISOString(),
     Страница: `${page.origin}${page.pathname}`,
   };

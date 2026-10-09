@@ -7,7 +7,7 @@ export const collectionProducts = (page: SeoCollection) =>
   );
 
 export function collectionSchema(page: SeoCollection) {
-  const url = `https://1998.ru${page.path}`;
+  const url = `https://www.1998.ru${page.path}`;
   return {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
@@ -20,8 +20,8 @@ export function collectionSchema(page: SeoCollection) {
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Главная", item: "https://1998.ru/" },
-        { "@type": "ListItem", position: 2, name: "Каталог", item: "https://1998.ru/catalog" },
+        { "@type": "ListItem", position: 1, name: "Главная", item: "https://www.1998.ru/" },
+        { "@type": "ListItem", position: 2, name: "Каталог", item: "https://www.1998.ru/catalog" },
         { "@type": "ListItem", position: 3, name: page.label, item: url },
       ],
     },
@@ -32,7 +32,7 @@ export function collectionSchema(page: SeoCollection) {
         "@type": "ListItem",
         position: index + 1,
         name: product.title,
-        url: `https://1998.ru/product/${product.id}`,
+        url: `https://www.1998.ru/product/${product.id}`,
       })),
     },
   };

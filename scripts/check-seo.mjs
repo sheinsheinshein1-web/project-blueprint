@@ -47,7 +47,7 @@ for (const prefix of ["", "/test-home"]) {
     if (!prefix)
       assert.ok(!html.includes("/test-home"), `Test URL leaked into public page: ${path}`);
     assert.ok(
-      html.includes(`rel="canonical" href="https://1998.ru/${path}"`),
+      html.includes(`rel="canonical" href="https://www.1998.ru/${path}"`),
       `Canonical: ${path}`,
     );
     const schema = JSON.parse(
@@ -78,4 +78,4 @@ assert.ok(!sitemap.includes("test-home"));
 for (const id of ["stelki-probkovye", "stelki-kozhanye", "stelki-sportivnye"]) {
   assert.ok(!sitemap.includes(`/product/${id}`), `Removed product in sitemap: ${id}`);
 }
-for (const [path] of pages) assert.ok(sitemap.includes(`https://1998.ru/${path}</loc>`));
+for (const [path] of pages) assert.ok(sitemap.includes(`https://www.1998.ru/${path}</loc>`));

@@ -20,12 +20,12 @@ export function CollectionMetadata({ page }: { page: SeoCollection }) {
     setMeta("og:title", page.title, true);
     setMeta("og:description", page.description, true);
     setMeta("og:type", "website", true);
-    setMeta("og:url", `https://1998.ru${page.path}`, true);
+    setMeta("og:url", `https://www.1998.ru${page.path}`, true);
     const existing = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     const canonical = existing ?? document.createElement("link");
     const previousHref = canonical.href;
     canonical.rel = "canonical";
-    canonical.href = `https://1998.ru${page.path}`;
+    canonical.href = `https://www.1998.ru${page.path}`;
     if (!existing) document.head.appendChild(canonical);
     return () => {
       document.title = previousTitle;

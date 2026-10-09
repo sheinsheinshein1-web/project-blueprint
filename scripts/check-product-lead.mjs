@@ -17,7 +17,7 @@ const data = {
   phone: "+7 (000) 000-00-00",
   product: "Губки универсальные",
   brand: "Блестящая история",
-  url: "https://1998.ru/product/gubki-universalnye",
+  url: "https://www.1998.ru/product/gubki-universalnye",
   consent: true,
 };
 for (const success of [true, "true"]) {
@@ -31,7 +31,7 @@ for (const success of [true, "true"]) {
     assert.equal(body["Линейка"], data.brand);
     assert.equal(body["Страница"], data.url);
     assert.equal(body["Редакция согласия"], CONSENT_VERSION);
-    assert.equal(body["Текст согласия"], "https://1998.ru/personal-data-consent");
+    assert.equal(body["Текст согласия"], "https://www.1998.ru/personal-data-consent");
     assert.ok(body["Время согласия (браузер, UTC)"]);
     return Response.json({ success });
   });
