@@ -80,14 +80,14 @@ export default function AboutPage() {
             <div className="aspect-[4/5] overflow-hidden rounded-[2rem] border border-white/60 bg-white/55 backdrop-blur-md shadow-[0_30px_60px_rgba(20,24,40,0.12)]">
               <img
                 src={nikolayPhoto}
-                alt="Николай Дворянкин — руководитель"
+                alt="Николай Дворянкин — управляющий собственник"
                 className="h-full w-full object-cover"
               />
             </div>
             <p className="mt-5 text-sm font-bold uppercase tracking-widest text-[#4B66D1]">
               Николай Дворянкин
             </p>
-            <p className="text-sm text-gray-500">Руководитель</p>
+            <p className="text-sm text-gray-500">Управляющий собственник</p>
           </div>
 
           <div className="about-story__copy order-1 lg:order-2 lg:col-span-7">

@@ -920,7 +920,7 @@ export default function Index({
           </div>
           <div className="home-history__people grid grid-cols-1 gap-8 sm:grid-cols-2 lg:w-7/12 lg:gap-10">
             {[
-              { name: "Николай Дворянкин", role: "Руководитель", photo: nikolayPhoto },
+              { name: "Николай Дворянкин", role: "Управляющий собственник", photo: nikolayPhoto },
               { name: "Валерий Дворянкин", role: "Основатель", photo: valeryPhoto, offset: true },
             ].map((p) => (
               <div
